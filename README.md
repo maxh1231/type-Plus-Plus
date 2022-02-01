@@ -1,4 +1,4 @@
-# <h1 align="center">Type Master</h1>
+# <h1 align="center">Type++</h1>
 
 <p align="center"><img src="https://img.shields.io/badge/License-GNU GPLv3-blue?style=plastic" /></p>
 <p align="center">
