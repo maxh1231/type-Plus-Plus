@@ -1,0 +1,9 @@
+function Game() {
+    return (
+        <div>
+            <p>Hello, world!</p>
+        </div>
+    )
+}
+
+export default Game;

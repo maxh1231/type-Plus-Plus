@@ -1,6 +1,4 @@
 const jwt = require('jsonwebtoken');
-
-const secret = 'mysecretssshhhhhhh';
 const expiration = '2h';
 
 module.exports = {
@@ -16,7 +14,7 @@ module.exports = {
     }
 
     try {
-      const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      const { data } = jwt.verify(token, process.env.JWT_SECRET, { maxAge: expiration });
       req.user = data;
     } catch (err) {
       console.error(err);
@@ -27,7 +25,8 @@ module.exports = {
   },
   signToken: function ({ username, email, _id }) {
     const payload = { username, email, _id };
-    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+    return jwt.sign({ data: payload }, process.env.JWT_SECRET, { expiresIn: expiration });
   },
 };
 
+// dont forget to add your own .env with a JWT_SECRET key so JWT tokens work
