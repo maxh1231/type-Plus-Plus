@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -7,6 +7,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import Game from './components/Game';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -31,11 +32,12 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <Game />
         <>
-            <Switch>
-              <Route exact path='/' component={/* component name here, don't forget to import at top */} />
+            <Routes>
+              <Route exact path="/" component={Game} /> {/* <-- This needs to be changed to a page */}
               <Route render={() => <h1 className=''>You've Been 404'd! Oops...</h1>} />
-            </Switch>
+            </Routes>
         </>
       </Router>
     </ApolloProvider>
