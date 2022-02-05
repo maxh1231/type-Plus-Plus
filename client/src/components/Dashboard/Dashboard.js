@@ -1,34 +1,17 @@
-import React from 'react';
+import ProfilePic from './ProfilePic';
+import UserInfo from './UserInfo'
+import Achievements from './Achievements';
+import Progess from './Progess'
 
-const Dashboard = ({ image, setImage, url, setUrl }) => {
-    const uploadImage = () => {
-        const data = new FormData()
-        data.append("file", image)
-        data.append("upload_preset", "mhpreset")
-        data.append("cloud_name", "djevcwcbq")
-        fetch("  https://api.cloudinary.com/v1_1/djevcwcbq/image/upload", {
-            method: "post",
-            body: data
-        })
-            .then(resp => resp.json())
-            .then(data => {
-                setUrl(data.url)
-            })
-            .catch(err => console.log(err))
-    }
-
+const Dashboard = () => {
     return (
-        <div>
-            <div>
-                <input type="file" onChange={(e) => setImage(e.target.files[0])}></input>
-                <button onClick={uploadImage}>Upload</button>
-            </div>
-            <div className="w-[200px] h-[200px]">
-                <h1>Uploaded image will be displayed here</h1>
-                <img className="w-full h-full object-cover" src={url} />
-            </div>
-        </div>
+        <sction>
+            <ProfilePic image={image} setImage={setImage} url={url} setUrl={setUrl} />
+            <UserInfo />
+            <Achievements />
+            <Progess />
+        </sction>
     )
-
 }
+
 export default Dashboard;
