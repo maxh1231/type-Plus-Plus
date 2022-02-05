@@ -11,6 +11,16 @@ const resolvers = {
       }
       throw new AuthenticationError('Log in required');
     },
+    // all users
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+    },
+    // get user by username
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select('-__v -password')
+    },
   },
 
   Mutation: {
