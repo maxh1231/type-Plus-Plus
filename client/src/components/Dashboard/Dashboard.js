@@ -3,14 +3,14 @@ import UserInfo from './UserInfo'
 import Achievements from './Achievements';
 import Progess from './Progess'
 
-const Dashboard = () => {
+const Dashboard = ({ image, setImage, url, setUrl }) => {
     return (
-        <sction>
+        <section>
             <ProfilePic image={image} setImage={setImage} url={url} setUrl={setUrl} />
             <UserInfo />
             <Achievements />
             <Progess />
-        </sction>
+        </section>
     )
 }
 

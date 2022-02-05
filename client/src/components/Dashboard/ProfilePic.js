@@ -24,7 +24,7 @@ const ProfilePic = ({ image, setImage, url, setUrl }) => {
                 <button onClick={uploadImage}>Upload</button>
             </div>
             <div className="w-[200px] h-[200px]">
-                <img className="w-full h-full object-cover" src={url} />
+                <img className="w-full h-full object-cover" src={url} alt="" />
             </div>
         </div>
     )

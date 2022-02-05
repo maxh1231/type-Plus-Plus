@@ -1,3 +1,3 @@
-import Dashboard from './ProfilePic';
+import Dashboard from './Dashboard';
 
 export default Dashboard;

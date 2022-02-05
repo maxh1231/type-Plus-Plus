@@ -36,9 +36,10 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Game />
-        <Dashboard image={image} setImage={setImage} url={url} setUrl={setUrl} />
+
         <>
           <Routes>
+            <Route exact path='/dashboard' element={<Dashboard image={image} setImage={setImage} url={url} setUrl={setUrl} />} />
             <Route exact path="/" component={Game} /> {/* <-- This needs to be changed to a page */}
             <Route render={() => <h1 className=''>You've Been 404'd! Oops...</h1>} />
           </Routes>
