@@ -11,7 +11,6 @@ const Dashboard = ({ image, setImage, url, setUrl }) => {
             <UserInfo />
             <Achievements />
             <Progess />
-            <Signup />
         </section>
     )
 }

@@ -38,7 +38,7 @@ function App() {
       <Router>
         <Game />
         <Routes  >
-          {/* <Route exact path='/signup' component={Signup()} /> */}
+          <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/dashboard' element={<Dashboard image={image} setImage={setImage} url={url} setUrl={setUrl} />} />
           <Route exact path="/" component={Game} /> {/* <-- This needs to be changed to a page */}
           <Route render={() => <h1 className=''>You've Been 404'd! Oops...</h1>} />
