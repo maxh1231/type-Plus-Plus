@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../../utils/queries';
@@ -21,5 +21,4 @@ const Dashboard = ({ image, setImage, url, setUrl }) => {
         </section>
     )
 }
-
 export default Dashboard;

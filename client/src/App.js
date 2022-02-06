@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Game from './components/Game';
-import Dashboard from './components/Dashboard'
+import Dashboard from './pages/Dashboard'
 import Signup from './components/Signup'
 import Login from './components/Login'
 import Header from './components/Header'
@@ -43,7 +43,7 @@ function App() {
           <Route exact path="/" element={<Game />} /> {/* <-- This needs to be changed to a page */}
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/signup' element={<Signup />} />
-          <Route exact path='/dashboard/:username?' element={<Dashboard image={image} setImage={setImage} url={url} setUrl={setUrl} />} />
+          <Route exact path='/dashboard' element={<Dashboard />} />
           <Route render={() => <h1 className=''>You've Been 404'd! Oops...</h1>} />
         </Routes>
       </Router>
