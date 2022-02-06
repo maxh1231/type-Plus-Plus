@@ -14,7 +14,7 @@ function Game() {
             document.getElementById(i).style.textDecoration = 'underline';
             if (input[i] !== sampleArr[i]) {
                 document.getElementById(i).style.color = 'red';
-                console.log(`Wrong at position ${i}`);
+                // console.log(`Wrong at position ${i}`);
                 setValidInput(false);
                 errorCount++
             } else {
@@ -27,7 +27,11 @@ function Game() {
             document.getElementById(i).style.color = 'black';
         }
         setErrorCount(errorCount);
-        setAccuracy(Math.abs(errorCount / input.length * 100 - 100));
+        if (isNaN(Math.abs(errorCount / input.length * 100 - 100))) {
+            setAccuracy(100);
+        } else {
+            setAccuracy(Math.abs(errorCount / input.length * 100 - 100));
+        }
     }
 
     return (
