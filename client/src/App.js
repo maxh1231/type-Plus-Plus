@@ -40,10 +40,10 @@ function App() {
       <Router>
         <Header />
         <Routes  >
+          <Route exact path="/" element={<Game />} /> {/* <-- This needs to be changed to a page */}
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/signup' element={<Signup />} />
-          <Route exact path='/dashboard' element={<Dashboard image={image} setImage={setImage} url={url} setUrl={setUrl} />} />
-          <Route exact path="/" element={<Game />} /> {/* <-- This needs to be changed to a page */}
+          <Route exact path='/dashboard/:username?' element={<Dashboard image={image} setImage={setImage} url={url} setUrl={setUrl} />} />
           <Route render={() => <h1 className=''>You've Been 404'd! Oops...</h1>} />
         </Routes>
       </Router>

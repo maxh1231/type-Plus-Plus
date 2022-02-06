@@ -11,6 +11,9 @@ const Header = () => {
     return (
         <header>
             <div>
+                <Link to="/">
+                    <h2>Home</h2>
+                </Link>
                 <nav>
                     {Auth.loggedIn() ? (
                         <>
