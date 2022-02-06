@@ -9,6 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import Game from './components/Game';
 import Dashboard from './components/Dashboard'
+import Signup from './components/Signup'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -39,6 +40,7 @@ function App() {
 
         <>
           <Routes>
+            <Route exact path='/signup' element={Signup()} />
             <Route exact path='/dashboard' element={<Dashboard image={image} setImage={setImage} url={url} setUrl={setUrl} />} />
             <Route exact path="/" component={Game} /> {/* <-- This needs to be changed to a page */}
             <Route render={() => <h1 className=''>You've Been 404'd! Oops...</h1>} />
