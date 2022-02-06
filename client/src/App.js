@@ -9,9 +9,11 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import Game from './components/Game';
 import Dashboard from './components/Dashboard'
+import Signup from './components/Signup'
+import Login from './components/Login'
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -36,14 +38,13 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Game />
-
-        <>
-          <Routes>
-            <Route exact path='/dashboard' element={<Dashboard image={image} setImage={setImage} url={url} setUrl={setUrl} />} />
-            <Route exact path="/" component={Game} /> {/* <-- This needs to be changed to a page */}
-            <Route render={() => <h1 className=''>You've Been 404'd! Oops...</h1>} />
-          </Routes>
-        </>
+        <Routes  >
+          <Route exact path='/login' element={<Login />} />
+          <Route exact path='/signup' element={<Signup />} />
+          <Route exact path='/dashboard' element={<Dashboard image={image} setImage={setImage} url={url} setUrl={setUrl} />} />
+          <Route exact path="/" component={Game} /> {/* <-- This needs to be changed to a page */}
+          <Route render={() => <h1 className=''>You've Been 404'd! Oops...</h1>} />
+        </Routes>
       </Router>
     </ApolloProvider>
   );

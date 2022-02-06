@@ -2,6 +2,7 @@ import ProfilePic from './ProfilePic';
 import UserInfo from './UserInfo'
 import Achievements from './Achievements';
 import Progess from './Progess'
+import Signup from '../Signup/Signup'
 
 const Dashboard = ({ image, setImage, url, setUrl }) => {
     return (
