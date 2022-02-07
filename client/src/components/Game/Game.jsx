@@ -48,7 +48,13 @@ const Game = () => {
     }
 
     function updateWpm() {
-        setWpm((Math.floor(inputText.length / 5)) / (time / 60));
+        const grossWpm = (Math.floor(inputText.length / 5));
+        const netWpm = (grossWpm - errorCount) / (time / 60);
+        if (netWpm < 0 || isNaN(netWpm)) {
+            setWpm(0);
+        } else {
+            setWpm(netWpm);
+        }
     }
 
     // to run on component load
