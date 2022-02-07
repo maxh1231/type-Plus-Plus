@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProfilePic = ({ image, setImage, url, setUrl }) => {
+const Uploader = ({ image, setImage, url, setUrl }) => {
     const uploadImage = () => {
         const data = new FormData()
         data.append("file", image)
@@ -30,4 +30,4 @@ const ProfilePic = ({ image, setImage, url, setUrl }) => {
     )
 
 }
-export default ProfilePic;
+export default Uploader;

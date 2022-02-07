@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
-import ProfilePic from '../components/Dashboard/ProfilePic';
-import UserInfo from '../components/Dashboard/UserInfo'
-import Achievements from '../components/Dashboard/Achievements';
-import Progess from '../components/Dashboard/Progess'
+import Uploader from '../components/Uploader';
+import UserInfo from '../components/UserInfo'
+import Achievements from '../components/Achievements';
+import Progess from '../components/Progress'
 
 
-const Dashboard = ({ image, setImage, url, setUrl }) => {
+const Dashboard = () => {
+    const [image, setImage] = useState("");
+    const [url, setUrl] = useState("");
     const { username: userParam } = useParams();
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam },
@@ -36,7 +38,7 @@ const Dashboard = ({ image, setImage, url, setUrl }) => {
     }
     return (
         <section>
-            <ProfilePic image={image} setImage={setImage} url={url} setUrl={setUrl} />
+            <Uploader image={image} setImage={setImage} url={url} setUrl={setUrl} />
             <UserInfo />
             <Achievements />
             <Progess />
