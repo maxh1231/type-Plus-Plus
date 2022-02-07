@@ -17,6 +17,17 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      required: true
+    },
+    bio: {
+      type: String,
+      required: true,
+      maxLength: 140,
+      required: false,
     }
   },
   // set this to use virtual below
