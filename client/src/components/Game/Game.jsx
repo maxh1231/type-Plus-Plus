@@ -13,44 +13,56 @@ const Game = () => {
     const arrLength = sampleArr.length;
     
     function userInput() {
-        let errorCount = 0;
+        let tmpErrorCount = 0;
+        // count errors and style accordingly
         for (let i = 0; i < inputText.length; i++) {
-            document.getElementById(i).style.textDecoration = 'underline';
             if (inputText[i] !== sampleArr[i]) {
                 document.getElementById(i).style.color = 'red';
-                console.log(`Wrong at position ${i}`);
+                // console.log(`Wrong at position ${i}`);
                 setValidInput(false);
-                errorCount++
+                tmpErrorCount++
             } else {
                 document.getElementById(i).style.color = 'green';
                 setValidInput(true);
             }
         }
         for (let i = inputText.length; i < arrLength; i++) {
-            document.getElementById(i).style.textDecoration = 'none';
             document.getElementById(i).style.color = 'black';
         }
-        setErrorCount(errorCount);
-        if (isNaN(Math.abs(errorCount / inputText.length * 100 - 100))) {
+        setErrorCount(tmpErrorCount);
+        // update accuracy
+        if (isNaN(Math.abs(tmpErrorCount / inputText.length * 100 - 100))) {
             setAccuracy(100);
         } else {
-            setAccuracy(Math.abs(errorCount / inputText.length * 100 - 100));
+            setAccuracy(Math.abs(tmpErrorCount / inputText.length * 100 - 100));
         }
-        // updateWpm();
+        // underline next character
+        if (inputText.length > 0) {
+            document.getElementById(inputText.length).style.textDecoration = 'underline';
+            document.getElementById(inputText.length - 1).style.textDecoration = 'none';
+            document.getElementById(inputText.length + 1).style.textDecoration = 'none';
+        } else {
+            document.getElementById(0).style.textDecoration = 'underline';
+            document.getElementById(1).style.textDecoration = 'none';
+        }
     }
 
     function updateWpm() {
         setWpm((Math.floor(inputText.length / 5)) / (time / 60));
     }
 
+    // to run on component load
     useEffect(() => {
+        document.getElementById(0).style.textDecoration = 'underline';
         let elapsedTime = 0
+        // create timer var
         let interval = setInterval(() => {
             elapsedTime++
             setTimer(elapsedTime);
         }, 1000);
     }, []);
 
+    // update input value and wpm every time a character is typed
     useEffect(() => {
         userInput();
         updateWpm();
