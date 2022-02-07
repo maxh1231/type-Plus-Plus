@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import Game from './components/Game';
+import Home from './pages/Home';
 import Dashboard from './pages/Dashboard'
 import Signup from './components/Signup'
 import Login from './components/Login'
 import Header from './components/Header'
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -33,18 +28,16 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [image, setImage] = useState("");
-  const [url, setUrl] = useState("");
   return (
     <ApolloProvider client={client}>
       <Router>
         <Header />
         <Routes  >
-          <Route exact path="/" element={<Game />} /> {/* <-- This needs to be changed to a page */}
+          <Route exact path="/" element={<Home />} />
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/dashboard' element={<Dashboard />} />
-          <Route render={() => <h1 className=''>You've Been 404'd! Oops...</h1>} />
+          <Route render={() => <h1 className=''>You've Been 404'd! Oops...</h1>} /> {/* To Do: Build out a custom 404 page */}
         </Routes>
       </Router>
     </ApolloProvider>
