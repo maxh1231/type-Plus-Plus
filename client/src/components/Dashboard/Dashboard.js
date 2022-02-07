@@ -1,8 +1,15 @@
+import React from 'react';
+import { Navigate, useParams } from 'react-router-dom';
+
+import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_USER, QUERY_ME } from '../../utils/queries';
+import Auth from '../../utils/auth';
+
 import ProfilePic from './ProfilePic';
 import UserInfo from './UserInfo'
 import Achievements from './Achievements';
 import Progess from './Progess'
-import Signup from '../Signup/Signup'
+
 
 const Dashboard = ({ image, setImage, url, setUrl }) => {
     return (
@@ -14,5 +21,4 @@ const Dashboard = ({ image, setImage, url, setUrl }) => {
         </section>
     )
 }
-
 export default Dashboard;
