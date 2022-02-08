@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Inspired by https://tailwind-elements.com/docs/standard/navigation/footer/
+
 const Footer = () => {
     return (
         <footer className="text-center lg:text-left bg-gray-100 text-gray-600">
@@ -19,7 +21,7 @@ const Footer = () => {
                             Check out the{' '}
                             <a
                                 href="https://github.com/t-norm/type-Plus-Plus"
-                                className="underline"
+                                className="underline hover:text-gray-800 focus:text-gray-800"
                             >
                                 application repository
                             </a>
@@ -33,7 +35,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://www.mongodb.com/"
-                                className="text-gray-600"
+                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
                             >
                                 MongoDB
                             </a>
@@ -41,7 +43,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://expressjs.com/"
-                                className="text-gray-600"
+                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
                             >
                                 Express
                             </a>
@@ -49,7 +51,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://reactjs.org/"
-                                className="text-gray-600"
+                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
                             >
                                 React
                             </a>
@@ -57,7 +59,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://nodejs.org/en/"
-                                className="text-gray-600"
+                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
                             >
                                 Node.js
                             </a>
@@ -65,7 +67,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://tailwindcss.com/"
-                                className="text-gray-600"
+                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
                             >
                                 Tailwind CSS
                             </a>
@@ -76,22 +78,34 @@ const Footer = () => {
                             Resources
                         </h6>
                         <p className="mb-4">
-                            <a href="#!" className="text-gray-600">
+                            <a
+                                href="#!"
+                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                            >
                                 QMK
                             </a>
                         </p>
                         <p className="mb-4">
-                            <a href="#!" className="text-gray-600">
+                            <a
+                                href="#!"
+                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                            >
                                 AutoHotKey
                             </a>
                         </p>
                         <p className="mb-4">
-                            <a href="#!" className="text-gray-600">
+                            <a
+                                href="#!"
+                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                            >
                                 r/MechanicalKeyboards
                             </a>
                         </p>
                         <p>
-                            <a href="#!" className="text-gray-600">
+                            <a
+                                href="#!"
+                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                            >
                                 Build Demos
                             </a>
                         </p>
@@ -100,8 +114,8 @@ const Footer = () => {
                         <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
                             Find us on GitHub
                         </h6>
-                        <a href="https://github.com/Thenlie">
-                            <p className="flex items-center justify-center md:justify-start mb-4">
+                        <a href="https://github.com/Thenlie ">
+                            <p className="flex items-center justify-center md:justify-start mb-4 hover:text-gray-800 focus:text-gray-800 ">
                                 <svg
                                     aria-hidden="true"
                                     focusable="false"
@@ -121,7 +135,7 @@ const Footer = () => {
                             </p>
                         </a>
                         <a href="https://github.com/Thorulfr">
-                            <p className="flex items-center justify-center md:justify-start mb-4">
+                            <p className="flex items-center justify-center md:justify-start mb-4 hover:text-gray-800 focus:text-gray-800">
                                 <svg
                                     aria-hidden="true"
                                     focusable="false"
@@ -141,7 +155,7 @@ const Footer = () => {
                             </p>
                         </a>
                         <a href="https://github.com/maxh1231">
-                            <p className="flex items-center justify-center md:justify-start mb-4">
+                            <p className="flex items-center justify-center md:justify-start mb-4 hover:text-gray-800 focus:text-gray-800">
                                 <svg
                                     aria-hidden="true"
                                     focusable="false"
@@ -161,7 +175,7 @@ const Footer = () => {
                             </p>
                         </a>
                         <a href="https://github.com/t-norm">
-                            <p className="flex items-center justify-center md:justify-start mb-4">
+                            <p className="flex items-center justify-center md:justify-start mb-4 hover:text-gray-800 focus:text-gray-800">
                                 <svg
                                     aria-hidden="true"
                                     focusable="false"
