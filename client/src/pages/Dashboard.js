@@ -11,6 +11,7 @@ import Uploader from '../components/Uploader';
 import UserInfo from '../components/UserInfo'
 import Achievements from '../components/Achievements';
 import Progress from '../components/Progress'
+import EditModal from '../components/EditModal';
 
 const customStyles = {
     content: {
@@ -64,8 +65,9 @@ const Dashboard = () => {
     }
     return (
         <section>
+            <UserInfo data={data} />
             <div>
-                <button onClick={openModal}>Open Modal</button>
+                <button onClick={openModal}>Edit Profile</button>
                 <Modal
                     isOpen={modalIsOpen}
                     onAfterOpen={afterOpenModal}
@@ -73,23 +75,12 @@ const Dashboard = () => {
                     style={customStyles}
                     contentLabel="Example Modal"
                 >
-                    <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-                    <button onClick={closeModal}>close</button>
-                    <div>I am a modal</div>
-                    <form>
-                        <input />
-                        <button>tab navigation</button>
-                        <button>stays</button>
-                        <button>inside</button>
-                        <button>the modal</button>
-                    </form>
+                    <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Edit Profile</h2>
+
+                    <EditModal data={data} />
+                    <button onClick={closeModal}>Done</button>
                 </Modal>
             </div>
-            {/* <Uploader image={image} setImage={setImage} url={url} setUrl={setUrl} />
-            <UserInfo data={data} />
-            <Achievements />
-            <Progress /> */}
-
         </section>
     )
 }
