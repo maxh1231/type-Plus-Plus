@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className="text-center lg:text-left bg-gray-100 text-gray-600">
             <div className="mx-6 py-10 text-center md:text-left">
                 <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div className>
+                    <div>
                         <h6 className="uppercase font-semibold mb-4 flex items-center justify-center md:justify-start">
                             Type++
                         </h6>
@@ -26,32 +26,52 @@ const Footer = () => {
                             !
                         </p>
                     </div>
-                    <div className>
+                    <div>
                         <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
-                            Libraries
+                            Stack
                         </h6>
                         <p className="mb-4">
-                            <a href="#!" className="text-gray-600">
-                                Angular
+                            <a
+                                href="https://www.mongodb.com/"
+                                className="text-gray-600"
+                            >
+                                MongoDB
                             </a>
                         </p>
                         <p className="mb-4">
-                            <a href="#!" className="text-gray-600">
+                            <a
+                                href="https://expressjs.com/"
+                                className="text-gray-600"
+                            >
+                                Express
+                            </a>
+                        </p>
+                        <p className="mb-4">
+                            <a
+                                href="https://reactjs.org/"
+                                className="text-gray-600"
+                            >
                                 React
                             </a>
                         </p>
                         <p className="mb-4">
-                            <a href="#!" className="text-gray-600">
-                                Vue
+                            <a
+                                href="https://nodejs.org/en/"
+                                className="text-gray-600"
+                            >
+                                Node.js
                             </a>
                         </p>
-                        <p>
-                            <a href="#!" className="text-gray-600">
-                                Laravel
+                        <p className="mb-4">
+                            <a
+                                href="https://tailwindcss.com/"
+                                className="text-gray-600"
+                            >
+                                Tailwind CSS
                             </a>
                         </p>
                     </div>
-                    <div className>
+                    <div>
                         <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
                             Resources
                         </h6>
@@ -76,7 +96,7 @@ const Footer = () => {
                             </a>
                         </p>
                     </div>
-                    <div className>
+                    <div>
                         <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
                             Find us on GitHub
                         </h6>

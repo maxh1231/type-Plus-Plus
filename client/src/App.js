@@ -41,22 +41,28 @@ const client = new ApolloClient({
 function App() {
     return (
         <ApolloProvider client={client}>
-            <Router>
-                <Header />
-                <Routes>
-                    <Route exact path="/" element={<Home />} />
-                    <Route exact path="/login" element={<Login />} />
-                    <Route exact path="/signup" element={<Signup />} />
-                    <Route exact path="/dashboard" element={<Dashboard />} />
-                    <Route
-                        render={() => (
-                            <h1 className="">You've Been 404'd! Oops...</h1>
-                        )}
-                    />{' '}
-                    {/* To Do: Build out a custom 404 page */}
-                </Routes>
-                <Footer />
-            </Router>
+            <div className="flex flex-col min-h-screen">
+                <Router className="test">
+                    <Header />
+                    <Routes>
+                        <Route exact path="/" element={<Home />} />
+                        <Route exact path="/login" element={<Login />} />
+                        <Route exact path="/signup" element={<Signup />} />
+                        <Route
+                            exact
+                            path="/dashboard"
+                            element={<Dashboard />}
+                        />
+                        <Route
+                            render={() => (
+                                <h1 className="">You've Been 404'd! Oops...</h1>
+                            )}
+                        />{' '}
+                        {/* To Do: Build out a custom 404 page */}
+                    </Routes>
+                    <Footer />
+                </Router>
+            </div>
         </ApolloProvider>
     );
 }
