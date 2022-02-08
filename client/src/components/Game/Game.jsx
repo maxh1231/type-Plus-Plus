@@ -7,7 +7,40 @@ const Game = () => {
     const [accuracy, setAccuracy] = useState(100);
     const [time, setTimer] = useState(0);
     const [wpm, setWpm] = useState(0);
+    const [sampleString, setSampleString] = useState('')
+    
+    // to run on component load
+    useEffect(() => {
+        getText(); // Make a request to DeepAi
+        document.getElementById(0).style.textDecoration = 'underline';
+        let elapsedTime = 0
+        // create timer var
+        let interval = setInterval(() => {
+            elapsedTime++
+            setTimer(elapsedTime);
+        }, 1000);
+    }, []);
+
+    // update input value and wpm every time a character is typed
+    useEffect(() => {
+        userInput();
+        updateWpm();
+    });
+    
+    // get sample text from DeepAI
+    const getText = async () => {
+        const response = await fetch('http://localhost:3001/api/deepai', {
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        let data = await response.json();
+        console.log(data.output);
+        setSampleString(data.output);
+    } 
         
+    // hardcoded sample text 
     const sampleText = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus vel consequuntur rerum distinctio exercitationem architecto ex debitis hic nobis necessitatibus cum animi, quod saepe maxime reprehenderit culpa nisi voluptates labore!";
     let sampleArr = sampleText.split('');
     const arrLength = sampleArr.length;
@@ -57,22 +90,6 @@ const Game = () => {
         }
     }
 
-    // to run on component load
-    useEffect(() => {
-        document.getElementById(0).style.textDecoration = 'underline';
-        let elapsedTime = 0
-        // create timer var
-        let interval = setInterval(() => {
-            elapsedTime++
-            setTimer(elapsedTime);
-        }, 1000);
-    }, []);
-
-    // update input value and wpm every time a character is typed
-    useEffect(() => {
-        userInput();
-        updateWpm();
-    });
 
     return (
         <div>
@@ -87,6 +104,7 @@ const Game = () => {
             <p>Accuracy: {accuracy}%</p>
             <p>Time: {time}</p>
             <p>WPM: {wpm}</p>
+            <p>Sample Text: {sampleString}</p>
         </div>
     )
 }
