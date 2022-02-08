@@ -9,19 +9,21 @@ const Game = ({ sampleArr }) => {
     const [wpm, setWpm] = useState(0);
     
     // to run on component load
-    useEffect(async () => {
-        document.getElementById(0).style.textDecoration = 'underline';
-        let elapsedTime = 0
-        // create timer var
-        let interval = setInterval(() => {
-            elapsedTime++
-            setTimer(elapsedTime);
-        }, 1000);
+    useEffect(() => {
+        async function startGame() {
+            document.getElementById(0).style.textDecoration = 'underline';
+            let elapsedTime = 0
+            // create timer var
+            let interval = setInterval(() => {
+                elapsedTime++
+                setTimer(elapsedTime);
+            }, 1000);
+        }
+        startGame();
     }, []);
 
     // update input value and wpm every time a character is typed
     useEffect(() => {
-        // userInput();
         updateError();
         updateAccuracy();
         updateUnderline();

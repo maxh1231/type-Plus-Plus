@@ -12,17 +12,11 @@ const Home = () => {
         fetchData();
     }, [])
 
-    // make request to DeepAI
+    // get random text
     const getText = async () => {
-        const response = await fetch('http://localhost:3001/api/deepai', {
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        let data = await response.json();
-        // console.log(data.output);
-        let tmpArr = data.output.split('');
+        const response = await fetch('http://localhost:3001/api/deepai');
+        let data = await response.text();
+        let tmpArr = data.split('');
         setSampleArr(tmpArr);
         return;
     } 
