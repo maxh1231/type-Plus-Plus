@@ -33,7 +33,7 @@ const userSchema = new Schema(
     scores: [
       {
         type: Schema.Types.ObjectId,
-        ref: Scores
+        ref: "Scores"
       }
     ]
   },

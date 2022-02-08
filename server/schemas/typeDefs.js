@@ -11,9 +11,10 @@ const typeDefs = gql`
   }
 
   type Scores {
-    WPM: String!
-    userID: String!
-    createdAt: String!
+    _id: ID
+    wpm: String
+    username: String
+    createdAt: String
   }
 
   type Auth {
@@ -31,6 +32,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    addScore(wpm: String! ): Scores
   }
 `;
 

@@ -4,9 +4,9 @@ const scoresSchema = new Schema(
     {
         wpm: {
             type: String,
-            required: true,
+            required: false,
         },
-        userID: {
+        username: {
             type: String,
             required: true,
         },
