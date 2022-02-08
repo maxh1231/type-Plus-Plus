@@ -8,16 +8,15 @@ import Auth from '../utils/auth';
 import Uploader from '../components/Uploader';
 import UserInfo from '../components/UserInfo'
 import Achievements from '../components/Achievements';
-import Progess from '../components/Progress'
+import Progress from '../components/Progress'
 
 
 const Dashboard = () => {
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
     const { username: userParam } = useParams();
-    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam },
-    });
+    const { loading, data } = useQuery(QUERY_ME);
+    console.log(data);
 
     const user = data?.me || data?.user || {};
 
@@ -39,9 +38,10 @@ const Dashboard = () => {
     return (
         <section>
             <Uploader image={image} setImage={setImage} url={url} setUrl={setUrl} />
-            <UserInfo />
+            <UserInfo data={data} />
             <Achievements />
-            <Progess />
+            <Progress />
+
         </section>
     )
 }
