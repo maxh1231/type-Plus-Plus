@@ -5,6 +5,7 @@ import { ADD_BIO } from '../../utils/mutations';
 
 const UserInfo = ({ data }) => {
     const [bio, setBio] = useState('');
+    const [newBio, setNewBio] = useState('')
     const [characterCount, setCharacterCount] = useState(0);
     const [addBio, { error }] = useMutation(ADD_BIO);
 
@@ -23,7 +24,10 @@ const UserInfo = ({ data }) => {
 
         setBio('');
         setCharacterCount('');
+        setNewBio(bio);
     };
+
+
 
     return (
         <section>
@@ -36,9 +40,12 @@ const UserInfo = ({ data }) => {
             {/* Bio */}
             <div>
                 <form onSubmit={handleSubmit}>
+
                     <textarea value={bio} onChange={handleChange}></textarea>
                     <button type="submit">Submit</button>
                 </form>
+
+                <p>{newBio}</p>
 
                 {!data.me.bio && <span>Add a bio!</span>}
 
