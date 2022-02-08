@@ -10,7 +10,7 @@ const Header = () => {
 
     return (
         <header>
-            <nav className="relative w-full flex flex-wrap items-center justify-between py-4 bg-gray-100 text-gray-600 hover:text-gray-800 focus:text-gray-800">
+            <nav className="relative w-full flex flex-wrap items-center justify-around py-4 bg-gray-100 text-gray-600 shadow-md navbar navbar-expand-lg navbar-light hover:text-gray-800 focus:text-gray-800 ">
                 <Link to="/">
                     <h2>Home</h2>
                 </Link>

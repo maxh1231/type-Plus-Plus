@@ -22,6 +22,8 @@ const Footer = () => {
                             <a
                                 href="https://github.com/t-norm/type-Plus-Plus"
                                 className="underline hover:text-gray-800 focus:text-gray-800"
+                                target="_blank"
+                                rel="noreferrer"
                             >
                                 application repository
                             </a>
@@ -36,6 +38,8 @@ const Footer = () => {
                             <a
                                 href="https://www.mongodb.com/"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                                target="_blank"
+                                rel="noreferrer"
                             >
                                 MongoDB
                             </a>
@@ -44,6 +48,8 @@ const Footer = () => {
                             <a
                                 href="https://expressjs.com/"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                                target="_blank"
+                                rel="noreferrer"
                             >
                                 Express
                             </a>
@@ -52,6 +58,8 @@ const Footer = () => {
                             <a
                                 href="https://reactjs.org/"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                                target="_blank"
+                                rel="noreferrer"
                             >
                                 React
                             </a>
@@ -60,6 +68,8 @@ const Footer = () => {
                             <a
                                 href="https://nodejs.org/en/"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                                target="_blank"
+                                rel="noreferrer"
                             >
                                 Node.js
                             </a>
@@ -68,6 +78,8 @@ const Footer = () => {
                             <a
                                 href="https://tailwindcss.com/"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                                target="_blank"
+                                rel="noreferrer"
                             >
                                 Tailwind CSS
                             </a>
@@ -81,6 +93,8 @@ const Footer = () => {
                             <a
                                 href="#!"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                                target="_blank"
+                                rel="noreferrer"
                             >
                                 QMK
                             </a>
@@ -89,6 +103,8 @@ const Footer = () => {
                             <a
                                 href="#!"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                                target="_blank"
+                                rel="noreferrer"
                             >
                                 AutoHotKey
                             </a>
@@ -97,6 +113,8 @@ const Footer = () => {
                             <a
                                 href="#!"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                                target="_blank"
+                                rel="noreferrer"
                             >
                                 r/MechanicalKeyboards
                             </a>
@@ -105,6 +123,8 @@ const Footer = () => {
                             <a
                                 href="#!"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
+                                target="_blank"
+                                rel="noreferrer"
                             >
                                 Build Demos
                             </a>
@@ -114,7 +134,11 @@ const Footer = () => {
                         <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
                             Find us on GitHub
                         </h6>
-                        <a href="https://github.com/Thenlie ">
+                        <a
+                            href="https://github.com/Thenlie"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             <p className="flex items-center justify-center md:justify-start mb-4 hover:text-gray-800 focus:text-gray-800 ">
                                 <svg
                                     aria-hidden="true"
@@ -134,7 +158,11 @@ const Footer = () => {
                                 Leithen Crider
                             </p>
                         </a>
-                        <a href="https://github.com/Thorulfr">
+                        <a
+                            href="https://github.com/Thorulfr"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             <p className="flex items-center justify-center md:justify-start mb-4 hover:text-gray-800 focus:text-gray-800">
                                 <svg
                                     aria-hidden="true"
@@ -154,7 +182,11 @@ const Footer = () => {
                                 Benjamin Holt
                             </p>
                         </a>
-                        <a href="https://github.com/maxh1231">
+                        <a
+                            href="https://github.com/maxh1231"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             <p className="flex items-center justify-center md:justify-start mb-4 hover:text-gray-800 focus:text-gray-800">
                                 <svg
                                     aria-hidden="true"
@@ -174,7 +206,11 @@ const Footer = () => {
                                 Max Humpherys
                             </p>
                         </a>
-                        <a href="https://github.com/t-norm">
+                        <a
+                            href="https://github.com/t-norm"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             <p className="flex items-center justify-center md:justify-start mb-4 hover:text-gray-800 focus:text-gray-800">
                                 <svg
                                     aria-hidden="true"
