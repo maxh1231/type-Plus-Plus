@@ -1,6 +1,30 @@
+import React, { useState } from 'react'
 import defaultPhoto from '../../assets/images/no-profile-picture.svg';
+import { useMutation } from '@apollo/client';
+import { ADD_BIO } from '../../utils/mutations';
 
 const UserInfo = ({ data }) => {
+    const [bio, setBio] = useState('');
+    const [characterCount, setCharacterCount] = useState(0);
+    const [addBio, { error }] = useMutation(ADD_BIO);
+
+    const handleChange = (event) => {
+        if (event.target.value.length <= 140) {
+            setBio(event.target.value);
+            setCharacterCount(event.target.value.length);
+        }
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        await addBio({
+            variables: { bio }
+        });
+
+        setBio('');
+        setCharacterCount('');
+    };
+
     return (
         <section>
             <div>
@@ -11,9 +35,10 @@ const UserInfo = ({ data }) => {
             </div>
             {/* Bio */}
             <div>
-                <p>
-                    {data.me.bio}
-                </p>
+                <form onSubmit={handleSubmit}>
+                    <textarea value={bio} onChange={handleChange}></textarea>
+                    <button type="submit">Submit</button>
+                </form>
 
                 {!data.me.bio && <span>Add a bio!</span>}
 
