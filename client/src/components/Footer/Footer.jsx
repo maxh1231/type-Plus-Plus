@@ -12,13 +12,15 @@ const Footer = () => {
                     <a
                         href="https://github.com/t-norm/type-Plus-Plus"
                         className="text-gray-800"
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         <svg
                             aria-hidden="true"
                             focusable="false"
                             data-prefix="fab"
                             data-icon="github"
-                            className="svg-inline--fa fa-github w-4"
+                            className="svg-inline--fa fa-github w-8"
                             role="img"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 496 512"
@@ -40,6 +42,8 @@ const Footer = () => {
                     className="text-gray-800"
                     // Update this link
                     href="https://www.youtube.com/watch?v=qHAHEhhJisk"
+                    target="_blank"
+                    rel="noreferrer"
                 >
                     Team Kickass
                 </a>
