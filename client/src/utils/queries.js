@@ -6,6 +6,13 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      createdAt
+      bio
+      scores {
+        wpm
+        createdAt
+        username
+      }
     }
   }
 `;
@@ -16,6 +23,13 @@ export const QUERY_ME = gql`
       _id
       username
       email 
-    }
+      createdAt
+      bio
+      scores {
+        wpm
+        createdAt
+        username
+      }
+    } 
   }
 `;

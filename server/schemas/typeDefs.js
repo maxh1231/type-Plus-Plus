@@ -5,6 +5,16 @@ const typeDefs = gql`
     _id: ID
     username: String!
     email: String!
+    createdAt: String!,
+    bio: String
+    scores: [Scores]
+  }
+
+  type Scores {
+    _id: ID
+    wpm: String
+    username: String
+    createdAt: String
   }
 
   type Auth {
@@ -16,11 +26,13 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
+    scores: [Scores]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    addScore(wpm: String! ): Scores
   }
 `;
 
