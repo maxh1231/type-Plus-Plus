@@ -7,6 +7,7 @@ const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 const app = express();
 const PORT = process.env.PORT || 3001;
+const cors = require('cors');
 
 const server = new ApolloServer({
     typeDefs,
@@ -22,6 +23,13 @@ app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
 }
+
+// set url to allow origin (client URL)
+var corsOptions = {
+    origin: 'http://localhost:3000',
+};
+app.use(cors(corsOptions));
+app.use(require('./controllers'));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
