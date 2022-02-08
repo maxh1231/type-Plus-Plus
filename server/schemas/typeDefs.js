@@ -33,6 +33,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addScore(wpm: String! ): Scores
+    addBio(bio: String!): User
   }
 `;
 

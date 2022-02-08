@@ -64,7 +64,20 @@ const resolvers = {
 
         return score;
       }
-    }
+    },
+    addBio: async (parent, { bio }, context) => {
+      if (context.user) {
+        const updatedBio = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $set: { bio: bio } },
+          { new: true, runValidators: true }
+        );
+
+        return updatedBio;
+      }
+
+      throw new AuthenticationError('Must be logged in');
+    },
   }
 }
 
