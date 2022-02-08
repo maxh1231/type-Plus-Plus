@@ -7,6 +7,13 @@ const typeDefs = gql`
     email: String!
     createdAt: String!,
     bio: String
+    scores: [Scores]
+  }
+
+  type Scores {
+    WPM: String!
+    userID: String!
+    createdAt: String!
   }
 
   type Auth {
@@ -18,6 +25,7 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
+    scores: [Scores]
   }
 
   type Mutation {

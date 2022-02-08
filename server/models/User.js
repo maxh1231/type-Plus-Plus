@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const { Scores } = require('.');
 
 const userSchema = new Schema(
   {
@@ -28,7 +29,13 @@ const userSchema = new Schema(
       required: true,
       maxLength: 140,
       required: false,
-    }
+    },
+    scores: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: Scores
+      }
+    ]
   },
   // set this to use virtual below
   {
