@@ -30,7 +30,7 @@ const Signup = () => {
         }
     };
     return (
-        <form onSubmit={handleFormSubmit}>
+        <form className="flex-grow" onSubmit={handleFormSubmit}>
             <input
                 className="form-input"
                 placeholder="Your username"
@@ -58,11 +58,9 @@ const Signup = () => {
                 value={formState.password}
                 onChange={handleChange}
             />
-            <button type="submit">
-                Submit
-            </button>
+            <button type="submit">Submit</button>
         </form>
-    )
-}
+    );
+};
 
 export default Signup;
