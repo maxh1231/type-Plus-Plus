@@ -47,8 +47,9 @@ const UserInfo = ({ data, modalBio, setModalBio }) => {
             </div>
             {/* Test results */}
             <div>
-                <p>Highest WPM: 105</p>
-                <p>Average WPM: 87</p>
+                {data.scoresByUser[0] && <p>Highest WPM: {data.scoresByUser[0].wpm}</p>}
+
+                {!data.scoresByUser[0] && <p>Take a few tests to show your scores!</p>}
             </div>
             <div>
                 <p>Location: United States </p>
