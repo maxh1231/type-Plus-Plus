@@ -13,6 +13,7 @@ const typeDefs = gql`
   type Scores {
     _id: ID
     wpm: Int
+    accuracy: Int
     username: String
     createdAt: String
   }

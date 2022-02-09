@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_ME_SCORES, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 import Uploader from '../components/Uploader';

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import defaultPhoto from '../../assets/images/no-profile-picture.svg';
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { ADD_BIO } from '../../utils/mutations';
+import { QUERY_ME_SCORES } from '../../utils/queries';
 
 const UserInfo = ({ data, modalBio, setModalBio }) => {
     const [bio, setBio] = useState('');
@@ -27,6 +28,7 @@ const UserInfo = ({ data, modalBio, setModalBio }) => {
         setNewBio(bio);
         setModalBio(bio);
     };
+
 
 
 

@@ -6,6 +6,10 @@ const scoresSchema = new Schema(
             type: Number,
             required: false,
         },
+        accuracy: {
+            type: Number,
+            required: false
+        },
         username: {
             type: String,
             required: true,
