@@ -30,7 +30,6 @@ const Header = () => {
     return (
         <header>
             <nav className="relative w-full flex flex-wrap items-center justify-around py-4 bg-gray-100 text-gray-600 shadow-md ">
-                {/* <div className="w-full flex flex-wrap items-center justify-between px-6"> */}
                 <div className="w-full grid grid-cols-3 px-6">
                     <div className="flex flex-wrap">
                         <button
