@@ -1,6 +1,9 @@
+// Imports
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
+
+// Inspired by https://tailwind-elements.com/docs/standard/navigation/navbar/#
 
 const Header = () => {
     const logout = (event) => {

@@ -1,5 +1,5 @@
+// Imports
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // Inspired by https://tailwind-elements.com/docs/standard/navigation/footer/
 
@@ -91,7 +91,7 @@ const Footer = () => {
                         </h6>
                         <p className="mb-4">
                             <a
-                                href="#!"
+                                href="https://qmk.fm/"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
                                 target="_blank"
                                 rel="noreferrer"
@@ -101,7 +101,7 @@ const Footer = () => {
                         </p>
                         <p className="mb-4">
                             <a
-                                href="#!"
+                                href="https://www.autohotkey.com/"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
                                 target="_blank"
                                 rel="noreferrer"
@@ -111,7 +111,7 @@ const Footer = () => {
                         </p>
                         <p className="mb-4">
                             <a
-                                href="#!"
+                                href="https://www.reddit.com/r/MechanicalKeyboards/"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
                                 target="_blank"
                                 rel="noreferrer"
@@ -121,12 +121,12 @@ const Footer = () => {
                         </p>
                         <p>
                             <a
-                                href="#!"
+                                href="https://www.keyboardtester.com/"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800"
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                Build Demos
+                                KeyboardTester
                             </a>
                         </p>
                     </div>
