@@ -36,17 +36,17 @@ const Header = () => {
                             <span
                                 id="hamburger-top"
                                 aria-hidden="true"
-                                className="button-transform-top"
+                                className="block h-0.5 w-5 bg-current transition-all duration-200 -translate-y-1"
                             ></span>
                             <span
                                 id="hamburger-middle"
                                 aria-hidden="true"
-                                className="button-transform-middle"
+                                className="block h-0.5 w-5 bg-current transition-all duration-200"
                             ></span>
                             <span
                                 id="hamburger-bottom"
                                 aria-hidden="true"
-                                className="button-transform-bottom"
+                                className="block h-0.5 w-5 bg-current transition-all duration-200 translate-y-1"
                             ></span>
                         </div>
                     </button>
