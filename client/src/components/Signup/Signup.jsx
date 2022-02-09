@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from "@hookform/error-message";
 import { useMutation } from '@apollo/client';
@@ -6,23 +6,34 @@ import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const Signup = () => {
+    const [addUser] = useMutation(ADD_USER);
+
     const {
         register,
         formState: { errors },
         handleSubmit
     } = useForm({criteriaMode: "all"});
     
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = async (data) => {
+        try {
+            const { signUpData } = await addUser({
+                variables: { ...data },
+            });
 
+            Auth.login(signUpData.addUser.token);
+        } catch (e) {
+            console.error(e);
+        }  
+    };
 
     return (
-        <div class="bg-gray-200 min-h-screen flex flex-col">
-            <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                    <h1 class="mb-8 text-3xl text-center">Sign Up</h1>
+        <div className="bg-gray-200 min-h-screen flex flex-col">
+            <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                    <h1 className="mb-8 text-3xl text-center">Sign Up</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <input
-                            {...register("Username", {
+                            {...register("username", {
                             required: "Username is required",
                             minLength: {
                                 value: 3,
@@ -39,7 +50,7 @@ const Signup = () => {
                         />
                         <ErrorMessage
                             errors={errors}
-                            name="Username"
+                            name="username"
                             render={({ messages }) => {
                             console.log("messages", messages);
                             return messages
@@ -54,7 +65,7 @@ const Signup = () => {
                         />
 
                         <input
-                            {...register("Email", {
+                            {...register("email", {
                             required: "Email is required",
                             pattern: {
                                 value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/i,
@@ -71,7 +82,7 @@ const Signup = () => {
                         />
                         <ErrorMessage
                             errors={errors}
-                            name="Email"
+                            name="email"
                             render={({ messages }) => {
                             console.log("messages", messages);
                             return messages
@@ -86,7 +97,7 @@ const Signup = () => {
                         />
 
                         <input
-                            {...register("Password", {
+                            {...register("password", {
                             required: "Password is required",
                             minLength: {
                                 value: 8,
@@ -103,7 +114,7 @@ const Signup = () => {
                         />
                         <ErrorMessage
                             errors={errors}
-                            name="Password"
+                            name="password"
                             render={({ messages }) => {
                             console.log("messages", messages);
                             return messages

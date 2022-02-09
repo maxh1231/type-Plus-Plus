@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from "@hookform/error-message";
 import { useMutation } from '@apollo/client';
@@ -6,13 +6,25 @@ import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const Login = () => {
+    const [login] = useMutation(LOGIN_USER);
+
     const {
         register,
         formState: { errors },
         handleSubmit
     } = useForm({criteriaMode: "all"});
     
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = async (data) => {
+        try {
+            const { loginData } = await login({
+                variables: { ...data },
+            });
+
+            Auth.login(loginData.addUser.token);
+        } catch (e) {
+            console.error(e);
+        }  
+    };
 
 
     return (
@@ -22,7 +34,7 @@ const Login = () => {
                     <h1 class="mb-8 text-3xl text-center">Welcome Back!</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <input
-                            {...register("Username", {
+                            {...register("username", {
                             required: "Username is required"})}
                             type="text"
                             placeholder="Username"
@@ -30,7 +42,7 @@ const Login = () => {
                         />
                         <ErrorMessage
                             errors={errors}
-                            name="Username"
+                            name="username"
                             render={({ messages }) => {
                             console.log("messages", messages);
                             return messages
@@ -45,7 +57,7 @@ const Login = () => {
                         />
 
                         <input
-                            {...register("Password", {
+                            {...register("password", {
                             required: "Password is required"})}
                             type="password"
                             placeholder="Password"
@@ -53,7 +65,7 @@ const Login = () => {
                         />
                         <ErrorMessage
                             errors={errors}
-                            name="Password"
+                            name="password"
                             render={({ messages }) => {
                             console.log("messages", messages);
                             return messages
