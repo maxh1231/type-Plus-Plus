@@ -11,34 +11,44 @@ const Header = () => {
         Auth.logout();
     };
 
+    const hamburgerToggle = () => {
+        document
+            .getElementById('hamburger-top')
+            .classList.toggle('button-transform-top-active');
+        document
+            .getElementById('hamburger-middle')
+            .classList.toggle('button-transform-middle-active');
+        document
+            .getElementById('hamburger-bottom')
+            .classList.toggle('button-transform-bottom-active');
+    };
+
     return (
         <header>
             <nav className="relative w-full flex flex-wrap items-center justify-around py-4 bg-gray-100 text-gray-600 shadow-md navbar navbar-expand-lg navbar-light hover:text-gray-800 focus:text-gray-800 ">
                 <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
                     <button
-                        className="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
+                        className="text-gray-500 w-10 h-10 relative focus:outline-none"
+                        onClick={hamburgerToggle}
                     >
-                        <svg
-                            aria-hidden="true"
-                            focusable="false"
-                            data-prefix="fas"
-                            data-icon="bars"
-                            class="w-6"
-                            role="img"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 448 512"
-                        >
-                            <path
-                                fill="currentColor"
-                                d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                            ></path>
-                        </svg>
+                        <span className="sr-only">Open main menu</span>
+                        <div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <span
+                                id="hamburger-top"
+                                aria-hidden="true"
+                                className="button-transform-top"
+                            ></span>
+                            <span
+                                id="hamburger-middle"
+                                aria-hidden="true"
+                                className="button-transform-middle"
+                            ></span>
+                            <span
+                                id="hamburger-bottom"
+                                aria-hidden="true"
+                                className="button-transform-bottom"
+                            ></span>
+                        </div>
                     </button>
                     <div
                         className="collapse navbar-collapse flex-grow items-center"
