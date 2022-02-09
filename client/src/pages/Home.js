@@ -27,19 +27,21 @@ const Home = () => {
 
     return (
         <main className="flex-grow">
-            <div>
-                {sampleArr.length !== 0 ? (
-                    sampleArr.map((char, i) => (
-                        <span key={i} id={i}>
-                            {char}
-                        </span>
-                    ))
-                ) : (
-                    <p>Loading...</p>
-                )}
-            </div>
-            {!runGame && <button onClick={startGame}>Start Game</button>}
-            {runGame && <Game sampleArr={sampleArr} />}
+            <section className='m-2'>
+                <div id='sampleText'>
+                    {sampleArr.length !== 0 ? (
+                        sampleArr.map((char, i) => (
+                            <span key={i} id={i}>
+                                {char}
+                            </span>
+                        ))
+                    ) : (
+                        <p>Loading...</p>
+                    )}
+                </div>
+                {!runGame && <button onClick={startGame}>Start Game</button>}
+                {runGame && <Game sampleArr={sampleArr} />}
+            </section>
         </main>
     );
 };

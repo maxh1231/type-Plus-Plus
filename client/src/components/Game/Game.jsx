@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// import { useMutation } from '@apollo/client';
+// import { ADD_SCORE } from '../utils/mutations'
 
 const Game = ({ sampleArr }) => {
     const [inputText, setInputText] = useState('');
@@ -102,20 +104,21 @@ const Game = ({ sampleArr }) => {
     }
 
     return (
-        <div>
+        <div id='inputArea'>
             {!validInput && 
                 <p>Incorrect!</p>
             }
             {intervalId ? (
-                <textarea id="gameInput" rows="4" cols="50" onChange={handleChange} style={{ display: "block"}} value={inputText}></textarea>
+                <textarea id="gameInput" rows="4" cols="50" onChange={handleChange} className='block border-2 w-full' value={inputText}></textarea>
             ) : (
                 <p>Game Over</p>
             )}
-            <p>Errors: {errorCount}</p>
-            <p>Accuracy: {accuracy}%</p>
-            <p>Time: {timer}</p>
-            <p>WPM: {wpm}</p>
-            <button onClick={toggleTimer}>Stop Game</button>
+            <div id='gameInfo' className='mx-auto my-2 w-fit'>
+                <p>Errors: {errorCount}</p>
+                <p>Accuracy: {accuracy}%</p>
+                <p>Time: {timer}</p>
+                <p>WPM: {wpm}</p>
+            </div>
         </div>
     )
 }
