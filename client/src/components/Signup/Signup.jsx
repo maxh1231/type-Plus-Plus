@@ -6,7 +6,7 @@ import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const Signup = () => {
-    const [addUser] = useMutation(ADD_USER);
+    const [addUser, { error }] = useMutation(ADD_USER);
 
     const {
         register,
@@ -14,13 +14,13 @@ const Signup = () => {
         handleSubmit
     } = useForm({criteriaMode: "all"});
     
-    const onSubmit = async (data) => {
+    const onSubmit = async (newData) => {
         try {
-            const { signUpData } = await addUser({
-                variables: { ...data },
+            const { data } = await addUser({
+                variables: { ...newData },
             });
-
-            Auth.login(signUpData.addUser.token);
+            console.log(data);
+            Auth.login(data.addUser.token);
         } catch (e) {
             console.error(e);
         }  

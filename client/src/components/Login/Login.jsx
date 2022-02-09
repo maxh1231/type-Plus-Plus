@@ -6,7 +6,7 @@ import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const Login = () => {
-    const [login] = useMutation(LOGIN_USER);
+    const [login, { error }] = useMutation(LOGIN_USER);
 
     const {
         register,
@@ -14,13 +14,14 @@ const Login = () => {
         handleSubmit
     } = useForm({criteriaMode: "all"});
     
-    const onSubmit = async (data) => {
+    const onSubmit = async (newData) => {
+        console.log(newData)
         try {
-            const { loginData } = await login({
-                variables: { ...data },
+            const { data } = await login({
+                variables: {...newData} ,
             });
-
-            Auth.login(loginData.addUser.token);
+            console.log(data)
+            Auth.login(data.login.token);
         } catch (e) {
             console.error(e);
         }  
@@ -34,15 +35,15 @@ const Login = () => {
                     <h1 class="mb-8 text-3xl text-center">Welcome Back!</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <input
-                            {...register("username", {
-                            required: "Username is required"})}
+                            {...register("email", {
+                            required: "Email is required"})}
                             type="text"
-                            placeholder="Username"
+                            placeholder="Email"
                             className='block border border-grey-light w-full p-3 rounded mb-4'
                         />
                         <ErrorMessage
                             errors={errors}
-                            name="username"
+                            name="email"
                             render={({ messages }) => {
                             console.log("messages", messages);
                             return messages
