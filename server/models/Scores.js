@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const scoresSchema = new Schema(
     {
         wpm: {
-            type: String,
+            type: Number,
             required: false,
         },
         username: {
