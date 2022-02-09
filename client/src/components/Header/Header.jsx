@@ -21,6 +21,10 @@ const Header = () => {
         document
             .getElementById('hamburger-bottom')
             .classList.toggle('button-transform-bottom-active');
+        let navLinks = document.getElementsByClassName('nav-link');
+        for (let i = 0; i < navLinks.length; i++) {
+            navLinks[i].classList.toggle('nav-active');
+        }
     };
 
     return (
@@ -58,9 +62,9 @@ const Header = () => {
                             <li className="nav-item p-2">
                                 <Link
                                     to="/"
-                                    className="nav-link p-0 hover:text-gray-800 focus:text-gray-800"
+                                    className="nav-link p-0 hover:text-gray-800 focus:text-gray-800 transition-all duration-200 opacity-0"
                                 >
-                                    <h2>Home</h2>
+                                    Home
                                 </Link>
                             </li>
                             {Auth.loggedIn() ? (
@@ -68,7 +72,7 @@ const Header = () => {
                                     <li className="nav-item p-2">
                                         <Link
                                             to="/dashboard"
-                                            className="nav-link p-0 hover:text-gray-800 focus:text-gray-800"
+                                            className="nav-link p-0 hover:text-gray-800 focus:text-gray-800 transition-all duration-200 opacity-0"
                                         >
                                             Dashboard
                                         </Link>
@@ -76,7 +80,7 @@ const Header = () => {
                                     <li className="nav-item p-2">
                                         <a
                                             href="/"
-                                            className="nav-link p-0 hover:text-gray-800 focus:text-gray-800"
+                                            className="nav-link p-0 hover:text-gray-800 focus:text-gray-800 transition-all duration-200 opacity-0"
                                             onClick={logout}
                                         >
                                             Logout
@@ -88,7 +92,7 @@ const Header = () => {
                                     <li className="nav-item p-2">
                                         <Link
                                             to="/login"
-                                            className="nav-link p-0 hover:text-gray-800 focus:text-gray-800"
+                                            className="nav-link p-0 hover:text-gray-800 focus:text-gray-800 transition-all duration-200 opacity-0"
                                         >
                                             Login
                                         </Link>
@@ -96,7 +100,7 @@ const Header = () => {
                                     <li className="nav-item p-2">
                                         <Link
                                             to="/signup"
-                                            className="nav-link p-0 hover:text-gray-800 focus:text-gray-800"
+                                            className="nav-link p-0 hover:text-gray-800 focus:text-gray-800 transition-all duration-200 opacity-0"
                                         >
                                             Sign Up
                                         </Link>

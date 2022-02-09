@@ -28,3 +28,7 @@ code {
     transform: translateY(-0.125rem);
     opacity: 0;
 }
+
+.nav-active {
+    opacity: 1;
+}
