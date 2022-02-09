@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { ErrorMessage } from "@hookform/error-message";
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
-import Auth from '../../utils/auth'
+import Auth from '../../utils/auth';
 
 const Login = () => {
     const {
@@ -76,4 +76,4 @@ const Login = () => {
     );
 }
 
-export default Login
+export default Login;
