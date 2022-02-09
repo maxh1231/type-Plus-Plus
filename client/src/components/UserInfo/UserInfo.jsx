@@ -3,7 +3,7 @@ import defaultPhoto from '../../assets/images/no-profile-picture.svg';
 import { useMutation } from '@apollo/client';
 import { ADD_BIO } from '../../utils/mutations';
 
-const UserInfo = ({ data }) => {
+const UserInfo = ({ data, modalBio, setModalBio }) => {
     const [bio, setBio] = useState('');
     const [newBio, setNewBio] = useState('')
     const [characterCount, setCharacterCount] = useState(0);
@@ -25,6 +25,7 @@ const UserInfo = ({ data }) => {
         setBio('');
         setCharacterCount('');
         setNewBio(bio);
+        setModalBio(bio);
     };
 
 
@@ -39,9 +40,8 @@ const UserInfo = ({ data }) => {
             </div>
             {/* Bio */}
             <div>
-                <p>
-                    {data.me.bio}
-                </p>
+                {!modalBio && <p>{data.me.bio}</p>}
+                {modalBio && <p>{modalBio}</p>}
             </div>
             {/* Test results */}
             <div>

@@ -10,7 +10,6 @@ import Auth from '../utils/auth';
 import Uploader from '../components/Uploader';
 import UserInfo from '../components/UserInfo';
 import Achievements from '../components/Achievements';
-<<<<<<< HEAD
 import Progress from '../components/Progress'
 import EditModal from '../components/EditModal';
 
@@ -31,6 +30,7 @@ Modal.setAppElement('#root');
 const Dashboard = () => {
     let subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [modalBio, setModalBio] = useState("")
     function openModal() {
         setIsOpen(true);
     }
@@ -43,18 +43,12 @@ const Dashboard = () => {
     }
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
-=======
-import Progress from '../components/Progress';
-
-const Dashboard = () => {
-    const [image, setImage] = useState('');
-    const [url, setUrl] = useState('');
->>>>>>> main
     const { username: userParam } = useParams();
     const { loading, data } = useQuery(QUERY_ME);
     console.log(data);
-
     const user = data?.me || data?.user || {};
+
+
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
@@ -67,10 +61,12 @@ const Dashboard = () => {
     if (!user?.username) {
         return <h4 className="flex-grow">Must be logged in</h4>;
     }
+
+
+
     return (
-<<<<<<< HEAD
         <section>
-            <UserInfo data={data} />
+            <UserInfo data={data} modalBio={modalBio} setModalBio={setModalBio} />
             <div>
                 <button onClick={openModal}>Edit Profile</button>
                 <Modal
@@ -82,22 +78,10 @@ const Dashboard = () => {
                 >
                     <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Edit Profile</h2>
 
-                    <EditModal data={data} />
+                    <EditModal data={data} modalBio={modalBio} setModalBio={setModalBio} />
                     <button onClick={closeModal}>Done</button>
                 </Modal>
             </div>
-=======
-        <section className="flex-grow">
-            <Uploader
-                image={image}
-                setImage={setImage}
-                url={url}
-                setUrl={setUrl}
-            />
-            <UserInfo data={data} />
-            <Achievements />
-            <Progress />
->>>>>>> main
         </section>
     );
 };
