@@ -8,8 +8,9 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 import Uploader from '../components/Uploader';
-import UserInfo from '../components/UserInfo'
+import UserInfo from '../components/UserInfo';
 import Achievements from '../components/Achievements';
+<<<<<<< HEAD
 import Progress from '../components/Progress'
 import EditModal from '../components/EditModal';
 
@@ -42,6 +43,13 @@ const Dashboard = () => {
     }
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
+=======
+import Progress from '../components/Progress';
+
+const Dashboard = () => {
+    const [image, setImage] = useState('');
+    const [url, setUrl] = useState('');
+>>>>>>> main
     const { username: userParam } = useParams();
     const { loading, data } = useQuery(QUERY_ME);
     console.log(data);
@@ -57,13 +65,10 @@ const Dashboard = () => {
     }
 
     if (!user?.username) {
-        return (
-            <h4>
-                Must be logged in
-            </h4>
-        );
+        return <h4 className="flex-grow">Must be logged in</h4>;
     }
     return (
+<<<<<<< HEAD
         <section>
             <UserInfo data={data} />
             <div>
@@ -81,8 +86,20 @@ const Dashboard = () => {
                     <button onClick={closeModal}>Done</button>
                 </Modal>
             </div>
+=======
+        <section className="flex-grow">
+            <Uploader
+                image={image}
+                setImage={setImage}
+                url={url}
+                setUrl={setUrl}
+            />
+            <UserInfo data={data} />
+            <Achievements />
+            <Progress />
+>>>>>>> main
         </section>
-    )
-}
+    );
+};
 
 export default Dashboard;

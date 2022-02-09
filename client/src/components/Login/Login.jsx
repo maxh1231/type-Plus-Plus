@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
-import Auth from '../../utils/auth'
+import Auth from '../../utils/auth';
 
 const Login = () => {
     const [formState, setFormState] = useState({ email: '', password: '' });
@@ -29,7 +29,7 @@ const Login = () => {
         });
     };
     return (
-        <form onSubmit={handleFormSubmit}>
+        <form className="flex-grow" onSubmit={handleFormSubmit}>
             <input
                 className="form-input"
                 placeholder="Your email"
@@ -48,11 +48,9 @@ const Login = () => {
                 value={formState.password}
                 onChange={handleChange}
             />
-            <button type="submit">
-                Submit
-            </button>
+            <button type="submit">Submit</button>
         </form>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
