@@ -25,10 +25,10 @@ const Header = () => {
 
     return (
         <header>
-            <nav className="relative w-full flex flex-wrap items-center justify-around py-4 bg-gray-100 text-gray-600 shadow-md navbar navbar-expand-lg navbar-light hover:text-gray-800 focus:text-gray-800 ">
+            <nav className="relative w-full flex flex-wrap items-center justify-around py-4 bg-gray-100 text-gray-600 shadow-md navbar navbar-expand-lg navbar-light">
                 <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
                     <button
-                        className="text-gray-500 w-10 h-10 relative focus:outline-none"
+                        className="text-gray-500 w-10 h-10 relative focus:outline-none hover:text-gray-800"
                         onClick={hamburgerToggle}
                     >
                         <span className="sr-only">Open main menu</span>
@@ -56,7 +56,10 @@ const Header = () => {
                     >
                         <ul className="navbar-nav flex pl-0 list-style-none mr-auto">
                             <li className="nav-item p-2">
-                                <Link to="/" className="nav-link p-0">
+                                <Link
+                                    to="/"
+                                    className="nav-link p-0 hover:text-gray-800 focus:text-gray-800"
+                                >
                                     <h2>Home</h2>
                                 </Link>
                             </li>
@@ -65,7 +68,7 @@ const Header = () => {
                                     <li className="nav-item p-2">
                                         <Link
                                             to="/dashboard"
-                                            className="nav-link p-0"
+                                            className="nav-link p-0 hover:text-gray-800 focus:text-gray-800"
                                         >
                                             Dashboard
                                         </Link>
@@ -73,7 +76,7 @@ const Header = () => {
                                     <li className="nav-item p-2">
                                         <a
                                             href="/"
-                                            className="nav-link p-0"
+                                            className="nav-link p-0 hover:text-gray-800 focus:text-gray-800"
                                             onClick={logout}
                                         >
                                             Logout
@@ -85,7 +88,7 @@ const Header = () => {
                                     <li className="nav-item p-2">
                                         <Link
                                             to="/login"
-                                            className="nav-link p-0"
+                                            className="nav-link p-0 hover:text-gray-800 focus:text-gray-800"
                                         >
                                             Login
                                         </Link>
@@ -93,7 +96,7 @@ const Header = () => {
                                     <li className="nav-item p-2">
                                         <Link
                                             to="/signup"
-                                            className="nav-link p-0"
+                                            className="nav-link p-0 hover:text-gray-800 focus:text-gray-800"
                                         >
                                             Sign Up
                                         </Link>
