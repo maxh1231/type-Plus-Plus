@@ -1,12 +1,12 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Scores } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
+        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password').populate('scores');
         return userData;
       }
       throw new AuthenticationError('Log in required');
@@ -15,12 +15,18 @@ const resolvers = {
     users: async () => {
       return User.find()
         .select('-__v -password')
+        .populate('scores');
     },
     // get user by username
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
     },
+    // all scores
+    scores: async () => {
+      return Scores.find()
+    },
+    // scores by user
   },
 
   Mutation: {
@@ -45,8 +51,36 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    }
-  },
-};
+    },
+    addScore: async (parent, args, context) => {
+      if (context.user) {
+        const score = await Scores.create({ ...args, username: context.user.username });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { scores: score._id } },
+          { new: true }
+        );
+
+        return score;
+      }
+    },
+    addBio: async (parent, { bio }, context) => {
+      if (context.user) {
+        const updatedBio = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $set: { bio: bio } },
+          { new: true, runValidators: true }
+        );
+
+        return updatedBio;
+      }
+
+      throw new AuthenticationError('Must be logged in');
+    },
+  }
+}
+
+
 
 module.exports = resolvers;
