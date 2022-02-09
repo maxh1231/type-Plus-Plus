@@ -14,7 +14,7 @@ const Home = () => {
 
     // get random text
     const getText = async () => {
-        const response = await fetch('http://localhost:3001/api/deepai');
+        const response = await fetch('http://localhost:3001/api/txtgen');
         let data = await response.text();
         let tmpArr = data.split('');
         setSampleArr(tmpArr);
