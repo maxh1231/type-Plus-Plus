@@ -5,31 +5,49 @@ const Game = ({ sampleArr }) => {
     const [validInput, setValidInput] = useState(true);
     const [errorCount, setErrorCount] = useState(0);
     const [accuracy, setAccuracy] = useState(100);
-    const [time, setTimer] = useState(0);
+    const [intervalId, setIntervalId] = useState(0);
+    const [timer, setTimer] = useState(0);
     const [wpm, setWpm] = useState(0);
-    
+
     // to run on component load
     useEffect(() => {
-        async function startGame() {
-            document.getElementById(0).style.textDecoration = 'underline';
-            let elapsedTime = 0
-            // create timer var
-            let interval = setInterval(() => {
-                elapsedTime++
-                setTimer(elapsedTime);
-            }, 1000);
-        }
-        startGame();
-    }, []);
+        document.getElementById(0).style.textDecoration = 'underline';
+        toggleTimer();
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     // update input value and wpm every time a character is typed
     useEffect(() => {
-        updateError();
-        updateAccuracy();
-        updateUnderline();
-        updateWpm();
+            updateError();
+            updateAccuracy();
+            updateUnderline();
+            updateWpm();
     });
-    
+
+    const handleChange = (evt) => {
+        setInputText(evt.target.value)
+        if (inputText.length + 1 === sampleArr.length) {
+            console.log('STOP')
+            toggleTimer();
+            endGame();
+        }
+    }
+
+    const toggleTimer = () => {
+        if (intervalId) {
+            clearInterval(intervalId);
+            setIntervalId(0);
+            return;
+        }
+        const gameTimer = setInterval(() => {
+            setTimer(timer => timer + 1);
+        }, 1000);
+        setIntervalId(gameTimer);
+    };
+
+    const endGame = () => {
+        console.log({ wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount })
+    }
+
     // count errors and style accordingly
     function updateError() {
         let tmpErrorCount = 0;
@@ -52,9 +70,11 @@ const Game = ({ sampleArr }) => {
     // underline current character
     function updateUnderline() {
         if (inputText.length > 0) {
-            document.getElementById(inputText.length).style.textDecoration = 'underline';
-            document.getElementById(inputText.length - 1).style.textDecoration = 'none';
-            document.getElementById(inputText.length + 1).style.textDecoration = 'none';
+            try {
+                document.getElementById(inputText.length).style.textDecoration = 'underline';
+                document.getElementById(inputText.length - 1).style.textDecoration = 'none';
+                document.getElementById(inputText.length + 1).style.textDecoration = 'none';
+            } catch {}
         } else {
             document.getElementById(0).style.textDecoration = 'underline';
             document.getElementById(1).style.textDecoration = 'none';
@@ -73,7 +93,7 @@ const Game = ({ sampleArr }) => {
     //calculate and display WPM
     function updateWpm() {
         const grossWpm = (Math.floor(inputText.length / 5));
-        const netWpm = (grossWpm - errorCount) / (time / 60);
+        const netWpm = (grossWpm - errorCount) / (timer / 60);
         if (netWpm < 0 || isNaN(netWpm)) {
             setWpm(0);
         } else {
@@ -86,13 +106,19 @@ const Game = ({ sampleArr }) => {
             {!validInput && 
                 <p>Incorrect!</p>
             }
-            <textarea id="gameInput" rows="4" cols="50" onChange={(evt) => setInputText(evt.target.value)} style={{ display: "block"}} value={inputText}></textarea>
+            {intervalId ? (
+                <textarea id="gameInput" rows="4" cols="50" onChange={handleChange} style={{ display: "block"}} value={inputText}></textarea>
+            ) : (
+                <p>Game Over</p>
+            )}
             <p>Errors: {errorCount}</p>
             <p>Accuracy: {accuracy}%</p>
-            <p>Time: {time}</p>
+            <p>Time: {timer}</p>
             <p>WPM: {wpm}</p>
+            <button onClick={toggleTimer}>Stop Game</button>
         </div>
     )
 }
 
 export default Game;
+
