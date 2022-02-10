@@ -8,6 +8,7 @@ const typeDefs = gql`
     createdAt: String!,
     bio: String
     scores: [Scores]
+    friends: [User]
   }
 
   type Scores {
