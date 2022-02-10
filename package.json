@@ -22,5 +22,8 @@
     "homepage": "https://github.com/t-norm/type-Plus-Plus#readme",
     "devDependencies": {
         "concurrently": "^7.0.0"
+    },
+    "dependencies": {
+        "react-modal": "^3.14.4"
     }
 }
