@@ -4,25 +4,61 @@ import { QUERY_MYSCORE } from '../../utils/queries';
 import Auth from '../../utils/auth';
 import { formatTime } from '../../utils/helpers';
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler,
+} from 'chart.js';
 
-ChartJS.register( CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler );
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler
+);
 
+// .sort(function (a, b) {
+//     return a.createdAt - b.createdAt;
+// });
 const Chart = () => {
     const { loading, data } = useQuery(QUERY_MYSCORE);
     let wpm = [];
     let accuracy = [];
-    let dates = []
-    
+    let dates = [];
+    // Create new array so we can sort by createdAt
+    let userDataArray = data?.scoresByUser
+        .map((score) => {
+            return score;
+        })
+        .sort(function (a, b) {
+            return a.createdAt - b.createdAt;
+        });
+
     if (Auth.loggedIn()) {
-        wpm = data?.scoresByUser.map(score => { return score.wpm });
-        accuracy =  data?.scoresByUser.map(score => { return score.accuracy });
-        dates = data?.scoresByUser.map(score => { return formatTime(score.createdAt) });
-    } 
+        wpm = data?.scoresByUser.map((score) => {
+            return score.wpm;
+        });
+        accuracy = data?.scoresByUser.map((score) => {
+            return score.accuracy;
+        });
+        dates = data?.scoresByUser.map((score) => {
+            return formatTime(score.createdAt);
+        });
+    }
 
     return (
         <>
-            <Line 
+            <Line
                 data={{
                     labels: dates,
                     datasets: [
@@ -32,31 +68,32 @@ const Chart = () => {
                             borderColor: 'rgb(255, 99, 132)',
                             backgroundColor: 'rgba(255, 99, 132, 0.5)',
                             fill: true,
-                            tension: 0.1
-                        }, {
+                            tension: 0.1,
+                        },
+                        {
                             label: 'Accuracy',
                             data: accuracy,
                             borderColor: 'rgb(53, 162, 235)',
                             backgroundColor: 'rgba(53, 162, 235, 0.5)',
                             fill: true,
-                            tension: 0.1
-                        }
-                    ]
+                            tension: 0.1,
+                        },
+                    ],
                 }}
                 options={{
                     plugins: {
                         legend: {
-                            position: 'top'
+                            position: 'top',
                         },
                         title: {
                             display: true,
-                            text: 'Typing Progress'
-                        }
-                    }
+                            text: 'Typing Progress',
+                        },
+                    },
                 }}
             />
         </>
-    )
-}
+    );
+};
 
 export default Chart;

@@ -39,8 +39,7 @@ const Home = () => {
                         type="button"
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="dark"
-                        className="inline-block px-6 py-2.5 text-gray-800 font-medium uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg  active:shadow-lg transition duration-150 ease-in-out"
-                        style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
+                        className="inline-block px-6 py-2.5 text-gray-800 bg-mid-gray font-medium uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out"
                         onClick={startGame}
                     >
                         Start Game

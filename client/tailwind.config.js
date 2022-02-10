@@ -4,7 +4,11 @@ module.exports = {
         './node_modules/tw-elements/dist/js/**/*.js',
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                'mid-gray': 'rgba(0, 0, 0, 0.2)',
+            },
+        },
     },
     plugins: [require('tw-elements/dist/plugin')],
 };
