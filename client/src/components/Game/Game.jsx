@@ -1,21 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_SCORE } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
-const Game = ({ sampleArr }) => {
+const Game = ({ sampleArr, unmount }) => {
     const [inputText, setInputText] = useState('');
     const [validInput, setValidInput] = useState(true);
     const [errorCount, setErrorCount] = useState(0);
     const [accuracy, setAccuracy] = useState(100);
+    const [wpm, setWpm] = useState(0);
     const [intervalId, setIntervalId] = useState(0);
     const [timer, setTimer] = useState(0);
-    const [wpm, setWpm] = useState(0);
+    const [loggedIn, setLoggedIn] = useState(false);
     const [addScore, { error }] = useMutation(ADD_SCORE);
 
     // to run on component load
     useEffect(() => {
-        document.getElementById(0).style.textDecoration = 'underline';
-        toggleTimer();
+        const startGame = async () => {
+            
+            setTimeout(() => {
+                document.getElementById('sampleText').style.display = 'block'
+                document.getElementById(0).style.textDecoration = 'underline';
+                if (Auth.loggedIn()) {
+                    setLoggedIn(true)
+                }
+                toggleTimer();
+            }, 3000);
+        };
+        startGame();
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     // update input value and wpm every time a character is typed
@@ -29,7 +41,6 @@ const Game = ({ sampleArr }) => {
     const handleChange = (evt) => {
         setInputText(evt.target.value)
         if (inputText.length + 1 === sampleArr.length) {
-            console.log('STOP')
             toggleTimer();
             endGame();
         }
@@ -52,10 +63,10 @@ const Game = ({ sampleArr }) => {
         console.log(data);
         try {
             await addScore({ variables: { ...data }})
-            console.log('success!');
         } catch (e) {
             console.error(e);
         }
+        unmount();
     }
 
     // count errors and style accordingly
@@ -117,16 +128,21 @@ const Game = ({ sampleArr }) => {
                 <p>Incorrect!</p>
             }
             {intervalId ? (
-                <textarea id="gameInput" rows="4" cols="50" onChange={handleChange} className='block border-2 w-full' value={inputText}></textarea>
+                <>
+                    <textarea id="gameInput" rows="4" cols="50" onChange={handleChange} className='block border-2 w-full' value={inputText}></textarea>
+                    <div id='gameInfo' className='mx-auto my-6 w-fit'>
+                        <p>Errors: {errorCount}</p>
+                        <p>Accuracy: {accuracy}%</p>
+                        <p>Time: {timer}</p>
+                        <p>WPM: {wpm}</p>
+                    </div>
+                </>
             ) : (
-                <p>Game Over</p>
+                <p className='mx-auto my-6 w-fit text-2xl'>Ready?</p>
             )}
-            <div id='gameInfo' className='mx-auto my-2 w-fit'>
-                <p>Errors: {errorCount}</p>
-                <p>Accuracy: {accuracy}%</p>
-                <p>Time: {timer}</p>
-                <p>WPM: {wpm}</p>
-            </div>
+            {!loggedIn &&
+                <p className='mx-auto my-6 w-fit'>Log in to save your scores!</p>
+            }
         </div>
     )
 }

@@ -25,22 +25,30 @@ const Home = () => {
         setRunGame(true);
     };
 
+    const endGame = () => {
+        setRunGame(false);
+    };
+
     return (
         <main className="flex-grow">
             <section className='m-2'>
-                <div id='sampleText'>
-                    {sampleArr.length !== 0 ? (
-                        sampleArr.map((char, i) => (
-                            <span key={i} id={i}>
-                                {char}
-                            </span>
-                        ))
-                    ) : (
-                        <p>Loading...</p>
-                    )}
-                </div>
-                {!runGame && <button onClick={startGame}>Start Game</button>}
-                {runGame && <Game sampleArr={sampleArr} />}
+                {!runGame && <button onClick={startGame} className='mx-auto my-6 block'>Start Game</button>}
+                {runGame && (
+                    <>
+                        <div id='sampleText' className='hidden m-4'>
+                        {sampleArr.length !== 0 ? (
+                            sampleArr.map((char, i) => (
+                                <span key={i} id={i}>
+                                    {char}
+                                </span>
+                            ))
+                        ) : (
+                            <p>Loading...</p>
+                        )}
+                        </div>
+                        <Game sampleArr={sampleArr} unmount={endGame} />
+                    </>
+                )}
             </section>
         </main>
     );
