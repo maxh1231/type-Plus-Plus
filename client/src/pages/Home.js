@@ -1,6 +1,7 @@
 // Imports
 import React, { useEffect, useState } from 'react';
 import Game from '../components/Game';
+import Chart from '../components/Chart';
 
 const Home = () => {
     const [runGame, setRunGame] = useState(false);
@@ -62,6 +63,7 @@ const Home = () => {
                     </>
                 )}
             </section>
+            <Chart />
         </main>
     );
 };

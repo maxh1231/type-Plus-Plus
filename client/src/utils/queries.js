@@ -41,3 +41,13 @@ export const QUERY_ME = gql`
     } 
   }
 `;
+
+export const QUERY_MYSCORE = gql`
+  query ScoresByUser {
+    scoresByUser {
+      wpm
+      accuracy
+      createdAt
+    }
+  }
+`
