@@ -10,7 +10,7 @@ import UserInfo from '../components/UserInfo';
 // import Achievements from '../components/Achievements';
 // import Progress from '../components/Progress'
 import EditModal from '../components/EditModal';
-import Friends from '../components/Friends'
+import Friends from '../components/Friends';
 
 // Modal Styles, remove later for custom styles
 const customStyles = {
@@ -26,11 +26,10 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-
 const Dashboard = () => {
     let subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
-    const [modalBio, setModalBio] = useState("")
+    const [modalBio, setModalBio] = useState('');
     function openModal() {
         setIsOpen(true);
     }
@@ -40,14 +39,12 @@ const Dashboard = () => {
     function closeModal() {
         setIsOpen(false);
     }
-    const [image, setImage] = useState("");
-    const [url, setUrl] = useState("");
+    const [image, setImage] = useState('');
+    const [url, setUrl] = useState('');
     const { username: userParam } = useParams();
     const { loading, data } = useQuery(QUERY_ME);
     console.log(data);
     const user = data?.me || data?.user || {};
-
-
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
@@ -61,11 +58,13 @@ const Dashboard = () => {
         return <h4 className="flex-grow">Must be logged in</h4>;
     }
 
-
-
     return (
-        <section>
-            <UserInfo data={data} modalBio={modalBio} setModalBio={setModalBio} />
+        <main className="flex-grow">
+            <UserInfo
+                data={data}
+                modalBio={modalBio}
+                setModalBio={setModalBio}
+            />
 
             <div>
                 <button onClick={openModal}>Edit Profile</button>
@@ -76,10 +75,19 @@ const Dashboard = () => {
                     style={customStyles}
                     contentLabel="Example Modal"
                 >
-                    <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Edit Profile</h2>
+                    <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
+                        Edit Profile
+                    </h2>
 
-                    <EditModal data={data} modalBio={modalBio} setModalBio={setModalBio}
-                        image={image} setImage={setImage} url={url} setUrl={setUrl} />
+                    <EditModal
+                        data={data}
+                        modalBio={modalBio}
+                        setModalBio={setModalBio}
+                        image={image}
+                        setImage={setImage}
+                        url={url}
+                        setUrl={setUrl}
+                    />
                     <button onClick={closeModal}>Done</button>
                 </Modal>
             </div>
@@ -87,7 +95,7 @@ const Dashboard = () => {
                 <h2>Friends</h2>
                 <Friends friends={data.me.friends} />
             </div>
-        </section>
+        </main>
     );
 };
 

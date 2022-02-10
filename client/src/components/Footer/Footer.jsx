@@ -233,10 +233,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div
-                className="text-center text-gray-700 p-4"
-                style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
-            >
+            <div className="text-center text-gray-700 p-4 bg-mid-gray">
                 © 2022{' '}
                 <a
                     className="text-gray-800"

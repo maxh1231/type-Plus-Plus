@@ -1,3 +1,4 @@
+// Imports
 import React, { useEffect, useState } from 'react';
 import Game from '../components/Game';
 import Chart from '../components/Chart';
@@ -9,11 +10,11 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
             await getText();
-        }
+        };
         fetchData();
     }, []);
 
-    // get random text
+    // Get random text
     const getText = async () => {
         const response = await fetch('http://localhost:3001/api/txtgen');
         let data = await response.text();
@@ -31,21 +32,31 @@ const Home = () => {
     };
 
     return (
-        <main className="flex-grow">
-            <section className='m-2'>
-                {!runGame && <button onClick={startGame} className='mx-auto my-6 block'>Start Game</button>}
+        <main className="flex-grow flex flex-col content-around justify-evenly items-center">
+            <section className="m-2">
+                {!runGame && (
+                    <button
+                        type="button"
+                        data-mdb-ripple="true"
+                        data-mdb-ripple-color="dark"
+                        className="inline-block px-6 py-2.5 text-gray-800 bg-mid-gray font-medium uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out"
+                        onClick={startGame}
+                    >
+                        Start Game
+                    </button>
+                )}
                 {runGame && (
                     <>
-                        <div id='sampleText' className='hidden m-4'>
-                        {sampleArr.length !== 0 ? (
-                            sampleArr.map((char, i) => (
-                                <span key={i} id={i}>
-                                    {char}
-                                </span>
-                            ))
-                        ) : (
-                            <p>Loading...</p>
-                        )}
+                        <div id="sampleText" className="hidden m-4">
+                            {sampleArr.length !== 0 ? (
+                                sampleArr.map((char, i) => (
+                                    <span key={i} id={i}>
+                                        {char}
+                                    </span>
+                                ))
+                            ) : (
+                                <p>Loading...</p>
+                            )}
                         </div>
                         <Game sampleArr={sampleArr} unmount={endGame} />
                     </>
