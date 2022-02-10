@@ -66,7 +66,7 @@ const Dashboard = () => {
     return (
         <section>
             <UserInfo data={data} modalBio={modalBio} setModalBio={setModalBio} />
-            <Friends friends={data.me.friends} />
+
             <div>
                 <button onClick={openModal}>Edit Profile</button>
                 <Modal
@@ -82,6 +82,10 @@ const Dashboard = () => {
                         image={image} setImage={setImage} url={url} setUrl={setUrl} />
                     <button onClick={closeModal}>Done</button>
                 </Modal>
+            </div>
+            <div>
+                <h2>Friends</h2>
+                <Friends friends={data.me.friends} />
             </div>
         </section>
     );
