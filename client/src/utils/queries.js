@@ -32,6 +32,9 @@ export const QUERY_ME = gql`
         createdAt
         username
       }
+      friends {
+        _id
+      }
       
     } 
     scoresByUser {

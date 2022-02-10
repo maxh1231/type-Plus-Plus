@@ -35,6 +35,12 @@ const userSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: "Scores"
       }
+    ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
     ]
   },
   // set this to use virtual below
@@ -59,6 +65,10 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual('friendCount').get(function () {
+  return this.friends.length;
+});
 
 const User = model('User', userSchema);
 
