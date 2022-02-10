@@ -84,7 +84,7 @@ const Game = ({ sampleArr, unmount }) => {
     }
 
     // count errors and style accordingly
-    function updateError() {
+    const updateError = () => {
         let tmpErrorCount = 0;
         for (let i = 0; i < inputText.length; i++) {
             if (inputText[i] !== sampleArr[i]) {
@@ -103,7 +103,7 @@ const Game = ({ sampleArr, unmount }) => {
     };
 
     // underline current character
-    function updateUnderline() {
+    const updateUnderline = () => {
         if (inputText.length > 0) {
             try {
                 document.getElementById(inputText.length).style.textDecoration = 'underline';
@@ -117,7 +117,7 @@ const Game = ({ sampleArr, unmount }) => {
     };
 
     //calculate and display accuracy
-    function updateAccuracy() {
+    const updateAccuracy = () => {
         if (isNaN(Math.abs(errorCount / inputText.length * 100 - 100))) {
             setAccuracy(100);
         } else {
@@ -126,7 +126,7 @@ const Game = ({ sampleArr, unmount }) => {
     };
     
     //calculate and display WPM
-    function updateWpm() {
+    const updateWpm = () => {
         const grossWpm = (Math.floor(inputText.length / 5));
         const netWpm = (grossWpm - errorCount) / (timer / 60);
         if (netWpm < 0 || isNaN(netWpm)) {
@@ -161,4 +161,3 @@ const Game = ({ sampleArr, unmount }) => {
 }
 
 export default Game;
-

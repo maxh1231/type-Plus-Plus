@@ -6,7 +6,7 @@ const Home = () => {
     const [sampleArr, setSampleArr] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
+        const fetchData = async () => {
             await getText();
         }
         fetchData();
