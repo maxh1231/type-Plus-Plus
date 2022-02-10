@@ -15,7 +15,8 @@ const resolvers = {
     users: async () => {
       return User.find()
         .select('-__v -password')
-        .populate('scores');
+        .populate('scores')
+        .sort({ wpm: -1 })
     },
     // get user by username
     user: async (parent, { username }) => {
@@ -24,9 +25,16 @@ const resolvers = {
     },
     // all scores
     scores: async () => {
-      return Scores.find()
+      return Scores.find().sort({ wpm: -1 });
     },
     // scores by user
+    scoresByUser: async (parent, args, context) => {
+      if (context.user) {
+        const score = await Scores.find({ ...args, username: context.user.username }).sort({ 'wpm': -1 })
+
+        return score;
+      }
+    }
   },
 
   Mutation: {

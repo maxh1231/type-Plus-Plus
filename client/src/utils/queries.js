@@ -10,6 +10,7 @@ export const QUERY_USER = gql`
       bio
       scores {
         wpm
+        accuracy
         createdAt
         username
       }
@@ -27,9 +28,16 @@ export const QUERY_ME = gql`
       bio
       scores {
         wpm
+        accuracy
         createdAt
         username
       }
+      
+    } 
+    scoresByUser {
+      wpm
+      accuracy
+      createdAt 
     } 
   }
 `;

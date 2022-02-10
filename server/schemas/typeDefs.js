@@ -12,10 +12,12 @@ const typeDefs = gql`
 
   type Scores {
     _id: ID
-    wpm: String
+    wpm: Int
+    accuracy: Int
     username: String
     createdAt: String
   }
+  
 
   type Auth {
     token: ID!
@@ -27,6 +29,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     scores: [Scores]
+    scoresByUser: [Scores]
   }
 
   type Mutation {
