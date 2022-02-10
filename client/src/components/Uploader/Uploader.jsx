@@ -18,15 +18,15 @@ const Uploader = ({ image, setImage, url, setUrl }) => {
     }
 
     return (
-        <div>
+        <>
             <div>
                 <input type="file" onChange={(e) => setImage(e.target.files[0])}></input>
                 <button onClick={uploadImage}>Upload</button>
             </div>
-            <div className="w-[200px] h-[200px]">
-                <img className="w-full h-full object-cover" src={url} alt="" />
-            </div>
-        </div>
+            {image && <div className="w-[200px] h-[200px]">
+                {<img className="w-full h-full object-cover" src={url} alt="" />}
+            </div>}
+        </>
     )
 
 }
