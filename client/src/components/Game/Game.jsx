@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// import { useMutation } from '@apollo/client';
-// import { ADD_SCORE } from '../utils/mutations'
+import { useMutation } from '@apollo/client';
+import { ADD_SCORE } from '../../utils/mutations';
 
 const Game = ({ sampleArr }) => {
     const [inputText, setInputText] = useState('');
@@ -10,6 +10,7 @@ const Game = ({ sampleArr }) => {
     const [intervalId, setIntervalId] = useState(0);
     const [timer, setTimer] = useState(0);
     const [wpm, setWpm] = useState(0);
+    const [addScore, { error }] = useMutation(ADD_SCORE);
 
     // to run on component load
     useEffect(() => {
@@ -46,8 +47,15 @@ const Game = ({ sampleArr }) => {
         setIntervalId(gameTimer);
     };
 
-    const endGame = () => {
-        console.log({ wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount })
+    const endGame = async () => {
+        const data = { wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount }
+        console.log(data);
+        try {
+            await addScore({ variables: { ...data }})
+            console.log('success!');
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     // count errors and style accordingly

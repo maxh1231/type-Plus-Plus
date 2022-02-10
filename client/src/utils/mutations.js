@@ -34,7 +34,7 @@ export const ADD_BIO = gql`
 `
 
 export const ADD_SCORE = gql`
-  mutation addScore($wpm: Number!, $accuracy: Number!) {
+  mutation addScore($wpm: Float!, $accuracy: Float!) {
     addScore(wpm: $wpm, accuracy: $accuracy) {
       wpm
       accuracy

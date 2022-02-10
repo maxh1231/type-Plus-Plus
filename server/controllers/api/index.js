@@ -3,7 +3,7 @@ const { paragraph } = require('txtgen');
 
 router.get('/txtgen', async (req, res) => {
     try {
-        const s = (paragraph([2]))
+        const s = (paragraph([1]))
         res.status(200).send(s);
     } catch (err) {
         res.status(500).json(err)
