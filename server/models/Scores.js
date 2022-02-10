@@ -4,11 +4,11 @@ const scoresSchema = new Schema(
     {
         wpm: {
             type: Number,
-            required: false,
+            required: true
         },
         accuracy: {
             type: Number,
-            required: false
+            required: true
         },
         username: {
             type: String,
