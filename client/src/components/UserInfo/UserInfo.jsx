@@ -1,33 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom';
 import defaultPhoto from '../../assets/images/no-profile-picture.svg';
-import { useMutation } from '@apollo/client';
-import { ADD_BIO } from '../../utils/mutations';
 
-const UserInfo = ({ data }) => {
-    const [bio, setBio] = useState('');
-    const [newBio, setNewBio] = useState('')
-    const [characterCount, setCharacterCount] = useState(0);
-    const [addBio, { error }] = useMutation(ADD_BIO);
+const UserInfo = ({ data, modalBio }) => {
 
-    const handleChange = (event) => {
-        if (event.target.value.length <= 140) {
-            setBio(event.target.value);
-            setCharacterCount(event.target.value.length);
+    let averageWPM;
+
+    if (data.scoresByUser.length !== 0) {
+        let scoresArr = []
+        for (let i = 0; i < data.scoresByUser.length; i++) {
+            scoresArr.push(data.scoresByUser[i].wpm)
         }
-    };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        await addBio({
-            variables: { bio }
-        });
-
-        setBio('');
-        setCharacterCount('');
-        setNewBio(bio);
-    };
-
-
+        const average = (array) => scoresArr.reduce((a, b) => a + b) / scoresArr.length;
+        averageWPM = average(scoresArr);
+    }
 
     return (
         <section>
@@ -37,24 +23,15 @@ const UserInfo = ({ data }) => {
             <div>
                 <h3>Hello {data.me.username}</h3>
             </div>
-            {/* Bio */}
             <div>
-                <form onSubmit={handleSubmit}>
-
-                    <textarea value={bio} onChange={handleChange}></textarea>
-                    <button type="submit">Submit</button>
-                </form>
-
-                <p>{newBio}</p>
-
-                {!data.me.bio && <span>Add a bio!</span>}
-
-                {data.me.bio && <span>Update bio</span>}
+                {!modalBio && <p>{data.me.bio}</p>}
+                {modalBio && <p>{modalBio}</p>}
             </div>
-            {/* Test results */}
             <div>
-                <p>Highest WPM: 105</p>
-                <p>Average WPM: 87</p>
+                {data.scoresByUser[0] && <p>Highest WPM: {data.scoresByUser[0].wpm}</p>}
+                {!data.scoresByUser[0] && <Link to='/'> Take a few tests to show your scores!</Link>}
+                {data.scoresByUser[0] && <p>Average WPM: {averageWPM} </p>}
+                {data.scoresByUser[0] && <p>Games Played: {data.scoresByUser.length} </p>}
             </div>
             <div>
                 <p>Location: United States </p>

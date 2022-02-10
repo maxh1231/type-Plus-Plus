@@ -17,6 +17,7 @@ const typeDefs = gql`
     username: String
     createdAt: String
   }
+  
 
   type Auth {
     token: ID!
@@ -28,6 +29,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     scores: [Scores]
+    scoresByUser: [Scores]
   }
 
   type Mutation {
