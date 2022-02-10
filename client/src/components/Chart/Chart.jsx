@@ -27,31 +27,31 @@ ChartJS.register(
     Filler
 );
 
-// .sort(function (a, b) {
-//     return a.createdAt - b.createdAt;
-// });
 const Chart = () => {
     const { loading, data } = useQuery(QUERY_MYSCORE);
     let wpm = [];
     let accuracy = [];
     let dates = [];
+
     // Create new array so we can sort by createdAt
     let userDataArray = data?.scoresByUser
-        .map((score) => {
-            return score;
-        })
-        .sort(function (a, b) {
-            return a.createdAt - b.createdAt;
-        });
+        ? data?.scoresByUser
+              .map((score) => {
+                  return score;
+              })
+              .sort(function (a, b) {
+                  return a.createdAt - b.createdAt;
+              })
+        : [];
 
     if (Auth.loggedIn()) {
-        wpm = data?.scoresByUser.map((score) => {
+        wpm = userDataArray.map((score) => {
             return score.wpm;
         });
-        accuracy = data?.scoresByUser.map((score) => {
+        accuracy = userDataArray.map((score) => {
             return score.accuracy;
         });
-        dates = data?.scoresByUser.map((score) => {
+        dates = userDataArray.map((score) => {
             return formatTime(score.createdAt);
         });
     }
