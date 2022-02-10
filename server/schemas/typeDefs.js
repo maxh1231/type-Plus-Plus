@@ -8,6 +8,7 @@ const typeDefs = gql`
         createdAt: String!
         bio: String
         scores: [Scores]
+        friends: [User]
     }
 
     type Scores {
@@ -36,6 +37,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         addScore(wpm: Float!, accuracy: Float!): Scores
         addBio(bio: String!): User
+        addFriend(friendId: ID!): User
     }
 `;
 

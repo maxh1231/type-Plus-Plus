@@ -6,7 +6,7 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password').populate('scores');
+        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password').populate('scores').populate('friends');
         return userData;
       }
       throw new AuthenticationError('Log in required');
@@ -22,6 +22,8 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
+        .populate('scores')
+        .populate('friends')
     },
     // all scores
     scores: async () => {
@@ -86,6 +88,20 @@ const resolvers = {
 
       throw new AuthenticationError('Must be logged in');
     },
+
+    addFriend: async (parent, { friendId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { friends: friendId } },
+          { new: true }
+        ).populate('friends');
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    }
   }
 }
 

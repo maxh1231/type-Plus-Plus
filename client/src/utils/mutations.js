@@ -31,7 +31,7 @@ export const ADD_BIO = gql`
       createdAt
   }
 }
-`
+`;
 
 export const ADD_SCORE = gql`
   mutation addScore($wpm: Float!, $accuracy: Float!) {
@@ -40,4 +40,18 @@ export const ADD_SCORE = gql`
       accuracy
     }
   }
-`
+`;
+
+export const ADD_FRIEND = gql`
+  mutation addFriend($id: ID!) {
+    addFriend(friendId: $id) {
+      _id
+      username
+      friendCount
+      friends {
+        _id
+        username
+      }
+    }
+  }
+`;

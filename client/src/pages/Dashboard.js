@@ -10,6 +10,7 @@ import UserInfo from '../components/UserInfo';
 // import Achievements from '../components/Achievements';
 // import Progress from '../components/Progress'
 import EditModal from '../components/EditModal';
+import Friends from '../components/Friends';
 
 // Modal Styles, remove later for custom styles
 const customStyles = {
@@ -64,6 +65,7 @@ const Dashboard = () => {
                 modalBio={modalBio}
                 setModalBio={setModalBio}
             />
+
             <div>
                 <button onClick={openModal}>Edit Profile</button>
                 <Modal
@@ -88,6 +90,10 @@ const Dashboard = () => {
                     />
                     <button onClick={closeModal}>Done</button>
                 </Modal>
+            </div>
+            <div>
+                <h2>Friends</h2>
+                <Friends friends={data.me.friends} />
             </div>
         </main>
     );
