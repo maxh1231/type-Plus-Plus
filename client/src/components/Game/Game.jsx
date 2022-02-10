@@ -12,6 +12,7 @@ const Game = ({ sampleArr, unmount }) => {
     const [intervalId, setIntervalId] = useState(0);
     const [timer, setTimer] = useState(0);
     const [loggedIn, setLoggedIn] = useState(false);
+    const [isMounted, setIsMounted] = useState(true)
     const [addScore, { error }] = useMutation(ADD_SCORE);
 
     // to run on component load
@@ -29,14 +30,20 @@ const Game = ({ sampleArr, unmount }) => {
             }, 3000);
         };
         startGame();
+        //when component unmounts
+        return () => {
+            setIsMounted(false);
+        }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     // update input value and wpm every time a character is typed
     useEffect(() => {
+        if (isMounted) {
             updateError();
             updateAccuracy();
             updateUnderline();
             updateWpm();
+        }
     });
 
     const handleChange = (evt) => {
