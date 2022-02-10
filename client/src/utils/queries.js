@@ -32,7 +32,10 @@ export const QUERY_ME = gql`
         createdAt
         username
       }
-      
+      friends {
+        _id
+        username
+      }
     } 
     scoresByUser {
       wpm
