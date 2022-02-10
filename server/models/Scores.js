@@ -3,8 +3,12 @@ const { Schema, model } = require('mongoose');
 const scoresSchema = new Schema(
     {
         wpm: {
-            type: String,
-            required: false,
+            type: Number,
+            required: true
+        },
+        accuracy: {
+            type: Number,
+            required: true
         },
         username: {
             type: String,

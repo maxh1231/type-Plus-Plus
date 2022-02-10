@@ -12,10 +12,12 @@ const typeDefs = gql`
 
   type Scores {
     _id: ID
-    wpm: String
+    wpm: Float!
+    accuracy: Float!
     username: String
     createdAt: String
   }
+  
 
   type Auth {
     token: ID!
@@ -27,12 +29,13 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     scores: [Scores]
+    scoresByUser: [Scores]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addScore(wpm: String! ): Scores
+    addScore(wpm: Float!, accuracy: Float! ): Scores
     addBio(bio: String!): User
   }
 `;
