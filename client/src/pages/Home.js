@@ -13,7 +13,7 @@ const Home = () => {
         fetchData();
     }, []);
 
-    // get random text
+    // Get random text
     const getText = async () => {
         const response = await fetch('http://localhost:3001/api/txtgen');
         let data = await response.text();
