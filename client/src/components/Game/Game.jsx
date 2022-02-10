@@ -17,9 +17,10 @@ const Game = ({ sampleArr, unmount }) => {
     // to run on component load
     useEffect(() => {
         const startGame = async () => {
-            
             setTimeout(() => {
-                document.getElementById('sampleText').style.display = 'block'
+                document.getElementById('readyMsg').style.display = 'none';
+                document.getElementById('sampleText').style.display = 'block';
+                document.getElementById('gameInfo').style.display = 'block';
                 document.getElementById(0).style.textDecoration = 'underline';
                 if (Auth.loggedIn()) {
                     setLoggedIn(true)
@@ -40,8 +41,8 @@ const Game = ({ sampleArr, unmount }) => {
 
     const handleChange = (evt) => {
         setInputText(evt.target.value)
+        // check if game is over
         if (inputText.length + 1 === sampleArr.length) {
-            toggleTimer();
             endGame();
         }
     }
@@ -59,6 +60,7 @@ const Game = ({ sampleArr, unmount }) => {
     };
 
     const endGame = async () => {
+        toggleTimer();
         const data = { wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount }
         console.log(data);
         try {
@@ -66,7 +68,12 @@ const Game = ({ sampleArr, unmount }) => {
         } catch (e) {
             console.error(e);
         }
-        unmount();
+        const endGameFunc = () => {
+            setTimeout(() => {
+                unmount();
+            }, 5000)
+        }
+        endGameFunc();
     }
 
     // count errors and style accordingly
@@ -124,22 +131,21 @@ const Game = ({ sampleArr, unmount }) => {
 
     return (
         <div id='inputArea'>
-            {!validInput && 
-                <p>Incorrect!</p>
-            }
             {intervalId ? (
-                <>
-                    <textarea id="gameInput" rows="4" cols="50" onChange={handleChange} className='block border-2 w-full' value={inputText}></textarea>
-                    <div id='gameInfo' className='mx-auto my-6 w-fit'>
-                        <p>Errors: {errorCount}</p>
-                        <p>Accuracy: {accuracy}%</p>
-                        <p>Time: {timer}</p>
-                        <p>WPM: {wpm}</p>
-                    </div>
-                </>
+                <textarea id="gameInput" rows="4" cols="50" onChange={handleChange} className='block border-2 w-full' value={inputText}></textarea>
             ) : (
-                <p className='mx-auto my-6 w-fit text-2xl'>Ready?</p>
+                <></>
             )}
+            {!validInput && 
+                <p className="text-xl mx-auto my-4 w-fit">Incorrect!</p>
+            }
+            <div id='gameInfo' className='mx-auto my-6 w-fit hidden'>
+                <p>Errors: {errorCount}</p>
+                <p>Accuracy: {accuracy}%</p>
+                <p>Time: {timer}</p>
+                <p>WPM: {wpm}</p>
+            </div>
+            <p id='readyMsg' className='mx-auto my-6 w-fit text-2xl'>Ready?</p>
             {!loggedIn &&
                 <p className='mx-auto my-6 w-fit'>Log in to save your scores!</p>
             }
