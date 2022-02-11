@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
-import UserInfo from '../components/UserInfo';
+import DashboardUserInfo from '../components/DashboardUserInfo';
 // import Achievements from '../components/Achievements';
 // import Progress from '../components/Progress'
 import EditModal from '../components/EditModal';
@@ -60,7 +60,7 @@ const Dashboard = () => {
 
     return (
         <main className="flex-grow">
-            <UserInfo
+            <DashboardUserInfo
                 data={data}
                 modalBio={modalBio}
                 setModalBio={setModalBio}

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import defaultPhoto from '../../assets/images/no-profile-picture.svg';
 
-const UserInfo = ({ data, modalBio }) => {
+const DashboardUserInfo = ({ data, modalBio }) => {
 
     let averageWPM;
 
@@ -40,4 +40,4 @@ const UserInfo = ({ data, modalBio }) => {
     )
 }
 
-export default UserInfo;
+export default DashboardUserInfo;
