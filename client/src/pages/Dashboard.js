@@ -43,6 +43,7 @@ const Dashboard = () => {
     const [url, setUrl] = useState('');
     const { username: userParam } = useParams();
     const { loading, data } = useQuery(QUERY_ME);
+    console.log(userParam)
     console.log(data);
     const user = data?.me || data?.user || {};
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
-import { QUERY_USER } from '../utils/queries';
+import { gql, QUERY_USER } from '../utils/queries';
 import Auth from '../utils/auth';
 
 import ProfileUserInfo from '../components/ProfileUserInfo';
@@ -12,13 +12,16 @@ import ProfileUserInfo from '../components/ProfileUserInfo';
 
 const Profile = () => {
     const { username: userParam } = useParams();
-    const { loading, data } = useQuery(QUERY_USER, {
+    const { loading, error, userData } = useQuery(QUERY_USER, {
+        fetchPolicy: 'no-cache',
         variables: { username: userParam }
     });
 
+    console.log(userData);
+
     return (
         <section>
-            <ProfileUserInfo data={data} />
+            <ProfileUserInfo data={userData} />
 
 
 

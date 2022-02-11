@@ -13,6 +13,7 @@ export const QUERY_USER = gql`
           wpm
           accuracy
           createdAt
+          username
         }
         
     }
