@@ -33,6 +33,11 @@ const resolvers = {
         .populate('scores')
         .populate('friends')
     },
+    // get scores by username
+    scoresByUser: async (parent, { username }) => {
+      const params = { username };
+      return Scores.find(params).sort({ 'wpm': -1 });
+    },
     // all scores
     scores: async () => {
       return Scores.find().sort({ wpm: -1 });

@@ -1,7 +1,17 @@
 import defaultPhoto from '../../assets/images/no-profile-picture.svg'
 
 const ProfileUserInfo = ({ data }) => {
-    console.log(data);
+    // console.log(data);
+    console.log(data.user.username)
+    let averageWPM;
+    if (data.scoresByUser.length !== 0) {
+        let scoresArr = []
+        for (let i = 0; i < data.scoresByUser.length; i++) {
+            scoresArr.push(data.scoresByUser[i].wpm)
+        }
+        const average = (array) => scoresArr.reduce((a, b) => a + b) / scoresArr.length;
+        averageWPM = average(scoresArr);
+    }
     return (
         <section>
             <div>
@@ -14,6 +24,18 @@ const ProfileUserInfo = ({ data }) => {
                 <p>
                     {data.user.bio}
                 </p>
+            </div>
+            <div>
+                {data.scoresByUser[0] && <p>Highest WPM: {data.scoresByUser[0].wpm}</p>}
+                {!data.scoresByUser[0] && <p>This user has not completed any games</p>}
+                {data.scoresByUser[0] && <p>Average WPM: {averageWPM} </p>}
+                {data.scoresByUser[0] && <p>Games Played: {data.scoresByUser.length} </p>}
+            </div>
+            <div>
+                {/* location */}
+            </div>
+            <div>
+                {/* add friend functionality (incomplete) */}
             </div>
         </section>
     )
