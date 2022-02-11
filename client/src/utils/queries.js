@@ -45,6 +45,17 @@ export const QUERY_ME = gql`
     }
 `;
 
+export const QUERY_SCORES = gql`
+    query Scores {
+        scores {
+            wpm
+            accuracy
+            username
+            createdAt
+        }
+    }
+`
+
 export const QUERY_MYSCORE = gql`
     query ScoresByUser {
         scoresByUser {
