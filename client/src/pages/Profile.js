@@ -12,16 +12,15 @@ import ProfileUserInfo from '../components/ProfileUserInfo';
 
 const Profile = () => {
     const { username: userParam } = useParams();
-    const { loading, error, userData } = useQuery(QUERY_USER, {
-        fetchPolicy: 'no-cache',
+    const { loading, error, data } = useQuery(QUERY_USER, {
         variables: { username: userParam }
     });
 
-    console.log(userData);
+    console.log(data);
 
     return (
         <section>
-            <ProfileUserInfo data={userData} />
+            <ProfileUserInfo data={data} />
 
 
 
