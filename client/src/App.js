@@ -11,8 +11,9 @@ import { setContext } from '@apollo/client/link/context';
 // Page imports
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile'
 
-// Component Imports
+// Component imports
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Header from './components/Header';
@@ -51,6 +52,11 @@ function App() {
                             exact
                             path="/dashboard"
                             element={<Dashboard />}
+                        />
+                        <Route
+                            exact
+                            path="/profile/:username"
+                            element={<Profile />}
                         />
                         <Route
                             render={() => (
