@@ -7,8 +7,8 @@ import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 import DashboardUserInfo from '../components/DashboardUserInfo';
-// import Achievements from '../components/Achievements';
-// import Progress from '../components/Progress'
+// import Achievements from '../components/DashboardAchievements';
+// import Progress from '../components/DashboardProgress'
 import EditModal from '../components/EditModal';
 import Friends from '../components/Friends';
 
