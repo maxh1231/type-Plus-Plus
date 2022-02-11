@@ -27,6 +27,7 @@ const Game = ({ sampleArr, unmount }) => {
                     setLoggedIn(true)
                 }
                 toggleTimer();
+                document.getElementById('gameInput').focus();
             }, 3000);
         };
         startGame();
@@ -121,7 +122,8 @@ const Game = ({ sampleArr, unmount }) => {
         if (isNaN(Math.abs(errorCount / inputText.length * 100 - 100))) {
             setAccuracy(100);
         } else {
-            setAccuracy(Math.abs(errorCount / inputText.length * 100 - 100));
+            const accuracy = Math.abs(errorCount / inputText.length * 100 - 100);
+            setAccuracy(Math.round((accuracy + Number.EPSILON) * 100) / 100)
         }
     };
     
@@ -132,7 +134,7 @@ const Game = ({ sampleArr, unmount }) => {
         if (netWpm < 0 || isNaN(netWpm)) {
             setWpm(0);
         } else {
-            setWpm(netWpm);
+            setWpm(Math.round((netWpm + Number.EPSILON) * 100) / 100);
         }
     }
 
