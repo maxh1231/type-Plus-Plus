@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Scores } = require('../models');
+const { User, Scores, Badges } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -101,6 +101,11 @@ const resolvers = {
       }
 
       throw new AuthenticationError('You need to be logged in!');
+    },
+
+    addBadge: async (parent, args) => {
+      const badge = await Badges.create(args);
+      return { badge };
     }
   }
 }

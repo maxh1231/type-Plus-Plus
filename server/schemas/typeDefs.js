@@ -19,6 +19,11 @@ const typeDefs = gql`
     createdAt: String
   }
   
+  type Badge {
+    _id: ID!
+    username: String
+    createdAt: String    
+  }
 
   type Auth {
     token: ID!
@@ -39,6 +44,7 @@ const typeDefs = gql`
     addScore(wpm: Float!, accuracy: Float! ): Scores
     addBio(bio: String!): User
     addFriend(friendId: ID!): User
+    addBadge(badge: String!, username: String!): Badge
   }
 `;
 
