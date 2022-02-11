@@ -1,5 +1,5 @@
-// Imports
 import React, { useEffect, useState } from 'react';
+import { v4 as uuid } from 'uuid';
 import Game from '../components/Game';
 import Chart from '../components/Chart';
 
@@ -50,7 +50,7 @@ const Home = () => {
                         <div id="sampleText" className="hidden m-4 w-3/4">
                             {sampleArr.length !== 0 ? (
                                 sampleArr.map((char, i) => (
-                                    <span key={i} id={i} className='text-2xl'>
+                                    <span key={uuid()} id={i} className='text-2xl'>
                                         {char}
                                     </span>
                                 ))
