@@ -14,7 +14,9 @@ export const QUERY_USER = gql`
                 createdAt
                 username
             }
+
         }
+        
     }
 `;
 
@@ -37,7 +39,7 @@ export const QUERY_ME = gql`
                 username
             }
         }
-        scoresByUser {
+        meScores {
             wpm
             accuracy
             createdAt
@@ -46,8 +48,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_MYSCORE = gql`
-    query ScoresByUser {
-        scoresByUser {
+    query meScores {
+        meScores {
             wpm
             accuracy
             createdAt

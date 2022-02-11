@@ -26,10 +26,11 @@ const typeDefs = gql`
 
     type Query {
         me: User
+        meScores: [Scores]
         users: [User]
         user(username: String!): User
         scores: [Scores]
-        scoresByUser: [Scores]
+        
     }
 
     type Mutation {
