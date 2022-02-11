@@ -20,7 +20,7 @@ const Profile = () => {
 
     return (
         <section>
-            <ProfileUserInfo data={data} />
+            {data && <ProfileUserInfo data={data} />}
 
 
 

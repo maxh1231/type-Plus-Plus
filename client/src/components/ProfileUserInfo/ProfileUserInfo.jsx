@@ -1,7 +1,7 @@
 import defaultPhoto from '../../assets/images/no-profile-picture.svg'
 
 const ProfileUserInfo = ({ data }) => {
-    // console.log(userData)
+    console.log(data)
     let averageWPM;
     if (data.scoresByUser.length !== 0) {
         let scoresArr = []
