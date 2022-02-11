@@ -13,7 +13,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile'
 
-// Component Imports
+// Component imports
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Header from './components/Header';

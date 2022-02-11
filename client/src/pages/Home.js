@@ -39,7 +39,7 @@ const Home = () => {
                         type="button"
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="dark"
-                        className="inline-block px-6 py-2.5 text-gray-800 bg-mid-gray font-medium uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out"
+                        className="inline-block px-6 py-2.5 text-gray-800 bg-mid-gray hover:bg-mid-gray-hover font-medium uppercase rounded shadow-sm hover:shadow-md focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out"
                         onClick={startGame}
                     >
                         Start Game
@@ -47,10 +47,10 @@ const Home = () => {
                 )}
                 {runGame && (
                     <>
-                        <div id="sampleText" className="hidden m-4">
+                        <div id="sampleText" className="hidden m-4 w-3/4">
                             {sampleArr.length !== 0 ? (
                                 sampleArr.map((char, i) => (
-                                    <span key={i} id={i}>
+                                    <span key={i} id={i} className='text-2xl'>
                                         {char}
                                     </span>
                                 ))
@@ -62,7 +62,9 @@ const Home = () => {
                     </>
                 )}
             </section>
-            <Chart />
+            <div className="container">
+                <Chart />
+            </div>
         </main>
     );
 };
