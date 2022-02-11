@@ -6,9 +6,9 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
-import UserInfo from '../components/UserInfo';
-// import Achievements from '../components/Achievements';
-// import Progress from '../components/Progress'
+import DashboardUserInfo from '../components/DashboardUserInfo';
+// import Achievements from '../components/DashboardAchievements';
+// import Progress from '../components/DashboardProgress'
 import EditModal from '../components/EditModal';
 import Friends from '../components/Friends';
 
@@ -43,6 +43,7 @@ const Dashboard = () => {
     const [url, setUrl] = useState('');
     const { username: userParam } = useParams();
     const { loading, data } = useQuery(QUERY_ME);
+    console.log(userParam)
     console.log(data);
     const user = data?.me || data?.user || {};
 
@@ -60,7 +61,7 @@ const Dashboard = () => {
 
     return (
         <main className="flex-grow">
-            <UserInfo
+            <DashboardUserInfo
                 data={data}
                 modalBio={modalBio}
                 setModalBio={setModalBio}

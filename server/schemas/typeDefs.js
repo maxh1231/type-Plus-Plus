@@ -14,7 +14,7 @@ const typeDefs = gql`
     type Scores {
         _id: ID
         wpm: Float!
-        accuracy: Float!
+        accuracy: Float
         username: String
         createdAt: String
     }
@@ -26,10 +26,12 @@ const typeDefs = gql`
 
     type Query {
         me: User
+        meScores: [Scores]
         users: [User]
         user(username: String!): User
+        scoresByUser(username: String): [Scores]
         scores: [Scores]
-        scoresByUser: [Scores]
+        
     }
 
     type Mutation {

@@ -8,16 +8,19 @@ export const QUERY_USER = gql`
             email
             createdAt
             bio
-            scores {
-                wpm
-                accuracy
-                createdAt
-                username
-            }
         }
+        scoresByUser(username: $username) {
+          wpm
+          accuracy
+          createdAt
+          username
+        }
+        
     }
 `;
 
+
+// query logged in user's information and scores sorted by WPM
 export const QUERY_ME = gql`
     {
         me {
@@ -26,18 +29,12 @@ export const QUERY_ME = gql`
             email
             createdAt
             bio
-            scores {
-                wpm
-                accuracy
-                createdAt
-                username
-            }
             friends {
                 _id
                 username
             }
         }
-        scoresByUser {
+        meScores {
             wpm
             accuracy
             createdAt
@@ -45,9 +42,10 @@ export const QUERY_ME = gql`
     }
 `;
 
+// query logged in user's scores sorted by date (for chart)
 export const QUERY_MYSCORE = gql`
-    query ScoresByUser {
-        scoresByUser {
+    query meScores {
+        meScores {
             wpm
             accuracy
             createdAt

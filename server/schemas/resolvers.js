@@ -11,6 +11,14 @@ const resolvers = {
       }
       throw new AuthenticationError('Log in required');
     },
+    // logged in users sorted scores
+    meScores: async (parent, args, context) => {
+      if (context.user) {
+        const score = await Scores.find({ ...args, username: context.user.username }).sort({ 'wpm': -1 })
+
+        return score;
+      }
+    },
     // all users
     users: async () => {
       return User.find()
@@ -25,18 +33,16 @@ const resolvers = {
         .populate('scores')
         .populate('friends')
     },
+    // get scores by username
+    scoresByUser: async (parent, { username }) => {
+      const params = { username };
+      return Scores.find(params).sort({ 'wpm': -1 });
+    },
     // all scores
     scores: async () => {
       return Scores.find().sort({ wpm: -1 });
     },
-    // scores by user
-    scoresByUser: async (parent, args, context) => {
-      if (context.user) {
-        const score = await Scores.find({ ...args, username: context.user.username }).sort({ 'wpm': -1 })
 
-        return score;
-      }
-    }
   },
 
   Mutation: {

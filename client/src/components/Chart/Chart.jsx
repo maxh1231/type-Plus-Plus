@@ -34,14 +34,14 @@ const Chart = () => {
     let dates = [];
 
     // Create new array so we can sort by createdAt
-    let userDataArray = data?.scoresByUser
-        ? data?.scoresByUser
-              .map((score) => {
-                  return score;
-              })
-              .sort(function (a, b) {
-                  return a.createdAt - b.createdAt;
-              })
+    let userDataArray = data?.meScores
+        ? data?.meScores
+            .map((score) => {
+                return score;
+            })
+            .sort(function (a, b) {
+                return a.createdAt - b.createdAt;
+            })
         : [];
 
     if (Auth.loggedIn()) {
