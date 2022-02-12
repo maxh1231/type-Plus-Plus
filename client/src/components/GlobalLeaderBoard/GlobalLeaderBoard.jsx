@@ -15,6 +15,7 @@ const GlobalLeaderBoard = () => {
             <table className='table-auto'>
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>WPM</th>
                         <th>User</th>
                         <th>Accuracy</th>
@@ -23,8 +24,9 @@ const GlobalLeaderBoard = () => {
                 </thead>
                 {leaderBoard ? (
                     <tbody>
-                        {leaderBoard.map(score => (
+                        {leaderBoard.map((score, i) => (
                             <tr key={uuid()}>
+                                <td key={uuid()}>{i + 1}</td>
                                 <td key={uuid()}>{score.wpm}</td>
                                 <td key={uuid()}>{score.username}</td>
                                 <td key={uuid()}>{score.accuracy}</td>

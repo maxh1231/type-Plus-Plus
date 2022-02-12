@@ -14,14 +14,16 @@ const ActivityLeaderBoard = () => {
             <table className='table-auto'>
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Games Played</th>
                         <th>User</th>
                     </tr>
                 </thead>
                 {leaderBoard ? (
                     <tbody>
-                        {leaderBoard.map(user => (
+                        {leaderBoard.map((user, i) => (
                             <tr key={uuid()}>
+                                <td key={uuid()}>{i + 1}</td>
                                 <td key={uuid()}>{user.scoreCount}</td>
                                 <td key={uuid()}>{user.username}</td>
                             </tr>
