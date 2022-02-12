@@ -9,6 +9,7 @@ const typeDefs = gql`
         bio: String
         scores: [Scores]
         friends: [User]
+        badge: [Badge]
     }
 
   type Scores {
@@ -20,9 +21,9 @@ const typeDefs = gql`
   }
   
   type Badge {
-    _id: ID!
-    username: String
-    createdAt: String    
+    _id: ID
+    badgeName: String
+    createdAt: String   
   }
 
     type Auth {
@@ -37,6 +38,7 @@ const typeDefs = gql`
         user(username: String!): User
         scoresByUser(username: String): [Scores]
         scores: [Scores]
+        badge: [ Badge ]
         
     }
 
@@ -46,7 +48,8 @@ const typeDefs = gql`
     addScore(wpm: Float!, accuracy: Float! ): Scores
     addBio(bio: String!): User
     addFriend(friendId: ID!): User
-    addBadge(badge: String!, username: String!): Badge
+    addBadge(badgeName: String!): Badge
+    createBadge(badgeName: String!): Badge
   }
 `;
 

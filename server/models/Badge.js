@@ -1,16 +1,12 @@
 const { Schema, model } = require('mongoose');
 
-const badgesSchema = new Schema(
+const badgeSchema = new Schema(
     {
-        badge: {
+        badgeName: {
             type: String,
             required: true
         },
-       username: {
-           type: String,
-           required: true
-        },
-        earnedAt: {
+        createdAt: {
             type: Date,
             default: Date.now
         }
@@ -23,6 +19,6 @@ const badgesSchema = new Schema(
     }
 );
 
-const Badges = model('Badges', badgesSchema);
+const Badge = model('Badge', badgeSchema);
 
-module.exports = Badges;
+module.exports = Badge;

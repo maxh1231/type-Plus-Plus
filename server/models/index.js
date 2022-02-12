@@ -1,5 +1,5 @@
 const User = require('./User');
 const Scores = require('./Scores')
-const Badges = require('./Badges');
+const Badge = require('./Badge');
 
-module.exports = { User, Scores, Badges };
+module.exports = { User, Scores, Badge };

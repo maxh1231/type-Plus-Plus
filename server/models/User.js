@@ -41,6 +41,12 @@ const userSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'User'
       }
+    ],
+    badge: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Badge"
+      }
     ]
   },
   // set this to use virtual below
