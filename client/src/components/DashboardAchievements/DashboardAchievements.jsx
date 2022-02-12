@@ -1,4 +1,4 @@
-const Achievements = () => {
+const DashboardAchievements = () => {
     return (
         <section>
             {/* Achievements section */}
@@ -6,4 +6,4 @@ const Achievements = () => {
     )
 }
 
-export default Achievements;
+export default DashboardAchievements;

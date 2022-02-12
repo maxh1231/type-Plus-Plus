@@ -1,4 +1,4 @@
-const Progress = () => {
+const DashboardProgress = () => {
     return (
         <section>
             {/* graph.js implementation */}
@@ -6,4 +6,4 @@ const Progress = () => {
     )
 }
 
-export default Progress;
+export default DashboardProgress;

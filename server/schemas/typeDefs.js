@@ -7,6 +7,7 @@ const typeDefs = gql`
         email: String!
         createdAt: String!
         bio: String
+        location: String
         scores: [Scores]
         friends: [User]
     }
@@ -14,7 +15,7 @@ const typeDefs = gql`
     type Scores {
         _id: ID
         wpm: Float!
-        accuracy: Float!
+        accuracy: Float
         username: String
         createdAt: String
     }
@@ -26,10 +27,12 @@ const typeDefs = gql`
 
     type Query {
         me: User
+        meScores: [Scores]
         users: [User]
         user(username: String!): User
+        scoresByUser(username: String): [Scores]
         scores: [Scores]
-        scoresByUser: [Scores]
+        
     }
 
     type Mutation {
@@ -37,6 +40,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         addScore(wpm: Float!, accuracy: Float!): Scores
         addBio(bio: String!): User
+        addLocation(location: String!): User
         addFriend(friendId: ID!): User
     }
 `;

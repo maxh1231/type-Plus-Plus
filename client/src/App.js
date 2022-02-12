@@ -11,6 +11,7 @@ import { setContext } from '@apollo/client/link/context';
 // Page imports
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile'
 import LeaderBoard from './pages/LeaderBoard';
 
 // Component imports
@@ -50,6 +51,11 @@ function App() {
                         <Route exact path="/signup" element={<Signup />} />
                         <Route exact path="/dashboard" element={<Dashboard />}/>
                         <Route exact path="/leaderboard" element={<LeaderBoard />}/>
+                        <Route
+                            exact
+                            path="/profile/:username"
+                            element={<Profile />}
+                        />
                         <Route
                             render={() => (
                                 <h1 className="">You've Been 404'd! Oops...</h1>

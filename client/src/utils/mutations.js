@@ -55,3 +55,16 @@ export const ADD_FRIEND = gql`
     }
   }
 `;
+
+export const ADD_LOCATION = gql`
+  mutation AddLocation($location: String!) {
+    addLocation(location: $location) {
+      _id
+      username
+      email
+      createdAt
+      bio
+      location
+  }
+}
+`;
