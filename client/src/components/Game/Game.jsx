@@ -178,18 +178,23 @@ const Game = ({ sampleArr, unmount }) => {
                 onRequestClose={closeModal}
                 contentLabel="Example Modal"
                 style={{
-                    overlay: { position: 'fixed', top: '25%', left: '25%', right: '25%', bottom: '25%', backgroundColor: 'rgba(255, 255, 255, 0.75)'
-                    },
-                    content: { position: 'absolute', top: '40px', left: '40px', right: '40px', bottom: '40px', border: '1px solid #ccc', background: '#fff', overflow: 'auto', WebkitOverflowScrolling: 'touch', borderRadius: '4px', outline: 'none', padding: '20px'
-                    }
-                  }}
+                    content: {
+                    top: '50%',
+                    left: '50%',
+                    right: 'auto',
+                    bottom: 'auto',
+                    marginRight: '-50%',
+                    transform: 'translate(-50%, -50%)',
+                }}}
             >
-                <div id='modal-container' className='w-fit'>
-                    <button onClick={closeModal}>close</button>
-                    <p>Errors: {errorCount}</p>
-                    <p>Accuracy: {accuracy}%</p>
-                    <p>Time: {timer}</p>
-                    <p>WPM: {wpm}</p>
+                <div id='modal-container' className='w-fit flex flex-col'>
+                    <button onClick={closeModal} className='text-right'>❌</button>
+                    <div id='modal-info' className='p-10'>
+                        <p>Errors: {errorCount}</p>
+                        <p>Accuracy: {accuracy}%</p>
+                        <p>Time: {timer}</p>
+                        <p>WPM: {wpm}</p>
+                    </div>
                 </div>
             </Modal>
         </div>
