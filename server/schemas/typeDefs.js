@@ -1,31 +1,37 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-    type User {
-      _id: ID
-      username: String!
-      email: String!
-      createdAt: String!
-      bio: String
-      location: String
-      scoreCount: Int
-      scores: [Scores]
-      friendCount: Int
-      friends: [User]
-    }
+  type User {
+    _id: ID
+    username: String!
+    email: String!
+    createdAt: String!
+    bio: String
+    location: String
+    scoreCount: Int
+    scores: [Scores]
+    friendCount: Int
+    friends: [User]
+  }
 
-    type Scores {
-      _id: ID
-      wpm: Float!
-      accuracy: Float
-      username: String
-      createdAt: String
-    }
+  type Scores {
+    _id: ID
+    wpm: Float!
+    accuracy: Float
+    username: String
+    createdAt: String
+  }
 
-    type Auth {
-      token: ID!
-      user: User
-    }
+  type Auth {
+    token: ID!
+    user: User
+  }
+  
+  type Badge {
+    _id: ID
+    badgeName: String
+    createdAt: String   
+  }
 
   type Query {
     me: User
@@ -37,6 +43,7 @@ const typeDefs = gql`
     weeklyScores: [Scores]
     badge: [ Badge ]
   }
+
 
   type Mutation {
     login(email: String!, password: String!): Auth
