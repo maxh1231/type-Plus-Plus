@@ -34,6 +34,7 @@ const typeDefs = gql`
       user: User
   }
 
+<<<<<<< HEAD
   type Query {
       me: User
       meScores: [Scores]
@@ -44,6 +45,17 @@ const typeDefs = gql`
       badge: [ Badge ]
       
   }
+=======
+    type Query {
+        me: User
+        meScores: [Scores]
+        users: [User]
+        user(username: String!): User
+        scoresByUser(username: String): [Scores]
+        scores: [Scores]
+        weeklyScores: [Scores]
+    }
+>>>>>>> main
 
   type Mutation {
     login(email: String!, password: String!): Auth

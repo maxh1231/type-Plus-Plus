@@ -1,3 +1,4 @@
+const moment = require('moment')
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Scores, Badge } = require('../models');
 const { signToken } = require('../utils/auth');
@@ -46,6 +47,13 @@ const resolvers = {
     badge: async () => {
       return Badge.find();
     },
+    weeklyScores: async () => {
+      const startDate = moment().startOf('week');
+      const formatStartDate = moment(startDate).valueOf();
+      return Scores.find({ 
+        createdAt: { $gt: formatStartDate }
+      })
+    }
   },
 
   Mutation: {
