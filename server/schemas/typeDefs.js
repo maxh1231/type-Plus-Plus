@@ -12,21 +12,40 @@ const typeDefs = gql`
         scores: [Scores]
         friendCount: Int
         friends: [User]
+        badge: [Badge]
     }
 
-    type Scores {
-        _id: ID
-        wpm: Float!
-        accuracy: Float
-        username: String
-        createdAt: String
-    }
+  type Scores {
+    _id: ID
+    wpm: Float!
+    accuracy: Float!
+    username: String
+    createdAt: String
+  }
+  
+  type Badge {
+    _id: ID
+    badgeName: String
+    createdAt: String   
+  }
 
-    type Auth {
-        token: ID!
-        user: User
-    }
+  type Auth {
+      token: ID!
+      user: User
+  }
 
+<<<<<<< HEAD
+  type Query {
+      me: User
+      meScores: [Scores]
+      users: [User]
+      user(username: String!): User
+      scoresByUser(username: String): [Scores]
+      scores: [Scores]
+      badge: [ Badge ]
+      
+  }
+=======
     type Query {
         me: User
         meScores: [Scores]
@@ -36,15 +55,17 @@ const typeDefs = gql`
         scores: [Scores]
         weeklyScores: [Scores]
     }
+>>>>>>> main
 
-    type Mutation {
-        login(email: String!, password: String!): Auth
-        addUser(username: String!, email: String!, password: String!): Auth
-        addScore(wpm: Float!, accuracy: Float!): Scores
-        addBio(bio: String!): User
-        addLocation(location: String!): User
-        addFriend(friendId: ID!): User
-    }
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    addScore(wpm: Float!, accuracy: Float! ): Scores
+    addBio(bio: String!): User
+    addFriend(friendId: ID!): User
+    addBadge(badgeName: String!): Badge
+    createBadge(badgeName: String!): Badge
+  }
 `;
 
 module.exports = typeDefs;
