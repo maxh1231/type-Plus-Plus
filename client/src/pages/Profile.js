@@ -1,8 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useQuery } from '@apollo/client';
-import { gql, QUERY_USER } from '../utils/queries';
+import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_USER } from '../utils/queries';
+import { ADD_FRIEND } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 import ProfileUserInfo from '../components/ProfileUserInfo';
@@ -15,6 +16,8 @@ const Profile = () => {
     const { loading, error, data } = useQuery(QUERY_USER, {
         variables: { username: userParam }
     });
+
+    const [addFriend] = useMutation(ADD_FRIEND);
 
     console.log(data);
 
