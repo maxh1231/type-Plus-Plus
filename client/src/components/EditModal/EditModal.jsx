@@ -65,22 +65,17 @@ const EditModal = ({ data, setModalBio, image, setImage, url, setUrl }) => {
             <div>
                 <form onSubmit={handleBioSubmit}>
 
-                    <textarea value={bio} onChange={handleBioChange}></textarea>
+                    {data.me.bio && <input value={bio} placeholder="Update Bio" onChange={handleBioChange}></input>}
+                    {!data.me.bio && <input value={bio} placeholder="Add Bio" onChange={handleBioChange}></input>}
                     <button type="submit">Submit</button>
                 </form>
-                <p>{newBio}</p>
-                {!data.me.bio && <span>Add bio</span>}
-                {data.me.bio && <span>Update bio</span>}
             </div>
             <div>
                 <form onSubmit={handleLocationSubmit}>
-
-                    <textarea value={location} onChange={handleLocationChange}></textarea>
+                    {data.me.location && <input value={location} placeholder="Update Location" onChange={handleLocationChange}></input>}
+                    {!data.me.location && <input value={location} placeholder="Add Location" onChange={handleLocationChange}></input>}
                     <button type="submit">Submit</button>
                 </form>
-                <p>{newBio}</p>
-                {!data.me.location && <span>Add a locatioin</span>}
-                {data.me.location && <span>Update location</span>}
             </div>
         </section>
     )
