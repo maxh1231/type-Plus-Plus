@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
+import Modal from 'react-modal';
 import { ADD_SCORE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
@@ -14,12 +15,15 @@ const Game = ({ sampleArr, unmount }) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [isMounted, setIsMounted] = useState(true)
     const [addScore, { error }] = useMutation(ADD_SCORE);
+    const [modalIsOpen, setIsOpen] = useState(false);
 
     // to run on component load
     useEffect(() => {
         const startGame = async () => {
+            setTimeout(() => { document.getElementById('readyIcon').textContent = 2 }, 1000);
+            setTimeout(() => { document.getElementById('readyIcon').textContent = 1 }, 2000);
             setTimeout(() => {
-                document.getElementById('readyMsg').style.display = 'none';
+                document.getElementById('readyIcon').style.display = 'none';
                 document.getElementById('sampleText').style.display = 'block';
                 document.getElementById('gameInfo').style.display = 'block';
                 document.getElementById(0).style.textDecoration = 'underline';
@@ -70,18 +74,12 @@ const Game = ({ sampleArr, unmount }) => {
     const endGame = async () => {
         toggleTimer();
         const data = { wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount }
-        console.log(data);
         try {
             await addScore({ variables: { ...data }})
         } catch (e) {
             console.error(e);
         }
-        const endGameFunc = () => {
-            setTimeout(() => {
-                unmount();
-            }, 5000)
-        }
-        endGameFunc();
+        openModal();
     }
 
     // count errors and style accordingly
@@ -138,8 +136,21 @@ const Game = ({ sampleArr, unmount }) => {
         }
     }
 
+    function openModal() {
+        setIsOpen(true);
+      }
+    
+    function afterOpenModal() {
+        console.log('modal is now open')
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+        unmount();
+    }
+
     return (
-        <div id='inputArea'>
+        <div id='inputArea' className='m-4'>
             {intervalId ? (
                 <textarea id="gameInput" rows="4" cols="50" onChange={handleChange} className='block border-2 w-full' value={inputText}></textarea>
             ) : (
@@ -154,10 +165,38 @@ const Game = ({ sampleArr, unmount }) => {
                 <p>Time: {timer}</p>
                 <p>WPM: {wpm}</p>
             </div>
-            <p id='readyMsg' className='mx-auto my-6 w-fit text-2xl'>Ready?</p>
+            {/* <p id='readyMsg' className='mx-auto my-6 w-fit text-2xl'>Ready?</p> */}
+            <div id='readyIcon' className='animate-bounce bg-slate-200 p-2 w-10 m-auto h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center'>
+                <p id='readyMsg' className=''>3</p>
+            </div>
             {!loggedIn &&
                 <p className='mx-auto my-6 w-fit'>Log in to save your scores!</p>
             }
+           <Modal
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                contentLabel="Example Modal"
+                style={{
+                    content: {
+                    top: '50%',
+                    left: '50%',
+                    right: 'auto',
+                    bottom: 'auto',
+                    marginRight: '-50%',
+                    transform: 'translate(-50%, -50%)',
+                }}}
+            >
+                <div id='modal-container' className='w-fit flex flex-col'>
+                    <button onClick={closeModal} className='text-right'>❌</button>
+                    <div id='modal-info' className='p-10'>
+                        <p>Errors: {errorCount}</p>
+                        <p>Accuracy: {accuracy}%</p>
+                        <p>Time: {timer}</p>
+                        <p>WPM: {wpm}</p>
+                    </div>
+                </div>
+            </Modal>
         </div>
     )
 }

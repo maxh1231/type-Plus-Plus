@@ -8,6 +8,7 @@ export const QUERY_USER = gql`
             email
             createdAt
             bio
+            location
         }
         scoresByUser(username: $username) {
           wpm
@@ -29,6 +30,7 @@ export const QUERY_ME = gql`
             email
             createdAt
             bio
+            location
             friends {
                 _id
                 username
@@ -42,6 +44,17 @@ export const QUERY_ME = gql`
     }
 `;
 
+export const QUERY_SCORES = gql`
+    query Scores {
+        scores {
+            wpm
+            accuracy
+            username
+            createdAt
+        }
+    }
+`
+
 // query logged in user's scores sorted by date (for chart)
 export const QUERY_MYSCORE = gql`
     query meScores {
@@ -52,3 +65,12 @@ export const QUERY_MYSCORE = gql`
         }
     }
 `;
+
+export const QUERY_SCORE_COUNT = gql`
+    query Users {
+        users {
+            scoreCount
+            username
+        }
+    }
+`

@@ -34,7 +34,8 @@ const DashboardUserInfo = ({ data, modalBio }) => {
                 {data.meScores[0] && <p>Games Played: {data.meScores.length} </p>}
             </div>
             <div>
-                <p>Location: United States </p>
+                {data.me.location && <p>Location: {data.me.location} </p>}
+                {!data.me.location && <p>No location set</p>}
             </div>
         </section>
     )

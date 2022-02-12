@@ -7,7 +7,10 @@ const typeDefs = gql`
         email: String!
         createdAt: String!
         bio: String
+        location: String
+        scoreCount: Int
         scores: [Scores]
+        friendCount: Int
         friends: [User]
         badge: [Badge]
     }
@@ -26,21 +29,21 @@ const typeDefs = gql`
     createdAt: String   
   }
 
-    type Auth {
-        token: ID!
-        user: User
-    }
+  type Auth {
+      token: ID!
+      user: User
+  }
 
-    type Query {
-        me: User
-        meScores: [Scores]
-        users: [User]
-        user(username: String!): User
-        scoresByUser(username: String): [Scores]
-        scores: [Scores]
-        badge: [ Badge ]
-        
-    }
+  type Query {
+      me: User
+      meScores: [Scores]
+      users: [User]
+      user(username: String!): User
+      scoresByUser(username: String): [Scores]
+      scores: [Scores]
+      badge: [ Badge ]
+      
+  }
 
   type Mutation {
     login(email: String!, password: String!): Auth

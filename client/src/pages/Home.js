@@ -1,5 +1,6 @@
-// Imports
 import React, { useEffect, useState } from 'react';
+import { v4 as uuid } from 'uuid';
+import { ArrowCircleRightIcon } from '@heroicons/react/solid';
 import Game from '../components/Game';
 import Chart from '../components/Chart';
 
@@ -24,7 +25,9 @@ const Home = () => {
     };
 
     const startGame = () => {
-        setRunGame(true);
+        setTimeout(() => {
+            setRunGame(true);
+        }, 250);
     };
 
     const endGame = () => {
@@ -42,7 +45,7 @@ const Home = () => {
                         className="inline-block px-6 py-2.5 text-gray-800 bg-mid-gray hover:bg-mid-gray-hover font-medium uppercase rounded shadow-sm hover:shadow-md focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out"
                         onClick={startGame}
                     >
-                        Start Game
+                        Start Game<ArrowCircleRightIcon className='h-5 w-5 m-1 inline' />
                     </button>
                 )}
                 {runGame && (
@@ -50,7 +53,7 @@ const Home = () => {
                         <div id="sampleText" className="hidden m-4 w-3/4">
                             {sampleArr.length !== 0 ? (
                                 sampleArr.map((char, i) => (
-                                    <span key={i} id={i} className='text-2xl'>
+                                    <span key={uuid()} id={i} className='text-2xl'>
                                         {char}
                                     </span>
                                 ))

@@ -26,9 +26,12 @@ const userSchema = new Schema(
     },
     bio: {
       type: String,
-      required: true,
       maxLength: 140,
       required: false,
+    },
+    location: {
+      type: String,
+      required: false
     },
     scores: [
       {
@@ -74,6 +77,10 @@ userSchema.methods.isCorrectPassword = async function (password) {
 
 userSchema.virtual('friendCount').get(function () {
   return this.friends.length;
+});
+
+userSchema.virtual('scoreCount').get(function () {
+  return this.scores.length;
 });
 
 const User = model('User', userSchema);

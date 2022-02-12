@@ -43,11 +43,9 @@ const resolvers = {
     scores: async () => {
       return Scores.find().sort({ wpm: -1 });
     },
-
     badge: async () => {
       return Badge.find();
     },
-
   },
 
   Mutation: {
@@ -95,6 +93,19 @@ const resolvers = {
         );
 
         return updatedBio;
+      }
+
+      throw new AuthenticationError('Must be logged in');
+    },
+    addLocation: async (parent, { location }, context) => {
+      if (context.user) {
+        const updatedlocation = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $set: { location: location } },
+          { new: true, runValidators: true }
+        );
+
+        return updatedlocation;
       }
 
       throw new AuthenticationError('Must be logged in');
