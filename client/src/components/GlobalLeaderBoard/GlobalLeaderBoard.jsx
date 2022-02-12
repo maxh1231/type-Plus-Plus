@@ -28,7 +28,15 @@ const GlobalLeaderBoard = () => {
                             <tr key={uuid()}>
                                 <td key={uuid()}>{i + 1}</td>
                                 <td key={uuid()}>{score.wpm}</td>
-                                <td key={uuid()}>{score.username}</td>
+                                <td key={uuid()}>
+                                    {i == 0 && 
+                                        <img className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto.png"/>
+                                    } {i == 1 && 
+                                        <img className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-2.png"/>
+                                    } {i == 2 && 
+                                        <img className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-13.png"/>}
+                                    {score.username}
+                                </td>
                                 <td key={uuid()}>{score.accuracy}</td>
                                 <td key={uuid()}>{score.date}</td>
                             </tr>
