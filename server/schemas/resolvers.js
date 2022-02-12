@@ -42,7 +42,6 @@ const resolvers = {
     scores: async () => {
       return Scores.find().sort({ wpm: -1 });
     },
-
   },
 
   Mutation: {

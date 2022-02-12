@@ -65,3 +65,12 @@ export const QUERY_MYSCORE = gql`
         }
     }
 `;
+
+export const QUERY_SCORE_COUNT = gql`
+    query Users {
+        users {
+            scoreCount
+            username
+        }
+    }
+`

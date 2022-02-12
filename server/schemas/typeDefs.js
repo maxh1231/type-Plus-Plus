@@ -8,7 +8,9 @@ const typeDefs = gql`
         createdAt: String!
         bio: String
         location: String
+        scoreCount: Int
         scores: [Scores]
+        friendCount: Int
         friends: [User]
     }
 

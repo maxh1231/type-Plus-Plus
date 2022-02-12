@@ -73,6 +73,10 @@ userSchema.virtual('friendCount').get(function () {
   return this.friends.length;
 });
 
+userSchema.virtual('scoreCount').get(function () {
+  return this.scores.length;
+});
+
 const User = model('User', userSchema);
 
 module.exports = User;
