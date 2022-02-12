@@ -31,7 +31,8 @@ const ProfileUserInfo = ({ data }) => {
                 {data.scoresByUser[0] && <p>Games Played: {data.scoresByUser.length} </p>}
             </div>
             <div>
-                {/* location */}
+                {data.user.location && <p>Location: {data.user.location} </p>}
+                {!data.user.location && <p>No location set</p>}
             </div>
             <div>
                 {/* add friend functionality (incomplete) */}
