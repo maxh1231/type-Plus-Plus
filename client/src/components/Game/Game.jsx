@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
+import Modal from 'react-modal';
 import { ADD_SCORE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
@@ -14,18 +15,13 @@ const Game = ({ sampleArr, unmount }) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [isMounted, setIsMounted] = useState(true)
     const [addScore, { error }] = useMutation(ADD_SCORE);
+    const [modalIsOpen, setIsOpen] = useState(false);
 
     // to run on component load
     useEffect(() => {
         const startGame = async () => {
-            setTimeout(() => {
-                document.getElementById('readyIcon').textContent = 2;
-
-            }, 1000);
-            setTimeout(() => {
-                document.getElementById('readyIcon').textContent = 1;
-
-            }, 2000);
+            setTimeout(() => { document.getElementById('readyIcon').textContent = 2 }, 1000);
+            setTimeout(() => { document.getElementById('readyIcon').textContent = 1 }, 2000);
             setTimeout(() => {
                 document.getElementById('readyIcon').style.display = 'none';
                 document.getElementById('sampleText').style.display = 'block';
@@ -78,18 +74,12 @@ const Game = ({ sampleArr, unmount }) => {
     const endGame = async () => {
         toggleTimer();
         const data = { wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount }
-        console.log(data);
         try {
             await addScore({ variables: { ...data }})
         } catch (e) {
             console.error(e);
         }
-        const endGameFunc = () => {
-            setTimeout(() => {
-                unmount();
-            }, 5000)
-        }
-        endGameFunc();
+        openModal();
     }
 
     // count errors and style accordingly
@@ -146,6 +136,19 @@ const Game = ({ sampleArr, unmount }) => {
         }
     }
 
+    function openModal() {
+        setIsOpen(true);
+      }
+    
+    function afterOpenModal() {
+        console.log('modal is now open')
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+        unmount();
+    }
+
     return (
         <div id='inputArea' className='m-4'>
             {intervalId ? (
@@ -169,6 +172,26 @@ const Game = ({ sampleArr, unmount }) => {
             {!loggedIn &&
                 <p className='mx-auto my-6 w-fit'>Log in to save your scores!</p>
             }
+           <Modal
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                contentLabel="Example Modal"
+                style={{
+                    overlay: { position: 'fixed', top: '25%', left: '25%', right: '25%', bottom: '25%', backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                    },
+                    content: { position: 'absolute', top: '40px', left: '40px', right: '40px', bottom: '40px', border: '1px solid #ccc', background: '#fff', overflow: 'auto', WebkitOverflowScrolling: 'touch', borderRadius: '4px', outline: 'none', padding: '20px'
+                    }
+                  }}
+            >
+                <div id='modal-container' className='w-fit'>
+                    <button onClick={closeModal}>close</button>
+                    <p>Errors: {errorCount}</p>
+                    <p>Accuracy: {accuracy}%</p>
+                    <p>Time: {timer}</p>
+                    <p>WPM: {wpm}</p>
+                </div>
+            </Modal>
         </div>
     )
 }
