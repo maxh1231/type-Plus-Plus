@@ -94,6 +94,19 @@ const resolvers = {
 
       throw new AuthenticationError('Must be logged in');
     },
+    addLocation: async (parent, { location }, context) => {
+      if (context.user) {
+        const updatedlocation = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $set: { location: location } },
+          { new: true, runValidators: true }
+        );
+
+        return updatedlocation;
+      }
+
+      throw new AuthenticationError('Must be logged in');
+    },
 
     addFriend: async (parent, { friendId }, context) => {
       if (context.user) {

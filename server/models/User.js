@@ -26,9 +26,12 @@ const userSchema = new Schema(
     },
     bio: {
       type: String,
-      required: true,
       maxLength: 140,
       required: false,
+    },
+    location: {
+      type: String,
+      required: false
     },
     scores: [
       {

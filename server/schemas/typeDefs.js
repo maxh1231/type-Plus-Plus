@@ -7,6 +7,7 @@ const typeDefs = gql`
         email: String!
         createdAt: String!
         bio: String
+        location: String
         scores: [Scores]
         friends: [User]
     }
@@ -39,6 +40,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         addScore(wpm: Float!, accuracy: Float!): Scores
         addBio(bio: String!): User
+        addLocation(location: String!): User
         addFriend(friendId: ID!): User
     }
 `;

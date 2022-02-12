@@ -8,6 +8,7 @@ export const QUERY_USER = gql`
             email
             createdAt
             bio
+            location
         }
         scoresByUser(username: $username) {
           wpm
@@ -29,6 +30,7 @@ export const QUERY_ME = gql`
             email
             createdAt
             bio
+            location
             friends {
                 _id
                 username
