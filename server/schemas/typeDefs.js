@@ -34,7 +34,7 @@ const typeDefs = gql`
         user(username: String!): User
         scoresByUser(username: String): [Scores]
         scores: [Scores]
-        
+        weeklyScores: [Scores]
     }
 
     type Mutation {
