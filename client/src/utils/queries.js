@@ -44,7 +44,6 @@ export const QUERY_ME = gql`
     }
 `;
 
-<<<<<<< HEAD
 export const QUERY_SCORES = gql`
     query Scores {
         scores {
@@ -56,9 +55,7 @@ export const QUERY_SCORES = gql`
     }
 `
 
-=======
 // query logged in user's scores sorted by date (for chart)
->>>>>>> main
 export const QUERY_MYSCORE = gql`
     query meScores {
         meScores {
