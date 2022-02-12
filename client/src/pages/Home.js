@@ -24,7 +24,9 @@ const Home = () => {
     };
 
     const startGame = () => {
-        setRunGame(true);
+        setTimeout(() => {
+            setRunGame(true);
+        }, 250);
     };
 
     const endGame = () => {
