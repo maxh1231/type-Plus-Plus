@@ -3,6 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { ArrowCircleRightIcon } from '@heroicons/react/solid';
 import Game from '../components/Game';
 import Chart from '../components/Chart';
+import GlobalLeaderBoard from '../components/GlobalLeaderBoard'
 
 const Home = () => {
     const [runGame, setRunGame] = useState(false);
@@ -67,6 +68,9 @@ const Home = () => {
             </section>
             <div className="container">
                 <Chart />
+            </div>
+            <div className="container">
+                <GlobalLeaderBoard />
             </div>
         </main>
     );

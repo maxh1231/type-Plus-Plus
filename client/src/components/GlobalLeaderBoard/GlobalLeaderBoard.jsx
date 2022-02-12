@@ -29,13 +29,13 @@ const GlobalLeaderBoard = () => {
                                 <td className='text-center p-2' key={uuid()}>{i + 1}</td>
                                 <td className='text-center p-2' key={uuid()}>{score.wpm}</td>
                                 <td className='text-center p-2' key={uuid()}>
-                                    {i == 0 && 
-                                        <img className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto.png"/>
-                                    } {i == 1 && 
-                                        <img className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-2.png"/>
-                                    } {i == 2 && 
-                                        <img className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-13.png"/>}
-                                    {score.username}
+                                    {i === 0 && 
+                                        <img alt='1st place badge' className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto.png"/>
+                                    } {i === 1 && 
+                                        <img alt='2nd place badge' className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-2.png"/>
+                                    } {i === 2 && 
+                                        <img alt='3rd place badge' className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-13.png"/>}
+                                    <a href={`/profile/${score.username}`}>{score.username}</a>
                                 </td>
                                 <td className='text-center p-2' key={uuid()}>{score.accuracy}</td>
                                 <td className='text-center p-2' key={uuid()}>{score.date}</td>

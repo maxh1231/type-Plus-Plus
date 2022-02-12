@@ -25,7 +25,7 @@ const ActivityLeaderBoard = () => {
                             <tr key={uuid()}>
                                 <td className='text-center p-2' key={uuid()}>{i + 1}</td>
                                 <td className='text-center p-2' key={uuid()}>{user.scoreCount}</td>
-                                <td className='text-center p-2' key={uuid()}>{user.username}</td>
+                                <td className='text-center p-2' key={uuid()}><a href={`/profile/${user.username}`}>{user.username}</a></td>
                             </tr>
                         ))}
                     </tbody>
