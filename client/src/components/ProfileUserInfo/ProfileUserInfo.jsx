@@ -1,4 +1,6 @@
 import defaultPhoto from '../../assets/images/no-profile-picture.svg'
+import { useMutation } from '@apollo/client';
+import { ADD_FRIEND } from '../../utils/mutations';
 
 const ProfileUserInfo = ({ data }) => {
     console.log(data)
@@ -11,6 +13,17 @@ const ProfileUserInfo = ({ data }) => {
         const average = (array) => scoresArr.reduce((a, b) => a + b) / scoresArr.length;
         averageWPM = average(scoresArr);
     }
+    const friendID = data.user._id
+    const [addFriend] = useMutation(ADD_FRIEND);
+
+    const handleFriendSubmit = async (event) => {
+        event.preventDefault();
+        await addFriend({
+            variables: { friendID }
+        });
+        console.log('click')
+    };
+
     return (
         <section>
             <div>
@@ -35,9 +48,9 @@ const ProfileUserInfo = ({ data }) => {
                 {!data.user.location && <p>No location set</p>}
             </div>
             <div>
-                {/* add friend functionality (incomplete) */}
+                <button type="submit" onClick={handleFriendSubmit}>Add friend</button>
             </div>
-        </section>
+        </section >
     )
 }
 

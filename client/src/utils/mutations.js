@@ -43,8 +43,8 @@ export const ADD_SCORE = gql`
 `;
 
 export const ADD_FRIEND = gql`
-  mutation addFriend($username: String!) {
-    addFriend(username: $username) {
+  mutation addFriend($friendID: ID!) {
+    addFriend(friendID: $friendID) {
       _id
       username
       friendCount
