@@ -19,7 +19,15 @@ const Game = ({ sampleArr, unmount }) => {
     useEffect(() => {
         const startGame = async () => {
             setTimeout(() => {
-                document.getElementById('readyMsg').style.display = 'none';
+                document.getElementById('readyIcon').textContent = 2;
+
+            }, 1000);
+            setTimeout(() => {
+                document.getElementById('readyIcon').textContent = 1;
+
+            }, 2000);
+            setTimeout(() => {
+                document.getElementById('readyIcon').style.display = 'none';
                 document.getElementById('sampleText').style.display = 'block';
                 document.getElementById('gameInfo').style.display = 'block';
                 document.getElementById(0).style.textDecoration = 'underline';
@@ -139,7 +147,7 @@ const Game = ({ sampleArr, unmount }) => {
     }
 
     return (
-        <div id='inputArea'>
+        <div id='inputArea' className='m-4'>
             {intervalId ? (
                 <textarea id="gameInput" rows="4" cols="50" onChange={handleChange} className='block border-2 w-full' value={inputText}></textarea>
             ) : (
@@ -154,7 +162,10 @@ const Game = ({ sampleArr, unmount }) => {
                 <p>Time: {timer}</p>
                 <p>WPM: {wpm}</p>
             </div>
-            <p id='readyMsg' className='mx-auto my-6 w-fit text-2xl'>Ready?</p>
+            {/* <p id='readyMsg' className='mx-auto my-6 w-fit text-2xl'>Ready?</p> */}
+            <div id='readyIcon' className='animate-bounce bg-slate-200 p-2 w-10 m-auto h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center'>
+                <p id='readyMsg' className=''>3</p>
+            </div>
             {!loggedIn &&
                 <p className='mx-auto my-6 w-fit'>Log in to save your scores!</p>
             }
