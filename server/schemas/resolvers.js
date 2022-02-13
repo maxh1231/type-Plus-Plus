@@ -7,7 +7,7 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password').populate('scores').populate('friends').populate('badge');
+        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password').populate('scores').populate('friends').populate('badges');
         return userData;
       }
       throw new AuthenticationError('Log in required');
@@ -16,7 +16,6 @@ const resolvers = {
     meScores: async (parent, args, context) => {
       if (context.user) {
         const score = await Scores.find({ ...args, username: context.user.username }).sort({ 'wpm': -1 })
-
         return score;
       }
       throw new AuthenticationError('Log in required');
@@ -24,7 +23,7 @@ const resolvers = {
     //logged in users badges
     meBadges: async (parent, args, context) => {
       if (context.user) {
-        return await User.findOne({ _id: context.user._id}).select('badge').populate('badge');
+        return await User.findOne({ _id: context.user._id}).select('badges').populate('badges');
       }
       throw new AuthenticationError('Log in required');
     },
@@ -33,7 +32,7 @@ const resolvers = {
       return User.find()
         .select('-__v -password')
         .populate('scores')
-        .populate('badge')
+        .populate('badges')
         .sort({ wpm: -1 })
     },
     // get user by username
@@ -42,6 +41,7 @@ const resolvers = {
         .select('-__v -password')
         .populate('scores')
         .populate('friends')
+        .populate('badges')
     },
     // get scores by username
     scoresByUser: async (parent, { username }) => {
@@ -165,7 +165,7 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { badge: badge }},
+          { $addToSet: { badges: badge }},
           { new: true }
         ).populate('badge');
 

@@ -12,7 +12,7 @@ const typeDefs = gql`
     scores: [Scores]
     friendCount: Int
     friends: [User]
-    badge: [Badge]
+    badges: [Badge]
   }
 
   type Scores {

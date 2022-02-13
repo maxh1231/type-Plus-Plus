@@ -81,7 +81,7 @@ export const QUERY_MYSCORE = gql`
 export const QUERY_MYBADGE = gql`
     query MeBadges {
         meBadges {
-            badge {
+            badges {
                 badgeName
                 description
                 img

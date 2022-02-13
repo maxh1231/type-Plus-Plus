@@ -4,7 +4,7 @@ import { QUERY_MYBADGE } from "../utils/queries";
 
 const Badges = () => {
     const { loading, data } = useQuery(QUERY_MYBADGE);
-    const userBadgeArr = data?.meBadges.badge || []
+    const userBadgeArr = data?.meBadges.badges || []
     
     // logging logged in users badges
     console.log(userBadgeArr);

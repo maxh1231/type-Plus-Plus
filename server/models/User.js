@@ -45,7 +45,7 @@ const userSchema = new Schema(
         ref: 'User'
       }
     ],
-    badge: [
+    badges: [
       {
         type: Schema.Types.ObjectId,
         ref: "Badge"
