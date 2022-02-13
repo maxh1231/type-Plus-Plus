@@ -28,7 +28,7 @@ const Profile = () => {
 
     useEffect(() => {
         handler();
-    })
+    }, [])
 
     const handleAddFriend = async (event) => {
         event.preventDefault();
@@ -52,10 +52,12 @@ const Profile = () => {
         const friendArr = await myFriends.data?.me.friends.map(friend => {
             return friend.username
         })
-        if (friendArr.includes(`${userParam}`)) {
-            setFriendStatus(true);
-        } else {
-            setFriendStatus(false)
+        if (!myFriends.loading) {
+            if (friendArr.includes(`${userParam}`)) {
+                setFriendStatus(true);
+            } else {
+                setFriendStatus(false)
+            }
         }
     }
     console.log(friendStatus)
