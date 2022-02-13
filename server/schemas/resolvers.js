@@ -7,7 +7,7 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password').populate('scores').populate('friends');
+        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password').populate('scores').populate('friends').populate('badge');
         return userData;
       }
       throw new AuthenticationError('Log in required');
@@ -19,6 +19,14 @@ const resolvers = {
 
         return score;
       }
+      throw new AuthenticationError('Log in required');
+    },
+    //logged in users badges
+    meBadges: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findOne({ _id: context.user._id}).select('badge').populate('badge');
+      }
+      throw new AuthenticationError('Log in required');
     },
     // all users
     users: async () => {

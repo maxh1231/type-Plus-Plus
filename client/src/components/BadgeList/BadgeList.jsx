@@ -5,10 +5,8 @@ import { QUERY_BADGES } from '../../utils/queries';
 
 const BadgeList = () => {
     const { loading, data } = useQuery(QUERY_BADGES);
-
     const badgeArr = data?.badges || [];
     
-    console.log(badgeArr)
     return (
         <section className='w-full'>
             <div className='container flex flex-wrap w-full'>

@@ -46,6 +46,7 @@ const typeDefs = gql`
     scores: [Scores]
     weeklyScores: [Scores]
     badges: [ Badge ]
+    meBadges: User
   }
 
 

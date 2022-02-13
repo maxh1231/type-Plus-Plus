@@ -4,7 +4,6 @@ import { ArrowCircleRightIcon } from '@heroicons/react/solid';
 import Game from '../components/Game';
 import Chart from '../components/Chart';
 import GlobalLeaderBoard from '../components/GlobalLeaderBoard'
-import BadgeList from '../components/BadgeList';
 
 const Home = () => {
     const [runGame, setRunGame] = useState(false);
