@@ -1,7 +1,9 @@
 import defaultPhoto from '../../assets/images/no-profile-picture.svg'
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_FRIEND } from '../../utils/mutations';
+import { QUERY_FRIENDS } from '../../utils/queries'
 
 const ProfileUserInfo = ({ data }) => {
-    console.log(data)
     let averageWPM;
     if (data.scoresByUser.length !== 0) {
         let scoresArr = []
@@ -11,6 +13,7 @@ const ProfileUserInfo = ({ data }) => {
         const average = (array) => scoresArr.reduce((a, b) => a + b) / scoresArr.length;
         averageWPM = average(scoresArr);
     }
+
     return (
         <section>
             <div>
@@ -34,10 +37,7 @@ const ProfileUserInfo = ({ data }) => {
                 {data.user.location && <p>Location: {data.user.location} </p>}
                 {!data.user.location && <p>No location set</p>}
             </div>
-            <div>
-                {/* add friend functionality (incomplete) */}
-            </div>
-        </section>
+        </section >
     )
 }
 
