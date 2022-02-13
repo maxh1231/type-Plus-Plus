@@ -66,11 +66,13 @@ const Home = () => {
                     </>
                 )}
             </section>
-            <div className="container">
-                <Chart />
-            </div>
-            <div className="container">
-                <GlobalLeaderBoard />
+            <div className='grid grid-cols-2 w-full'>
+                <div className="container">
+                    <Chart />
+                </div>
+                <div className="container">
+                    <GlobalLeaderBoard />
+                </div>
             </div>
         </main>
     );

@@ -8,11 +8,12 @@ const typeDefs = gql`
     createdAt: String!
     bio: String
     location: String
-    scoreCount: Int
     scores: [Scores]
-    friendCount: Int
+    scoreCount: Int
     friends: [User]
-    badge: [Badge]
+    friendCount: Int
+    badges: [Badge]
+    badgeCount: Int
   }
 
   type Scores {
@@ -30,7 +31,10 @@ const typeDefs = gql`
   
   type Badge {
     _id: ID
-    badgeName: String
+    badgeName: String!
+    description: String!
+    img: String
+    xp: Int
     createdAt: String   
   }
 
@@ -42,7 +46,8 @@ const typeDefs = gql`
     scoresByUser(username: String): [Scores]
     scores: [Scores]
     weeklyScores: [Scores]
-    badge: [ Badge ]
+    badges: [ Badge ]
+    meBadges: User
   }
 
 

@@ -41,6 +41,17 @@ export const QUERY_ME = gql`
             accuracy
             createdAt
         }
+        meBadges {
+            badges {
+                badgeName
+                description
+                img
+                xp
+                createdAt
+                _id
+            }   
+            badgeCount
+        }
     }
 `;
 
@@ -78,6 +89,22 @@ export const QUERY_MYSCORE = gql`
     }
 `;
 
+export const QUERY_MYBADGE = gql`
+    query MeBadges {
+        meBadges {
+            badges {
+                badgeName
+                description
+                img
+                xp
+                createdAt
+                _id
+            }   
+            badgeCount
+        }
+    }
+`;
+
 export const QUERY_SCORE_COUNT = gql`
     query Users {
         users {
@@ -93,6 +120,19 @@ export const QUERY_WEEKLY_SCORES = gql `
         createdAt
         username
         accuracy
+        }
+    }
+`
+
+export const QUERY_BADGES = gql`
+    query Badge {
+        badges{
+        _id
+        badgeName
+        description
+        xp
+        createdAt
+        img
         }
     }
 `
