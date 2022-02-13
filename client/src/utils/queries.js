@@ -44,6 +44,18 @@ export const QUERY_ME = gql`
     }
 `;
 
+export const QUERY_FRIENDS = gql`
+    {
+        me {
+            username
+            friends {
+                _id
+                username
+            }
+        }
+    }
+`;
+
 export const QUERY_SCORES = gql`
     query Scores {
         scores {
