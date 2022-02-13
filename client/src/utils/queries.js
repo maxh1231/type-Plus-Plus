@@ -41,6 +41,17 @@ export const QUERY_ME = gql`
             accuracy
             createdAt
         }
+        meBadges {
+            badges {
+                badgeName
+                description
+                img
+                xp
+                createdAt
+                _id
+            }   
+            badgeCount
+        }
     }
 `;
 
