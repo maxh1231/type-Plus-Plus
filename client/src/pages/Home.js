@@ -4,6 +4,7 @@ import { ArrowCircleRightIcon } from '@heroicons/react/solid';
 import Game from '../components/Game';
 import Chart from '../components/Chart';
 import GlobalLeaderBoard from '../components/GlobalLeaderBoard'
+import BadgeList from '../components/BadgeList';
 
 const Home = () => {
     const [runGame, setRunGame] = useState(false);
@@ -66,11 +67,14 @@ const Home = () => {
                     </>
                 )}
             </section>
-            <div className="container">
-                <Chart />
-            </div>
-            <div className="container">
-                <GlobalLeaderBoard />
+            <BadgeList />
+            <div className='grid grid-cols-2 w-full'>
+                <div className="container">
+                    <Chart />
+                </div>
+                <div className="container">
+                    <GlobalLeaderBoard />
+                </div>
             </div>
         </main>
     );

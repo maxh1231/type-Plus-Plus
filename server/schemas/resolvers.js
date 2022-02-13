@@ -44,7 +44,7 @@ const resolvers = {
     scores: async () => {
       return Scores.find().sort({ wpm: -1 });
     },
-    badge: async () => {
+    badges: async () => {
       return Badge.find();
     },
     weeklyScores: async () => {

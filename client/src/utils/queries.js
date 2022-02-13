@@ -84,3 +84,16 @@ export const QUERY_WEEKLY_SCORES = gql `
         }
     }
 `
+
+export const QUERY_BADGES = gql`
+    query Badge {
+        badges{
+        _id
+        badgeName
+        description
+        xp
+        createdAt
+        img
+        }
+    }
+`

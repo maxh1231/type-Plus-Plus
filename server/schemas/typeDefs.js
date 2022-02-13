@@ -45,7 +45,7 @@ const typeDefs = gql`
     scoresByUser(username: String): [Scores]
     scores: [Scores]
     weeklyScores: [Scores]
-    badge: [ Badge ]
+    badges: [ Badge ]
   }
 
 
