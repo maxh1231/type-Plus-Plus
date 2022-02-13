@@ -6,11 +6,21 @@ const badgeSchema = new Schema(
             type: String,
             required: true
         },
+        description: {
+            type: String,
+            required: true
+        },
+        img: {
+            type: String,
+        },
+        xp: {
+            type: Number,
+            required: true
+        },
         createdAt: {
             type: Date,
             default: Date.now
         }
-         
     },
     {
         toJSON: {

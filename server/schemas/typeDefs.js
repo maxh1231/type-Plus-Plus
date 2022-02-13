@@ -30,7 +30,10 @@ const typeDefs = gql`
   
   type Badge {
     _id: ID
-    badgeName: String
+    badgeName: String!
+    description: String!
+    img: String
+    xp: Int
     createdAt: String   
   }
 
