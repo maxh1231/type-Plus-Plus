@@ -67,7 +67,6 @@ const Home = () => {
                     </>
                 )}
             </section>
-            <BadgeList />
             <div className='grid grid-cols-2 w-full'>
                 <div className="container">
                     <Chart />

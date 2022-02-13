@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
 import { useQuery } from '@apollo/client';
@@ -95,6 +95,9 @@ const Dashboard = () => {
             <div>
                 <h2>Friends</h2>
                 <Friends friends={data.me.friends} />
+            </div>
+            <div>
+                <Link to='/badges'><h2>Badge List</h2></Link>
             </div>
         </main>
     );

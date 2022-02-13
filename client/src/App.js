@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile'
 import LeaderBoard from './pages/LeaderBoard';
+import Badges from './pages/Badges';
 
 // Component imports
 import Signup from './components/Signup';
@@ -63,6 +64,7 @@ function App() {
                         <Route exact path="/signup" element={<Signup />} />
                         <Route exact path="/dashboard" element={<Dashboard />} />
                         <Route exact path="/leaderboard" element={<LeaderBoard />} />
+                        <Route exact path="/badges" element={<Badges />} />
                         <Route
                             exact
                             path="/profile/:username"
