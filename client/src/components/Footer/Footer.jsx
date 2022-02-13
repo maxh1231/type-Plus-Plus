@@ -74,6 +74,12 @@ const Footer = () => {
                                 Node.js
                             </a>
                         </p>
+                        
+                    </div>
+                    <div>
+                        <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
+                            Resources
+                        </h6>
                         <p className="mb-4">
                             <a
                                 href="https://tailwindcss.com/"
@@ -84,49 +90,34 @@ const Footer = () => {
                                 Tailwind CSS
                             </a>
                         </p>
-                    </div>
-                    <div>
-                        <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
-                            Resources
-                        </h6>
                         <p className="mb-4">
                             <a
-                                href="https://qmk.fm/"
+                                href="https://www.chartjs.org/"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                QMK
+                                Chart.js
                             </a>
                         </p>
                         <p className="mb-4">
                             <a
-                                href="https://www.autohotkey.com/"
+                                href="https://momentjs.com/"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                AutoHotKey
-                            </a>
-                        </p>
-                        <p className="mb-4">
-                            <a
-                                href="https://www.reddit.com/r/MechanicalKeyboards/"
-                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                r/MechanicalKeyboards
+                                Moment
                             </a>
                         </p>
                         <p>
                             <a
-                                href="https://www.keyboardtester.com/"
+                                href="https://jwt.io/"
                                 className="text-gray-600 hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                KeyboardTester
+                                JSON Web Token
                             </a>
                         </p>
                     </div>

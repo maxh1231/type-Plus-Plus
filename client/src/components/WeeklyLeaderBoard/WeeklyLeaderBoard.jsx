@@ -3,6 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { useQuery } from '@apollo/client';
 import { QUERY_WEEKLY_SCORES } from '../../utils/queries';
 import { formatTime } from '../../utils/helpers';
+import { Link } from 'react-router-dom';
 
 const WeeklyLeaderBoard = () => {
     const { loading, data } = useQuery(QUERY_WEEKLY_SCORES);
@@ -35,7 +36,7 @@ const WeeklyLeaderBoard = () => {
                                         <img alt='2nd place badge' className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-2.png"/>
                                     } {i === 2 && 
                                         <img alt='3rd place badge' className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-13.png"/>}
-                                    <a href={`/profile/${score.username}`}>{score.username}</a>
+                                    <Link to={`/profile/${score.username}`}>{score.username}</Link>
                                 </td>
                                 <td className='text-center p-2' key={uuid()}>{score.accuracy}</td>
                                 <td className='text-center p-2' key={uuid()}>{score.date}</td>
