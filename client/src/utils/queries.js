@@ -86,3 +86,13 @@ export const QUERY_SCORE_COUNT = gql`
         }
     }
 `
+export const QUERY_WEEKLY_SCORES = gql `
+    query WeeklyScores {
+        weeklyScores {
+        wpm
+        createdAt
+        username
+        accuracy
+        }
+    }
+`

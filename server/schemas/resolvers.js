@@ -1,5 +1,6 @@
+const moment = require('moment')
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Scores } = require('../models');
+const { User, Scores, Badge } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -24,6 +25,7 @@ const resolvers = {
       return User.find()
         .select('-__v -password')
         .populate('scores')
+        .populate('badge')
         .sort({ wpm: -1 })
     },
     // get user by username
@@ -42,6 +44,16 @@ const resolvers = {
     scores: async () => {
       return Scores.find().sort({ wpm: -1 });
     },
+    badge: async () => {
+      return Badge.find();
+    },
+    weeklyScores: async () => {
+      const startDate = moment().startOf('week');
+      const formatStartDate = moment(startDate).valueOf();
+      return Scores.find({ 
+        createdAt: { $gt: formatStartDate }
+      })
+    }
   },
 
   Mutation: {
@@ -132,7 +144,28 @@ const resolvers = {
       }
 
       throw new AuthenticationError('You need to be logged in!');
-    }
+    },
+
+    createBadge: async (parent, args) => {
+      const badge = await Badge.create(args);
+      return badge;
+    },
+
+    addBadge: async (parent, { badgeName }, context) => {
+      if (context.user) {
+        const badge = await Badge.findOne({ badgeName });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { badge: badge }},
+          { new: true }
+        ).populate('badge');
+
+        return badge;
+      }
+
+      throw new AuthenticationError('Could not add badge');
+    },
   }
 }
 

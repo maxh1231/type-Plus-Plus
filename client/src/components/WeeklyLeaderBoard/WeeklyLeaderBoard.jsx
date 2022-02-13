@@ -1,17 +1,17 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 import { useQuery } from '@apollo/client';
-import { QUERY_SCORES } from '../../utils/queries';
+import { QUERY_WEEKLY_SCORES } from '../../utils/queries';
 import { formatTime } from '../../utils/helpers';
 
-const GlobalLeaderBoard = () => {
-    const { loading, data } = useQuery(QUERY_SCORES);
+const WeeklyLeaderBoard = () => {
+    const { loading, data } = useQuery(QUERY_WEEKLY_SCORES);
     
-    const leaderBoard = data?.scores.map(score => { return {wpm: score.wpm, accuracy: score.accuracy, username: score.username, date: formatTime(score.createdAt)} })
+    const leaderBoard = data?.weeklyScores.map(score => { return {wpm: score.wpm, accuracy: score.accuracy, username: score.username, date: formatTime(score.createdAt)} })
 
     return (
-        <section className='w-3/4 mx-auto my-4'>
-            <h1 className='block text-center text-2xl underline'>Global Leaderboard</h1>
+        <section  className='w-3/4 mx-auto my-4'>
+            <h1 className='block text-center text-2xl underline'>Weekly Leaderboard</h1>
             <table className='table-auto mx-auto'>
                 <thead>
                     <tr>
@@ -54,4 +54,4 @@ const GlobalLeaderBoard = () => {
     )
 }
 
-export default GlobalLeaderBoard
+export default WeeklyLeaderBoard

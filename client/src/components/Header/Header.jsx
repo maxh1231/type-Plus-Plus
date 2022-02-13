@@ -65,6 +65,14 @@ const Header = () => {
                                         Home
                                     </Link>
                                 </li>
+                                <li className="nav-item p-2">
+                                    <Link
+                                        to="/leaderboard"
+                                        className="nav-link p-0 hover:text-gray-800 focus:text-gray-800 transition-all duration-200 opacity-0"
+                                    >
+                                        Leaderboard
+                                    </Link>
+                                </li>
                                 {Auth.loggedIn() ? (
                                     <>
                                         <li className="nav-item p-2">
