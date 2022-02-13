@@ -89,6 +89,7 @@ export const QUERY_MYBADGE = gql`
                 createdAt
                 _id
             }   
+            badgeCount
         }
     }
 `;

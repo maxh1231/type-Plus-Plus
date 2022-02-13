@@ -23,7 +23,7 @@ const resolvers = {
     //logged in users badges
     meBadges: async (parent, args, context) => {
       if (context.user) {
-        return await User.findOne({ _id: context.user._id}).select('badges').populate('badges');
+        return await User.findOne({ _id: context.user._id}).select('badges badgeCount').populate('badges');
       }
       throw new AuthenticationError('Log in required');
     },

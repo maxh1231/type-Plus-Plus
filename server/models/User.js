@@ -83,6 +83,10 @@ userSchema.virtual('scoreCount').get(function () {
   return this.scores.length;
 });
 
+userSchema.virtual('badgeCount').get(function () {
+  return this.badges.length;
+});
+
 const User = model('User', userSchema);
 
 module.exports = User;
