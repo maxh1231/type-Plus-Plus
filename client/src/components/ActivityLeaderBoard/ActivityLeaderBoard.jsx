@@ -2,6 +2,7 @@ import React from 'react';
 import { v4 as uuid } from 'uuid';
 import { useQuery } from '@apollo/client';
 import { QUERY_SCORE_COUNT } from '../../utils/queries';
+import { Link } from 'react-router-dom';
 
 const ActivityLeaderBoard = () => {
     const { loading, data } = useQuery(QUERY_SCORE_COUNT);
@@ -25,7 +26,7 @@ const ActivityLeaderBoard = () => {
                             <tr key={uuid()}>
                                 <td className='text-center p-2' key={uuid()}>{i + 1}</td>
                                 <td className='text-center p-2' key={uuid()}>{user.scoreCount}</td>
-                                <td className='text-center p-2' key={uuid()}><a href={`/profile/${user.username}`}>{user.username}</a></td>
+                                <td className='text-center p-2' key={uuid()}><Link to={`/profile/${user.username}`}>{user.username}</Link></td>
                             </tr>
                         ))}
                     </tbody>
