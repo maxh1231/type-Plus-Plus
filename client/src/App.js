@@ -40,7 +40,7 @@ const client = new ApolloClient({
         typePolicies: {
             Query: {
                 fields: {
-                    User: {
+                    friends: {
                         merge(existing, incoming) {
                             return incoming;
                         }
