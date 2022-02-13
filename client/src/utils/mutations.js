@@ -56,6 +56,20 @@ export const ADD_FRIEND = gql`
   }
 `;
 
+export const REMOVE_FRIEND = gql`
+  mutation removeFriend($friendID: ID!) {
+    removeFriend(friendID: $friendID) {
+      _id
+      username
+      friendCount
+      friends {
+        _id
+        username
+      }
+    }
+  }
+`;
+
 export const ADD_LOCATION = gql`
   mutation AddLocation($location: String!) {
     addLocation(location: $location) {

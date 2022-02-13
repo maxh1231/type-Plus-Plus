@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_FRIENDS } from '../utils/queries';
-import { ADD_FRIEND } from '../utils/mutations';
+import { ADD_FRIEND, REMOVE_FRIEND } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 import ProfileUserInfo from '../components/ProfileUserInfo';
@@ -12,68 +12,60 @@ import ProfileUserInfo from '../components/ProfileUserInfo';
 
 
 const Profile = () => {
+    const [friendStatus, setFriendStatus] = useState(false)
     const { username: userParam } = useParams();
     const { loading, error, data } = useQuery(QUERY_USER, {
         variables: { username: userParam }
     });
+    const myFriends = useQuery(QUERY_FRIENDS);
 
     let friendID;
     if (data) {
         friendID = data.user._id
     }
     const [addFriend] = useMutation(ADD_FRIEND);
+    const [removeFriend] = useMutation(REMOVE_FRIEND);
 
-    const handleFriendSubmit = async (event) => {
+    useEffect(() => {
+        handler();
+    })
+
+    const handleAddFriend = async (event) => {
         event.preventDefault();
         await addFriend({
             variables: { friendID }
         });
         console.log('click')
+        setFriendStatus(true)
     };
 
-    const myFriends = useQuery(QUERY_FRIENDS);
-    if (myFriends.loading) {
-        console.log('loading')
-    }
+    const handleRemoveFriend = async (event) => {
+        event.preventDefault();
+        await removeFriend({
+            variables: { friendID }
+        });
+        console.log('click')
+        setFriendStatus(false)
+    };
 
-    // let myFriendsArr;
-    // if (!myFriends.loading) {
-    //     console.log(myFriends.data.me.friends)
-    //     myFriendsArr = myFriends.data.me.friends;
-    // }
-    // console.log(myFriendsArr);
-    // console.log(data);
-
-
-    // let isFriends;
-    // if (myFriendsArr.includes(userParam)) {
-    //     isFriends = true;
-    // } else {
-    //     isFriends = false;
-    // }
-
-    let myFriendsArr = [];
-    if (!myFriends.loading) {
-        for (let i = 0; i < myFriends.data.me.friends.length; i++) {
-            myFriendsArr.push(myFriends.data.me.friends[i].username)
-            console.log(myFriendsArr);
+    const handler = async () => {
+        const friendArr = await myFriends.data?.me.friends.map(friend => {
+            return friend.username
+        })
+        if (friendArr.includes(`${userParam}`)) {
+            setFriendStatus(true);
+        } else {
+            setFriendStatus(false)
         }
     }
-
+    console.log(friendStatus)
     return (
         <section>
             {data && <ProfileUserInfo data={data} />}
-
-
             <div>
-                {myFriendsArr.includes(`${userParam}`) && <button onClick={handleFriendSubmit}>Remove Friend</button>}
+
+                {friendStatus ? (<button onClick={handleRemoveFriend} >Remove Friend</button>) : (<button onClick={handleAddFriend}>Add Friend</button>)}
             </div>
-
-
-
-            {/* <div>
-                <button type="submit" onClick={handleFriendSubmit}>Add friend</button>
-            </div> */}
         </section>
     );
 };

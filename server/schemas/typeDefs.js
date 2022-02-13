@@ -44,6 +44,7 @@ const typeDefs = gql`
         addBio(bio: String!): User
         addLocation(location: String!): User
         addFriend(friendID: ID!): User
+        removeFriend(friendID: ID!): User
     }
 `;
 
