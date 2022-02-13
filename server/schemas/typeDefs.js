@@ -52,7 +52,8 @@ const typeDefs = gql`
     addScore(wpm: Float!, accuracy: Float! ): Scores
     addBio(bio: String!): User
     addLocation(location: String!): User
-    addFriend(friendId: ID!): User
+    addFriend(friendID: ID!): User
+    removeFriend(friendID: ID!): User
     addBadge(badgeName: String!): Badge
     createBadge(badgeName: String!): Badge
   }

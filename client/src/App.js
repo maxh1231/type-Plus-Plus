@@ -36,7 +36,19 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+        typePolicies: {
+            Query: {
+                fields: {
+                    friends: {
+                        merge(existing, incoming) {
+                            return incoming;
+                        }
+                    }
+                }
+            }
+        }
+    }),
 });
 
 function App() {
@@ -49,8 +61,8 @@ function App() {
                         <Route exact path="/" element={<Home />} />
                         <Route exact path="/login" element={<Login />} />
                         <Route exact path="/signup" element={<Signup />} />
-                        <Route exact path="/dashboard" element={<Dashboard />}/>
-                        <Route exact path="/leaderboard" element={<LeaderBoard />}/>
+                        <Route exact path="/dashboard" element={<Dashboard />} />
+                        <Route exact path="/leaderboard" element={<LeaderBoard />} />
                         <Route
                             exact
                             path="/profile/:username"
