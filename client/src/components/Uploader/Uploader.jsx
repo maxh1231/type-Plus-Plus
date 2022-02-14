@@ -1,65 +1,21 @@
 import React from 'react';
+import { useMutation, gql } from '@apollo/client'
+import { UPLOAD_FILE } from '../../utils/mutations';
 
 const Uploader = ({ image, setImage, url, setUrl }) => {
-    // const uploadImage = () => {
-    //     const data = new FormData()
-    //     data.append("file", image)
-    //     data.append("upload_preset", "mhpreset")
-    //     data.append("cloud_name", "djevcwcbq")
-    //     fetch("  https://api.cloudinary.com/v1_1/djevcwcbq/image/upload", {
-    //         method: "post",
-    //         body: data
-    //     })
-    //         .then(resp => resp.json())
-    //         .then(data => {
-    //             setUrl(data.url)
-    //         })
-    //         .catch(err => console.log(err))
-    // }
+    const [uploadFile] = useMutation(UPLOAD_FILE, {
+        onCompleted: data => console.log(data)
+    })
 
-    // return (
-    //     <>
-    //         <div>
-    //             <input type="file" onChange={(e) => setImage(e.target.files[0])}></input>
-    //             <button onClick={uploadImage}>Upload</button>
-    //         </div>
-    //         {image && <div className="w-[200px] h-[200px]">
-    //             {<img className="w-full h-full object-cover" src={url} alt="" />}
-    //         </div>}
-    //     </>
-    // )
+    const handleFileChange = e => {
+        const file = e.target.files[0]
+        if (!file) return
+        uploadFile({ variables: { file } })
+    }
 
     return (
         <section>
-
-
-            <div>
-                <h1>To Upload Image on mongoDB</h1>
-                <form action="/" method="POST" encType="multipart/form-data">
-                    <div>
-                        <label htmlFor="name">Image Title</label>
-                        <input type="text" id="name" placeholder="Name"
-                            name="name" required></input>
-                    </div>
-                    <div>
-                        <label htmlFor="desc">Image Description</label>
-                        <textarea id="desc" name="desc" rows="2"
-                            placeholder="Description" required>
-                        </textarea>
-                    </div>
-                    <div>
-                        <label htmlFor="image">Upload Image</label>
-                        <input type="file" id="image"
-                            name="image" required></input>
-                    </div>
-                    <div>
-                        <button type="submit">Submit</button>
-                    </div>
-                </form>
-            </div>
-
-
-
+            <input type="file" onChange={handleFileChange}></input>
         </section>
     )
 

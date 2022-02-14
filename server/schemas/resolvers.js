@@ -190,7 +190,7 @@ const resolvers = {
       await stream.pipe(fs.createWriteStream(pathName))
 
       return {
-        url: `http://localhost:3001/images/${filename}`
+        url: `/images/${filename}`
       }
     },
 
