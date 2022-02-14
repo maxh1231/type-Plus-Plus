@@ -11,6 +11,8 @@ const PORT = process.env.PORT || 3001;
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
+const multer = require('multer');
+const Image = require('./models');
 
 const server = new ApolloServer({
     typeDefs,
@@ -23,6 +25,19 @@ server.applyMiddleware({ app });
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.set("view engine", "ejs");
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+
+var upload = multer({ storage: storage });
+
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
 }
@@ -33,6 +48,39 @@ var corsOptions = {
 };
 app.use(cors(corsOptions));
 app.use(require('./controllers'));
+
+app.get('/', (req, res) => {
+    Image.find({}, (err, items) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('An error occurred', err);
+        }
+        else {
+            res.render('imagesPage', { items: items });
+        }
+    });
+});
+
+app.post('/', upload.single('image'), (req, res, next) => {
+
+    var obj = {
+        name: req.body.name,
+        desc: req.body.desc,
+        img: {
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        }
+    }
+    Image.create(obj, (err, item) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            // item.save();
+            res.redirect('/');
+        }
+    });
+});
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
