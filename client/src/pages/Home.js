@@ -4,17 +4,24 @@ import { ArrowCircleRightIcon } from '@heroicons/react/solid';
 import Game from '../components/Game';
 import Chart from '../components/Chart';
 import GlobalLeaderBoard from '../components/GlobalLeaderBoard'
+import RecentBadge from '../components/RecentBadge/RecentBadge';
+import Auth from '../utils/auth';
 
 const Home = () => {
     const [runGame, setRunGame] = useState(false);
     const [sampleArr, setSampleArr] = useState([]);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             await getText();
         };
         fetchData();
+        if (Auth.loggedIn()) {
+            setLoggedIn(true);
+        }
     }, []);
+
 
     // Get random text
     const getText = async () => {
@@ -37,7 +44,7 @@ const Home = () => {
 
     return (
         <main className="flex-grow flex flex-col content-around justify-evenly items-center">
-            <section className="m-2">
+            <section className="m-4">
                 {!runGame && (
                     <button
                         type="button"
@@ -74,6 +81,9 @@ const Home = () => {
                     <GlobalLeaderBoard />
                 </div>
             </div>
+            {loggedIn && (
+                <RecentBadge />
+            )}
         </main>
     );
 };

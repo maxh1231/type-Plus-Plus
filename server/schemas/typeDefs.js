@@ -16,11 +16,14 @@ const typeDefs = gql`
     location: String
     profilePic: String
     scores: [Scores]
-    scoreCount: Int
+    gameCount: Int
+    maxScore: Float
     friends: [User]
     friendCount: Int
     badges: [Badge]
     badgeCount: Int
+    maxAccuracy: Float
+    age: Int
   }
 
   type Scores {
@@ -42,7 +45,9 @@ const typeDefs = gql`
     description: String!
     img: String
     xp: Int
-    createdAt: String   
+    targetVal: Int
+    createdAt: String
+    category: String   
   }
 
   type File {

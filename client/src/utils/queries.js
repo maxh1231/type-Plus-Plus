@@ -16,7 +16,6 @@ export const QUERY_USER = gql`
           createdAt
           username
         }
-        
     }
 `;
 
@@ -35,6 +34,11 @@ export const QUERY_ME = gql`
                 _id
                 username
             }
+            friendCount
+            gameCount
+            maxScore
+            maxAccuracy
+            age
         }
         meScores {
             wpm
@@ -47,6 +51,7 @@ export const QUERY_ME = gql`
                 description
                 img
                 xp
+                targetVal
                 createdAt
                 _id
             }   
@@ -93,12 +98,13 @@ export const QUERY_MYBADGE = gql`
     query MeBadges {
         meBadges {
             badges {
+                _id
                 badgeName
                 description
                 img
                 xp
+                targetVal
                 createdAt
-                _id
             }   
             badgeCount
         }
@@ -108,7 +114,7 @@ export const QUERY_MYBADGE = gql`
 export const QUERY_SCORE_COUNT = gql`
     query Users {
         users {
-            scoreCount
+            gameCount
             username
         }
     }
@@ -133,6 +139,8 @@ export const QUERY_BADGES = gql`
         xp
         createdAt
         img
+        targetVal
+        category
         }
     }
 `

@@ -17,6 +17,12 @@ const badgeSchema = new Schema(
             type: Number,
             required: true
         },
+        targetVal: {
+            type: Number,
+        },
+        category: {
+            type: String,
+        },
         createdAt: {
             type: Date,
             default: Date.now

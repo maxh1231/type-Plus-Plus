@@ -25,7 +25,7 @@ const ActivityLeaderBoard = () => {
                         {leaderBoard.map((user, i) => (
                             <tr key={uuid()}>
                                 <td className='text-center p-2' key={uuid()}>{i + 1}</td>
-                                <td className='text-center p-2' key={uuid()}>{user.scoreCount}</td>
+                                <td className='text-center p-2' key={uuid()}>{user.gameCount}</td>
                                 <td className='text-center p-2' key={uuid()}><Link to={`/profile/${user.username}`}>{user.username}</Link></td>
                             </tr>
                         ))}

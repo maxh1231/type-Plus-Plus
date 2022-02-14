@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const { Scores } = require('.');
+const moment = require('moment');
 
 const userSchema = new Schema(
   {
@@ -79,16 +79,35 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('friendCount').get(function () {
+userSchema.virtual('friendCount').get(function() {
   return this.friends.length;
 });
 
-userSchema.virtual('scoreCount').get(function () {
+userSchema.virtual('gameCount').get(function() {
   return this.scores.length;
 });
 
-userSchema.virtual('badgeCount').get(function () {
+userSchema.virtual('badgeCount').get(function() {
   return this.badges.length;
+});
+
+userSchema.virtual('maxScore').get(function() {
+  let scoreArr = this.scores.map(score => {
+    return score.wpm
+  })
+  return Math.max(...scoreArr)
+});
+
+userSchema.virtual('maxAccuracy').get(function() {
+  let scoreArr = this.scores.map(score => {
+    return score.accuracy
+  })
+  return Math.max(...scoreArr)
+});
+
+userSchema.virtual('age').get(function() {
+  let now = moment();
+  return now.diff(this.createdAt, 'years')
 });
 
 const User = model('User', userSchema);
