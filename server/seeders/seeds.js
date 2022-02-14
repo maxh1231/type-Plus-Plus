@@ -40,8 +40,8 @@ db.once('open', async () => {
         {badgeName: 'Geezer', description: 'Account is 10 Years Old', img: '/assets/badges/age-badge-5.png', xp: 250, createdAt: Date.now},
         // Secret
         {badgeName: 'Ooo, A Secret!', description: 'Become friends with the legendary Type++ developer, Thenlie', img: '/assets/badges/secret-1.png', xp: 250, createdAt: Date.now},
-        {badgeName: '', description: 'Become friends with the legendary Type++ developer, Thorulfr', img: '/assets/badges/secret-2.png', xp: 250, createdAt: Date.now},
-        {badgeName: 'McFriends', description: 'Become friends with the legendary Type++ developer, MaxH12-31', img: '/assets/badges/placeholder-secret.png', xp: 250, createdAt: Date.now},
+        {badgeName: 'Big Ben, Norse God Of Tailwind', description: 'Become friends with the legendary Type++ developer, Thorulfr', img: '/assets/badges/secret-2.png', xp: 250, createdAt: Date.now},
+        {badgeName: 'McFriends', description: 'Become friends with the legendary Type++ developer, MaxH12-31', img: '/assets/badges/secret-3.png', xp: 250, createdAt: Date.now},
         {badgeName: "JFBC, We're Friends Now", description: 'Become friends with the legendary Type++ developer, T-Norm', img: '/assets/badges/secret-4.png', xp: 250, createdAt: Date.now},
         {badgeName: 'Thank you for playing', description: 'You collected every badge', img: '/assets/badges/crown.png', xp: 500, createdAt: Date.now},
     ];
