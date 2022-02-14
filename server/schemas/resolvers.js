@@ -2,8 +2,16 @@ const moment = require('moment')
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Scores, Badge } = require('../models');
 const { signToken } = require('../utils/auth');
+const {
+  GraphQLUpload,
+  graphqlUploadExpress,
+} = require('graphql-upload');
+const path = require('path');
+const fs = require('fs');
 
 const resolvers = {
+  Upload: GraphQLUpload,
+
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
@@ -174,6 +182,19 @@ const resolvers = {
 
       throw new AuthenticationError('Could not add badge');
     },
+    uploadFile: async (parent, { file }) => {
+      const { createReadStream, filename, mimetype, encoding } = await file;
+
+      const stream = createReadStream()
+      const pathName = path.join(__dirname, `/public/images/${filename}`)
+      await stream.pipe(fs.createWriteStream(pathName))
+
+      return {
+        url: `http://localhost:3001/images/${filename}`
+      }
+    },
+
+
   }
 }
 

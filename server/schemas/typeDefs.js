@@ -38,6 +38,10 @@ const typeDefs = gql`
     createdAt: String   
   }
 
+  type File {
+    url: String!
+  }
+
   type Query {
     me: User
     meScores: [Scores]
@@ -61,6 +65,7 @@ const typeDefs = gql`
     removeFriend(friendID: ID!): User
     addBadge(badgeName: String!): Badge
     createBadge(badgeName: String!): Badge
+    uploadFile(file: Upload!): File!
   }
 `;
 
