@@ -33,6 +33,10 @@ const userSchema = new Schema(
       type: String,
       required: false
     },
+    profilePic: {
+      type: String,
+      required: false
+    },
     scores: [
       {
         type: Schema.Types.ObjectId,

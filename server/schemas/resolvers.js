@@ -186,7 +186,7 @@ const resolvers = {
       const { createReadStream, filename, mimetype, encoding } = await file;
 
       const stream = createReadStream()
-      const pathName = path.join(__dirname, `../public/images/${filename}`)
+      const pathName = path.join(__dirname, `../../client/public/assets/images/${filename}`)
       await stream.pipe(fs.createWriteStream(pathName))
 
       return {
