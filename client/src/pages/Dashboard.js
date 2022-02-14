@@ -11,6 +11,7 @@ import DashboardUserInfo from '../components/DashboardUserInfo';
 // import Progress from '../components/DashboardProgress'
 import EditModal from '../components/EditModal';
 import Friends from '../components/Friends';
+import Uploader from '../components/Uploader'
 
 // Modal Styles, remove later for custom styles
 const customStyles = {
@@ -66,6 +67,7 @@ const Dashboard = () => {
                 modalBio={modalBio}
                 setModalBio={setModalBio}
             />
+            <Uploader />
 
             <div>
                 <button onClick={openModal}>Edit Profile</button>
