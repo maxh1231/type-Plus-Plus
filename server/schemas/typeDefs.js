@@ -14,6 +14,7 @@ const typeDefs = gql`
     createdAt: String!
     bio: String
     location: String
+    profilePic: String
     scores: [Scores]
     scoreCount: Int
     friends: [User]
@@ -45,7 +46,7 @@ const typeDefs = gql`
   }
 
   type File {
-    url: String!
+    url: String
   }
 
   type Query {

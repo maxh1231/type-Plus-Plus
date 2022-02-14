@@ -182,19 +182,27 @@ const resolvers = {
 
       throw new AuthenticationError('Could not add badge');
     },
-    uploadFile: async (parent, { file }) => {
-      const { createReadStream, filename, mimetype, encoding } = await file;
+    uploadFile: async (parent, { file }, context) => {
 
-      const stream = createReadStream()
-      const pathName = path.join(__dirname, `../../client/public/assets/images/${filename}`)
-      await stream.pipe(fs.createWriteStream(pathName))
+      if (context.user) {
+        const { createReadStream, filename, mimetype, encoding } = await file;
 
-      return {
-        url: `/images/${filename}`
+        const stream = createReadStream()
+        const pathName = path.join(__dirname, `../../client/public/assets/images/${filename}`)
+        await stream.pipe(fs.createWriteStream(pathName))
+
+        // const url = `/assets/images/${filename}`
+
+        // await User.findOneAndUpdate(
+        //   { _id: context.user._id },
+        //   { $set: { profilePic: url } },
+        //   { new: true }
+        // )
+        return {
+          url: `assets/images/${filename}`
+        }
       }
     },
-
-
   }
 }
 
