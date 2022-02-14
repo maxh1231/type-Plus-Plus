@@ -38,6 +38,12 @@ db.once('open', async () => {
         {badgeName: 'Long Time User', description: 'Account is 5 Years Old', img: '/assets/badges/age-badge-3.png', targetVal: 5, category: 'age', xp: 50, createdAt: Date.now},
         {badgeName: 'Old Timer', description: 'Account is 7 Years Old', img: '/assets/badges/age-badge-4.png', targetVal: 7, category: 'age', xp: 100, createdAt: Date.now},
         {badgeName: 'Geezer', description: 'Account is 10 Years Old', img: '/assets/badges/age-badge-5.png', targetVal: 10, category: 'age', xp: 250, createdAt: Date.now},
+        // Secret
+        {badgeName: 'Ooo, A Secret!', description: 'Become friends with the legendary Type++ developer, Thenlie', img: '/assets/badges/secret-1.png', xp: 250, createdAt: Date.now},
+        {badgeName: 'Big Ben, Norse God Of Tailwind', description: 'Become friends with the legendary Type++ developer, Thorulfr', img: '/assets/badges/secret-2.png', xp: 250, createdAt: Date.now},
+        {badgeName: 'McFriends', description: 'Become friends with the legendary Type++ developer, MaxH12-31', img: '/assets/badges/secret-3.png', xp: 250, createdAt: Date.now},
+        {badgeName: "JFBC, We're Friends Now", description: 'Become friends with the legendary Type++ developer, T-Norm', img: '/assets/badges/secret-4.png', xp: 250, createdAt: Date.now},
+        {badgeName: 'Thank you for playing', description: 'You collected every badge', img: '/assets/badges/crown.png', xp: 500, createdAt: Date.now},
     ];
     
     await Badge.collection.insertMany(badgeData);
