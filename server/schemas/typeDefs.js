@@ -9,11 +9,13 @@ const typeDefs = gql`
     bio: String
     location: String
     scores: [Scores]
-    scoreCount: Int
+    gameCount: Int
+    maxScore: Float
     friends: [User]
     friendCount: Int
     badges: [Badge]
     badgeCount: Int
+    maxAccuracy: Float
   }
 
   type Scores {
@@ -35,7 +37,9 @@ const typeDefs = gql`
     description: String!
     img: String
     xp: Int
-    createdAt: String   
+    targetVal: Int
+    createdAt: String
+    category: String   
   }
 
   type Query {
