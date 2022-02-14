@@ -1,32 +1,23 @@
 import React from 'react';
+import { useMutation, gql } from '@apollo/client'
+import { UPLOAD_FILE } from '../../utils/mutations';
 
 const Uploader = ({ image, setImage, url, setUrl }) => {
-    const uploadImage = () => {
-        const data = new FormData()
-        data.append("file", image)
-        data.append("upload_preset", "mhpreset")
-        data.append("cloud_name", "djevcwcbq")
-        fetch("  https://api.cloudinary.com/v1_1/djevcwcbq/image/upload", {
-            method: "post",
-            body: data
-        })
-            .then(resp => resp.json())
-            .then(data => {
-                setUrl(data.url)
-            })
-            .catch(err => console.log(err))
+    const [uploadFile] = useMutation(UPLOAD_FILE, {
+        onCompleted: data => console.log(data)
+    })
+
+    const handleFileChange = e => {
+        e.preventDefault()
+        const file = e.target.files[0];
+        if (!file) return
+        uploadFile({ variables: { file } })
     }
 
     return (
-        <>
-            <div>
-                <input type="file" onChange={(e) => setImage(e.target.files[0])}></input>
-                <button onClick={uploadImage}>Upload</button>
-            </div>
-            {image && <div className="w-[200px] h-[200px]">
-                {<img className="w-full h-full object-cover" src={url} alt="" />}
-            </div>}
-        </>
+        <section>
+            <input type="file" onChange={handleFileChange}></input>
+        </section>
     )
 
 }

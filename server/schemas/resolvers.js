@@ -2,8 +2,16 @@ const moment = require('moment')
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Scores, Badge } = require('../models');
 const { signToken } = require('../utils/auth');
+const {
+  GraphQLUpload,
+  graphqlUploadExpress,
+} = require('graphql-upload');
+const path = require('path');
+const fs = require('fs');
 
 const resolvers = {
+  Upload: GraphQLUpload,
+
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
@@ -23,7 +31,7 @@ const resolvers = {
     //logged in users badges
     meBadges: async (parent, args, context) => {
       if (context.user) {
-        return await User.findOne({ _id: context.user._id}).select('badges badgeCount').populate('badges');
+        return await User.findOne({ _id: context.user._id }).select('badges badgeCount').populate('badges');
       }
       throw new AuthenticationError('Log in required');
     },
@@ -58,7 +66,7 @@ const resolvers = {
     weeklyScores: async () => {
       const startDate = moment().startOf('week');
       const formatStartDate = moment(startDate).valueOf();
-      return Scores.find({ 
+      return Scores.find({
         createdAt: { $gt: formatStartDate }
       })
     }
@@ -165,7 +173,7 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { badges: badge }},
+          { $addToSet: { badges: badge } },
           { new: true }
         ).populate('badge');
 
@@ -174,10 +182,29 @@ const resolvers = {
 
       throw new AuthenticationError('Could not add badge');
     },
+    uploadFile: async (parent, { file }, context) => {
+
+      if (context.user) {
+        const { createReadStream, filename, mimetype, encoding } = await file;
+
+        const stream = createReadStream()
+        const pathName = path.join(__dirname, `../../client/public/assets/images/${filename}`)
+        await stream.pipe(fs.createWriteStream(pathName))
+
+        // const url = `/assets/images/${filename}`
+
+        // await User.findOneAndUpdate(
+        //   { _id: context.user._id },
+        //   { $set: { profilePic: url } },
+        //   { new: true }
+        // )
+        return {
+          url: `assets/images/${filename}`
+        }
+      }
+    },
   }
 }
-
-
 
 
 

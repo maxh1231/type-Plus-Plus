@@ -1,6 +1,12 @@
 const { gql } = require('apollo-server-express');
+const {
+  GraphQLUpload,
+  graphqlUploadExpress,
+} = require('graphql-upload');
 
 const typeDefs = gql`
+  scalar Upload
+
   type User {
     _id: ID
     username: String!
@@ -8,6 +14,7 @@ const typeDefs = gql`
     createdAt: String!
     bio: String
     location: String
+    profilePic: String
     scores: [Scores]
     scoreCount: Int
     friends: [User]
@@ -38,6 +45,10 @@ const typeDefs = gql`
     createdAt: String   
   }
 
+  type File {
+    url: String
+  }
+
   type Query {
     me: User
     meScores: [Scores]
@@ -61,6 +72,7 @@ const typeDefs = gql`
     removeFriend(friendID: ID!): User
     addBadge(badgeName: String!): Badge
     createBadge(badgeName: String!): Badge
+    uploadFile(file: Upload!): File!
   }
 `;
 

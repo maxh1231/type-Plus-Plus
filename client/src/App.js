@@ -4,9 +4,10 @@ import {
     ApolloClient,
     InMemoryCache,
     ApolloProvider,
-    createHttpLink,
+    ApolloLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { createUploadLink } from 'apollo-upload-client'
 
 // Page imports
 import Home from './pages/Home';
@@ -21,8 +22,8 @@ import Login from './components/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-const httpLink = createHttpLink({
-    uri: '/graphql',
+const uploadLink = createUploadLink({
+    uri: '/graphql'
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -36,7 +37,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-    link: authLink.concat(httpLink),
+    link: ApolloLink.from([authLink, uploadLink]),
     cache: new InMemoryCache({
         typePolicies: {
             Query: {
