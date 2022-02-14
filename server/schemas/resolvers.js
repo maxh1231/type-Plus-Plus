@@ -23,7 +23,7 @@ const resolvers = {
     //logged in users badges
     meBadges: async (parent, args, context) => {
       if (context.user) {
-        return await User.findOne({ _id: context.user._id}).select('badges badgeCount').populate('badges');
+        return await User.findOne({ _id: context.user._id }).select('badges badgeCount').populate('badges');
       }
       throw new AuthenticationError('Log in required');
     },
@@ -58,7 +58,7 @@ const resolvers = {
     weeklyScores: async () => {
       const startDate = moment().startOf('week');
       const formatStartDate = moment(startDate).valueOf();
-      return Scores.find({ 
+      return Scores.find({
         createdAt: { $gt: formatStartDate }
       })
     }
@@ -165,7 +165,7 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { badges: badge }},
+          { $addToSet: { badges: badge } },
           { new: true }
         ).populate('badge');
 
@@ -176,8 +176,6 @@ const resolvers = {
     },
   }
 }
-
-
 
 
 
