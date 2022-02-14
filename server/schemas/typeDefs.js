@@ -16,6 +16,7 @@ const typeDefs = gql`
     badges: [Badge]
     badgeCount: Int
     maxAccuracy: Float
+    age: Int
   }
 
   type Scores {

@@ -39,6 +39,7 @@ export const QUERY_ME = gql`
             gameCount
             maxScore
             maxAccuracy
+            age
         }
         meScores {
             wpm

@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const { Scores } = require('.');
+const moment = require('moment');
 
 const userSchema = new Schema(
   {
@@ -101,9 +101,10 @@ userSchema.virtual('maxAccuracy').get(function() {
   return Math.max(...scoreArr)
 });
 
-// userSchema.virtual('age').get(function() {
-
-// });
+userSchema.virtual('age').get(function() {
+  let now = moment();
+  return now.diff(this.createdAt, 'years')
+});
 
 const User = model('User', userSchema);
 

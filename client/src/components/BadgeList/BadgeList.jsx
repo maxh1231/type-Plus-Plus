@@ -22,6 +22,7 @@ const BadgeList = () => {
     const friendCount = myDataArr.friendCount;
     const maxScore = myDataArr.maxScore;
     const maxAccuracy = myDataArr.maxAccuracy;
+    const userAge = myDataArr.age;
 
     console.log(myDataArr)
 
@@ -55,7 +56,7 @@ const BadgeList = () => {
             case 'streak':
                 return 0
             case 'age':
-                return 0
+                return userAge
             default:
                 return 0
         }
