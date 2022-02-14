@@ -8,7 +8,7 @@ const Uploader = ({ image, setImage, url, setUrl }) => {
     })
 
     const handleFileChange = e => {
-        const file = e.target.files[0]
+        const file = e.target.files[0];
         if (!file) return
         uploadFile({ variables: { file } })
     }

@@ -16,11 +16,13 @@ const { finished } = require('stream/promises');
 
 
 const server = new ApolloServer({
+    uploads: false,
     typeDefs,
     resolvers,
     context: authMiddleware,
 });
 
+app.use(graphqlUploadExpress());
 server.applyMiddleware({ app });
 
 app.use(express.urlencoded({ extended: true }));
