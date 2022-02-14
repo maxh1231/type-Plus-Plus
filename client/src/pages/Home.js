@@ -4,6 +4,7 @@ import { ArrowCircleRightIcon } from '@heroicons/react/solid';
 import Game from '../components/Game';
 import Chart from '../components/Chart';
 import GlobalLeaderBoard from '../components/GlobalLeaderBoard'
+import RecentBadge from '../components/RecentBadge/RecentBadge';
 
 const Home = () => {
     const [runGame, setRunGame] = useState(false);
@@ -74,6 +75,7 @@ const Home = () => {
                     <GlobalLeaderBoard />
                 </div>
             </div>
+            <RecentBadge />
         </main>
     );
 };
