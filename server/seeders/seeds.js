@@ -38,6 +38,12 @@ db.once('open', async () => {
         {badgeName: 'Long Time User', description: 'Account is 5 Years Old', img: '/assets/badges/age-badge-3.png', xp: 50, createdAt: Date.now},
         {badgeName: 'Old Timer', description: 'Account is 7 Years Old', img: '/assets/badges/age-badge-4.png', xp: 100, createdAt: Date.now},
         {badgeName: 'Geezer', description: 'Account is 10 Years Old', img: '/assets/badges/age-badge-5.png', xp: 250, createdAt: Date.now},
+        // Secret
+        {badgeName: '', description: 'Become friends with the legendary Type++ developer, Thenlie', img: '/assets/badges/placeholder-secret.png', xp: 250, createdAt: Date.now},
+        {badgeName: '', description: 'Become friends with the legendary Type++ developer, Thorulfr', img: '/assets/badges/secret-2.png', xp: 250, createdAt: Date.now},
+        {badgeName: 'McFriends', description: 'Become friends with the legendary Type++ developer, MaxH12-31', img: '/assets/badges/placeholder-secret.png', xp: 250, createdAt: Date.now},
+        {badgeName: "JFBC, We're Friends Now", description: 'Become friends with the legendary Type++ developer, T-Norm', img: '/assets/badges/secret-4.png', xp: 250, createdAt: Date.now},
+        {badgeName: 'Thank you for playing', description: 'You collected every badge', img: '/assets/badges/crown.png', xp: 500, createdAt: Date.now},
     ];
     
     await Badge.collection.insertMany(badgeData);
