@@ -16,7 +16,6 @@ export const QUERY_USER = gql`
           createdAt
           username
         }
-        
     }
 `;
 
@@ -115,7 +114,7 @@ export const QUERY_MYBADGE = gql`
 export const QUERY_SCORE_COUNT = gql`
     query Users {
         users {
-            scoreCount
+            gameCount
             username
         }
     }

@@ -111,7 +111,10 @@ const BadgeList = () => {
                                 <img src={`.${badge.img}`} key={uuid()} className='m-auto p-2 inline border-r'></img>
                                 <p key={uuid()} className='p-2 text-center font-bold inline'>{badge.badgeName}</p>
                                 <p key={uuid()} className='p-2 text-center italic inline'>{badge.description}</p>
-                                <p>Progress: {renderProgress(badge.category)} /{badge.targetVal}</p>
+                                <p>Progress: {renderProgress(badge.category)}/{badge.targetVal}</p>
+                                <div className="w-full bg-gray-200 rounded-full">
+                                    <div className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: `${renderProgress(badge.category)/badge.targetVal * 100}%`}}>{Math.floor(renderProgress(badge.category)/badge.targetVal * 100)}%</div>
+                                </div>
                             </div>
                         ))}
                     </div>
