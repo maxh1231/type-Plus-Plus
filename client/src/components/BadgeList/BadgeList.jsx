@@ -74,7 +74,7 @@ const BadgeList = () => {
                         <p className='text-xl font-bold text-center w-full'>Earned</p>
                         {myBadgeArr.map(badge => (
                             <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
-                                <img src={`.${badge.img}`} key={uuid()} className='m-auto'></img>
+                                <img src={`.${badge.img}`} key={uuid()} className='m-auto' alt='badge'></img>
                                 <p key={uuid()} className='p-1 text-center font-bold'>{badge.badgeName}</p>
                                 <p key={uuid()} className='p-1 text-center italic'>{badge.description}</p>
                             </div>
@@ -84,7 +84,7 @@ const BadgeList = () => {
                         <p className='text-xl font-bold text-center w-full'>Not Yet Earned</p>
                         {tmpArr.map(badge => (
                             <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
-                                <img src={`.${badge.img}`} key={uuid()} className='m-auto'></img>
+                                <img src={`.${badge.img}`} key={uuid()} className='m-auto' alt='badge'></img>
                                 <p key={uuid()} className='p-1 text-center font-bold'>{badge.badgeName}</p>
                                 <p key={uuid()} className='p-1 text-center italic'>{badge.description}</p>
                                 <p>Progress: </p>
@@ -98,7 +98,7 @@ const BadgeList = () => {
                         <p className='text-xl font-bold m-2'>Earned</p>
                         {myBadgeArr.map(badge => (
                             <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
-                                <img src={`.${badge.img}`} key={uuid()} className='m-auto p-2 inline border-r'></img>
+                                <img src={`.${badge.img}`} key={uuid()} className='m-auto p-2 inline border-r' alt='badge'></img>
                                 <p key={uuid()} className='p-2 text-center font-bold inline'>{badge.badgeName}</p>
                                 <p key={uuid()} className='p-2 text-center italic inline'>{badge.description}</p>
                             </div>
@@ -108,7 +108,7 @@ const BadgeList = () => {
                         <p className='text-xl font-bold m-2'>Not Yet Earned</p>
                         {tmpArr.map(badge => (
                             <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
-                                <img src={`.${badge.img}`} key={uuid()} className='m-auto p-2 inline border-r'></img>
+                                <img src={`.${badge.img}`} key={uuid()} className='m-auto p-2 inline border-r' alt='badge'></img>
                                 <p key={uuid()} className='p-2 text-center font-bold inline'>{badge.badgeName}</p>
                                 <p key={uuid()} className='p-2 text-center italic inline'>{badge.description}</p>
                                 <p>Progress: {renderProgress(badge.category)}/{badge.targetVal}</p>
