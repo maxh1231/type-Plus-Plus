@@ -44,6 +44,7 @@ const typeDefs = gql`
     badgeName: String!
     description: String!
     img: String
+    placeholder: String
     xp: Int
     targetVal: Int
     createdAt: String
