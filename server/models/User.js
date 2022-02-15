@@ -102,7 +102,7 @@ userSchema.virtual('maxScore').get(function() {
 });
 
 userSchema.virtual('maxAccuracy').get(function() {
-  if (this.accuracy.length <= 0) {
+  if (this.scores.length <= 0) {
     return 0;
   }
   let scoreArr = this.scores.map(score => {
