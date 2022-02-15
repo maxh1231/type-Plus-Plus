@@ -1,12 +1,17 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import { EyeIcon } from '@heroicons/react/solid';
 
 const Login = () => {
     const [login, { error }] = useMutation(LOGIN_USER);
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
 
     const {
         register,
@@ -19,7 +24,6 @@ const Login = () => {
             const { data } = await login({
                 variables: { ...newData },
             });
-            console.log(data);
             Auth.login(data.login.token);
         } catch (e) {
             document.getElementById('loginInvalid').classList.remove('hidden');
@@ -47,7 +51,6 @@ const Login = () => {
                             errors={errors}
                             name="email"
                             render={({ messages }) => {
-                                console.log('messages', messages);
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
@@ -64,19 +67,22 @@ const Login = () => {
                             className="block border border-grey-light w-full p-3 rounded mb-4"
                         />
 
-                        <input
-                            {...register('password', {
-                                required: 'Password is required',
-                            })}
-                            type="password"
-                            placeholder="Password"
-                            className="block border border-grey-light w-full p-3 rounded mb-4"
-                        />
+                        <div className='flex'>
+                            <input
+                                {...register('password', {
+                                    required: 'Password is required',
+                                })}
+                                type={passwordShown ? "text" : "password"}
+                                placeholder="Password"
+                                className="block border border-grey-light w-full p-3 rounded mb-4"
+                            />
+
+                            <i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500" /></i>
+                        </div>
                         <ErrorMessage
                             errors={errors}
                             name="password"
                             render={({ messages }) => {
-                                console.log('messages', messages);
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
