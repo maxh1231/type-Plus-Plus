@@ -25,7 +25,10 @@ const Signup = () => {
             console.log(data);
             Auth.login(data.addUser.token);
         } catch (e) {
-            console.error(e);
+            document.getElementById('signupInvalid').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('signupInvalid').classList.add('hidden');
+            }, 3000)
         }
     };
 
@@ -182,6 +185,8 @@ const Signup = () => {
                                     : null;
                             }}
                         />
+
+                        <div className="p-2 font-bold text-red-500 text-center hidden" id="signupInvalid">Username or email already in use</div>
 
                         <button
                             type="submit"
