@@ -34,6 +34,10 @@ export const QUERY_ME = gql`
                 _id
                 username
             }
+            scores {
+                wpm
+                accuracy
+            }
             friendCount
             gameCount
             maxScore

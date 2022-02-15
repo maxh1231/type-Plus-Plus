@@ -92,24 +92,23 @@ userSchema.virtual('badgeCount').get(function() {
 });
 
 userSchema.virtual('maxScore').get(function() {
+  if (this.scores.length <= 0) {
+    return 0;
+  }
   let scoreArr = this.scores.map(score => {
     return score.wpm
   })
-  if (!scoreArr) {
-    return 0
-  } else
   return Math.max(...scoreArr)
 });
 
 userSchema.virtual('maxAccuracy').get(function() {
+  if (this.accuracy.length <= 0) {
+    return 0;
+  }
   let scoreArr = this.scores.map(score => {
     return score.accuracy
   })
-  if (!scoreArr) {
-    return 0;
-  } else {
-    return Math.max(...scoreArr)
-  }
+  return Math.max(...scoreArr)
 });
 
 userSchema.virtual('age').get(function() {
