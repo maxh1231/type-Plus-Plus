@@ -16,7 +16,7 @@ const RecentBadge = () => {
                     <p className='text-center'>{activeBadge.description}</p>
                 </div>
             ) : (
-                <p>No badges yet!</p>
+                <p className="text-lg text-center">No badges yet!</p>
             )}
         </div>
     )
