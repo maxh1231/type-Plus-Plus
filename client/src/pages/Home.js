@@ -25,7 +25,7 @@ const Home = () => {
 
     // Get random text
     const getText = async () => {
-        const response = await fetch('http://localhost:3001/api/txtgen');
+        const response = await fetch('/api/txtgen');
         let data = await response.text();
         let tmpArr = data.split('');
         setSampleArr(tmpArr);

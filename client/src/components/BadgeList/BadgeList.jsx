@@ -9,25 +9,23 @@ const BadgeList = () => {
     const [viewGrid, setViewGrid] = useState(true);
     const { loading, data } = useQuery(QUERY_BADGES);
     const myBadgeData = useQuery(QUERY_MYBADGE);
-    
     const myData = useQuery(QUERY_ME);
     
+    // Get all badges and user specific badges
     const badgeArr = data?.badges || [];
     const myBadgeArr = myBadgeData.data?.meBadges.badges || [];
     
+    // Get specific user data
     const myDataArr = myData.data?.me || [];
-    const myDataArr2 = myData.data?.meBadges || [];
-    
     const gameCount = myDataArr.gameCount;
     const friendCount = myDataArr.friendCount;
     const maxScore = myDataArr.maxScore;
     const maxAccuracy = myDataArr.maxAccuracy;
     const userAge = myDataArr.age;
 
-    console.log(myDataArr)
-
+    
+    // Get badges that have not been earned
     let tmpArr = [...badgeArr]
-    // get badges that have not been earned
     for (let i = 0; i < badgeArr.length - 1; i++) {
         for (let j = 0; j < myBadgeArr.length; j++) {
             if (badgeArr[i]._id === myBadgeArr[j]._id) {
@@ -35,7 +33,8 @@ const BadgeList = () => {
             }
         }
     }
-    // toggle display view
+    console.log({myData: myDataArr, badgeArr: badgeArr, tmpArr: tmpArr, myBadge: myBadgeArr})
+    // Toggle display view
     const setGrid = () => {
         setViewGrid(true);
     };

@@ -17,7 +17,7 @@ const Game = ({ sampleArr, unmount }) => {
     const [addScore, { error }] = useMutation(ADD_SCORE);
     const [modalIsOpen, setIsOpen] = useState(false);
 
-    // to run on component load
+    // To run on component load
     useEffect(() => {
         const startGame = async () => {
             setTimeout(() => { document.getElementById('readyIcon').textContent = 2 }, 1000);
@@ -35,13 +35,13 @@ const Game = ({ sampleArr, unmount }) => {
             }, 3000);
         };
         startGame();
-        //when component unmounts
+        // To run when component unmounts
         return () => {
             setIsMounted(false);
         }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-    // update input value and wpm every time a character is typed
+    // Update input value and wpm every time a character is typed
     useEffect(() => {
         if (isMounted) {
             updateError();
@@ -53,7 +53,7 @@ const Game = ({ sampleArr, unmount }) => {
 
     const handleChange = (evt) => {
         setInputText(evt.target.value)
-        // check if game is over
+        // Check if game is over
         if (inputText.length + 1 === sampleArr.length) {
             endGame();
         }
@@ -138,7 +138,7 @@ const Game = ({ sampleArr, unmount }) => {
 
     function openModal() {
         setIsOpen(true);
-      }
+    }
     
     function afterOpenModal() {
         console.log('modal is now open')

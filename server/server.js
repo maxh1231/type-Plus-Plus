@@ -36,9 +36,15 @@ if (process.env.NODE_ENV === 'production') {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // set url to allow origin (client URL)
-var corsOptions = {
-    origin: 'http://localhost:3000',
-};
+if (process.env.NODE_ENV === 'production') {
+    var corsOptions = {
+        origin: 'https://typeplusplus.herokuapp.com/',
+    };
+} else {
+    var corsOptions = {
+        origin: 'http://localhost:3000',
+    };
+}
 app.use(cors(corsOptions));
 app.use(require('./controllers'));
 

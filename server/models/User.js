@@ -92,6 +92,9 @@ userSchema.virtual('badgeCount').get(function() {
 });
 
 userSchema.virtual('maxScore').get(function() {
+  if (this.scores.length <= 0) {
+    return 0;
+  }
   let scoreArr = this.scores.map(score => {
     return score.wpm
   })
@@ -99,6 +102,9 @@ userSchema.virtual('maxScore').get(function() {
 });
 
 userSchema.virtual('maxAccuracy').get(function() {
+  if (this.scores.length <= 0) {
+    return 0;
+  }
   let scoreArr = this.scores.map(score => {
     return score.accuracy
   })

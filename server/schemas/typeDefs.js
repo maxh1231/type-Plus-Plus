@@ -28,7 +28,7 @@ const typeDefs = gql`
 
   type Scores {
     _id: ID
-    wpm: Float!
+    wpm: Float
     accuracy: Float
     username: String
     createdAt: String

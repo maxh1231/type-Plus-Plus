@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 
 const ActivityLeaderBoard = () => {
     const { loading, data } = useQuery(QUERY_SCORE_COUNT);
-
-    const leaderBoard = data?.users
-    console.log(leaderBoard);
+    const leaderBoard = data?.users;
     return (
         <section className='w-3/4 mx-auto my-4'>
             <h1 className='block text-center text-2xl underline'>Activity Leaderboard</h1>

@@ -7,9 +7,7 @@ import { Link } from 'react-router-dom';
 
 const WeeklyLeaderBoard = () => {
     const { loading, data } = useQuery(QUERY_WEEKLY_SCORES);
-    
-    const leaderBoard = data?.weeklyScores.map(score => { return {wpm: score.wpm, accuracy: score.accuracy, username: score.username, date: formatTime(score.createdAt)} })
-
+    const leaderBoard = data?.weeklyScores.map(score => { return {wpm: score.wpm, accuracy: score.accuracy, username: score.username, date: formatTime(score.createdAt)} });
     return (
         <section  className='w-3/4 mx-auto my-4'>
             <h1 className='block text-center text-2xl underline'>Weekly Leaderboard</h1>

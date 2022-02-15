@@ -5,9 +5,7 @@ import { QUERY_MYBADGE } from '../../utils/queries';
 const RecentBadge = () => {
     const { loading, data } = useQuery(QUERY_MYBADGE);
     const badgeArr = data?.meBadges.badges || [];
-    // const currBadge = Math.max(...badgeArr.map(badge => badge.createdAt), 0)
     const activeBadge = badgeArr[badgeArr.length - 1];
-    console.log(badgeArr, activeBadge);
     return (
         <div className='container'>
             {badgeArr.length > 0 ? (
@@ -18,7 +16,7 @@ const RecentBadge = () => {
                     <p className='text-center'>{activeBadge.description}</p>
                 </div>
             ) : (
-                <p>No badges yes!</p>
+                <p>No badges yet!</p>
             )}
         </div>
     )
