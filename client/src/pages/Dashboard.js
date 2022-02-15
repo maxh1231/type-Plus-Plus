@@ -58,7 +58,7 @@ const Dashboard = () => {
 
     if (!Auth.loggedIn()) {
         return <h4 className="flex-grow">Must be logged in</h4>;
-    } 
+    }
 
     return (
         <main className="flex-grow">
@@ -67,7 +67,7 @@ const Dashboard = () => {
                 modalBio={modalBio}
                 setModalBio={setModalBio}
             />
-            <Uploader />
+
 
             <div>
                 <button onClick={openModal}>Edit Profile</button>

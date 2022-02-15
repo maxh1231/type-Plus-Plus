@@ -52,7 +52,8 @@ const EditModal = ({ data, setModalBio, image, setImage, url, setUrl }) => {
     return (
         <section>
             <div>
-                <img src={defaultPhoto} alt=""></img>
+                {data.me.profilePic && <img src={data.me.profilePic} alt='' width='100' height='100'></img>}
+                {!data.me.profilePic && <img src={defaultPhoto} alt='' width='100' height='100'></img>}
             </div>
 
             <div>
