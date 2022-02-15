@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
@@ -12,6 +12,8 @@ import DashboardUserInfo from '../components/DashboardUserInfo';
 import EditModal from '../components/EditModal';
 import Friends from '../components/Friends';
 import Uploader from '../components/Uploader'
+
+import defaultPhoto from '../assets/images/no-profile-picture.svg'
 
 // Modal Styles, remove later for custom styles
 const customStyles = {
@@ -29,6 +31,7 @@ Modal.setAppElement('#root');
 
 const Dashboard = () => {
     let subtitle;
+    const [image, setImage] = useState(defaultPhoto)
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalBio, setModalBio] = useState('');
     function openModal() {
@@ -40,13 +43,22 @@ const Dashboard = () => {
     function closeModal() {
         setIsOpen(false);
     }
-    const [image, setImage] = useState('');
-    const [url, setUrl] = useState('');
     const { username: userParam } = useParams();
-    const { loading, data } = useQuery(QUERY_ME);
-    console.log(userParam)
+    const { loading, data } = useQuery(QUERY_ME)
+
+    // console.log(userParam)
     console.log(data);
+
     const user = data?.me || data?.user || {};
+    console.log({ user: user, img: image });
+
+    useEffect(() => {
+        if (user.profilePic) {
+            setImage(user.profilePic);
+        }
+    }, [user])
+
+    console.log({ img: image, user: user })
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
@@ -58,7 +70,7 @@ const Dashboard = () => {
 
     if (!Auth.loggedIn()) {
         return <h4 className="flex-grow">Must be logged in</h4>;
-    } 
+    }
 
     return (
         <main className="flex-grow">
@@ -66,8 +78,10 @@ const Dashboard = () => {
                 data={data}
                 modalBio={modalBio}
                 setModalBio={setModalBio}
+                image={image}
+                setImage={setImage}
             />
-            <Uploader />
+
 
             <div>
                 <button onClick={openModal}>Edit Profile</button>
@@ -88,8 +102,6 @@ const Dashboard = () => {
                         setModalBio={setModalBio}
                         image={image}
                         setImage={setImage}
-                        url={url}
-                        setUrl={setUrl}
                     />
                     <button onClick={closeModal}>Done</button>
                 </Modal>
