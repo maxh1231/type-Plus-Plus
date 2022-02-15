@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { useMutation } from '@apollo/client';
@@ -12,7 +12,10 @@ const Signup = () => {
         register,
         formState: { errors },
         handleSubmit,
+        watch
     } = useForm({ criteriaMode: 'all' });
+    const password = useRef(null);
+    password.current = watch("password", "");
 
     const onSubmit = async (newData) => {
         try {
@@ -123,6 +126,7 @@ const Signup = () => {
                                         'Password cannot exceed 20 characters',
                                 },
                             })}
+                            id ="signupPassword"
                             type="password"
                             placeholder="Password"
                             className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -130,6 +134,38 @@ const Signup = () => {
                         <ErrorMessage
                             errors={errors}
                             name="password"
+                            render={({ messages }) => {
+                                console.log('messages', messages);
+                                return messages
+                                    ? Object.entries(messages).map(
+                                          ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-red-500 text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
+                                    : null;
+                            }}
+                        />
+
+                        <input
+                            {...register('confirmPassword', {
+                                required: 'Please confirm your password',
+                                validate: {
+                                    value: value => value === password.current || "Passwords must match"
+                                }
+                            })}
+                            id="confirmPassword"
+                            type="password"
+                            placeholder="Confirm password"
+                            className="block border border-grey-light w-full p-3 rounded mb-4"
+                        />
+                        <ErrorMessage
+                            errors={errors}
+                            name="confirmPassword"
                             render={({ messages }) => {
                                 console.log('messages', messages);
                                 return messages

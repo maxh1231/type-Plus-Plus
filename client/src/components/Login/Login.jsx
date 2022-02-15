@@ -22,7 +22,10 @@ const Login = () => {
             console.log(data);
             Auth.login(data.login.token);
         } catch (e) {
-            console.error(e);
+            document.getElementById('loginInvalid').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('loginInvalid').classList.add('hidden');
+            }, 3000)
         }
     };
 
@@ -88,6 +91,8 @@ const Login = () => {
                                     : null;
                             }}
                         />
+
+                        <div className="p-2 font-bold text-red-500 text-center hidden" id="loginInvalid">Invalid credentials</div>
 
                         <button
                             type="submit"
