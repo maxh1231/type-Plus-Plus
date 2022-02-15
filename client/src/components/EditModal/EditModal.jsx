@@ -49,6 +49,7 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
         setCharacterCount('');
     };
 
+
     return (
         <section>
             <div>

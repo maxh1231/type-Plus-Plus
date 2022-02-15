@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
@@ -44,10 +44,49 @@ const Dashboard = () => {
         setIsOpen(false);
     }
     const { username: userParam } = useParams();
-    const { loading, data } = useQuery(QUERY_ME);
-    console.log(userParam)
+    const { loading, data } = useQuery(QUERY_ME)
+
+    // console.log(userParam)
     console.log(data);
     const user = data?.me || data?.user || {};
+
+    // useEffect(() => {
+    //     if (!loading) {
+    //         const test = async () => {
+    //             let pfp = await data?.me.profilePic
+    //             console.log(pfp)
+    //             setImage(pfp)
+    //             console.log(pfp)
+    //         }
+    //         test()
+    //     }
+    // }, [])
+
+    // useEffect(() => {
+    //     const onCompleted = async (data) => {
+    //         if (!data) {
+    //             setImage(defaultPhoto);
+    //         } else {
+    //             setImage(data.me.profilePic)
+    //         }
+    //     }
+    //     onCompleted(data);
+    // }, [data])
+
+    useMemo(() => {
+        if (data) {
+            if (data.me.profilePic === null) {
+                console.log(data)
+                setImage(defaultPhoto)
+            } else {
+                setImage(data.me.profilePic);
+            }
+        }
+
+    }, [data])
+
+
+
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
@@ -60,6 +99,8 @@ const Dashboard = () => {
     if (!Auth.loggedIn()) {
         return <h4 className="flex-grow">Must be logged in</h4>;
     }
+
+
 
     return (
         <main className="flex-grow">

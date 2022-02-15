@@ -9,7 +9,6 @@ const Uploader = ({ image, setImage }) => {
     })
 
     const handleFileChange = e => {
-        e.preventDefault()
         const file = e.target.files[0];
         if (!file) return
         uploadFile({ variables: { file } })

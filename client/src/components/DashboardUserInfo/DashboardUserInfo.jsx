@@ -16,8 +16,6 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
         averageWPM = average(scoresArr);
     }
 
-
-
     return (
         <section>
             <div>
