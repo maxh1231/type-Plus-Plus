@@ -24,8 +24,7 @@ const BadgeList = () => {
     const maxAccuracy = myDataArr.maxAccuracy;
     const userAge = myDataArr.age;
 
-    console.log(myDataArr)
-
+    
     let tmpArr = [...badgeArr]
     // get badges that have not been earned
     for (let i = 0; i < badgeArr.length - 1; i++) {
@@ -35,6 +34,7 @@ const BadgeList = () => {
             }
         }
     }
+    console.log(myDataArr, tmpArr, myBadgeArr)
     // toggle display view
     const setGrid = () => {
         setViewGrid(true);
