@@ -7,9 +7,7 @@ import { Link } from 'react-router-dom';
 
 const GlobalLeaderBoard = () => {
     const { loading, data } = useQuery(QUERY_SCORES);
-    
-    const leaderBoard = data?.scores.map(score => { return {wpm: score.wpm, accuracy: score.accuracy, username: score.username, date: formatTime(score.createdAt)} })
-
+    const leaderBoard = data?.scores.map(score => { return {wpm: score.wpm, accuracy: score.accuracy, username: score.username, date: formatTime(score.createdAt)} });
     return (
         <section className='w-3/4 mx-auto my-4'>
             <h1 className='block text-center text-2xl underline'>Global Leaderboard</h1>
