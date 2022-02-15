@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import defaultPhoto from '../../assets/images/no-profile-picture.svg';
 
-const DashboardUserInfo = ({ data, modalBio }) => {
+const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
+
 
     let averageWPM;
 
@@ -15,11 +16,13 @@ const DashboardUserInfo = ({ data, modalBio }) => {
         averageWPM = average(scoresArr);
     }
 
+
+
     return (
         <section>
             <div>
-                {data.me.profilePic && <img src={data.me.profilePic} alt='' width='100' height='100'></img>}
-                {!data.me.profilePic && <img src={defaultPhoto} alt='' width='100' height='100'></img>}
+                {data.me.profilePic && <img src={image} alt='' width='100' height='100'></img>}
+                {!data.me.profilePic && <img src={image} alt='' width='100' height='100'></img>}
             </div>
             <div>
                 <h3>Hello {data.me.username}</h3>

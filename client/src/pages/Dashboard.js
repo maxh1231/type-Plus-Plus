@@ -13,6 +13,8 @@ import EditModal from '../components/EditModal';
 import Friends from '../components/Friends';
 import Uploader from '../components/Uploader'
 
+import defaultPhoto from '../assets/images/no-profile-picture.svg'
+
 // Modal Styles, remove later for custom styles
 const customStyles = {
     content: {
@@ -29,6 +31,7 @@ Modal.setAppElement('#root');
 
 const Dashboard = () => {
     let subtitle;
+    const [image, setImage] = useState(defaultPhoto)
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalBio, setModalBio] = useState('');
     function openModal() {
@@ -40,8 +43,6 @@ const Dashboard = () => {
     function closeModal() {
         setIsOpen(false);
     }
-    const [image, setImage] = useState('');
-    const [url, setUrl] = useState('');
     const { username: userParam } = useParams();
     const { loading, data } = useQuery(QUERY_ME);
     console.log(userParam)
@@ -66,6 +67,8 @@ const Dashboard = () => {
                 data={data}
                 modalBio={modalBio}
                 setModalBio={setModalBio}
+                image={image}
+                setImage={setImage}
             />
 
 
@@ -88,8 +91,6 @@ const Dashboard = () => {
                         setModalBio={setModalBio}
                         image={image}
                         setImage={setImage}
-                        url={url}
-                        setUrl={setUrl}
                     />
                     <button onClick={closeModal}>Done</button>
                 </Modal>
