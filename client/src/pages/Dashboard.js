@@ -52,7 +52,7 @@ const Dashboard = () => {
 
     // useEffect(() => {
     //     if (!loading) {
-    //         const test = async () => {
+    //         const test = async (data) => {
     //             let pfp = await data?.me.profilePic
     //             console.log(pfp)
     //             setImage(pfp)
@@ -60,30 +60,34 @@ const Dashboard = () => {
     //         }
     //         test()
     //     }
-    // }, [])
+    // }, [data])
 
+
+    // everything works except FIRST "return back to dashboard" renders defaultPhoto
     // useEffect(() => {
     //     const onCompleted = async (data) => {
-    //         if (!data) {
-    //             setImage(defaultPhoto);
-    //         } else {
-    //             setImage(data.me.profilePic)
+    //         if (data) {
+    //             if (data.me.profilePic !== null) {
+    //                 setImage(data.me.profilePic)
+    //             }
     //         }
     //     }
     //     onCompleted(data);
     // }, [data])
 
-    useMemo(() => {
-        if (data) {
-            if (data.me.profilePic === null) {
-                console.log(data)
-                setImage(defaultPhoto)
-            } else {
-                setImage(data.me.profilePic);
-            }
-        }
 
-    }, [data])
+    // FIRST image upload doesn't work, following uploads do
+    // useMemo(() => {
+    //     if (data) {
+    //         if (data.me.profilePic === null) {
+    //             console.log(data)
+    //             setImage(defaultPhoto)
+    //         } else {
+    //             setImage(data.me.profilePic);
+    //         }
+    //     }
+
+    // }, [data])
 
 
 
