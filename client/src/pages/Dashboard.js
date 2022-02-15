@@ -56,9 +56,9 @@ const Dashboard = () => {
         return <div>Loading...</div>;
     }
 
-    if (!user?.username) {
+    if (!Auth.loggedIn()) {
         return <h4 className="flex-grow">Must be logged in</h4>;
-    }
+    } else {
 
     return (
         <main className="flex-grow">
@@ -104,5 +104,5 @@ const Dashboard = () => {
         </main>
     );
 };
-
+}
 export default Dashboard;
