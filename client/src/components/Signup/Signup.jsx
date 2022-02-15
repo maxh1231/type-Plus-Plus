@@ -58,14 +58,14 @@ const Signup = () => {
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
-                                              <p
-                                                  key={type}
-                                                  className="p-2 font-bold text-red-500 text-center"
-                                              >
-                                                  {message}
-                                              </p>
-                                          )
-                                      )
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-red-500 text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
                                     : null;
                             }}
                             className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -96,14 +96,14 @@ const Signup = () => {
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
-                                              <p
-                                                  key={type}
-                                                  className="p-2 font-bold text-red-500 text-center"
-                                              >
-                                                  {message}
-                                              </p>
-                                          )
-                                      )
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-red-500 text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
                                     : null;
                             }}
                             className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -135,14 +135,14 @@ const Signup = () => {
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
-                                              <p
-                                                  key={type}
-                                                  className="p-2 font-bold text-red-500 text-center"
-                                              >
-                                                  {message}
-                                              </p>
-                                          )
-                                      )
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-red-500 text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
                                     : null;
                             }}
                         />
