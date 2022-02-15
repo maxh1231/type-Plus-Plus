@@ -80,6 +80,7 @@ const Dashboard = () => {
     return (
         <section className="mt-2 ml-2 py-2 px-2 h-1/2 flex border-1 border-black justify-around">
             <div className="bg-gray-100">
+                <PencilAltIcon onClick={openModal} className='w-5 h-5 m-2 ml-auto text-right' />
                 <DashboardUserInfo
                     data={data}
                     modalBio={modalBio}
@@ -87,7 +88,6 @@ const Dashboard = () => {
                     image={image}
                     setImage={setImage}
                 />
-                <PencilAltIcon onClick={openModal}/>
             </div>
 
 
