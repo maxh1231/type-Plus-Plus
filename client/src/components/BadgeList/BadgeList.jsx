@@ -3,7 +3,8 @@ import { v4 as uuid } from 'uuid';
 import { useQuery } from '@apollo/client';
 import { QUERY_BADGES, QUERY_MYBADGE, QUERY_ME } from '../../utils/queries';
 import { ViewGridIcon, ViewListIcon } from '@heroicons/react/outline';
-
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const BadgeList = () => {
     const [viewGrid, setViewGrid] = useState(true);
@@ -86,7 +87,9 @@ const BadgeList = () => {
                                 <img src={`.${badge.img}`} key={uuid()} className='m-auto' alt='badge'></img>
                                 <p key={uuid()} className='p-1 text-center font-bold'>{badge.badgeName}</p>
                                 <p key={uuid()} className='p-1 text-center italic'>{badge.description}</p>
-                                <p>Progress: </p>
+                                <div className='w-20 h-20 m-auto'>
+                                    <CircularProgressbar value={Math.round(renderProgress(badge.category)/badge.targetVal * 100)} text={`${Math.round(renderProgress(badge.category)/badge.targetVal * 100)}%`} />
+                                </div>
                             </div>
                         ))}
                     </div>
