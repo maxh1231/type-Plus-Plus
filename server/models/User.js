@@ -95,6 +95,9 @@ userSchema.virtual('maxScore').get(function() {
   let scoreArr = this.scores.map(score => {
     return score.wpm
   })
+  if (!scoreArr) {
+    return 0
+  } else
   return Math.max(...scoreArr)
 });
 
@@ -102,7 +105,11 @@ userSchema.virtual('maxAccuracy').get(function() {
   let scoreArr = this.scores.map(score => {
     return score.accuracy
   })
-  return Math.max(...scoreArr)
+  if (!scoreArr) {
+    return 0;
+  } else {
+    return Math.max(...scoreArr)
+  }
 });
 
 userSchema.virtual('age').get(function() {
