@@ -17,27 +17,27 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
     }
 
     return (
-        <section>
-            <div>
-                {data.me.profilePic && <img src={image} alt='' width='100' height='100'></img>}
-                {!data.me.profilePic && <img src={image} alt='' width='100' height='100'></img>}
+        <section className="bg-gray-100 w-[300px]">
+            <div className="flex justify-center">
+                {data.me.profilePic && <img className="rounded-full w-[200px] h-[200px]" src={image} alt='' ></img>}
+                {!data.me.profilePic && <img src={image} alt='' width='200' height='200'></img>}
             </div>
-            <div>
-                <h3>Hello {data.me.username}</h3>
+            <div className="mt-2">
+                <h3 className="text-2xl text-center">Hello {data.me.username}</h3>
             </div>
-            <div>
-                {!modalBio && <p>{data.me.bio}</p>}
-                {modalBio && <p>{modalBio}</p>}
+            <div className="mt-2">
+                {!modalBio && <p className="text-lg text-center">{data.me.bio}</p>}
+                {modalBio && <p className="text-lg text-center">{modalBio}</p>}
             </div>
-            <div>
-                {data.meScores[0] && <p>Highest WPM: {data.meScores[0].wpm}</p>}
+            <div className="mt-2">
+                {data.meScores[0] && <p className="text-lg text-center mt-2">Highest WPM: {data.meScores[0].wpm}</p>}
                 {!data.meScores[0] && <Link to='/'> Take a few tests to show your scores!</Link>}
-                {data.meScores[0] && <p>Average WPM: {averageWPM} </p>}
-                {data.meScores[0] && <p>Games Played: {data.meScores.length} </p>}
+                {data.meScores[0] && <p className="text-lg text-center mt-2">Average WPM: {averageWPM} </p>}
+                {data.meScores[0] && <p className="text-lg text-center mt-2">Games Played: {data.meScores.length} </p>}
             </div>
-            <div>
-                {data.me.location && <p>Location: {data.me.location} </p>}
-                {!data.me.location && <p>No location set</p>}
+            <div className="mt-2">
+                {data.me.location && <p className="text-lg text-center">Location: {data.me.location} </p>}
+                {!data.me.location && <p className="text-lg text-center">No location set</p>}
             </div>
         </section>
     )
