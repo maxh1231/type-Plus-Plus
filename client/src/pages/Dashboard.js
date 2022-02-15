@@ -114,10 +114,10 @@ const Dashboard = () => {
             <div className="bg-gray-100 w-[500px]">
                 <div>
                     <RecentBadge />
-                    <Link to='/badges'><h2>Badge List</h2></Link>
+                    <Link to='/badges'><h2 class="text-lg text-center">View All Badges</h2></Link>
                 </div>
                 <div>
-                    <h2>Friends</h2>
+                    <h2 className="text-lg text-center">Friends</h2>
                     <Friends friends={data.me.friends} />
                 </div>
                 <div className="">
