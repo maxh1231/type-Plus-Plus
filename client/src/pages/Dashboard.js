@@ -48,49 +48,17 @@ const Dashboard = () => {
 
     // console.log(userParam)
     console.log(data);
+
     const user = data?.me || data?.user || {};
+    console.log({ user: user, img: image });
 
-    // useEffect(() => {
-    //     if (!loading) {
-    //         const test = async (data) => {
-    //             let pfp = await data?.me.profilePic
-    //             console.log(pfp)
-    //             setImage(pfp)
-    //             console.log(pfp)
-    //         }
-    //         test()
-    //     }
-    // }, [data])
+    useEffect(() => {
+        if (user.profilePic) {
+            setImage(user.profilePic);
+        }
+    }, [user])
 
-
-    // everything works except FIRST "return back to dashboard" renders defaultPhoto
-    // useEffect(() => {
-    //     const onCompleted = async (data) => {
-    //         if (data) {
-    //             if (data.me.profilePic !== null) {
-    //                 setImage(data.me.profilePic)
-    //             }
-    //         }
-    //     }
-    //     onCompleted(data);
-    // }, [data])
-
-
-    // FIRST image upload doesn't work, following uploads do
-    // useMemo(() => {
-    //     if (data) {
-    //         if (data.me.profilePic === null) {
-    //             console.log(data)
-    //             setImage(defaultPhoto)
-    //         } else {
-    //             setImage(data.me.profilePic);
-    //         }
-    //     }
-
-    // }, [data])
-
-
-
+    console.log({ img: image, user: user })
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
@@ -103,8 +71,6 @@ const Dashboard = () => {
     if (!Auth.loggedIn()) {
         return <h4 className="flex-grow">Must be logged in</h4>;
     }
-
-
 
     return (
         <main className="flex-grow">

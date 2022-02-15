@@ -8,13 +8,12 @@ const Uploader = ({ image, setImage }) => {
 
     })
 
-    const handleFileChange = e => {
+    const handleFileChange = async (e) => {
         const file = e.target.files[0];
-        if (!file) return
-        uploadFile({ variables: { file } })
-        setImage(`images/${file.name}`)
-        console.log(file.name)
-        console.log(typeof (file.name))
+        if (!file) return;
+        await uploadFile({ variables: { file } });
+        await setImage(`images/${file.name}`);
+        console.log(file.name);
     }
 
     return (
