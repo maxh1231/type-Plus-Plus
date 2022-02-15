@@ -17,12 +17,12 @@ const Home = () => {
             await getText();
         };
         fetchData();
-        if (Auth.loggedIn()) {
+        if (Auth.loggedIn) {
             setLoggedIn(true);
         }
     }, []);
 
-
+    console.log(loggedIn)
     // Get random text
     const getText = async () => {
         const response = await fetch('/api/txtgen');

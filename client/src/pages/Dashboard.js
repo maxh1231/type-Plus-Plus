@@ -17,7 +17,7 @@ import Chart from '../components/Chart'
 
 import defaultPhoto from '../assets/images/no-profile-picture.svg'
 
-import { pencil } from '@heroicons/react/solid'
+import { PencilAltIcon } from '@heroicons/react/outline'
 
 
 // Modal Styles, remove later for custom styles
@@ -79,7 +79,7 @@ const Dashboard = () => {
 
     return (
         <section className="mt-2 ml-2 py-2 px-2 h-1/2 flex border-1 border-black justify-around">
-            <div classname="bg-gray-100">
+            <div className="bg-gray-100">
                 <DashboardUserInfo
                     data={data}
                     modalBio={modalBio}
@@ -87,9 +87,7 @@ const Dashboard = () => {
                     image={image}
                     setImage={setImage}
                 />
-                <svg onClick={openModal} xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                </svg>
+                <PencilAltIcon onClick={openModal}/>
             </div>
 
 
@@ -118,7 +116,7 @@ const Dashboard = () => {
             <div className="bg-gray-100 w-[500px]">
                 <div>
                     <RecentBadge />
-                    <Link to='/badges'><h2 class="text-lg text-center">View All Badges</h2></Link>
+                    <Link to='/badges'><h2 className="text-lg text-center">View All Badges</h2></Link>
                 </div>
                 <div>
                     <h2 className="text-lg text-center">Friends</h2>
