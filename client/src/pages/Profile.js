@@ -10,65 +10,67 @@ import ProfileUserInfo from '../components/ProfileUserInfo';
 // import Achievements from '../components/Achievements';
 // import Progress from '../components/Progress'
 
-
 const Profile = () => {
-    const [friendStatus, setFriendStatus] = useState(false)
+    const [friendStatus, setFriendStatus] = useState(false);
     const { username: userParam } = useParams();
     const { loading, error, data } = useQuery(QUERY_USER, {
-        variables: { username: userParam }
+        variables: { username: userParam },
     });
     const myFriends = useQuery(QUERY_FRIENDS);
 
     let friendID;
     if (data) {
-        friendID = data.user._id
+        friendID = data.user._id;
     }
     const [addFriend] = useMutation(ADD_FRIEND);
     const [removeFriend] = useMutation(REMOVE_FRIEND);
 
     useEffect(() => {
         handler();
-    }, [])
+    }, []);
 
     const handleAddFriend = async (event) => {
         event.preventDefault();
         await addFriend({
-            variables: { friendID }
+            variables: { friendID },
         });
-        console.log('click')
-        setFriendStatus(true)
+        console.log('click');
+        setFriendStatus(true);
     };
 
     const handleRemoveFriend = async (event) => {
         event.preventDefault();
         await removeFriend({
-            variables: { friendID }
+            variables: { friendID },
         });
-        console.log('click')
-        setFriendStatus(false)
+        console.log('click');
+        setFriendStatus(false);
     };
 
     const handler = async () => {
-        const friendArr = await myFriends.data?.me.friends.map(friend => {
-            return friend.username
-        })
+        const friendArr = await myFriends.data?.me.friends.map((friend) => {
+            return friend.username;
+        });
         if (!myFriends.loading) {
             if (friendArr.includes(`${userParam}`)) {
                 setFriendStatus(true);
             } else {
-                setFriendStatus(false)
+                setFriendStatus(false);
             }
         }
-    }
-    console.log(friendStatus)
+    };
+    console.log(friendStatus);
     return (
-        <section>
+        <main className="flex-grow">
             {data && <ProfileUserInfo data={data} />}
             <div>
-
-                {friendStatus ? (<button onClick={handleRemoveFriend} >Remove Friend</button>) : (<button onClick={handleAddFriend}>Add Friend</button>)}
+                {friendStatus ? (
+                    <button onClick={handleRemoveFriend}>Remove Friend</button>
+                ) : (
+                    <button onClick={handleAddFriend}>Add Friend</button>
+                )}
             </div>
-        </section>
+        </main>
     );
 };
 

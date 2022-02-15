@@ -5,7 +5,7 @@ import { ADD_BIO, ADD_LOCATION } from '../../utils/mutations';
 
 import Uploader from '../Uploader'
 
-const EditModal = ({ data, setModalBio, image, setImage, url, setUrl }) => {
+const EditModal = ({ data, setModalBio, image, setImage }) => {
     const [bio, setBio] = useState('');
     const [newBio, setNewBio] = useState('')
     const [location, setLocation] = useState('');
@@ -49,14 +49,16 @@ const EditModal = ({ data, setModalBio, image, setImage, url, setUrl }) => {
         setCharacterCount('');
     };
 
+
     return (
         <section>
             <div>
-                <img src={defaultPhoto} alt=""></img>
+                {data.me.profilePic && <img src={image} alt='' width='100' height='100'></img>}
+                {!data.me.profilePic && <img src={image} alt='' width='100' height='100'></img>}
             </div>
 
             <div>
-                <Uploader image={image} setImage={setImage} url={url} setUrl={setUrl} />
+                <Uploader image={image} setImage={setImage} />
             </div>
 
             <div>
