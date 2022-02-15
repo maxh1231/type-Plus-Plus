@@ -21,6 +21,9 @@ const Header = () => {
         document
             .getElementById('hamburger-bottom')
             .classList.toggle('button-transform-bottom-active');
+        document
+            .getElementById('nav-list')
+            .classList.toggle('navbar-nav-active');
         let navLinks = document.getElementsByClassName('nav-link');
         for (let i = 0; i < navLinks.length; i++) {
             navLinks[i].classList.toggle('nav-active');
@@ -29,11 +32,12 @@ const Header = () => {
 
     return (
         <header>
+            <div className="absolute w-16 h-10 left-0 top-4 bg-gray-100 z-10"></div>
             <nav className="relative w-full flex flex-wrap items-center justify-around py-4 bg-gray-100 text-gray-600 shadow-md ">
                 <div className="w-full grid grid-cols-3 px-6">
                     <div className="flex flex-wrap">
                         <button
-                            className="text-gray-500 w-10 h-10 relative focus:outline-none"
+                            className="text-gray-500 w-10 h-10 relative focus:outline-none z-20"
                             onClick={hamburgerToggle}
                         >
                             <span className="sr-only">Open main menu</span>
@@ -56,7 +60,10 @@ const Header = () => {
                             </div>
                         </button>
                         <div className="flex-grow items-center">
-                            <ul className="navbar-nav flex pl-0 list-style-none mr-auto">
+                            <ul
+                                id="nav-list"
+                                className="navbar-nav flex pl-0 list-style-none mr-auto -translate-x-80 transition-all duration-200"
+                            >
                                 <li className="nav-item p-2">
                                     <Link
                                         to="/"
