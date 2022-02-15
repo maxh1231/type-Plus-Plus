@@ -17,7 +17,7 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
     }
 
     return (
-        <section>
+        <section className="bg-gray-100">
             <div>
                 {data.me.profilePic && <img src={image} alt='' width='100' height='100'></img>}
                 {!data.me.profilePic && <img src={image} alt='' width='100' height='100'></img>}
