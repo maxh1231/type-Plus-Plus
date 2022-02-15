@@ -30,6 +30,7 @@ export const QUERY_ME = gql`
             createdAt
             bio
             location
+            profilePic
             friends {
                 _id
                 username
@@ -123,7 +124,7 @@ export const QUERY_SCORE_COUNT = gql`
         }
     }
 `
-export const QUERY_WEEKLY_SCORES = gql `
+export const QUERY_WEEKLY_SCORES = gql`
     query WeeklyScores {
         weeklyScores {
         wpm

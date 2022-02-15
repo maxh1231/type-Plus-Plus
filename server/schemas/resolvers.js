@@ -191,13 +191,13 @@ const resolvers = {
         const pathName = path.join(__dirname, `../public/images/${filename}`)
         await stream.pipe(fs.createWriteStream(pathName))
 
-        // const url = `/assets/images/${filename}`
+        const url = `/images/${filename}`
 
-        // await User.findOneAndUpdate(
-        //   { _id: context.user._id },
-        //   { $set: { profilePic: url } },
-        //   { new: true }
-        // )
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $set: { profilePic: url } },
+          { new: true }
+        )
         return {
           url: `assets/images/${filename}`
         }
