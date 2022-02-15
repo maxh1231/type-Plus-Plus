@@ -18,7 +18,7 @@ const DashboardUserInfo = ({ data, modalBio }) => {
     return (
         <section>
             <div>
-                <img src='/images/wizard_nobg.png' alt='' width='100' height='100'></img>
+                <img src='/images/Cheech Lizardf.png' alt='' width='100' height='100'></img>
             </div>
             <div>
                 <h3>Hello {data.me.username}</h3>
