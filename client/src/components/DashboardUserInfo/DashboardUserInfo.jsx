@@ -10,8 +10,9 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
     const level6 = 400;
     const level7 = 800;
     const level8 = 1600;
-    const level9 = 3200
-    // xp > 3200 = level10 (max level)
+    const level9 = 2800;
+    const level10 = 3200;
+
 
     let userLevel = 1
     let levelProgress
@@ -41,7 +42,28 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
         levelProgress = (100 * totalXP) / level3;
     } else if (totalXP >= level3 && totalXP < level4) {
         userLevel = 3;
-        levelProgress = (100 * totalXP / level4)
+        levelProgress = (100 * totalXP) / level4;
+    } else if (totalXP >= level4 && totalXP < level5) {
+        userLevel = 4;
+        levelProgress = (100 * totalXP) / level5;
+    } else if (totalXP >= level5 && totalXP < level6) {
+        userLevel = 5;
+        levelProgress = (100 * totalXP) / level6;
+    } else if (totalXP >= level6 && totalXP < level7) {
+        userLevel = 6;
+        levelProgress = (100 * totalXP) / level7;
+    } else if (totalXP >= level7 && totalXP < level8) {
+        userLevel = 7;
+        levelProgress = (100 * totalXP) / level8;
+    } else if (totalXP >= level8 && totalXP < level9) {
+        userLevel = 8;
+        levelProgress = (100 * totalXP) / level9;
+    } else if (totalXP >= level9 && totalXP < level10) {
+        userLevel = 9;
+        levelProgress = (100 * totalXP) / level10;
+    } else if (totalXP >= level10) {
+        userLevel = 10;
+        levelProgress = null;
     }
 
     console.log(userLevel)
