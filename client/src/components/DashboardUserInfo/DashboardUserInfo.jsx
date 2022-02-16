@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import defaultPhoto from '../../assets/images/no-profile-picture.svg';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar'
 
-const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
+const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
     const level2 = 25;
     const level3 = 50;
     const level4 = 100;
@@ -83,17 +83,22 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
         levelProgress = null;
     }
 
-    console.log(userLevel)
-    console.log(levelProgress);
+    // console.log(userLevel)
+    // console.log(levelProgress);
 
 
-
+    refetch();
 
     return (
         <section className="bg-gray-100 w-[300px]">
 
-            <CircularProgressbarWithChildren value={levelProgress}>
-                <img className="rounded-full w-[255px] h-[255px]" src={image} alt='' ></img>
+            <CircularProgressbarWithChildren value={levelProgress} styles={buildStyles({
+
+
+            })}>
+                <img className="rounded-full w-[255px] h-[255px]" src={image} alt=''
+
+                ></img>
             </CircularProgressbarWithChildren>
 
             {/* <div className="flex justify-center">

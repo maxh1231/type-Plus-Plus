@@ -49,7 +49,8 @@ const Dashboard = () => {
         setIsOpen(false);
     }
     const { username: userParam } = useParams();
-    const { loading, data } = useQuery(QUERY_ME)
+    const { loading, data, refetch } = useQuery(QUERY_ME)
+
 
     const user = data?.me || data?.user || {};
 
@@ -72,7 +73,6 @@ const Dashboard = () => {
         return <h4 className="flex-grow">Must be logged in</h4>;
     }
 
-    console.log(data);
 
     return (
         <section className="mt-2 ml-2 py-2 px-2 h-1/2 flex border-1 border-black justify-around">
@@ -84,6 +84,7 @@ const Dashboard = () => {
                     setModalBio={setModalBio}
                     image={image}
                     setImage={setImage}
+                    refetch={refetch}
                 />
             </div>
 
