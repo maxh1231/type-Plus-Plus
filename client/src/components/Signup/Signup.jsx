@@ -1,28 +1,38 @@
-import React from 'react';
+import { React, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import { EyeIcon } from '@heroicons/react/solid';
 
 const Signup = () => {
     const [addUser, { error }] = useMutation(ADD_USER);
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
 
     const {
         register,
         formState: { errors },
         handleSubmit,
+        watch
     } = useForm({ criteriaMode: 'all' });
+    const password = useRef(null);
+    password.current = watch("password", "");
 
     const onSubmit = async (newData) => {
         try {
             const { data } = await addUser({
                 variables: { ...newData },
             });
-            console.log(data);
             Auth.login(data.addUser.token);
         } catch (e) {
-            console.error(e);
+            document.getElementById('signupInvalid').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('signupInvalid').classList.add('hidden');
+            }, 3000)
         }
     };
 
@@ -54,7 +64,6 @@ const Signup = () => {
                             errors={errors}
                             name="username"
                             render={({ messages }) => {
-                                console.log('messages', messages);
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
@@ -92,7 +101,6 @@ const Signup = () => {
                             errors={errors}
                             name="email"
                             render={({ messages }) => {
-                                console.log('messages', messages);
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
@@ -123,7 +131,8 @@ const Signup = () => {
                                         'Password cannot exceed 20 characters',
                                 },
                             })}
-                            type="password"
+                            id ="signupPassword"
+                            type={passwordShown ? "text" : "password"}
                             placeholder="Password"
                             className="block border border-grey-light w-full p-3 rounded mb-4"
                         />
@@ -131,7 +140,6 @@ const Signup = () => {
                             errors={errors}
                             name="password"
                             render={({ messages }) => {
-                                console.log('messages', messages);
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
@@ -146,6 +154,43 @@ const Signup = () => {
                                     : null;
                             }}
                         />
+
+                        <div className='flex'>
+                            <input
+                                {...register('confirmPassword', {
+                                    required: 'Please confirm your password',
+                                    validate: {
+                                        value: value => value === password.current || "Passwords must match"
+                                    }
+                                })}
+                                id="confirmPassword"
+                                type={passwordShown ? "text" : "password"}
+                                placeholder="Confirm password"
+                                className="block border border-grey-light w-5/6 p-3 rounded mb-4"
+                            />
+
+                            <i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500" /></i>
+                        </div>
+                        <ErrorMessage
+                            errors={errors}
+                            name="confirmPassword"
+                            render={({ messages }) => {
+                                return messages
+                                    ? Object.entries(messages).map(
+                                          ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-red-500 text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
+                                    : null;
+                            }}
+                        />
+
+                        <div className="p-2 font-bold text-red-500 text-center hidden" id="signupInvalid">Username or email already in use</div>
 
                         <button
                             type="submit"
