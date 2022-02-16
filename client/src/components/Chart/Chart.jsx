@@ -28,10 +28,11 @@ ChartJS.register(
 );
 
 const Chart = () => {
-    const { loading, data } = useQuery(QUERY_MYSCORE);
+    const { loading, data, refetch } = useQuery(QUERY_MYSCORE);
     let wpm = [];
     let accuracy = [];
     let dates = [];
+    refetch();
 
     // Create new array so we can sort by createdAt
     let userDataArray = data?.meScores
@@ -55,7 +56,7 @@ const Chart = () => {
             return formatTime(score.createdAt);
         });
     }
-
+    
     return (
         <>
             <Line
