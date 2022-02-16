@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_MYBADGE } from '../../utils/queries';
 
-const RecentBadge = () => {
+const RecentBadge = ({ runGame }) => {
     const { loading, data, refetch } = useQuery(QUERY_MYBADGE);
-    refetch();
+    // refetch();
+    useEffect(() => {
+        refetch();
+    }, [runGame]) // eslint-disable-line react-hooks/exhaustive-deps
+    
+    console.log('recent badge loop')
+    
+    if (loading) {
+        return <p>Loading...</p>
+    }
+
     const badgeArr = data?.meBadges.badges || [];
     const activeBadge = badgeArr[badgeArr.length - 1];
+
     return (
         <div className='container'>
             {badgeArr.length > 0 ? (
