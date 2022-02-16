@@ -6,7 +6,7 @@ import { QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 import { checkGame, checkScore, checkAccuracy } from '../../utils/helpers';
 
-const Game = ({ sampleArr, unmount }) => {
+const Game = ({ sampleArr, unmount, loggedIn }) => {
     const [inputText, setInputText] = useState('');
     const [validInput, setValidInput] = useState(true);
     const [errorCount, setErrorCount] = useState(0);
@@ -14,7 +14,7 @@ const Game = ({ sampleArr, unmount }) => {
     const [wpm, setWpm] = useState(0);
     const [intervalId, setIntervalId] = useState(0);
     const [timer, setTimer] = useState(0);
-    const [loggedIn, setLoggedIn] = useState(false);
+    // const [loggedIn, setLoggedIn] = useState(false);
     const [isMounted, setIsMounted] = useState(true);
     const [addScore] = useMutation(ADD_SCORE);
     const [addBadge] = useMutation(ADD_BADGE);
@@ -37,9 +37,9 @@ const Game = ({ sampleArr, unmount }) => {
                 document.getElementById('sampleText').style.display = 'block';
                 document.getElementById('gameInfo').style.display = 'block';
                 document.getElementById(0).style.textDecoration = 'underline';
-                if (Auth.loggedIn()) {
-                    setLoggedIn(true);
-                }
+                // if (Auth.loggedIn) {
+                //     setLoggedIn(true);
+                // }
                 toggleTimer();
                 document.getElementById('gameInput').focus();
             }, 3000);
@@ -88,24 +88,26 @@ const Game = ({ sampleArr, unmount }) => {
         const gameCheck = checkGame(userData.gameCount + 1);
         const scoreCheck = checkScore(newData.wpm);
         const accuracyCheck = checkAccuracy(newData.accuracy);
-        if (gameCheck) {
-            await addBadge({ variables: {badgeName: gameCheck}});
-        }
-        if (scoreCheck) {
-            for (let i = 0; i < scoreCheck.length; i++) {
-                console.log(scoreCheck[i])
-                await addBadge({ variables: {badgeName: scoreCheck[i]}});
+        if (loggedIn) {
+            if (gameCheck) {
+                await addBadge({ variables: {badgeName: gameCheck}});
             }
-        }
-        if (accuracyCheck) {
-            for (let i = 0; i < accuracyCheck.length; i++) {
-                await addBadge({ variables: {badgeName: accuracyCheck[i]}});
+            if (scoreCheck) {
+                for (let i = 0; i < scoreCheck.length; i++) {
+                    console.log(scoreCheck[i])
+                    await addBadge({ variables: {badgeName: scoreCheck[i]}});
+                }
             }
-        }
-        try {
-            await addScore({ variables: { ...newData } });
-        } catch (e) {
-            console.error(e);
+            if (accuracyCheck) {
+                for (let i = 0; i < accuracyCheck.length; i++) {
+                    await addBadge({ variables: {badgeName: accuracyCheck[i]}});
+                }
+            }
+            try {
+                await addScore({ variables: { ...newData } });
+            } catch (e) {
+                console.error(e);
+            }
         }
         openModal();
     };

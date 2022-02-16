@@ -6,7 +6,8 @@ import { formatTime } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 
 const WeeklyLeaderBoard = () => {
-    const { loading, data } = useQuery(QUERY_WEEKLY_SCORES);
+    const { loading, data, refetch } = useQuery(QUERY_WEEKLY_SCORES);
+    refetch();
     const leaderBoard = data?.weeklyScores.map(score => { return {wpm: score.wpm, accuracy: score.accuracy, username: score.username, date: formatTime(score.createdAt)} });
     return (
         <section  className='w-3/4 mx-auto my-4'>

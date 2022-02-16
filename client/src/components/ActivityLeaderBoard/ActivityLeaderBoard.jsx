@@ -5,7 +5,8 @@ import { QUERY_SCORE_COUNT } from '../../utils/queries';
 import { Link } from 'react-router-dom';
 
 const ActivityLeaderBoard = () => {
-    const { loading, data } = useQuery(QUERY_SCORE_COUNT);
+    const { loading, data, refetch } = useQuery(QUERY_SCORE_COUNT);
+    refetch();
     const leaderBoard = data?.users;
     return (
         <section className='w-3/4 mx-auto my-4'>
