@@ -39,7 +39,7 @@ export const checkScore = (val) => {
 };
 
 export const checkAccuracy = (val) => {
-    if (val > 100) {
+    if (val === 100) {
         return ['Perfect!','Precision Expert', 'Sharp Shooter'];
     } else if (val > 90) {
         return ['Precision Expert', 'Sharp Shooter'];

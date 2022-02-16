@@ -176,7 +176,6 @@ const Game = ({ sampleArr, unmount }) => {
     }
 
     function afterOpenModal() {
-        console.log('modal is now open');
     }
 
     function closeModal() {

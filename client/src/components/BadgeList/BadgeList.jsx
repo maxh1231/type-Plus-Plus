@@ -27,10 +27,13 @@ const BadgeList = () => {
 
     // Get badges that have not been earned
     let tmpArr = [...badgeArr]
-    for (let i = 0; i < badgeArr.length - 1; i++) {
+    for (let i = 0; i < badgeArr.length; i++) {
         for (let j = 0; j < myBadgeArr.length; j++) {
             if (badgeArr[i]._id === myBadgeArr[j]._id) {
-                tmpArr.splice(i, 1);
+                const index = tmpArr.findIndex(x => {
+                    return x._id === badgeArr[i]._id
+                });
+                tmpArr.splice(index, 1)
             }
         }
     }

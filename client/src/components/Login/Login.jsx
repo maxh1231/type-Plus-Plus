@@ -20,16 +20,14 @@ const Login = () => {
             const { data } = await login({
                 variables: { ...newData },
             });
-            const logIn = Auth.login(data.login.token);
-            if (logIn) {
-                const streak = checkStreak(data.login.user.streak);
-                if (streak) {
-                    addBadge({ variables: {badgeName: streak}})
-                }
-                const age = checkStreak(data.login.user.age);
-                if (streak) {
-                    addBadge({ variables: {badgeName: age}})
-                }
+            Auth.login(data.login.token);
+            const streak = checkStreak(data.login.user.streak);
+            if (streak) {
+                addBadge({ variables: {badgeName: streak}})
+            }
+            const age = checkStreak(data.login.user.age);
+            if (streak) {
+                addBadge({ variables: {badgeName: age}})
             }
             document.location.replace('/');
         } catch (e) {

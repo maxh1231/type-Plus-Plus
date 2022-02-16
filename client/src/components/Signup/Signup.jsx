@@ -21,6 +21,7 @@ const Signup = () => {
             });
             console.log(data);
             Auth.login(data.addUser.token);
+            document.location.replace('/');
         } catch (e) {
             console.error(e);
         }
