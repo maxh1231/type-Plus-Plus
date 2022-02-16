@@ -86,7 +86,7 @@ const BadgeList = () => {
                         ))}
                     </div>
                     <div className='flex flex-wrap w-full'>
-                        <p className='text-xl font-bold text-center w-full'>Not Yet Earned</p>
+                        <p className='text-xl font-bold text-center w-full'>Unearned</p>
                         {tmpArr.map(badge => (
                             <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
                                 <img src={`.${badge.placeholder}`} key={uuid()} className='m-auto' alt='badge'></img>
