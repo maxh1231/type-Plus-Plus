@@ -1,9 +1,8 @@
-import BadgeList from "../components/BadgeList/BadgeList";
+import BadgeList from '../components/BadgeList/BadgeList';
 
 const Badges = () => {
-    return (
-        <BadgeList />
-    )
-}
+    // return <BadgeList />;
+    return <main className="flex-grow">'Placeholder'</main>;
+};
 
 export default Badges;

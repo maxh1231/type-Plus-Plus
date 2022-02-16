@@ -85,7 +85,7 @@ const Home = () => {
                     <GlobalLeaderBoard />
                 </div>
             </div>
-            {loggedIn && <RecentBadge />}
+            {/* {loggedIn && <RecentBadge />} */}
         </main>
     );
 };
