@@ -14,10 +14,12 @@ const ProfileUserInfo = ({ data }) => {
         averageWPM = average(scoresArr);
     }
 
+    console.log(data);
     return (
         <section>
             <div>
-                <img src={defaultPhoto} alt='' width='100' height='100'></img>
+                {data.user.profilePic && <img src={`../${data.user.profilePic}`} alt='' width='100' height='100'></img>}
+                {!data.user.profilePic && <img src={defaultPhoto} alt='' width='100' height='100'></img>}
             </div>
             <div>
                 <h3>{data.user.username}</h3>

@@ -79,7 +79,7 @@ const Dashboard = () => {
 
     return (
         <section className="mt-2 ml-2 py-2 px-2 h-1/2 flex border-1 border-black justify-around">
-            <div classname="bg-gray-100">
+            <div className="bg-gray-100">
                 <DashboardUserInfo
                     data={data}
                     modalBio={modalBio}
@@ -118,7 +118,7 @@ const Dashboard = () => {
             <div className="bg-gray-100 w-[500px]">
                 <div>
                     <RecentBadge />
-                    <Link to='/badges'><h2 class="text-lg text-center">View All Badges</h2></Link>
+                    <Link to='/badges'><h2 className="text-lg text-center">View All Badges</h2></Link>
                 </div>
                 <div>
                     <h2 className="text-lg text-center">Friends</h2>
