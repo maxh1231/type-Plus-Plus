@@ -24,13 +24,13 @@ export const checkGame = (val) => {
 
 export const checkScore = (val) => {
     if (val > 150) {
-        return ['The Flash', 'Professional Typist', 'Speed Demon', 'Average Typist'];
+        return ['The Flash', 'Professional Typist', 'Speed Demon', 'Average Typist', 'Typist'];
     } else if ( val > 125) {
-        return ['Professional Typist', 'Speed Demon', 'Average Typist'];
+        return ['Professional Typist', 'Speed Demon', 'Average Typist', 'Typist'];
     } else if ( val > 100) {
-        return ['Speed Demon', 'Average Typist'];
+        return ['Speed Demon', 'Average Typist', 'Typist'];
     } else if ( val > 75) {
-        return ['Average Typist'];
+        return ['Average Typist', 'Typist'];
     } else if ( val > 50) {
         return ['Typist'];
     } else {
