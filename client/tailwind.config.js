@@ -6,8 +6,8 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'mid-gray': 'rgba(0, 0, 0, 0.175)',
-                'mid-gray-hover': 'rgb(0, 0, 0, 1)',
+                'mid-gray': 'rgba(0, 0, 0, 0.15)',
+                'mid-gray-hover': 'rgb(0, 0, 0, 0.1)',
                 'theme-red': '#ff6384',
                 'theme-blue': '#35a2eb',
             },
