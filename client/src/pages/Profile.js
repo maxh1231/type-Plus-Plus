@@ -65,9 +65,9 @@ const Profile = () => {
             {data && <ProfileUserInfo data={data} />}
             <div>
                 {friendStatus ? (
-                    <button onClick={handleRemoveFriend}>Remove Friend</button>
+                    <button className="text-lg" onClick={handleRemoveFriend}>Remove Friend</button>
                 ) : (
-                    <button onClick={handleAddFriend}>Add Friend</button>
+                    <button className="text-lg" onClick={handleAddFriend}>Add Friend</button>
                 )}
             </div>
         </main>

@@ -53,7 +53,7 @@ const Login = () => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
+                                        ([type, message]) => (
                                             <p
                                                 key={type}
                                                 className="p-2 font-bold text-red-500 text-center"
@@ -85,7 +85,7 @@ const Login = () => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
+                                        ([type, message]) => (
                                             <p
                                                 key={type}
                                                 className="p-2 font-bold text-red-500 text-center"
