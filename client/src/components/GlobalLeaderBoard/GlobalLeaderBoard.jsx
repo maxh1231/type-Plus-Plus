@@ -6,7 +6,8 @@ import { formatTime } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 
 const GlobalLeaderBoard = () => {
-    const { loading, data } = useQuery(QUERY_SCORES);
+    const { loading, data, refetch } = useQuery(QUERY_SCORES);
+    refetch();
     const leaderBoard = data?.scores.map((score) => {
         return {
             wpm: score.wpm,

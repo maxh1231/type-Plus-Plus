@@ -17,7 +17,7 @@ const Home = () => {
             await getText();
         };
         fetchData();
-        if (Auth.loggedIn) {
+        if (Auth.loggedIn()) {
             setLoggedIn(true);
         }
     }, []);
@@ -73,7 +73,7 @@ const Home = () => {
                                 <p>Loading...</p>
                             )}
                         </div>
-                        <Game sampleArr={sampleArr} unmount={endGame} />
+                        <Game sampleArr={sampleArr} unmount={endGame} loggedIn={loggedIn} />
                     </>
                 )}
             </section>
