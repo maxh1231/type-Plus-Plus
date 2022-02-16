@@ -9,9 +9,9 @@ const RecentBadge = () => {
     return (
         <div className='container'>
             {badgeArr.length > 0 ? (
-                <div className='border rounded-md p-2 m-1 w-fit'>
+                <div className='border rounded-md p-2 m-1 w-fit m-auto'>
                     <p className='text-lg text-center border-b'>Recent Badge:</p>
-                    <img src={activeBadge.img} className='mx-auto my-1'></img>
+                    <img src={activeBadge.img} className='mx-auto my-1' alt='recent badge'></img>
                     <p className='text-center font-bold'>{activeBadge.badgeName}</p>
                     <p className='text-center'>{activeBadge.description}</p>
                 </div>

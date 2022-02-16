@@ -28,6 +28,7 @@ const Signup = () => {
                 variables: { ...newData },
             });
             Auth.login(data.addUser.token);
+            document.location.replace('/');
         } catch (e) {
             document.getElementById('signupInvalid').classList.remove('hidden');
             setTimeout(() => {

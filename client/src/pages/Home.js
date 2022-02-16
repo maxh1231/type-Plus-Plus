@@ -17,11 +17,10 @@ const Home = () => {
             await getText();
         };
         fetchData();
-        if (Auth.loggedIn()) {
+        if (Auth.loggedIn) {
             setLoggedIn(true);
         }
     }, []);
-
 
     // Get random text
     const getText = async () => {

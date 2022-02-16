@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import Modal from 'react-modal';
-import { ADD_SCORE } from '../../utils/mutations';
+import { ADD_SCORE, ADD_BADGE } from '../../utils/mutations';
+import { QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
+import { checkGame, checkScore, checkAccuracy } from '../../utils/helpers';
 
 const Game = ({ sampleArr, unmount }) => {
     const [inputText, setInputText] = useState('');
@@ -14,8 +16,12 @@ const Game = ({ sampleArr, unmount }) => {
     const [timer, setTimer] = useState(0);
     const [loggedIn, setLoggedIn] = useState(false);
     const [isMounted, setIsMounted] = useState(true);
-    const [addScore, { error }] = useMutation(ADD_SCORE);
+    const [addScore] = useMutation(ADD_SCORE);
+    const [addBadge] = useMutation(ADD_BADGE);
+    const { loading, data } = useQuery(QUERY_ME);
     const [modalIsOpen, setIsOpen] = useState(false);
+
+    const userData = data?.me || [];
 
     // To run on component load
     useEffect(() => {
@@ -77,14 +83,27 @@ const Game = ({ sampleArr, unmount }) => {
 
     const endGame = async () => {
         toggleTimer();
-        const data = {
-            wpm: wpm,
-            accuracy: accuracy,
-            time: timer,
-            errors: errorCount,
-        };
+        const newData = { wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount };
+        // check for badges
+        const gameCheck = checkGame(userData.gameCount + 1);
+        const scoreCheck = checkScore(newData.wpm);
+        const accuracyCheck = checkAccuracy(newData.accuracy);
+        if (gameCheck) {
+            await addBadge({ variables: {badgeName: gameCheck}});
+        }
+        if (scoreCheck) {
+            for (let i = 0; i < scoreCheck.length; i++) {
+                console.log(scoreCheck[i])
+                await addBadge({ variables: {badgeName: scoreCheck[i]}});
+            }
+        }
+        if (accuracyCheck) {
+            for (let i = 0; i < accuracyCheck.length; i++) {
+                await addBadge({ variables: {badgeName: accuracyCheck[i]}});
+            }
+        }
         try {
-            await addScore({ variables: { ...data } });
+            await addScore({ variables: { ...newData } });
         } catch (e) {
             console.error(e);
         }
@@ -157,7 +176,6 @@ const Game = ({ sampleArr, unmount }) => {
     }
 
     function afterOpenModal() {
-        console.log('modal is now open');
     }
 
     function closeModal() {

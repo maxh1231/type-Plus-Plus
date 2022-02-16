@@ -15,6 +15,8 @@ const typeDefs = gql`
     bio: String
     location: String
     profilePic: String
+    streak: Int
+    lastLog: String
     scores: [Scores]
     gameCount: Int
     maxScore: Float
@@ -44,6 +46,7 @@ const typeDefs = gql`
     badgeName: String!
     description: String!
     img: String
+    placeholder: String
     xp: Int
     targetVal: Int
     createdAt: String

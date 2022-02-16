@@ -13,6 +13,9 @@ const badgeSchema = new Schema(
         img: {
             type: String,
         },
+        placeholder: {
+            type: String,
+        },
         xp: {
             type: Number,
             required: true

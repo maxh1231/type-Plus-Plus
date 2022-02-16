@@ -5,7 +5,7 @@ const Friends = ({ friends }) => {
         return null;
     }
     return (
-        <section>
+        <section className="text-center">
             {friends.map(friend => (
                 <button key={friend._id}>
                     <Link to={`/profile/${friend.username}`}>{friend.username}</Link>
