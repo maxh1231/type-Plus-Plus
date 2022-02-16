@@ -23,6 +23,7 @@ const BadgeList = () => {
     const maxScore = myDataArr.maxScore;
     const maxAccuracy = myDataArr.maxAccuracy;
     const userAge = myDataArr.age;
+    const streak = myDataArr.streak;
 
     // Get badges that have not been earned
     let tmpArr = [...badgeArr]
@@ -53,7 +54,7 @@ const BadgeList = () => {
             case 'accuracy':
                 return maxAccuracy
             case 'streak':
-                return 0
+                return streak
             case 'age':
                 return userAge
             case 'secret':

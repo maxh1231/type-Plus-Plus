@@ -44,6 +44,7 @@ export const QUERY_ME = gql`
             maxScore
             maxAccuracy
             age
+            streak
         }
         meScores {
             wpm

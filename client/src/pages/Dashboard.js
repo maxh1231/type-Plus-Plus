@@ -51,11 +51,7 @@ const Dashboard = () => {
     const { username: userParam } = useParams();
     const { loading, data } = useQuery(QUERY_ME)
 
-    // console.log(userParam)
-    console.log(data);
-
     const user = data?.me || data?.user || {};
-    console.log({ user: user, img: image });
 
     useEffect(() => {
         if (user.profilePic) {
@@ -63,7 +59,6 @@ const Dashboard = () => {
         }
     }, [user])
 
-    console.log({ img: image, user: user })
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
