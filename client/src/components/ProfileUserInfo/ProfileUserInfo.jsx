@@ -16,28 +16,28 @@ const ProfileUserInfo = ({ data }) => {
 
     console.log(data);
     return (
-        <section>
-            <div>
-                {data.user.profilePic && <img src={`../${data.user.profilePic}`} alt='' width='100' height='100'></img>}
-                {!data.user.profilePic && <img src={defaultPhoto} alt='' width='100' height='100'></img>}
+        <section className="bg-gray-100 w-[300px]">
+            <div className="flex justify-center">
+                {data.user.profilePic && <img className="rounded-full w-[200px] h-[200px]" src={`../${data.user.profilePic}`} alt='' width='100' height='100'></img>}
+                {!data.user.profilePic && <img className="rounded-full w-[200px] h-[200px]" src={defaultPhoto} alt='' width='100' height='100'></img>}
+            </div>
+            <div className="mt-2">
+                <h3 className="text-2xl text-center">{data.user.username}</h3>
             </div>
             <div>
-                <h3>{data.user.username}</h3>
-            </div>
-            <div>
-                <p>
+                <p className="text-lg text-center">
                     {data.user.bio}
                 </p>
             </div>
-            <div>
-                {data.scoresByUser[0] && <p>Highest WPM: {data.scoresByUser[0].wpm}</p>}
-                {!data.scoresByUser[0] && <p>This user has not completed any games</p>}
-                {data.scoresByUser[0] && <p>Average WPM: {averageWPM} </p>}
-                {data.scoresByUser[0] && <p>Games Played: {data.scoresByUser.length} </p>}
+            <div className="mt-2">
+                {data.scoresByUser[0] && <p className="text-lg text-center mt-2">Highest WPM: {data.scoresByUser[0].wpm}</p>}
+                {!data.scoresByUser[0] && <p className="text-lg text-center mt-2">This user has not completed any games</p>}
+                {data.scoresByUser[0] && <p className="text-lg text-center mt-2">Average WPM: {averageWPM} </p>}
+                {data.scoresByUser[0] && <p className="text-lg text-center mt-2">Games Played: {data.scoresByUser.length} </p>}
             </div>
-            <div>
-                {data.user.location && <p>Location: {data.user.location} </p>}
-                {!data.user.location && <p>No location set</p>}
+            <div className="mt-2">
+                {data.user.location && <p className="text-lg text-center">Location: {data.user.location} </p>}
+                {!data.user.location && <p className="text-lg text-center">No location set</p>}
             </div>
         </section >
     )
