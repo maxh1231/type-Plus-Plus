@@ -3,7 +3,15 @@ import { Link } from 'react-router-dom';
 import defaultPhoto from '../../assets/images/no-profile-picture.svg';
 
 const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
-
+    const level2 = 25;
+    const level3 = 50;
+    const level4 = 100;
+    const level5 = 200;
+    const level6 = 400;
+    const level7 = 800;
+    const level8 = 1600;
+    const level9 = 3200
+    // xp > 3200 = level10 (max level)
 
     let averageWPM;
 
