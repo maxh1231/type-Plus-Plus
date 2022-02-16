@@ -39,7 +39,6 @@ const BadgeList = () => {
             }
         }
     }
-    console.log({myData: myDataArr, badgeArr: badgeArr, tmpArr: tmpArr, myBadge: myBadgeArr})
     // Toggle display view
     const setGrid = () => {
         setViewGrid(true);

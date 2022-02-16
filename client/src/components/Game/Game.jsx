@@ -94,7 +94,6 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
             }
             if (scoreCheck) {
                 for (let i = 0; i < scoreCheck.length; i++) {
-                    console.log(scoreCheck[i])
                     await addBadge({ variables: {badgeName: scoreCheck[i]}});
                 }
             }
