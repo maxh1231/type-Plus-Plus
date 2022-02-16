@@ -13,6 +13,9 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
     const level9 = 3200
     // xp > 3200 = level10 (max level)
 
+    let userLevel = 1
+    let levelProgress
+
     let averageWPM;
 
     if (data.meScores.length !== 0) {
@@ -24,14 +27,28 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
         averageWPM = average(scoresArr);
     }
 
-    let totalXP = 0;
-    if (data) {
-        data.meBadges.badges.map(badge => {
-            totalXP += badge.xp
-        })
+    let totalXP = 70;
+    // if (data) {
+    //     data.meBadges.badges.map(badge => {
+    //         totalXP += badge.xp
+    //     })
+    // }
+
+
+
+    if (totalXP >= level2 && totalXP < level3) {
+        userLevel = 2;
+        levelProgress = (100 * totalXP) / level3;
+    } else if (totalXP >= level3 && totalXP < level4) {
+        userLevel = 3;
+        levelProgress = (100 * totalXP / level4)
     }
 
-    console.log(totalXP)
+    console.log(userLevel)
+    console.log(levelProgress);
+
+
+
 
     return (
         <section className="bg-gray-100 w-[300px]">
