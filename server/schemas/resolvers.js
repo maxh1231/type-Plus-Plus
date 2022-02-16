@@ -80,19 +80,47 @@ const resolvers = {
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-
       if (!user) {
         throw new AuthenticationError('No user found');
       }
 
       const correctPw = await user.isCorrectPassword(password);
-
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
+      // log in streak logic
+      const now = moment().format('DDD');
+      const lastLog = moment(user.lastLog).format('DDD');
+      // logged in twice in one day
+      if (now === lastLog) {
+        await User.findOneAndUpdate(
+          { _id: user._id},
+          { $set: { lastLog: Date.now() }},
+          { new: true }
+        );
+      // logged in 1 day after previous
+      } else if (now - 1 === lastLog) {
+        await User.findOneAndUpdate(
+          { _id: user._id},
+          { $set: { lastLog: Date.now() }, $inc: {streak: 1}},
+          { new: true }
+        );
+      } else if (now === 1 && lastLog >= 364) {
+        await User.findOneAndUpdate(
+          { _id: user._id},
+          { $set: { lastLog: Date.now() }, $inc: {streak: 1}},
+          { new: true }
+          );
+      // logged in more than one day after previous
+      } else {
+        await User.findOneAndUpdate(
+          { _id: user._id},
+          { $set: { lastLog: Date.now() }, $set: {streak: 0}},
+          { new: true }
+        );
+      }
 
       const token = signToken(user);
-
       return { token, user };
     },
     addScore: async (parent, args, context) => {

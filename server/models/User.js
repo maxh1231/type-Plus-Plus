@@ -37,6 +37,14 @@ const userSchema = new Schema(
       type: String,
       required: false
     },
+    streak: {
+      type: Number,
+      default: 0
+    },
+    lastLog: {
+      type: Date,
+      default: Date.now
+    },
     scores: [
       {
         type: Schema.Types.ObjectId,

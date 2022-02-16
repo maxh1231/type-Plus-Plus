@@ -15,6 +15,8 @@ const typeDefs = gql`
     bio: String
     location: String
     profilePic: String
+    streak: Int
+    lastLog: String
     scores: [Scores]
     gameCount: Int
     maxScore: Float
