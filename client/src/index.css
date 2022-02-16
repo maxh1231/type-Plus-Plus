@@ -16,15 +16,18 @@ code {
 
 .button-transform-top-active {
     transform: translateY(0.125rem);
+    color: #ff6384;
 }
 
 .button-transform-middle-active {
     transform: rotate(90deg);
+    color: #ff6384;
 }
 
 .button-transform-bottom-active {
     transform: translateY(-0.125rem);
     opacity: 0;
+    color: #ff6384;
 }
 
 .nav-active {

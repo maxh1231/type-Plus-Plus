@@ -37,7 +37,7 @@ const Header = () => {
                 <div className="w-full grid grid-cols-3 px-6">
                     <div className="flex flex-wrap">
                         <button
-                            className="text-gray-500 w-10 h-10 relative focus:outline-none z-20"
+                            className="text-gray-700 w-10 h-10 relative focus:outline-none z-20"
                             onClick={hamburgerToggle}
                         >
                             <span className="sr-only">Open main menu</span>
@@ -67,7 +67,7 @@ const Header = () => {
                                 <li className="nav-item p-2">
                                     <Link
                                         to="/"
-                                        className="nav-link p-0 hover:text-gray-800 focus:text-gray-800 transition-all duration-200 opacity-0"
+                                        className="nav-link p-0 hover:text-theme-red focus:text-theme-red transition-all duration-200 opacity-0"
                                     >
                                         Home
                                     </Link>
@@ -75,7 +75,7 @@ const Header = () => {
                                 <li className="nav-item p-2">
                                     <Link
                                         to="/leaderboard"
-                                        className="nav-link p-0 hover:text-gray-800 focus:text-gray-800 transition-all duration-200 opacity-0"
+                                        className="nav-link p-0 hover:text-theme-red focus:text-theme-red transition-all duration-200 opacity-0"
                                     >
                                         Leaderboard
                                     </Link>
@@ -85,7 +85,7 @@ const Header = () => {
                                         <li className="nav-item p-2">
                                             <Link
                                                 to="/dashboard"
-                                                className="nav-link p-0 hover:text-gray-800 focus:text-gray-800 transition-all duration-200 opacity-0"
+                                                className="nav-link p-0 hover:text-theme-red focus:text-theme-red transition-all duration-200 opacity-0"
                                             >
                                                 Dashboard
                                             </Link>
@@ -93,7 +93,7 @@ const Header = () => {
                                         <li className="nav-item p-2">
                                             <a
                                                 href="/"
-                                                className="nav-link p-0 hover:text-gray-800 focus:text-gray-800 transition-all duration-200 opacity-0"
+                                                className="nav-link p-0 hover:text-theme-red focus:text-theme-red transition-all duration-200 opacity-0"
                                                 onClick={logout}
                                             >
                                                 Logout
@@ -105,7 +105,7 @@ const Header = () => {
                                         <li className="nav-item p-2">
                                             <Link
                                                 to="/login"
-                                                className="nav-link p-0 hover:text-gray-800 focus:text-gray-800 transition-all duration-200 opacity-0"
+                                                className="nav-link p-0 hover:text-theme-red focus:text-theme-red transition-all duration-200 opacity-0"
                                             >
                                                 Login
                                             </Link>
@@ -113,7 +113,7 @@ const Header = () => {
                                         <li className="nav-item p-2">
                                             <Link
                                                 to="/signup"
-                                                className="nav-link p-0 hover:text-gray-800 focus:text-gray-800 transition-all duration-200 opacity-0"
+                                                className="nav-link p-0 hover:text-theme-red focus:text-theme-red transition-all duration-200 opacity-0"
                                             >
                                                 Sign Up
                                             </Link>
@@ -123,8 +123,12 @@ const Header = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="flex justify-center items-center text-2xl">
-                        Type++
+                    <div className="flex justify-center items-center text-2xl h-10">
+                        <img
+                            src="./assets/images/logo.svg"
+                            alt="Text Plus Plus logo"
+                            className="h-56"
+                        />
                     </div>
                 </div>
             </nav>
