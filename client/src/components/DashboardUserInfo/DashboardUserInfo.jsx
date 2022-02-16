@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import defaultPhoto from '../../assets/images/no-profile-picture.svg';
+import { CircularProgressbarWithChildren } from 'react-circular-progressbar'
 
 const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
     const level2 = 25;
@@ -74,10 +75,15 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
 
     return (
         <section className="bg-gray-100 w-[300px]">
-            <div className="flex justify-center">
+
+            <CircularProgressbarWithChildren value={levelProgress}>
+                <img className="rounded-full w-[200px] h-[200px]" src={image} alt='' ></img>
+            </CircularProgressbarWithChildren>
+
+            {/* <div className="flex justify-center">
                 {data.me.profilePic && <img className="rounded-full w-[200px] h-[200px]" src={image} alt='' ></img>}
                 {!data.me.profilePic && <img src={image} alt='' width='200' height='200'></img>}
-            </div>
+            </div> */}
             <div className="mt-2">
                 <h3 className="text-2xl text-center">Hello {data.me.username}</h3>
             </div>
