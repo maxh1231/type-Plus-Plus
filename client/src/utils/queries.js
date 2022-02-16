@@ -9,6 +9,7 @@ export const QUERY_USER = gql`
             createdAt
             bio
             location
+            profilePic
         }
         scoresByUser(username: $username) {
           wpm
