@@ -2,12 +2,13 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../../utils/mutations';
+import { LOGIN_USER, ADD_BADGE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import { checkStreak } from '../../utils/helpers';
 
 const Login = () => {
     const [login, { error }] = useMutation(LOGIN_USER);
-
+    const [addBadge] = useMutation(ADD_BADGE);
     const {
         register,
         formState: { errors },
@@ -19,8 +20,18 @@ const Login = () => {
             const { data } = await login({
                 variables: { ...newData },
             });
-            console.log(data);
-            Auth.login(data.login.token);
+            const logIn = Auth.login(data.login.token);
+            if (logIn) {
+                const streak = checkStreak(data.login.user.streak);
+                if (streak) {
+                    addBadge({ variables: {badgeName: streak}})
+                }
+                const age = checkStreak(data.login.user.age);
+                if (streak) {
+                    addBadge({ variables: {badgeName: age}})
+                }
+            }
+            document.location.replace('/');
         } catch (e) {
             console.error(e);
         }

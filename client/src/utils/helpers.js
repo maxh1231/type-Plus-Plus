@@ -1,5 +1,4 @@
 import moment from 'moment';
-import { ADD_BADGE } from './mutations';
 
 export const formatTime = (date) => {
     let x = parseInt(date);

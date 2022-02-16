@@ -83,17 +83,13 @@ const Game = ({ sampleArr, unmount }) => {
 
     const endGame = async () => {
         toggleTimer();
-        console.log(userData);
         const newData = { wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount };
-        //check games played
+        // check for badges
         const gameCheck = checkGame(userData.gameCount + 1);
-        //check wpm
         const scoreCheck = checkScore(newData.wpm);
-        //check accuracy
         const accuracyCheck = checkAccuracy(newData.accuracy);
-        console.log(gameCheck, scoreCheck, accuracyCheck)
         if (gameCheck) {
-            await addBadge({ variables: gameCheck});
+            await addBadge({ variables: {badgeName: gameCheck}});
         }
         if (scoreCheck) {
             for (let i = 0; i < scoreCheck.length; i++) {
