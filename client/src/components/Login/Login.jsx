@@ -1,12 +1,19 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../../utils/mutations';
+import { LOGIN_USER, ADD_BADGE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import { checkStreak } from '../../utils/helpers';
+import { EyeIcon } from '@heroicons/react/solid';
 
 const Login = () => {
     const [login, { error }] = useMutation(LOGIN_USER);
+    const [addBadge] = useMutation(ADD_BADGE);
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
 
     const {
         register,
@@ -19,10 +26,21 @@ const Login = () => {
             const { data } = await login({
                 variables: { ...newData },
             });
-            console.log(data);
             Auth.login(data.login.token);
+            const streak = checkStreak(data.login.user.streak);
+            if (streak) {
+                addBadge({ variables: {badgeName: streak}})
+            }
+            const age = checkStreak(data.login.user.age);
+            if (streak) {
+                addBadge({ variables: {badgeName: age}})
+            }
+            document.location.replace('/');
         } catch (e) {
-            console.error(e);
+            document.getElementById('loginInvalid').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('loginInvalid').classList.add('hidden');
+            }, 3000)
         }
     };
 
@@ -44,10 +62,9 @@ const Login = () => {
                             errors={errors}
                             name="email"
                             render={({ messages }) => {
-                                console.log('messages', messages);
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
+                                        ([type, message]) => (
                                             <p
                                                 key={type}
                                                 className="p-2 font-bold text-red-500 text-center"
@@ -61,22 +78,25 @@ const Login = () => {
                             className="block border border-grey-light w-full p-3 rounded mb-4"
                         />
 
-                        <input
-                            {...register('password', {
-                                required: 'Password is required',
-                            })}
-                            type="password"
-                            placeholder="Password"
-                            className="block border border-grey-light w-full p-3 rounded mb-4"
-                        />
+                        <div className='flex'>
+                            <input
+                                {...register('password', {
+                                    required: 'Password is required',
+                                })}
+                                type={passwordShown ? "text" : "password"}
+                                placeholder="Password"
+                                className="block border border-grey-light w-full p-3 rounded mb-4"
+                            />
+
+                            <i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500" /></i>
+                        </div>
                         <ErrorMessage
                             errors={errors}
                             name="password"
                             render={({ messages }) => {
-                                console.log('messages', messages);
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
+                                        ([type, message]) => (
                                             <p
                                                 key={type}
                                                 className="p-2 font-bold text-red-500 text-center"
@@ -88,6 +108,8 @@ const Login = () => {
                                     : null;
                             }}
                         />
+
+                        <div className="p-2 font-bold text-red-500 text-center hidden" id="loginInvalid">Invalid credentials</div>
 
                         <button
                             type="submit"

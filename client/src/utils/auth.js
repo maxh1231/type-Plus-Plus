@@ -1,5 +1,4 @@
 import decode from 'jwt-decode';
-
 class AuthService {
   getProfile() {
     return decode(this.getToken());
@@ -27,7 +26,14 @@ class AuthService {
 
   login(idToken) {
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/');
+    // const [addBadge] = useMutation(ADD_BADGE);
+    // const streak = checkStreak(5);
+    // console.log(streak);
+    // if (streak) {
+    //     addBadge({ variables: {badgeName: streak}})
+    // }
+    // window.location.assign('/');
+    return true;
   }
 
   logout() {

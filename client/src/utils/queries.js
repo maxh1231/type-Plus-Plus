@@ -9,6 +9,7 @@ export const QUERY_USER = gql`
             createdAt
             bio
             location
+            profilePic
         }
         scoresByUser(username: $username) {
           wpm
@@ -44,6 +45,7 @@ export const QUERY_ME = gql`
             maxScore
             maxAccuracy
             age
+            streak
         }
         meScores {
             wpm
@@ -55,6 +57,7 @@ export const QUERY_ME = gql`
                 badgeName
                 description
                 img
+                placeholder
                 xp
                 targetVal
                 createdAt
@@ -144,6 +147,7 @@ export const QUERY_BADGES = gql`
         xp
         createdAt
         img
+        placeholder
         targetVal
         category
         }

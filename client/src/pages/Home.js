@@ -17,7 +17,7 @@ const Home = () => {
             await getText();
         };
         fetchData();
-        if (Auth.loggedIn()) {
+        if (Auth.loggedIn) {
             setLoggedIn(true);
         }
     }, []);
