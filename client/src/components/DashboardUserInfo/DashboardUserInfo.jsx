@@ -16,6 +16,15 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage }) => {
         averageWPM = average(scoresArr);
     }
 
+    let totalXP = 0;
+    if (data) {
+        data.meBadges.badges.map(badge => {
+            totalXP += badge.xp
+        })
+    }
+
+    console.log(totalXP)
+
     return (
         <section className="bg-gray-100 w-[300px]">
             <div className="flex justify-center">

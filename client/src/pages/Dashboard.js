@@ -72,6 +72,8 @@ const Dashboard = () => {
         return <h4 className="flex-grow">Must be logged in</h4>;
     }
 
+    console.log(data);
+
     return (
         <section className="mt-2 ml-2 py-2 px-2 h-1/2 flex border-1 border-black justify-around">
             <div className="bg-gray-100">
