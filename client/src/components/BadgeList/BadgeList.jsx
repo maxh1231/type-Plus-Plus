@@ -8,10 +8,12 @@ import 'react-circular-progressbar/dist/styles.css';
 
 const BadgeList = () => {
     const [viewGrid, setViewGrid] = useState(true);
-    const { loading, data } = useQuery(QUERY_BADGES);
+    const { loading, data, refetch } = useQuery(QUERY_BADGES);
     const myBadgeData = useQuery(QUERY_MYBADGE);
     const myData = useQuery(QUERY_ME);
-    
+    refetch();
+    myBadgeData.refetch();
+    myData.refetch();
     // Get all badges and user specific badges
     const badgeArr = data?.badges || [];
     const myBadgeArr = myBadgeData.data?.meBadges.badges || [];
@@ -37,7 +39,6 @@ const BadgeList = () => {
             }
         }
     }
-    console.log({myData: myDataArr, badgeArr: badgeArr, tmpArr: tmpArr, myBadge: myBadgeArr})
     // Toggle display view
     const setGrid = () => {
         setViewGrid(true);

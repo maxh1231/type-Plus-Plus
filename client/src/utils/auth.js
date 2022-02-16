@@ -26,13 +26,6 @@ class AuthService {
 
   login(idToken) {
     localStorage.setItem('id_token', idToken);
-    // const [addBadge] = useMutation(ADD_BADGE);
-    // const streak = checkStreak(5);
-    // console.log(streak);
-    // if (streak) {
-    //     addBadge({ variables: {badgeName: streak}})
-    // }
-    // window.location.assign('/');
     return true;
   }
 
