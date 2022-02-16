@@ -22,7 +22,6 @@ const Home = () => {
         }
     }, []);
 
-    console.log(loggedIn)
     // Get random text
     const getText = async () => {
         const response = await fetch('/api/txtgen');

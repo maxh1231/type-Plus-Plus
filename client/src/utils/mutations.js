@@ -90,3 +90,13 @@ export const UPLOAD_FILE = gql`
   }
 }
 `;
+export const ADD_BADGE = gql`
+  mutation AddBadge($badgeName: String!) {
+    addBadge(badgeName: $badgeName) {
+      badgeName
+      description
+      img
+      xp
+    }
+  }
+`;
