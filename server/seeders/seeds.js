@@ -43,7 +43,7 @@ db.once('open', async () => {
         {badgeName: 'Big Ben, Norse God Of Tailwind', description: 'Become friends with the legendary Type++ developer, Thorulfr', img: '/assets/badges/secret-2.png', xp: 250, createdAt: Date.now},
         {badgeName: 'McFriends', description: 'Become friends with the legendary Type++ developer, MaxH12-31', img: '/assets/badges/secret-3.png', xp: 250, createdAt: Date.now},
         {badgeName: "JFBC, We're Friends Now", description: 'Become friends with the legendary Type++ developer, T-Norm', img: '/assets/badges/secret-4.png', xp: 250, createdAt: Date.now},
-        {badgeName: 'Thank you for playing', description: 'You collected every badge', img: '/assets/badges/crown.png', xp: 500, createdAt: Date.now},
+        {badgeName: 'Thank You For Playing', description: 'You collected every badge', img: '/assets/badges/crown.png', xp: 500, createdAt: Date.now},
     ];
     
     await Badge.collection.insertMany(badgeData);
