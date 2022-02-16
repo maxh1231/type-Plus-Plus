@@ -21,6 +21,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 
 const uploadLink = createUploadLink({
     uri: '/graphql'
@@ -63,6 +64,7 @@ function App() {
                         <Route exact path="/" element={<Home />} />
                         <Route exact path="/login" element={<Login />} />
                         <Route exact path="/signup" element={<Signup />} />
+                        <Route exact path="/password-reset" element={<ForgotPassword />} />
                         <Route exact path="/dashboard" element={<Dashboard />} />
                         <Route exact path="/leaderboard" element={<LeaderBoard />} />
                         <Route exact path="/badges" element={<Badges />} />

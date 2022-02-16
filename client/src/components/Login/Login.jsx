@@ -48,7 +48,7 @@ const Login = () => {
         <main className="bg-gray-200 flex-grow flex flex-col">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                    <h1 className="mb-8 text-3xl text-center">Welcome back!</h1>
+                    <h1 className="mb-8 text-3xl text-center">Welcome Back!</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <input
                             {...register('email', {
@@ -88,7 +88,7 @@ const Login = () => {
                                 className="block border border-grey-light w-full p-3 rounded mb-4"
                             />
 
-                            <i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500" /></i>
+                            <i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>
                         </div>
                         <ErrorMessage
                             errors={errors}
@@ -117,6 +117,10 @@ const Login = () => {
                         >
                             Log In
                         </button>
+
+                        <div className='flex justify-center m-1'>
+                            <a href='/password-reset' className="items-center underline text-blue-600 hover:text-blue-900">Forgot Password?</a>
+                        </div>
                     </form>
                 </div>
             </div>
