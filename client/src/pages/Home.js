@@ -112,12 +112,20 @@ const Home = () => {
                 )}
             </section>
             <div className="grid grid-cols-3 container">
-                <div className="">
+                <div>
                     <GlobalLeaderBoard />
                 </div>
-                <div className="col-span-2 bg-gray-400">Badge Progress</div>
+                <div className="my-4 flex flex-col">
+                    <h1 className="block text-center text-2xl underline text-gray-600">
+                        Badge Progress
+                    </h1>
+                    <div className="flex flex-grow items-center text-gray-600">
+                        {loggedIn && <RecentBadge runGame={runGame} />}
+                        {loggedIn && <RecentBadge runGame={runGame} />}
+                    </div>
+                </div>
+                <div className="bg-gray-400">High Scores</div>
             </div>
-            {loggedIn && <RecentBadge runGame={runGame} />}
         </main>
     );
 };
