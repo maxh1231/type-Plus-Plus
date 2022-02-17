@@ -31,7 +31,6 @@ const Header = () => {
     // Set the theme when user clicks on toggle switch
     const themeSetter = () => {
         const toggler = document.getElementById('toggle');
-        console.log(toggler.checked);
         if (toggler.checked) {
             document.documentElement.classList.add('dark');
         } else {

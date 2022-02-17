@@ -5,11 +5,11 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="text-center lg:text-left bg-gray-100 text-gray-600">
+        <footer className="text-center lg:text-left bg-gray-100 text-gray-600 dark:bg-gray-900 dark:text-gray-400">
             <div className="mx-6 py-10 text-center md:text-left">
                 <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div>
-                        <h6 className="uppercase text-gray-800 font-semibold mb-4 flex items-center justify-center md:justify-start">
+                        <h6 className="uppercase text-gray-800 font-semibold mb-4 flex items-center justify-center md:justify-start dark:text-gray-200">
                             Type++
                         </h6>
                         <p className="mb-4">
@@ -31,13 +31,13 @@ const Footer = () => {
                         </p>
                     </div>
                     <div>
-                        <h6 className="uppercase text-gray-800 font-semibold mb-4 flex justify-center md:justify-start">
+                        <h6 className="uppercase text-gray-800 font-semibold mb-4 flex justify-center md:justify-start dark:text-gray-200">
                             Stack
                         </h6>
                         <p className="mb-4">
                             <a
                                 href="https://www.mongodb.com/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -47,7 +47,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://expressjs.com/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -57,7 +57,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://reactjs.org/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -67,7 +67,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://nodejs.org/en/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -76,13 +76,13 @@ const Footer = () => {
                         </p>
                     </div>
                     <div>
-                        <h6 className="uppercase text-gray-800 font-semibold mb-4 flex justify-center md:justify-start">
+                        <h6 className="uppercase text-gray-800 font-semibold mb-4 flex justify-center md:justify-start dark:text-gray-200">
                             Resources
                         </h6>
                         <p className="mb-4">
                             <a
                                 href="https://tailwindcss.com/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -92,7 +92,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://www.chartjs.org/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -102,7 +102,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://momentjs.com/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -112,7 +112,7 @@ const Footer = () => {
                         <p>
                             <a
                                 href="https://jwt.io/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -121,7 +121,7 @@ const Footer = () => {
                         </p>
                     </div>
                     <div>
-                        <h6 className="uppercase text-gray-800 font-semibold mb-4 flex justify-center md:justify-start">
+                        <h6 className="uppercase text-gray-800 font-semibold mb-4 flex justify-center md:justify-start dark:text-gray-200">
                             Find us on GitHub
                         </h6>
 
@@ -231,7 +231,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="text-center text-gray-800 p-4 bg-mid-gray">
+            <div className="text-center text-gray-800 p-4 bg-mid-gray dark:text-gray-500">
                 © 2022{' '}
                 <a
                     className="hover:text-theme-red transition-all duration-200"
