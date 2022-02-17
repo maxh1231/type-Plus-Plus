@@ -86,7 +86,7 @@ const Home = () => {
                 <RecentBadge runGame={runGame} />
             )}
             <div>
-                {loggedIn && <Highscore />}
+                {/* {loggedIn && <Highscore />} */}
             </div>
         </main>
     );

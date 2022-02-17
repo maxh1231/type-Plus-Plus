@@ -14,10 +14,6 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
     const level9 = 2800;
     const level10 = 3200;
 
-
-    let userLevel = 1
-    let levelProgress
-
     let averageWPM;
 
     if (data.meScores.length !== 0) {
@@ -29,16 +25,18 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
         averageWPM = average(scoresArr);
     }
 
-    let totalXP = 2900;
-    // if (data) {
-    //     data.meBadges.badges.map(badge => {
-    //         totalXP += badge.xp
-    //     })
-    // }
+    let userLevel = 1
+    let levelProgress;
+    let totalXP = 0;
+    if (data) {
+        data.meBadges.badges.map(badge => {
+            totalXP += badge.xp
+        })
+    }
 
-
-
-    if (totalXP >= level2 && totalXP < level3) {
+    if (totalXP < level2) {
+        levelProgress = totalXP / level2 * 100
+    } else if (totalXP >= level2 && totalXP < level3) {
         userLevel = 2;
         let diff = level3 - level2
         let diff2 = totalXP - level2
@@ -83,9 +81,9 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
         levelProgress = null;
     }
 
+    console.log(totalXP)
     console.log(userLevel)
     console.log(levelProgress);
-
 
     // refetch();
 
@@ -94,11 +92,9 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
 
             <CircularProgressbarWithChildren value={levelProgress} styles={buildStyles({
 
-
             })}>
-                <img className="rounded-full w-[255px] h-[255px]" src={image} alt=''
-
-                ></img>
+                <img className="rounded-full w-[255px] h-[255px]" src={image} alt=''></img>
+                {/* <img src="/assets/level-icons/level-1.png"></img> */}
             </CircularProgressbarWithChildren>
 
             {/* <div className="flex justify-center">
