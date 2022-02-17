@@ -44,9 +44,9 @@ const Home = () => {
     console.log('home loop');
 
     return (
-        <main className="flex-grow flex flex-col content-around justify-evenly items-center">
+        <main className="flex-grow flex flex-col content-around justify-evenly items-center text-gray-700 dark:text-gray-400 dark:bg-gray-800">
             {/* Intro text */}
-            <section className="container text-gray-700">
+            <section className="container">
                 <p className="p-2 text-justify">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Pellentesque orci mi, dapibus in volutpat ac, bibendum vel
@@ -78,8 +78,8 @@ const Home = () => {
                     <button
                         type="button"
                         data-mdb-ripple="true"
-                        data-mdb-ripple-color="dark"
-                        className="flex items-center justify-between px-6 py-2.5 text-gray-700 bg-mid-gray hover:bg-mid-gray-hover font-medium uppercase rounded shadow-sm hover:shadow-md focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out"
+                        data-mdb-ripple-color="light"
+                        className="flex items-center justify-between px-6 py-2.5 text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 font-medium uppercase rounded shadow-sm hover:shadow-md focus:shadow-lg transition duration-300 ease-in-out"
                         onClick={startGame}
                     >
                         Start Game
@@ -116,10 +116,10 @@ const Home = () => {
                     <GlobalLeaderBoard />
                 </div>
                 <div className="my-4 flex flex-col">
-                    <h1 className="block text-center text-2xl underline text-gray-600">
+                    <h1 className="block text-center text-2xl underline text-gray-600 dark:text-gray-300">
                         Badge Progress
                     </h1>
-                    <div className="flex flex-grow items-center text-gray-600">
+                    <div className="flex flex-grow items-center text-gray-600 dark:text-gray-400 my-6">
                         {loggedIn && <RecentBadge runGame={runGame} />}
                         {loggedIn && <RecentBadge runGame={runGame} />}
                     </div>

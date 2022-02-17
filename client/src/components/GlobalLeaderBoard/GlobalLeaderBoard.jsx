@@ -23,10 +23,10 @@ const GlobalLeaderBoard = () => {
 
     return (
         <section className="w-3/4 mx-auto my-4 text-gray-600">
-            <h1 className="block text-center text-2xl underline">
+            <h1 className="block text-center text-2xl underline dark:text-gray-300">
                 Global Leaderboard
             </h1>
-            <table className="table-auto mx-auto">
+            <table className="table-auto mx-auto my-6 dark:text-gray-400">
                 <thead>
                     <tr>
                         <th>#</th>
