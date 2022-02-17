@@ -9,6 +9,11 @@ const WeeklyLeaderBoard = () => {
     const { loading, data, refetch } = useQuery(QUERY_WEEKLY_SCORES);
     refetch();
     const leaderBoard = data?.weeklyScores.map(score => { return {wpm: score.wpm, accuracy: score.accuracy, username: score.username, date: formatTime(score.createdAt)} });
+
+    if (loading) {
+        return <p>Loading...</p>
+    }
+
     return (
         <section  className='w-3/4 mx-auto my-4'>
             <h1 className='block text-center text-2xl underline'>Weekly Leaderboard</h1>

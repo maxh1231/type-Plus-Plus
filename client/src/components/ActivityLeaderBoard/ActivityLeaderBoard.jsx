@@ -8,6 +8,11 @@ const ActivityLeaderBoard = () => {
     const { loading, data, refetch } = useQuery(QUERY_SCORE_COUNT);
     refetch();
     const leaderBoard = data?.users;
+
+    if (loading) {
+        return <p>Loading...</p>
+    }
+
     return (
         <section className='w-3/4 mx-auto my-4'>
             <h1 className='block text-center text-2xl underline'>Activity Leaderboard</h1>
