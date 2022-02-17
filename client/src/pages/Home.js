@@ -1,8 +1,8 @@
+// Imports
 import React, { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import { ArrowCircleRightIcon } from '@heroicons/react/solid';
 import Game from '../components/Game';
-import Chart from '../components/Chart';
 import GlobalLeaderBoard from '../components/GlobalLeaderBoard';
 import RecentBadge from '../components/RecentBadge/RecentBadge';
 import Auth from '../utils/auth';
@@ -44,8 +44,8 @@ const Home = () => {
     return (
         <main className="flex-grow flex flex-col content-around justify-evenly items-center">
             {/* Intro text */}
-            <section className="container">
-                <p>
+            <section className="container text-gray-700">
+                <p className="p-2 text-justify">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Pellentesque orci mi, dapibus in volutpat ac, bibendum vel
                     dui. Duis lacinia odio tincidunt justo commodo, vel feugiat
@@ -57,7 +57,7 @@ const Home = () => {
                     Vestibulum interdum mauris justo, id vulputate enim iaculis
                     sit amet.
                 </p>
-                <p>
+                <p className="p-2 text-justify">
                     Donec quis felis sagittis, scelerisque ante sit amet,
                     bibendum neque. Nulla facilisi. Cras iaculis ex velit, nec
                     consectetur nulla suscipit eget. Ut imperdiet est quis ipsum
