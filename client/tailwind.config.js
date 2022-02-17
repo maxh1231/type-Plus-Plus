@@ -13,6 +13,11 @@ module.exports = {
                 'theme-blue': '#35a2eb',
                 'theme-blue-light': '#94cbf1',
             },
+            keyframes: {
+                reverse: {
+                    '0%': {},
+                },
+            },
         },
     },
     plugins: [require('tw-elements/dist/plugin')],

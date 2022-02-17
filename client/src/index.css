@@ -62,28 +62,31 @@ code {
     animation-duration: 350ms;
     animation-fill-mode: forwards;
     transition: all 350ms ease-in;
-    content: '';
-    width: 82px;
-    height: 82px;
-    border: 5px solid var(--yellow-border);
-    top: 4px;
-    left: 4px;
-    position: absolute;
-    border-radius: 82px;
-    background: var(--yellow-background);
 }
 
 @keyframes reverse {
     0% {
-        left: 104px;
-        width: 82px;
+        left: 36px;
     }
     60% {
-        left: 72px;
-        width: 112px;
+        left: 15px;
+        width: 40px;
     }
     100% {
-        left: 4px;
+        left: 5px;
+    }
+}
+
+@keyframes switch {
+    0% {
+        left: 5px;
+    }
+    60% {
+        left: 5px;
+        width: 40px;
+    }
+    100% {
+        left: 36px;
     }
 }
 
@@ -145,20 +148,6 @@ code {
     animation-name: switch;
     animation-duration: 350ms;
     animation-fill-mode: forwards;
-}
-
-@keyframes switch {
-    0% {
-        left: 4px;
-    }
-    60% {
-        left: 4px;
-        width: 112px;
-    }
-    100% {
-        left: 104px;
-        width: 82px;
-    }
 }
 
 .toggle--label:after {

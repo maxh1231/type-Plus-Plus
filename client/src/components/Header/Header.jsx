@@ -144,7 +144,9 @@ const Header = () => {
                         />
                         <label
                             htmlFor="toggle"
-                            className="toggle--label flex relative w-[50px] h-[25px] rounded-full bg-theme-blue-light transition-all ease-in duration-300"
+                            className="toggle--label flex relative w-[60px] h-[30px] rounded-full bg-theme-blue-light transition-all ease-in duration-300
+                            before:w-[20px] before:h-[20px] before:top-[5px] before:left-[5px] before:absolute before:rounded-full before:bg-yellow-100
+                            "
                         >
                             <span className="toggle--label-background"></span>
                         </label>
