@@ -6,13 +6,14 @@ import { formatTime } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 
 const GlobalLeaderBoard = () => {
-    const { loading, data, refetch } = useQuery(QUERY_SCORES, {
+    const { loading, data } = useQuery(QUERY_SCORES, {
         pollInterval: 500,
     });
-    // refetch();
     const leaderBoard = data?.scores.map(score => { return {wpm: score.wpm, accuracy: score.accuracy, username: score.username, date: formatTime(score.createdAt)} });
 
-    console.log('leaderboard loop')
+    if (loading) {
+        return <p>Loading...</p>
+    }
 
     return (
         <section className='w-3/4 mx-auto my-4'>

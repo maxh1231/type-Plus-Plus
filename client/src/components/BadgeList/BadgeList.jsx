@@ -16,7 +16,7 @@ const BadgeList = ({view}) => {
         refetch();
         myBadgeData.refetch();
         myData.refetch();
-    }, [view])
+    }, [view]) // eslint-disable-line react-hooks/exhaustive-deps
 
     // Get all badges and user specific badges
     const badgeArr = data?.badges || [];
@@ -75,8 +75,6 @@ const BadgeList = ({view}) => {
     if (loading) {
         return <p>Loading...</p>
     }
-
-    console.log('badge list loop')
 
     return (
         <section className='w-full'>

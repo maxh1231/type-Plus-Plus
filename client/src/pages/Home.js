@@ -41,8 +41,6 @@ const Home = () => {
         setRunGame(false);
     };
 
-    console.log('home loop')
-
     return (
         <main className="flex-grow flex flex-col content-around justify-evenly items-center">
             <section className="m-4">

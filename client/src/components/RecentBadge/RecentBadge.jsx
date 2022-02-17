@@ -4,12 +4,10 @@ import { QUERY_MYBADGE } from '../../utils/queries';
 
 const RecentBadge = ({ runGame }) => {
     const { loading, data, refetch } = useQuery(QUERY_MYBADGE);
-    // refetch();
+    
     useEffect(() => {
         refetch();
     }, [runGame]) // eslint-disable-line react-hooks/exhaustive-deps
-    
-    console.log('recent badge loop')
     
     if (loading) {
         return <p>Loading...</p>
