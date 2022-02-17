@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { EyeIcon } from '@heroicons/react/solid';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
     const [addUser, { error }] = useMutation(ADD_USER);
@@ -201,7 +202,7 @@ const Signup = () => {
                         </button>
 
                         <div className='flex justify-center m-1'>
-                            <a href='/login' className="items-center underline text-blue-600 hover:text-blue-900">Already Have An Account?</a>
+                            <p className="items-center underline text-blue-600 hover:text-blue-900"><Link to="/login">Already Have An Account?</Link></p>
                         </div>                        
                     </form>
                 </div>
