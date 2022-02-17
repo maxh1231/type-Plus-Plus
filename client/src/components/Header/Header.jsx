@@ -43,10 +43,10 @@ const Header = () => {
             {/* Colored div to block the sliding links */}
             <div
                 className="absolute w-16 h-10 left-0 top-4 bg-gray-100 z-10
-            dark:bg-gray-900"
+            dark:bg-gray-900 transition duration-200"
             ></div>
             {/* Actual navbar */}
-            <nav className="relative w-full flex flex-wrap items-center justify-around py-4 bg-gray-100 text-gray-600 shadow-md dark:bg-gray-900 dark:text-gray-200">
+            <nav className="relative w-full flex flex-wrap items-center justify-around py-4 bg-gray-100 text-gray-600 shadow-md dark:bg-gray-900 dark:text-gray-200 transition duration-200">
                 <div className="w-full grid grid-cols-3 px-6">
                     {/* Nav menu */}
                     <div className="flex flex-wrap">

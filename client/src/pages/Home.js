@@ -44,7 +44,7 @@ const Home = () => {
     console.log('home loop');
 
     return (
-        <main className="flex-grow flex flex-col content-around justify-evenly items-center text-gray-700 dark:text-gray-400 dark:bg-gray-800">
+        <main className="flex-grow flex flex-col content-around justify-evenly items-center text-gray-700 dark:text-gray-400 dark:bg-gray-800 transition duration-200">
             {/* Intro text */}
             <section className="container">
                 <p className="p-2 text-justify">
