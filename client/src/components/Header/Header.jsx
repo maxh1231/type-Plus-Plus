@@ -160,12 +160,23 @@ const Header = () => {
                     {/* Dark mode switch */}
                     <div className="flex justify-end items-center">
                         {/* Inspired by https://daily-dev-tips.com/posts/creating-day-night-css-only-toggle-switch/ */}
-                        <input
-                            type="checkbox"
-                            id="toggle"
-                            className="hidden toggle--checkbox"
-                            onClick={themeSetter}
-                        />
+                        {localStorage.theme === 'light' && (
+                            <input
+                                type="checkbox"
+                                id="toggle"
+                                className="hidden toggle--checkbox"
+                                onClick={themeSetter}
+                            />
+                        )}
+                        {localStorage.theme === 'dark' && (
+                            <input
+                                type="checkbox"
+                                id="toggle"
+                                className="hidden toggle--checkbox"
+                                onClick={themeSetter}
+                                defaultChecked
+                            />
+                        )}
                         <label
                             htmlFor="toggle"
                             className="toggle--label cursor-pointer flex relative w-[60px] h-[30px] rounded-full bg-theme-blue-light transition-all ease-in duration-300
