@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuid } from 'uuid';
 import { useQuery } from '@apollo/client';
 import { QUERY_BADGES, QUERY_MYBADGE, QUERY_ME } from '../../utils/queries';
@@ -6,14 +6,18 @@ import { ViewGridIcon, ViewListIcon } from '@heroicons/react/outline';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const BadgeList = () => {
+const BadgeList = ({view}) => {
     const [viewGrid, setViewGrid] = useState(true);
     const { loading, data, refetch } = useQuery(QUERY_BADGES);
     const myBadgeData = useQuery(QUERY_MYBADGE);
     const myData = useQuery(QUERY_ME);
-    refetch();
-    myBadgeData.refetch();
-    myData.refetch();
+
+    useEffect(() => {
+        refetch();
+        myBadgeData.refetch();
+        myData.refetch();
+    }, [view])
+
     // Get all badges and user specific badges
     const badgeArr = data?.badges || [];
     const myBadgeArr = myBadgeData.data?.meBadges.badges || [];
@@ -67,6 +71,12 @@ const BadgeList = () => {
                 return 0
         }
     }
+
+    if (loading) {
+        return <p>Loading...</p>
+    }
+
+    console.log('badge list loop')
 
     return (
         <section className='w-full'>
