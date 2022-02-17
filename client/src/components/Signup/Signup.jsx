@@ -170,7 +170,7 @@ const Signup = () => {
                                 className="block border border-grey-light w-5/6 p-3 rounded mb-4"
                             />
 
-                            <i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500" /></i>
+                            <i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>
                         </div>
                         <ErrorMessage
                             errors={errors}
@@ -199,6 +199,10 @@ const Signup = () => {
                         >
                             Create Account
                         </button>
+
+                        <div className='flex justify-center m-1'>
+                            <a href='/login' className="items-center underline text-blue-600 hover:text-blue-900">Already Have An Account?</a>
+                        </div>                        
                     </form>
                 </div>
             </div>
