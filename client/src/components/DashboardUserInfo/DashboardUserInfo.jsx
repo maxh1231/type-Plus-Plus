@@ -25,7 +25,7 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
         averageWPM = average(scoresArr);
     }
 
-    let userLevel = 1
+    let userLevel = 0;
     let levelProgress;
     let totalXP = 0;
     if (data) {
@@ -84,6 +84,44 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
     console.log(totalXP)
     console.log(userLevel)
     console.log(levelProgress);
+
+
+
+    let levelIcon;
+    switch (userLevel) {
+        case 1:
+            levelIcon = "/assets/level-icons/level-1.png";
+            break;
+        case 2:
+            levelIcon = "/assets/level-icons/level-2.png";
+            break;
+        case 3:
+            levelIcon = "/assets/level-icons/level-3.png";
+            break;
+        case 4:
+            levelIcon = "/assets/level-icons/level-4.png";
+            break;
+        case 5:
+            levelIcon = "/assets/level-icons/level-5.png";
+            break;
+        case 6:
+            levelIcon = "/assets/level-icons/level-6.png";
+            break;
+        case 7:
+            levelIcon = "/assets/level-icons/level-7.png";
+            break;
+        case 8:
+            levelIcon = "/assets/level-icons/level-8.png";
+            break;
+        case 9:
+            levelIcon = "/assets/level-icons/level-9.png";
+            break;
+        case 10:
+            levelIcon = "/assets/level-icons/level-10.png";
+            break;
+    }
+
+    console.log(levelIcon);
 
     // refetch();
 
