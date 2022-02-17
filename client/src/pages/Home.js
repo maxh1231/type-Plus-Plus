@@ -79,7 +79,7 @@ const Home = () => {
                     <Chart />
                 </div>
                 <div className="container">
-                    <GlobalLeaderBoard />
+                    <GlobalLeaderBoard displayCount={5} />
                 </div>
             </div>
             {loggedIn && (
