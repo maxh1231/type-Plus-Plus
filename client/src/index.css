@@ -91,13 +91,13 @@ code {
 }
 
 .toggle--label-background {
-    width: 10px;
-    height: 5px;
+    width: 7px;
+    height: 2px;
     border-radius: 5px;
     position: relative;
     background: var(--white);
-    left: 135px;
-    top: 45px;
+    left: 38px;
+    top: 14px;
     transition: all 150ms ease-in;
 }
 
@@ -105,11 +105,11 @@ code {
     content: '';
     position: absolute;
     top: -5px;
-    width: 40px;
-    height: 5px;
+    width: 12px;
+    height: 2px;
     border-radius: 5px;
     background: var(--white);
-    left: -20px;
+    left: -6px;
     transition: all 150ms ease-in;
 }
 
@@ -117,11 +117,11 @@ code {
     content: '';
     position: absolute;
     top: 5px;
-    width: 40px;
-    height: 5px;
+    width: 12px;
+    height: 2px;
     border-radius: 5px;
     background: var(--white);
-    left: -10px;
+    left: -1px;
     transition: all 150ms ease-in;
 }
 
