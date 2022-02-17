@@ -57,14 +57,6 @@ code {
 
 /* Dark Mode Toggle */
 
-.toggle--label {
-    background: var(--blue-color);
-    border-radius: 100px;
-    display: flex;
-    position: relative;
-    transition: all 350ms ease-in;
-}
-
 .toggle--label:before {
     animation-name: reverse;
     animation-duration: 350ms;
