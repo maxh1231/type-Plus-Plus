@@ -33,6 +33,56 @@ const ProfileUserInfo = ({ data }) => {
         averageWPM = average(scoresArr);
     }
 
+    if (totalXP < level2) {
+        levelProgress = totalXP / level2 * 100
+    } else if (totalXP >= level2 && totalXP < level3) {
+        userLevel = 2;
+        let diff = level3 - level2
+        let diff2 = totalXP - level2
+        levelProgress = diff2 / diff * 100
+    } else if (totalXP >= level3 && totalXP < level4) {
+        userLevel = 3;
+        let diff = level4 - level3
+        let diff2 = totalXP - level3
+        levelProgress = diff2 / diff * 100
+    } else if (totalXP >= level4 && totalXP < level5) {
+        userLevel = 4;
+        let diff = level5 - level4
+        let diff2 = totalXP - level4
+        levelProgress = diff2 / diff * 100
+    } else if (totalXP >= level5 && totalXP < level6) {
+        userLevel = 5;
+        let diff = level6 - level5
+        let diff2 = totalXP - level5
+        levelProgress = diff2 / diff * 100
+    } else if (totalXP >= level6 && totalXP < level7) {
+        userLevel = 6;
+        let diff = level7 - level6
+        let diff2 = totalXP - level6
+        levelProgress = diff2 / diff * 100
+    } else if (totalXP >= level7 && totalXP < level8) {
+        userLevel = 7;
+        let diff = level8 - level7
+        let diff2 = totalXP - level7
+        levelProgress = diff2 / diff * 100
+    } else if (totalXP >= level8 && totalXP < level9) {
+        userLevel = 8;
+        let diff = level9 - level8
+        let diff2 = totalXP - level8
+        levelProgress = diff2 / diff * 100
+    } else if (totalXP >= level9 && totalXP < level10) {
+        userLevel = 9;
+        let diff = level10 - level9
+        let diff2 = totalXP - level9
+        levelProgress = diff2 / diff * 100
+    } else if (totalXP >= level10) {
+        userLevel = 10;
+        levelProgress = null;
+    }
+
+    console.log(userLevel)
+    console.log(levelProgress)
+
     console.log(data);
     return (
         <section className="bg-gray-100 w-[300px]">
