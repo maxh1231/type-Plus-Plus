@@ -2,7 +2,7 @@ import moment from 'moment';
 
 export const formatTime = (date) => {
     let x = parseInt(date);
-    return moment(x).format('MMMM Do HH:mm');
+    return moment(x).format('MMM. D h:mmA');
 };
 
 export const checkGame = (val) => {
@@ -17,21 +17,32 @@ export const checkGame = (val) => {
             return 'Hardcore Gamer';
         case 100:
             return 'Mega Gamer';
-        default: 
+        default:
             return false;
-        }
+    }
 };
 
 export const checkScore = (val) => {
     if (val > 150) {
-        return ['The Flash', 'Professional Typist', 'Speed Demon', 'Average Typist', 'Typist'];
-    } else if ( val > 125) {
-        return ['Professional Typist', 'Speed Demon', 'Average Typist', 'Typist'];
-    } else if ( val > 100) {
+        return [
+            'The Flash',
+            'Professional Typist',
+            'Speed Demon',
+            'Average Typist',
+            'Typist',
+        ];
+    } else if (val > 125) {
+        return [
+            'Professional Typist',
+            'Speed Demon',
+            'Average Typist',
+            'Typist',
+        ];
+    } else if (val > 100) {
         return ['Speed Demon', 'Average Typist', 'Typist'];
-    } else if ( val > 75) {
+    } else if (val > 75) {
         return ['Average Typist', 'Typist'];
-    } else if ( val > 50) {
+    } else if (val > 50) {
         return ['Typist'];
     } else {
         return false;
@@ -40,7 +51,7 @@ export const checkScore = (val) => {
 
 export const checkAccuracy = (val) => {
     if (val === 100) {
-        return ['Perfect!','Precision Expert', 'Sharp Shooter'];
+        return ['Perfect!', 'Precision Expert', 'Sharp Shooter'];
     } else if (val > 90) {
         return ['Precision Expert', 'Sharp Shooter'];
     } else if (val > 80) {
@@ -62,9 +73,9 @@ export const checkFriends = (val) => {
             return 'Socialite';
         case 100:
             return 'Social Butterfly';
-        default: 
+        default:
             return false;
-        }
+    }
 };
 
 export const checkStreak = (val) => {
@@ -79,9 +90,9 @@ export const checkStreak = (val) => {
             return 'Super Consistent';
         case 50:
             return 'Typing Addict';
-        default: 
-            return false
-        }
+        default:
+            return false;
+    }
 };
 
 export const checkAge = (val) => {
@@ -96,7 +107,7 @@ export const checkAge = (val) => {
             return 'Old Timer';
         case 10:
             return 'Geezer';
-        default: 
+        default:
             return false;
-        }
+    }
 };

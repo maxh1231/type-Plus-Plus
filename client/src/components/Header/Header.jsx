@@ -135,7 +135,20 @@ const Header = () => {
                         />
                     </div>
                     {/* Dark mode switch */}
-                    <div className="flex justify-end items-center"></div>
+                    <div className="flex justify-end items-center">
+                        {/* Inspired by https://daily-dev-tips.com/posts/creating-day-night-css-only-toggle-switch/ */}
+                        <input
+                            type="checkbox"
+                            id="toggle"
+                            className="hidden toggle--checkbox"
+                        />
+                        <label
+                            htmlFor="toggle"
+                            className="toggle--label w-[50px] h-[25px]"
+                        >
+                            <span className="toggle--label-background"></span>
+                        </label>
+                    </div>
                 </div>
             </nav>
         </header>
