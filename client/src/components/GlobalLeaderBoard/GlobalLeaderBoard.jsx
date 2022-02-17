@@ -91,7 +91,6 @@ const GlobalLeaderBoard = ({ displayCount }) => {
         );
     }
 
-
     if (loading) {
         return <p>Loading...</p>
     }
