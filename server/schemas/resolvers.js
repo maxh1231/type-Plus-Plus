@@ -56,6 +56,11 @@ const resolvers = {
       const params = { username };
       return Scores.find(params).sort({ 'wpm': -1 });
     },
+    // get badges by username
+    badgesByUser: async (parent, { username }) => {
+      const params = { username };
+      return Badge.find(params);
+    },
     // all scores
     scores: async () => {
       return Scores.find().sort({ wpm: -1 });
@@ -94,28 +99,28 @@ const resolvers = {
       // logged in twice in one day
       if (now === lastLog) {
         await User.findOneAndUpdate(
-          { _id: user._id},
-          { $set: { lastLog: Date.now() }},
+          { _id: user._id },
+          { $set: { lastLog: Date.now() } },
           { new: true }
         );
-      // logged in 1 day after previous
+        // logged in 1 day after previous
       } else if (now - 1 === lastLog) {
         await User.findOneAndUpdate(
-          { _id: user._id},
-          { $set: { lastLog: Date.now() }, $inc: {streak: 1}},
+          { _id: user._id },
+          { $set: { lastLog: Date.now() }, $inc: { streak: 1 } },
           { new: true }
         );
       } else if (now === 1 && lastLog >= 364) {
         await User.findOneAndUpdate(
-          { _id: user._id},
-          { $set: { lastLog: Date.now() }, $inc: {streak: 1}},
+          { _id: user._id },
+          { $set: { lastLog: Date.now() }, $inc: { streak: 1 } },
           { new: true }
-          );
-      // logged in more than one day after previous
+        );
+        // logged in more than one day after previous
       } else {
         await User.findOneAndUpdate(
-          { _id: user._id},
-          { $set: { lastLog: Date.now() }, $set: {streak: 0}},
+          { _id: user._id },
+          { $set: { lastLog: Date.now() }, $set: { streak: 0 } },
           { new: true }
         );
       }

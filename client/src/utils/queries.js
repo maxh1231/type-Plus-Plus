@@ -10,6 +10,10 @@ export const QUERY_USER = gql`
             bio
             location
             profilePic
+            badges {
+                badgeName
+                xp
+            }
         }
         scoresByUser(username: $username) {
           wpm
