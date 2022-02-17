@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
-import BadgeList from "../components/BadgeList/BadgeList";
+import { useEffect, useState } from 'react';
+import BadgeList from '../components/BadgeList/BadgeList';
 
 const Badges = () => {
     const [view, setView] = useState(false);
-    
+
     useEffect(() => {
-        setView(true)
+        setView(true);
     }, []);
-    
-    return (
-        <BadgeList view={view}/>
-    )
-}
+
+    return <BadgeList view={view} />;
+};
 
 export default Badges;

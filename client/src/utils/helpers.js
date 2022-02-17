@@ -2,7 +2,7 @@ import moment from 'moment';
 
 export const formatTime = (date) => {
     let x = parseInt(date);
-    return moment(x).format('MMMM Do HH:mm');
+    return moment(x).format('MMM. D h:mmA');
 };
 
 export const checkGame = (val) => {
@@ -24,9 +24,20 @@ export const checkGame = (val) => {
 
 export const checkScore = (val) => {
     if (val > 150) {
-        return ['The Flash', 'Professional Typist', 'Speed Demon', 'Average Typist', 'Typist'];
+        return [
+            'The Flash',
+            'Professional Typist',
+            'Speed Demon',
+            'Average Typist',
+            'Typist',
+        ];
     } else if (val > 125) {
-        return ['Professional Typist', 'Speed Demon', 'Average Typist', 'Typist'];
+        return [
+            'Professional Typist',
+            'Speed Demon',
+            'Average Typist',
+            'Typist',
+        ];
     } else if (val > 100) {
         return ['Speed Demon', 'Average Typist', 'Typist'];
     } else if (val > 75) {
@@ -80,7 +91,7 @@ export const checkStreak = (val) => {
         case 50:
             return 'Typing Addict';
         default:
-            return false
+            return false;
     }
 };
 
@@ -100,4 +111,3 @@ export const checkAge = (val) => {
             return false;
     }
 };
-
