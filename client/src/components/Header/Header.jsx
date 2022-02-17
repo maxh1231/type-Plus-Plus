@@ -83,7 +83,7 @@ const Header = () => {
                                 <li className="nav-item p-2">
                                     <Link
                                         to="/"
-                                        className="nav-link p-0 hover:text-theme-red focus:text-theme-red transition-all duration-200 opacity-0"
+                                        className="nav-link p-0 hover:text-theme-red transition-all duration-200 opacity-0"
                                     >
                                         Home
                                     </Link>
@@ -91,7 +91,7 @@ const Header = () => {
                                 <li className="nav-item p-2">
                                     <Link
                                         to="/leaderboard"
-                                        className="nav-link p-0 hover:text-theme-red focus:text-theme-red transition-all duration-200 opacity-0"
+                                        className="nav-link p-0 hover:text-theme-red transition-all duration-200 opacity-0"
                                     >
                                         Leaderboard
                                     </Link>
@@ -101,7 +101,7 @@ const Header = () => {
                                         <li className="nav-item p-2">
                                             <Link
                                                 to="/dashboard"
-                                                className="nav-link p-0 hover:text-theme-red focus:text-theme-red transition-all duration-200 opacity-0"
+                                                className="nav-link p-0 hover:text-theme-red transition-all duration-200 opacity-0"
                                             >
                                                 Dashboard
                                             </Link>
@@ -109,7 +109,7 @@ const Header = () => {
                                         <li className="nav-item p-2">
                                             <a
                                                 href="/"
-                                                className="nav-link p-0 hover:text-theme-red focus:text-theme-red transition-all duration-200 opacity-0"
+                                                className="nav-link p-0 hover:text-theme-red transition-all duration-200 opacity-0"
                                                 onClick={logout}
                                             >
                                                 Logout
@@ -121,7 +121,7 @@ const Header = () => {
                                         <li className="nav-item p-2">
                                             <Link
                                                 to="/login"
-                                                className="nav-link p-0 hover:text-theme-red focus:text-theme-red transition-all duration-200 opacity-0"
+                                                className="nav-link p-0 hover:text-theme-red transition-all duration-200 opacity-0"
                                             >
                                                 Login
                                             </Link>
@@ -129,7 +129,7 @@ const Header = () => {
                                         <li className="nav-item p-2">
                                             <Link
                                                 to="/signup"
-                                                className="nav-link p-0 hover:text-theme-red focus:text-theme-red transition-all duration-200 opacity-0"
+                                                className="nav-link p-0 hover:text-theme-red transition-all duration-200 opacity-0"
                                             >
                                                 Sign Up
                                             </Link>

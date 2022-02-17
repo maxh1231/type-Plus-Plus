@@ -21,7 +21,7 @@ const Footer = () => {
                             Check out the{' '}
                             <a
                                 href="https://github.com/t-norm/type-Plus-Plus"
-                                className="underline hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="underline hover:text-theme-red transition-all duration-200"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -37,7 +37,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://www.mongodb.com/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -47,7 +47,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://expressjs.com/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -57,7 +57,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://reactjs.org/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -67,7 +67,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://nodejs.org/en/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -82,7 +82,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://tailwindcss.com/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -92,7 +92,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://www.chartjs.org/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -102,7 +102,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://momentjs.com/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -112,7 +112,7 @@ const Footer = () => {
                         <p>
                             <a
                                 href="https://jwt.io/"
-                                className="text-gray-600 hover:text-theme-red focus:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red dark:focus:text-theme-red"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-200 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -145,7 +145,7 @@ const Footer = () => {
                                 href="https://github.com/Thenlie"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="hover:text-theme-red transition-all duration-200"
                             >
                                 Leithen Crider
                             </a>
@@ -171,7 +171,7 @@ const Footer = () => {
                                 href="https://github.com/Thorulfr"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="hover:text-theme-red transition-all duration-200"
                             >
                                 Benjamin Holt
                             </a>
@@ -197,7 +197,7 @@ const Footer = () => {
                                 href="https://github.com/maxh1231"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="hover:text-theme-red transition-all duration-200"
                             >
                                 Max Humpherys
                             </a>
@@ -223,7 +223,7 @@ const Footer = () => {
                                 href="https://github.com/t-norm"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="hover:text-theme-red focus:text-theme-red transition-all duration-200"
+                                className="hover:text-theme-red transition-all duration-200"
                             >
                                 Tyler Norman
                             </a>
