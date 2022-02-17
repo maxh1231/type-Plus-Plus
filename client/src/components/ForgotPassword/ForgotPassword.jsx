@@ -12,7 +12,7 @@ const ForgotPassword = () => {
 
     const onSubmit = async () => {
         try {
-
+          
         } catch (e) {
             document.getElementById('loginInvalid').classList.remove('hidden');
             setTimeout(() => {
