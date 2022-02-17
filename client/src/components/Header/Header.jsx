@@ -31,14 +31,17 @@ const Header = () => {
     return (
         <header>
             {/* Colored div to block the sliding links */}
-            <div className="absolute w-16 h-10 left-0 top-4 bg-gray-100 z-10"></div>
+            <div
+                className="absolute w-16 h-10 left-0 top-4 bg-gray-100 z-10
+            dark:bg-gray-900"
+            ></div>
             {/* Actual navbar */}
-            <nav className="relative w-full flex flex-wrap items-center justify-around py-4 bg-gray-100 text-gray-600 shadow-md ">
+            <nav className="relative w-full flex flex-wrap items-center justify-around py-4 bg-gray-100 text-gray-600 shadow-md dark:bg-gray-900 dark:text-gray-200">
                 <div className="w-full grid grid-cols-3 px-6">
                     {/* Nav menu */}
                     <div className="flex flex-wrap">
                         <button
-                            className="text-gray-700 w-10 h-10 relative focus:outline-none z-20"
+                            className="text-gray-700 w-10 h-10 relative focus:outline-none z-20 dark:text-gray-200"
                             onClick={hamburgerToggle}
                         >
                             <span className="sr-only">Open main menu</span>
@@ -128,11 +131,20 @@ const Header = () => {
                     </div>
                     {/* Logo column */}
                     <div className="flex justify-center items-center text-2xl h-10">
-                        <img
-                            src="./assets/images/logo.svg"
-                            alt="Text Plus Plus logo"
-                            className="h-56"
-                        />
+                        {localStorage.theme === 'light' && (
+                            <img
+                                src="./assets/images/logo.svg"
+                                alt="Text Plus Plus logo"
+                                className="h-56"
+                            />
+                        )}
+                        {localStorage.theme === 'dark' && (
+                            <img
+                                src="./assets/images/logo-dark.svg"
+                                alt="Text Plus Plus logo"
+                                className="h-56"
+                            />
+                        )}
                     </div>
                     {/* Dark mode switch */}
                     <div className="flex justify-end items-center">
@@ -144,7 +156,7 @@ const Header = () => {
                         />
                         <label
                             htmlFor="toggle"
-                            className="toggle--label flex relative w-[60px] h-[30px] rounded-full bg-theme-blue-light transition-all ease-in duration-300
+                            className="toggle--label cursor-pointer flex relative w-[60px] h-[30px] rounded-full bg-theme-blue-light transition-all ease-in duration-300
                             before:w-[20px] before:h-[20px] before:top-[5px] before:left-[5px] before:absolute before:rounded-full before:bg-yellow-100
                             "
                         >

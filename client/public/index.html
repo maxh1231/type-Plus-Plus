@@ -9,6 +9,7 @@
             name="description"
             content="Application for improving typing skills"
         />
+        <title>Type++</title>
         <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
         <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
         <!-- Fonts -->
@@ -18,7 +19,20 @@
             href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
             rel="stylesheet"
         />
-        <title>Type++</title>
+        <!-- Theme initializer -->
+        <script>
+            if (
+                localStorage.theme === 'dark' ||
+                (!('theme' in localStorage) &&
+                    window.matchMedia('(prefers-color-scheme: dark)').matches)
+            ) {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            }
+        </script>
     </head>
 
     <body>
