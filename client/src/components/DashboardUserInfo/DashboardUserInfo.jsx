@@ -83,11 +83,11 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
         levelProgress = null;
     }
 
-    // console.log(userLevel)
-    // console.log(levelProgress);
+    console.log(userLevel)
+    console.log(levelProgress);
 
 
-    refetch();
+    // refetch();
 
     return (
         <section className="bg-gray-100 w-[300px]">
