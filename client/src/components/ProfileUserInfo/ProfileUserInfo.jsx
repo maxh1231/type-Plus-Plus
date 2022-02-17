@@ -4,6 +4,25 @@ import { ADD_FRIEND } from '../../utils/mutations';
 import { QUERY_FRIENDS } from '../../utils/queries'
 
 const ProfileUserInfo = ({ data }) => {
+    const level2 = 25;
+    const level3 = 50;
+    const level4 = 100;
+    const level5 = 200;
+    const level6 = 400;
+    const level7 = 800;
+    const level8 = 1600;
+    const level9 = 2800;
+    const level10 = 3200;
+
+    let userLevel = 1;
+    let levelProgress;
+    let totalXP = 0;
+    if (data) {
+        data.user.badges.map(badge => {
+            totalXP += badge.xp
+        })
+    }
+
     let averageWPM;
     if (data.scoresByUser.length !== 0) {
         let scoresArr = []
