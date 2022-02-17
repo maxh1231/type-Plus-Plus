@@ -41,6 +41,8 @@ const Home = () => {
         setRunGame(false);
     };
 
+    console.log('home loop');
+
     return (
         <main className="flex-grow flex flex-col content-around justify-evenly items-center">
             {/* Intro text */}
@@ -115,7 +117,7 @@ const Home = () => {
                 </div>
                 <div className="col-span-2 bg-gray-400">Badge Progress</div>
             </div>
-            {/* {loggedIn && <RecentBadge />} */}
+            {loggedIn && <RecentBadge runGame={runGame} />}
         </main>
     );
 };
