@@ -1,10 +1,24 @@
 import { useQuery } from '@apollo/client'
 import { QUERY_ME } from '../../utils/queries'
 import { formatTime } from '../../utils/helpers'
-
+import { v4 as uuid } from 'uuid';
 
 const Highscore = () => {
     const { loading, data } = useQuery(QUERY_ME)
+
+    if (loading) {
+        return <p>Loading...</p>
+    }
+
+    let newArr = []
+
+    if (data.meScores.length > 3) {
+        newArr = data.meScores.splice(0,3)
+    } else if (data.meScores.length > 0) {
+        newArr = [...data.meScores]
+    } 
+
+    console.log(newArr)
 
     return (
         <section>
@@ -12,12 +26,11 @@ const Highscore = () => {
                 <h3 className="text-center">Your Highest Scores</h3>
             </div>
             <div>
-                {data.meScores[0] &&
                     <ol>
-                        <li className="text-center mt-1">{data.meScores[0].wpm} WPM on {formatTime(data.meScores[0].createdAt)}</li>
-                        <li className="text-center mt-1">{data.meScores[1].wpm} WPM on {formatTime(data.meScores[1].createdAt)}</li>
-                        <li className="text-center mt-1">{data.meScores[2].wpm} WPM on {formatTime(data.meScores[2].createdAt)}</li>
-                    </ol>}
+                        {newArr.map(score => (
+                            <li className="text-center mt-1" key={uuid()}>{score.wpm} WPM on {formatTime(score.createdAt)}</li>
+                        ))}
+                    </ol>
             </div>
         </section>
     )
