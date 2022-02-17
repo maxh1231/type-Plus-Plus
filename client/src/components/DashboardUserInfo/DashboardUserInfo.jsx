@@ -14,10 +14,6 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
     const level9 = 2800;
     const level10 = 3200;
 
-
-    let userLevel = 1
-    let levelProgress
-
     let averageWPM;
 
     if (data.meScores.length !== 0) {
@@ -29,16 +25,18 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
         averageWPM = average(scoresArr);
     }
 
-    let totalXP = 2900;
-    // if (data) {
-    //     data.meBadges.badges.map(badge => {
-    //         totalXP += badge.xp
-    //     })
-    // }
+    let userLevel = 1;
+    let levelProgress;
+    let totalXP = 0;
+    if (data) {
+        data.meBadges.badges.map(badge => {
+            totalXP += badge.xp
+        })
+    }
 
-
-
-    if (totalXP >= level2 && totalXP < level3) {
+    if (totalXP < level2) {
+        levelProgress = totalXP / level2 * 100
+    } else if (totalXP >= level2 && totalXP < level3) {
         userLevel = 2;
         let diff = level3 - level2
         let diff2 = totalXP - level2
@@ -83,9 +81,47 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
         levelProgress = null;
     }
 
+    console.log(totalXP)
     console.log(userLevel)
     console.log(levelProgress);
 
+
+
+    let levelIcon;
+    switch (userLevel) {
+        case 1:
+            levelIcon = "/assets/level-icons/level-1.png";
+            break;
+        case 2:
+            levelIcon = "/assets/level-icons/level-2.png";
+            break;
+        case 3:
+            levelIcon = "/assets/level-icons/level-3.png";
+            break;
+        case 4:
+            levelIcon = "/assets/level-icons/level-4.png";
+            break;
+        case 5:
+            levelIcon = "/assets/level-icons/level-5.png";
+            break;
+        case 6:
+            levelIcon = "/assets/level-icons/level-6.png";
+            break;
+        case 7:
+            levelIcon = "/assets/level-icons/level-7.png";
+            break;
+        case 8:
+            levelIcon = "/assets/level-icons/level-8.png";
+            break;
+        case 9:
+            levelIcon = "/assets/level-icons/level-9.png";
+            break;
+        case 10:
+            levelIcon = "/assets/level-icons/level-10.png";
+            break;
+    }
+
+    console.log(levelIcon);
 
     // refetch();
 
@@ -94,11 +130,9 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
 
             <CircularProgressbarWithChildren value={levelProgress} styles={buildStyles({
 
-
             })}>
-                <img className="rounded-full w-[255px] h-[255px]" src={image} alt=''
-
-                ></img>
+                <img className="rounded-full w-[255px] h-[255px]" src={image} alt=''></img>
+                <img className="w-[64px] h-[64px] absolute top-[255px]" src={levelIcon}></img>
             </CircularProgressbarWithChildren>
 
             {/* <div className="flex justify-center">
