@@ -1,16 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuid } from 'uuid';
 import { useQuery } from '@apollo/client';
 import { QUERY_BADGES, QUERY_MYBADGE, QUERY_ME } from '../../utils/queries';
 import { ViewGridIcon, ViewListIcon } from '@heroicons/react/outline';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
-
-const BadgeList = () => {
+const BadgeList = ({view}) => {
     const [viewGrid, setViewGrid] = useState(true);
-    const { loading, data } = useQuery(QUERY_BADGES);
+    const { loading, data, refetch } = useQuery(QUERY_BADGES);
     const myBadgeData = useQuery(QUERY_MYBADGE);
     const myData = useQuery(QUERY_ME);
-    
+
+    useEffect(() => {
+        refetch();
+        myBadgeData.refetch();
+        myData.refetch();
+    }, [view])
+
     // Get all badges and user specific badges
     const badgeArr = data?.badges || [];
     const myBadgeArr = myBadgeData.data?.meBadges.badges || [];
@@ -22,18 +29,20 @@ const BadgeList = () => {
     const maxScore = myDataArr.maxScore;
     const maxAccuracy = myDataArr.maxAccuracy;
     const userAge = myDataArr.age;
+    const streak = myDataArr.streak;
 
-    
     // Get badges that have not been earned
     let tmpArr = [...badgeArr]
-    for (let i = 0; i < badgeArr.length - 1; i++) {
+    for (let i = 0; i < badgeArr.length; i++) {
         for (let j = 0; j < myBadgeArr.length; j++) {
             if (badgeArr[i]._id === myBadgeArr[j]._id) {
-                tmpArr.splice(i, 1);
+                const index = tmpArr.findIndex(x => {
+                    return x._id === badgeArr[i]._id
+                });
+                tmpArr.splice(index, 1)
             }
         }
     }
-    console.log({myData: myDataArr, badgeArr: badgeArr, tmpArr: tmpArr, myBadge: myBadgeArr})
     // Toggle display view
     const setGrid = () => {
         setViewGrid(true);
@@ -53,13 +62,21 @@ const BadgeList = () => {
             case 'accuracy':
                 return maxAccuracy
             case 'streak':
-                return 0
+                return streak
             case 'age':
                 return userAge
+            case 'secret':
+                return 0
             default:
                 return 0
         }
     }
+
+    if (loading) {
+        return <p>Loading...</p>
+    }
+
+    console.log('badge list loop')
 
     return (
         <section className='w-full'>
@@ -80,13 +97,15 @@ const BadgeList = () => {
                         ))}
                     </div>
                     <div className='flex flex-wrap w-full'>
-                        <p className='text-xl font-bold text-center w-full'>Not Yet Earned</p>
+                        <p className='text-xl font-bold text-center w-full'>Unearned</p>
                         {tmpArr.map(badge => (
                             <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
-                                <img src={`.${badge.img}`} key={uuid()} className='m-auto' alt='badge'></img>
+                                <img src={`.${badge.placeholder}`} key={uuid()} className='m-auto' alt='badge'></img>
                                 <p key={uuid()} className='p-1 text-center font-bold'>{badge.badgeName}</p>
                                 <p key={uuid()} className='p-1 text-center italic'>{badge.description}</p>
-                                <p>Progress: </p>
+                                <div className='w-20 h-20 m-auto'>
+                                    <CircularProgressbar value={Math.round(renderProgress(badge.category)/badge.targetVal * 100)} text={`${Math.round(renderProgress(badge.category)/badge.targetVal * 100)}%`} />
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -107,7 +126,7 @@ const BadgeList = () => {
                         <p className='text-xl font-bold m-2'>Not Yet Earned</p>
                         {tmpArr.map(badge => (
                             <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
-                                <img src={`.${badge.img}`} key={uuid()} className='m-auto p-2 inline border-r' alt='badge'></img>
+                                <img src={`.${badge.placeholder}`} key={uuid()} className='m-auto p-2 inline border-r' alt='badge'></img>
                                 <p key={uuid()} className='p-2 text-center font-bold inline'>{badge.badgeName}</p>
                                 <p key={uuid()} className='p-2 text-center italic inline'>{badge.description}</p>
                                 <p>Progress: {renderProgress(badge.category)}/{badge.targetVal}</p>

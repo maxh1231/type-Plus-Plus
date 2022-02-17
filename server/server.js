@@ -69,6 +69,7 @@ db.once('open', () => {
     console.log(
         `GraphQL server ready at http://localhost:${PORT}${server.graphqlPath}`
     );
+    httpServer.listen(PORT, () =>
+        console.log(`Listening on localhost:${PORT}`)
+    );
 });
-
-httpServer.listen(PORT, () => console.log(`Listening on localhost:${PORT}`));

@@ -11,14 +11,13 @@ import DashboardUserInfo from '../components/DashboardUserInfo';
 // import Progress from '../components/DashboardProgress'
 import EditModal from '../components/EditModal';
 import Friends from '../components/Friends';
-import Uploader from '../components/Uploader'
-import RecentBadge from '../components/RecentBadge'
-import Chart from '../components/Chart'
+import Uploader from '../components/Uploader';
+import RecentBadge from '../components/RecentBadge';
+import Chart from '../components/Chart';
 
-import defaultPhoto from '../assets/images/no-profile-picture.svg'
+import defaultPhoto from '../assets/images/no-profile-picture.svg';
 
-import { pencil } from '@heroicons/react/solid'
-
+import { PencilAltIcon } from '@heroicons/react/outline';
 
 // Modal Styles, remove later for custom styles
 const customStyles = {
@@ -36,7 +35,7 @@ Modal.setAppElement('#root');
 
 const Dashboard = () => {
     let subtitle;
-    const [image, setImage] = useState(defaultPhoto)
+    const [image, setImage] = useState(defaultPhoto);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalBio, setModalBio] = useState('');
     function openModal() {
@@ -49,21 +48,15 @@ const Dashboard = () => {
         setIsOpen(false);
     }
     const { username: userParam } = useParams();
-    const { loading, data } = useQuery(QUERY_ME)
-
-    // console.log(userParam)
-    console.log(data);
+    const { loading, data } = useQuery(QUERY_ME);
 
     const user = data?.me || data?.user || {};
-    console.log({ user: user, img: image });
 
     useEffect(() => {
         if (user.profilePic) {
             setImage(user.profilePic);
         }
-    }, [user])
-
-    console.log({ img: image, user: user })
+    }, [user]);
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
@@ -78,8 +71,12 @@ const Dashboard = () => {
     }
 
     return (
-        <section className="mt-2 ml-2 py-2 px-2 h-1/2 flex border-1 border-black justify-around">
-            <div classname="bg-gray-100">
+        <main className="mt-2 ml-2 py-2 px-2 h-1/2 flex border-1 border-black justify-around flex-grow">
+            <div className="bg-gray-100">
+                <PencilAltIcon
+                    onClick={openModal}
+                    className="w-5 h-5 m-2 ml-auto text-right"
+                />
                 <DashboardUserInfo
                     data={data}
                     modalBio={modalBio}
@@ -87,11 +84,7 @@ const Dashboard = () => {
                     image={image}
                     setImage={setImage}
                 />
-                <svg onClick={openModal} xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                </svg>
             </div>
-
 
             <div>
                 <Modal
@@ -117,8 +110,10 @@ const Dashboard = () => {
             </div>
             <div className="bg-gray-100 w-[500px]">
                 <div>
-                    <RecentBadge />
-                    <Link to='/badges'><h2 class="text-lg text-center">View All Badges</h2></Link>
+                    {/* <RecentBadge /> */}
+                    <Link to="/badges">
+                        <h2 className="text-lg text-center">View All Badges</h2>
+                    </Link>
                 </div>
                 <div>
                     <h2 className="text-lg text-center">Friends</h2>
@@ -128,8 +123,7 @@ const Dashboard = () => {
                     <Chart />
                 </div>
             </div>
-
-        </section>
+        </main>
     );
 };
 

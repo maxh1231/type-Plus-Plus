@@ -2,12 +2,14 @@ import { React, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../../utils/mutations';
+import { LOGIN_USER, ADD_BADGE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import { checkStreak } from '../../utils/helpers';
 import { EyeIcon } from '@heroicons/react/solid';
 
 const Login = () => {
     const [login, { error }] = useMutation(LOGIN_USER);
+    const [addBadge] = useMutation(ADD_BADGE);
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => {
         setPasswordShown(passwordShown ? false : true);
@@ -25,6 +27,15 @@ const Login = () => {
                 variables: { ...newData },
             });
             Auth.login(data.login.token);
+            const streak = checkStreak(data.login.user.streak);
+            if (streak) {
+                addBadge({ variables: {badgeName: streak}})
+            }
+            const age = checkStreak(data.login.user.age);
+            if (streak) {
+                addBadge({ variables: {badgeName: age}})
+            }
+            document.location.replace('/');
         } catch (e) {
             document.getElementById('loginInvalid').classList.remove('hidden');
             setTimeout(() => {
@@ -53,7 +64,7 @@ const Login = () => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
+                                        ([type, message]) => (
                                             <p
                                                 key={type}
                                                 className="p-2 font-bold text-red-500 text-center"
@@ -85,7 +96,7 @@ const Login = () => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
+                                        ([type, message]) => (
                                             <p
                                                 key={type}
                                                 className="p-2 font-bold text-red-500 text-center"

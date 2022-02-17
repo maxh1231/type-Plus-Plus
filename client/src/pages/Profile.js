@@ -3,10 +3,11 @@ import { useParams } from 'react-router-dom';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_FRIENDS } from '../utils/queries';
-import { ADD_FRIEND, REMOVE_FRIEND } from '../utils/mutations';
+import { ADD_BADGE, ADD_FRIEND, REMOVE_FRIEND } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 import ProfileUserInfo from '../components/ProfileUserInfo';
+import { checkFriends } from '../utils/helpers';
 // import Achievements from '../components/Achievements';
 // import Progress from '../components/Progress'
 
@@ -24,6 +25,7 @@ const Profile = () => {
     }
     const [addFriend] = useMutation(ADD_FRIEND);
     const [removeFriend] = useMutation(REMOVE_FRIEND);
+    const [addBadge] = useMutation(ADD_BADGE);
 
     useEffect(() => {
         handler();
@@ -31,10 +33,15 @@ const Profile = () => {
 
     const handleAddFriend = async (event) => {
         event.preventDefault();
-        await addFriend({
+        const data = await addFriend({
             variables: { friendID },
         });
-        console.log('click');
+        if (data) {
+            const friendBadge = checkFriends(data.data.addFriend.friendCount)
+            if (friendBadge) {
+                addBadge({ variables: { badgeName: friendBadge }})
+            }
+        }
         setFriendStatus(true);
     };
 
@@ -65,9 +72,9 @@ const Profile = () => {
             {data && <ProfileUserInfo data={data} />}
             <div>
                 {friendStatus ? (
-                    <button onClick={handleRemoveFriend}>Remove Friend</button>
+                    <button className="text-lg" onClick={handleRemoveFriend}>Remove Friend</button>
                 ) : (
-                    <button onClick={handleAddFriend}>Add Friend</button>
+                    <button className="text-lg" onClick={handleAddFriend}>Add Friend</button>
                 )}
             </div>
         </main>

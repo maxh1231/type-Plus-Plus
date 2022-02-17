@@ -19,6 +19,8 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
+        streak
+        age
       }
     }
   }
@@ -89,4 +91,14 @@ export const UPLOAD_FILE = gql`
       url
   }
 }
+`;
+export const ADD_BADGE = gql`
+  mutation AddBadge($badgeName: String!) {
+    addBadge(badgeName: $badgeName) {
+      badgeName
+      description
+      img
+      xp
+    }
+  }
 `;

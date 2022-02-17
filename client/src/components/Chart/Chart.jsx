@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_MYSCORE } from '../../utils/queries';
 import Auth from '../../utils/auth';
@@ -28,10 +28,13 @@ ChartJS.register(
 );
 
 const Chart = () => {
-    const { loading, data } = useQuery(QUERY_MYSCORE);
+    const { loading, data, refetch } = useQuery(QUERY_MYSCORE, {
+        pollInterval: 500,
+    });
     let wpm = [];
     let accuracy = [];
     let dates = [];
+    // refetch();
 
     // Create new array so we can sort by createdAt
     let userDataArray = data?.meScores
@@ -55,6 +58,8 @@ const Chart = () => {
             return formatTime(score.createdAt);
         });
     }
+    
+    console.log('chart loop')
 
     return (
         <>
