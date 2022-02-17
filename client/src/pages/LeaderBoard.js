@@ -17,7 +17,7 @@ const LeaderBoard = () => {
             </div>
             <main className="flex-grow">
                 {activeBoard === 'global' && (
-                    <GlobalLeaderBoard />
+                    <GlobalLeaderBoard displayCount={10}/>
                 )}
                 {activeBoard === 'games' && (
                     <ActivityLeaderBoard />
