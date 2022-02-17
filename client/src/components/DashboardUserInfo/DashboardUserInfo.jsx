@@ -23,6 +23,7 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
         }
         const average = (array) => scoresArr.reduce((a, b) => a + b) / scoresArr.length;
         averageWPM = average(scoresArr);
+        averageWPM = Math.floor(averageWPM);
     }
 
     let userLevel = 1;
