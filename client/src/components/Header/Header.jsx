@@ -33,8 +33,10 @@ const Header = () => {
         const toggler = document.getElementById('toggle');
         if (toggler.checked) {
             document.documentElement.classList.add('dark');
+            localStorage.theme = 'dark';
         } else {
             document.documentElement.classList.remove('dark');
+            localStorage.theme = 'light';
         }
     };
 
