@@ -2,6 +2,7 @@ import defaultPhoto from '../../assets/images/no-profile-picture.svg'
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_FRIEND } from '../../utils/mutations';
 import { QUERY_FRIENDS } from '../../utils/queries'
+import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar'
 
 const ProfileUserInfo = ({ data }) => {
     const level2 = 25;
@@ -31,6 +32,7 @@ const ProfileUserInfo = ({ data }) => {
         }
         const average = (array) => scoresArr.reduce((a, b) => a + b) / scoresArr.length;
         averageWPM = average(scoresArr);
+        averageWPM = Math.floor(averageWPM);
     }
 
     if (totalXP < level2) {
@@ -80,9 +82,6 @@ const ProfileUserInfo = ({ data }) => {
         levelProgress = null;
     }
 
-    console.log(userLevel)
-    console.log(levelProgress)
-
     let levelIcon;
     switch (userLevel) {
         case 1:
@@ -117,13 +116,15 @@ const ProfileUserInfo = ({ data }) => {
             break;
     }
 
-    console.log(data);
     return (
         <section className="bg-gray-100 w-[300px]">
-            <div className="flex justify-center">
-                {data.user.profilePic && <img className="rounded-full w-[200px] h-[200px]" src={`../${data.user.profilePic}`} alt='' width='100' height='100'></img>}
-                {!data.user.profilePic && <img className="rounded-full w-[200px] h-[200px]" src={defaultPhoto} alt='' width='100' height='100'></img>}
-            </div>
+            <CircularProgressbarWithChildren value={levelProgress} styles={buildStyles({
+
+            })}>
+                {data.user.profilePic && <img className="rounded-full w-[255px] h-[255px]" src={`../${data.user.profilePic}`} alt=''></img>}
+                {!data.user.profilePic && <img className="rounded-full w-[255px] h-[255px]" src={defaultPhoto} alt=''></img>}
+                <img className="w-[64px] h-[64px] absolute top-[255px]" src={levelIcon}></img>
+            </CircularProgressbarWithChildren>
             <div className="mt-2">
                 <h3 className="text-2xl text-center">{data.user.username}</h3>
             </div>
