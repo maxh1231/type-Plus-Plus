@@ -25,7 +25,7 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
         averageWPM = average(scoresArr);
     }
 
-    let userLevel = 0;
+    let userLevel = 1;
     let levelProgress;
     let totalXP = 0;
     if (data) {
@@ -132,7 +132,7 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
 
             })}>
                 <img className="rounded-full w-[255px] h-[255px]" src={image} alt=''></img>
-                {/* <img src="/assets/level-icons/level-1.png"></img> */}
+                <img className="w-[64px] h-[64px] absolute top-[255px]" src={levelIcon}></img>
             </CircularProgressbarWithChildren>
 
             {/* <div className="flex justify-center">
