@@ -6,6 +6,8 @@ import Chart from '../components/Chart';
 import GlobalLeaderBoard from '../components/GlobalLeaderBoard'
 import RecentBadge from '../components/RecentBadge/RecentBadge';
 import Auth from '../utils/auth';
+import Highscore from '../components/Highscore'
+
 
 const Home = () => {
     const [runGame, setRunGame] = useState(false);
@@ -81,8 +83,11 @@ const Home = () => {
                 </div>
             </div>
             {loggedIn && (
-                <RecentBadge runGame={runGame}/>
+                <RecentBadge runGame={runGame} />
             )}
+            <div>
+                {loggedIn && <Highscore />}
+            </div>
         </main>
     );
 };
