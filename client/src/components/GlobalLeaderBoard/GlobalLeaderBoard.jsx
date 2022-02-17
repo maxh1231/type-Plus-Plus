@@ -58,6 +58,12 @@ const GlobalLeaderBoard = ({ displayCount }) => {
                                         {score.username}
                                     </Link>
                                 </td>
+                                <td className="text-center p-2" key={uuid()}>
+                                    {score.accuracy}
+                                </td>
+                                <td className="text-center p-2" key={uuid()}>
+                                    {score.date}
+                                </td>
                             </tr>
                         ))}
                     </tbody>

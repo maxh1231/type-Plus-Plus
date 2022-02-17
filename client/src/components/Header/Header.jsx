@@ -145,14 +145,14 @@ const Header = () => {
                             <img
                                 src="./assets/images/logo.svg"
                                 alt="Text Plus Plus logo"
-                                className="h-56"
+                                className="h-12"
                             />
                         )}
                         {localStorage.theme === 'dark' && (
                             <img
                                 src="./assets/images/logo-dark.svg"
                                 alt="Text Plus Plus logo"
-                                className="h-56"
+                                className="h-12"
                             />
                         )}
                     </div>
