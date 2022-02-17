@@ -10,9 +10,9 @@ const LeaderBoard = () => {
         <section>
             <div>
                 <ol className='flex justify-around m-2'>
-                    <p onClick={() => setActiveBoard('global')}>Global</p>
-                    <p onClick={() => setActiveBoard('weekly')}>Weekly</p>
-                    <p onClick={() => setActiveBoard('games')}>Games Played</p>
+                    <p className='cursor-pointer' onClick={() => setActiveBoard('global')}>Global</p>
+                    <p className='cursor-pointer' onClick={() => setActiveBoard('weekly')}>Weekly</p>
+                    <p className='cursor-pointer' onClick={() => setActiveBoard('games')}>Games Played</p>
                 </ol>
             </div>
             <main className="flex-grow">
