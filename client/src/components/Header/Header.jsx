@@ -28,6 +28,17 @@ const Header = () => {
         }
     };
 
+    // Set the theme when user clicks on toggle switch
+    const themeSetter = () => {
+        const toggler = document.getElementById('toggle');
+        console.log(toggler.checked);
+        if (toggler.checked) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    };
+
     return (
         <header>
             {/* Colored div to block the sliding links */}
@@ -153,6 +164,7 @@ const Header = () => {
                             type="checkbox"
                             id="toggle"
                             className="hidden toggle--checkbox"
+                            onClick={themeSetter}
                         />
                         <label
                             htmlFor="toggle"
