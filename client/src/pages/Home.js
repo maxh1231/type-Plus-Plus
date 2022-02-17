@@ -81,7 +81,7 @@ const Home = () => {
                 </div>
             </div>
             {loggedIn && (
-                <RecentBadge />
+                <RecentBadge runGame={runGame}/>
             )}
         </main>
     );
