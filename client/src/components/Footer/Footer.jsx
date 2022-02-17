@@ -5,11 +5,11 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="text-center lg:text-left bg-gray-100 text-gray-600">
+        <footer className="text-center lg:text-left bg-gray-100 text-gray-600 dark:bg-gray-900 dark:text-gray-400 transition duration-200">
             <div className="mx-6 py-10 text-center md:text-left">
                 <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div>
-                        <h6 className="uppercase font-semibold mb-4 flex items-center justify-center md:justify-start">
+                        <h6 className="uppercase text-gray-800 font-semibold mb-4 flex items-center justify-center md:justify-start dark:text-gray-200">
                             Type++
                         </h6>
                         <p className="mb-4">
@@ -21,7 +21,7 @@ const Footer = () => {
                             Check out the{' '}
                             <a
                                 href="https://github.com/t-norm/type-Plus-Plus"
-                                className="underline hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="underline hover:text-theme-red transition-all duration-300"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -31,13 +31,13 @@ const Footer = () => {
                         </p>
                     </div>
                     <div>
-                        <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
+                        <h6 className="uppercase text-gray-800 font-semibold mb-4 flex justify-center md:justify-start dark:text-gray-200">
                             Stack
                         </h6>
                         <p className="mb-4">
                             <a
                                 href="https://www.mongodb.com/"
-                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-300 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -47,7 +47,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://expressjs.com/"
-                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-300 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -57,7 +57,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://reactjs.org/"
-                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-300 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -67,23 +67,22 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://nodejs.org/en/"
-                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-300 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
                                 Node.js
                             </a>
                         </p>
-                        
                     </div>
                     <div>
-                        <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
+                        <h6 className="uppercase text-gray-800 font-semibold mb-4 flex justify-center md:justify-start dark:text-gray-200">
                             Resources
                         </h6>
                         <p className="mb-4">
                             <a
                                 href="https://tailwindcss.com/"
-                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-300 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -93,7 +92,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://www.chartjs.org/"
-                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-300 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -103,7 +102,7 @@ const Footer = () => {
                         <p className="mb-4">
                             <a
                                 href="https://momentjs.com/"
-                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-300 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -113,7 +112,7 @@ const Footer = () => {
                         <p>
                             <a
                                 href="https://jwt.io/"
-                                className="text-gray-600 hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="text-gray-600 hover:text-theme-red transition-all duration-300 dark:text-gray-400 dark:hover:text-theme-red"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -122,7 +121,7 @@ const Footer = () => {
                         </p>
                     </div>
                     <div>
-                        <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
+                        <h6 className="uppercase text-gray-800 font-semibold mb-4 flex justify-center md:justify-start dark:text-gray-200">
                             Find us on GitHub
                         </h6>
 
@@ -146,7 +145,7 @@ const Footer = () => {
                                 href="https://github.com/Thenlie"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="hover:text-theme-red transition-all duration-300"
                             >
                                 Leithen Crider
                             </a>
@@ -172,7 +171,7 @@ const Footer = () => {
                                 href="https://github.com/Thorulfr"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="hover:text-theme-red transition-all duration-300"
                             >
                                 Benjamin Holt
                             </a>
@@ -198,7 +197,7 @@ const Footer = () => {
                                 href="https://github.com/maxh1231"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="hover:text-theme-red transition-all duration-300"
                             >
                                 Max Humpherys
                             </a>
@@ -224,7 +223,7 @@ const Footer = () => {
                                 href="https://github.com/t-norm"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="hover:text-gray-800 focus:text-gray-800 transition-all duration-200"
+                                className="hover:text-theme-red transition-all duration-300"
                             >
                                 Tyler Norman
                             </a>
@@ -232,10 +231,10 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="text-center text-gray-800 p-4 bg-mid-gray">
+            <div className="text-center text-gray-800 p-4 bg-mid-gray dark:text-gray-500">
                 © 2022{' '}
                 <a
-                    className="hover:text-gray-600 transition-all duration-200"
+                    className="hover:text-theme-red transition-all duration-300"
                     // Update this link
                     href="https://www.youtube.com/watch?v=qHAHEhhJisk"
                     target="_blank"
