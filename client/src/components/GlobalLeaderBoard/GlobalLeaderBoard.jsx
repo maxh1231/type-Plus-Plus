@@ -130,7 +130,7 @@ const GlobalLeaderBoard = ({ displayCount }) => {
 
     return (
         <section className="w-3/4 mx-auto my-4">
-            <h1 className="block text-center text-2xl underline">
+            <h1 className="block my-4 text-center text-2xl underline text-gray-600 dark:text-gray-300">
                 Global Leaderboard
             </h1>
             <PaginatedItems itemsPerPage={displayCount} />
