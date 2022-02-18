@@ -84,7 +84,7 @@ const ActivityLeaderBoard = () => {
     return (
         <section className='w-3/4 mx-auto my-4'>
             <h1 className='block text-center text-2xl underline'>Activity Leaderboard</h1>
-            <PaginatedItems itemsPerPage={5} />
+            <PaginatedItems itemsPerPage={10} />
         </section>
     )
 }
