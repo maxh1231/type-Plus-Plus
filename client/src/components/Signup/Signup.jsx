@@ -4,11 +4,13 @@ import { ErrorMessage } from '@hookform/error-message';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-import { EyeIcon } from '@heroicons/react/solid';
+import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
+
     const [addUser, { error }] = useMutation(ADD_USER);
+
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => {
         setPasswordShown(passwordShown ? false : true);
@@ -20,6 +22,7 @@ const Signup = () => {
         handleSubmit,
         watch
     } = useForm({ criteriaMode: 'all' });
+    
     const password = useRef(null);
     password.current = watch("password", "");
 
@@ -30,6 +33,7 @@ const Signup = () => {
             });
             Auth.login(data.addUser.token);
             document.location.replace('/');
+            console.log(data);
         } catch (e) {
             document.getElementById('signupInvalid').classList.remove('hidden');
             setTimeout(() => {
@@ -170,8 +174,7 @@ const Signup = () => {
                                 placeholder="Confirm password"
                                 className="block border border-grey-light w-5/6 p-3 rounded mb-4"
                             />
-
-                            <i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>
+                            {passwordShown ? (<i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>): (<i onClick={togglePasswordVisiblity}><EyeOffIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>)}
                         </div>
                         <ErrorMessage
                             errors={errors}
@@ -191,6 +194,71 @@ const Signup = () => {
                                     : null;
                             }}
                         />
+
+                        <select
+                            {...register('question', {
+                                required: 'You must pick a security question'
+                            })}>
+                            <option value="">Select a security question</option>
+                            <option value="1">What city were you born in?</option>
+                            <option value="2">What is your mother's maiden name?</option>
+                            <option value="3">What is your dream vacation spot?</option>
+                            <option value="4">What is your favorite pizza topping?</option>
+                            <option value="5">Who is your favorite band/artist?</option>
+                        </select>
+                        <input
+                            {...register('answer', {
+                                required: 'You must answer the security question',
+                                minLength: {
+                                    value: 3,
+                                    message:
+                                        'Answer must be at least 3 characters',
+                                },
+                                maxLength: {
+                                    value: 20,
+                                    message:
+                                        'Answer cannot exceed 20 characters',
+                                },
+                            })}
+                            placeholder="Answer"
+                            className="block border border-grey-light w-full p-3 rounded mb-4"
+                        />
+                        <ErrorMessage
+                            errors={errors}
+                            name="answer"
+                            render={({ messages }) => {
+                                return messages
+                                    ? Object.entries(messages).map(
+                                          ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-red-500 text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
+                                    : null;
+                            }}
+                        />
+                        <ErrorMessage
+                            errors={errors}
+                            name="question"
+                            render={({ messages }) => {
+                                return messages
+                                    ? Object.entries(messages).map(
+                                          ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-red-500 text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
+                                    : null;
+                            }}
+                        />                        
 
                         <div className="p-2 font-bold text-red-500 text-center hidden" id="signupInvalid">Username or email already in use</div>
 

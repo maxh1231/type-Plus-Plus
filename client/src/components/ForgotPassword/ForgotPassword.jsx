@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import Modal from 'react-modal';
 
 const ForgotPassword = () => {
 
@@ -70,7 +71,7 @@ const ForgotPassword = () => {
                             type="submit"
                             className="w-full text-center py-3 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none my-1"
                         >
-                            Send Email
+                            Reset Password
                         </button>
 
                         <div className='flex justify-center m-1'>

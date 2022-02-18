@@ -26,6 +26,8 @@ const typeDefs = gql`
     badgeCount: Int
     maxAccuracy: Float
     age: Int
+    question: String
+    answer: String
   }
 
   type Scores {
@@ -73,7 +75,7 @@ const typeDefs = gql`
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!, question: String!, answer: String!): Auth
     addScore(wpm: Float!, accuracy: Float! ): Scores
     addBio(bio: String!): User
     addLocation(location: String!): User
