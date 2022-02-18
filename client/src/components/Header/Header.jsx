@@ -34,9 +34,13 @@ const Header = () => {
         if (toggler.checked) {
             document.documentElement.classList.add('dark');
             localStorage.theme = 'dark';
+            document.getElementById('logo-image').src =
+                './assets/images/logo-dark.svg';
         } else {
             document.documentElement.classList.remove('dark');
             localStorage.theme = 'light';
+            document.getElementById('logo-image').src =
+                './assets/images/logo.svg';
         }
     };
 
@@ -148,6 +152,7 @@ const Header = () => {
                                 src="./assets/images/logo.svg"
                                 alt="Text Plus Plus logo"
                                 className="h-12"
+                                id="logo-image"
                             />
                         )}
                         {localStorage.theme === 'dark' && (
@@ -155,6 +160,7 @@ const Header = () => {
                                 src="./assets/images/logo-dark.svg"
                                 alt="Text Plus Plus logo"
                                 className="h-12"
+                                id="logo-image"
                             />
                         )}
                     </div>
