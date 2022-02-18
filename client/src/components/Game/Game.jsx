@@ -5,6 +5,7 @@ import { ADD_SCORE, ADD_BADGE } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 import { checkGame, checkScore, checkAccuracy } from '../../utils/helpers';
 import RecentBadge from '../RecentBadge/RecentBadge';
+import { Link } from 'react-router-dom';
 
 const Game = ({ sampleArr, unmount, loggedIn }) => {
     const [inputText, setInputText] = useState('');
@@ -83,7 +84,10 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
 
     const endGame = async () => {
         toggleTimer();
-        const badgeData = [...userData.badges];
+        let badgeData = []
+        if (userData.length > 0) {
+            badgeData = [...userData.badges];
+        }
         const userBadges = badgeData.map(badge => badge.badgeName);
         const newData = { wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount };
         // check for badges
@@ -241,11 +245,6 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     3
                 </p>
             </div>
-            {!loggedIn && (
-                <p className="mx-auto my-6 w-fit">
-                    Log in to save your scores!
-                </p>
-            )}
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
@@ -280,6 +279,13 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                         <div>{modalBadge.description}</div>
                     </div>
                     }
+                    {!loggedIn && (
+                        <div className="mx-auto my-6 w-fit">
+                            <Link to='/signup'>
+                                Log in to save your scores!
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </Modal>
         </div>
