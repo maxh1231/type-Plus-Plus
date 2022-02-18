@@ -3,8 +3,8 @@ import { useMutation, useQuery } from '@apollo/client';
 import Modal from 'react-modal';
 import { ADD_SCORE, ADD_BADGE } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
-import Auth from '../../utils/auth';
 import { checkGame, checkScore, checkAccuracy } from '../../utils/helpers';
+import RecentBadge from '../RecentBadge/RecentBadge';
 
 const Game = ({ sampleArr, unmount, loggedIn }) => {
     const [inputText, setInputText] = useState('');
@@ -14,8 +14,8 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
     const [wpm, setWpm] = useState(0);
     const [intervalId, setIntervalId] = useState(0);
     const [timer, setTimer] = useState(0);
-    // const [loggedIn, setLoggedIn] = useState(false);
     const [isMounted, setIsMounted] = useState(true);
+    const [modalBadge, setModalBadge] = useState(false);
     const [addScore] = useMutation(ADD_SCORE);
     const [addBadge] = useMutation(ADD_BADGE);
     const { loading, data } = useQuery(QUERY_ME);
@@ -83,23 +83,39 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
 
     const endGame = async () => {
         toggleTimer();
+        const badgeData = [...userData.badges];
+        const userBadges = badgeData.map(badge => badge.badgeName);
         const newData = { wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount };
         // check for badges
+        let addedBadge;
         const gameCheck = checkGame(userData.gameCount + 1);
         const scoreCheck = checkScore(newData.wpm);
         const accuracyCheck = checkAccuracy(newData.accuracy);
+        
+        let newBadgeArr = []
+
+        if (gameCheck) {
+            newBadgeArr.push(gameCheck)
+        }
+        if (scoreCheck) {
+            let tmpArr = newBadgeArr
+            newBadgeArr = tmpArr.concat(scoreCheck)
+        }
+        if (accuracyCheck) {
+            let tmpArr = newBadgeArr
+            newBadgeArr = tmpArr.concat(accuracyCheck)
+        }
+        
+        // currently return any matching badges between 2 arrays
+        let earnedBadges = newBadgeArr.filter(badge => !userBadges.includes(badge));
+        console.log(userBadges)
+        console.log(newBadgeArr)
+        console.log(earnedBadges)
+
         if (loggedIn) {
-            if (gameCheck) {
-                await addBadge({ variables: {badgeName: gameCheck}});
-            }
-            if (scoreCheck) {
-                for (let i = 0; i < scoreCheck.length; i++) {
-                    await addBadge({ variables: {badgeName: scoreCheck[i]}});
-                }
-            }
-            if (accuracyCheck) {
-                for (let i = 0; i < accuracyCheck.length; i++) {
-                    await addBadge({ variables: {badgeName: accuracyCheck[i]}});
+            if (earnedBadges.length > 0) {
+                for (let i = 0; i < earnedBadges.length; i++) {
+                    addedBadge = await addBadge({ variables: { badgeName: earnedBadges[i] }})
                 }
             }
             try {
@@ -107,6 +123,10 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
             } catch (e) {
                 console.error(e);
             }
+        }
+        if (addedBadge) {
+            console.log(addedBadge)
+            setModalBadge(addedBadge.data.addBadge)
         }
         openModal();
     };
@@ -117,13 +137,13 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         for (let i = 0; i < inputText.length; i++) {
             if (inputText[i] !== sampleArr[i]) {
                 // add error styling
-                document.getElementById(i).style.backgroundColor = 'rgba(191, 66, 66, 0.4)';
+                document.getElementById(i).style.backgroundColor = 'rgba(191, 66, 66, 0.2)';
                 document.getElementById(i).style.color = 'red';
                 setValidInput(false);
                 tmpErrorCount++;
             } else {
                 // add correct styling
-                document.getElementById(i).style.backgroundColor = 'rgba(63, 191, 66, 0.4)';
+                document.getElementById(i).style.backgroundColor = 'rgba(63, 191, 66, 0.2)';
                 document.getElementById(i).style.color = 'green';
                 setValidInput(true);
             }
@@ -141,7 +161,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         if (inputText.length > 0) {
             try {
                 document.getElementById(inputText.length).style.textDecoration = 'underline';
-                document.getElementById(inputText.length).style.backgroundColor = 'rgba(100, 100, 100, 0.3)';
+                document.getElementById(inputText.length).style.backgroundColor = 'rgba(100, 100, 100, 0.2)';
                 document.getElementById(inputText.length - 1).style.textDecoration = 'none';
                 document.getElementById(inputText.length - 1).style.backgroundColor = 'none';
                 document.getElementById(inputText.length + 1).style.textDecoration = 'none';
@@ -149,7 +169,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
             } catch {}
         } else {
             document.getElementById(0).style.textDecoration = 'underline';
-            document.getElementById(0).style.backgroundColor = 'rgba(100, 100, 100, 0.3)';
+            document.getElementById(0).style.backgroundColor = 'rgba(100, 100, 100, 0.2)';
             document.getElementById(1).style.textDecoration = 'none';
             document.getElementById(1).style.backgroundColor = 'transparent';
         }
@@ -252,6 +272,14 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                         <p>Time: {timer}</p>
                         <p>WPM: {wpm}</p>
                     </div>
+                    {modalBadge && 
+                    <div className='m-auto text-center'>
+                        <h2>You just earned:</h2>
+                        <img src={modalBadge.img} className='m-auto'></img>
+                        <div>{modalBadge.badgeName}</div>
+                        <div>{modalBadge.description}</div>
+                    </div>
+                    }
                 </div>
             </Modal>
         </div>

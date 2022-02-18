@@ -44,6 +44,11 @@ export const QUERY_ME = gql`
                 wpm
                 accuracy
             }
+            badges {
+                badgeName
+                description
+                img
+            }
             friendCount
             gameCount
             maxScore
