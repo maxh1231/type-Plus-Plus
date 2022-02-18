@@ -75,7 +75,7 @@ const Dashboard = () => {
             <div className="bg-gray-100">
                 <PencilAltIcon
                     onClick={openModal}
-                    className="w-5 h-5 m-2 ml-auto text-right"
+                    className="w-5 h-5 m-2 ml-auto text-right cursor-pointer"
                 />
                 <DashboardUserInfo
                     data={data}
@@ -111,7 +111,7 @@ const Dashboard = () => {
             </div>
             <div className="bg-gray-100 w-[500px]">
                 <div>
-                    {/* <RecentBadge /> */}
+                    <RecentBadge />
                     <Link to="/badges">
                         <h2 className="text-lg text-center">View All Badges</h2>
                     </Link>
