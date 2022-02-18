@@ -123,7 +123,7 @@ const Home = () => {
                         {loggedIn && <RecentBadge runGame={runGame} />}
                     </div>
                 </div>
-                <div className="bg-gray-400">High Scores</div>
+                {loggedIn && <Highscore /> }
             </div>
         </main>
     );
