@@ -34,9 +34,13 @@ const Header = () => {
         if (toggler.checked) {
             document.documentElement.classList.add('dark');
             localStorage.theme = 'dark';
+            document.getElementById('logo-image').src =
+                './assets/images/logo-dark.svg';
         } else {
             document.documentElement.classList.remove('dark');
             localStorage.theme = 'light';
+            document.getElementById('logo-image').src =
+                './assets/images/logo.svg';
         }
     };
 
@@ -62,17 +66,17 @@ const Header = () => {
                                 <span
                                     id="hamburger-top"
                                     aria-hidden="true"
-                                    className="block h-0.5 w-5 bg-current transition-all duration-300 -translate-y-1"
+                                    className="block h-0.5 w-5 bg-current transition-all duration-300 -translate-y-1 rounded-full"
                                 ></span>
                                 <span
                                     id="hamburger-middle"
                                     aria-hidden="true"
-                                    className="block h-0.5 w-5 bg-current transition-all duration-300"
+                                    className="block h-0.5 w-5 bg-current transition-all duration-300 rounded-full"
                                 ></span>
                                 <span
                                     id="hamburger-bottom"
                                     aria-hidden="true"
-                                    className="block h-0.5 w-5 bg-current transition-all duration-300 translate-y-1"
+                                    className="block h-0.5 w-5 bg-current transition-all duration-300 translate-y-1 rounded-full"
                                 ></span>
                             </div>
                         </button>
@@ -148,6 +152,7 @@ const Header = () => {
                                 src="./assets/images/logo.svg"
                                 alt="Text Plus Plus logo"
                                 className="h-12"
+                                id="logo-image"
                             />
                         )}
                         {localStorage.theme === 'dark' && (
@@ -155,6 +160,7 @@ const Header = () => {
                                 src="./assets/images/logo-dark.svg"
                                 alt="Text Plus Plus logo"
                                 className="h-12"
+                                id="logo-image"
                             />
                         )}
                     </div>
