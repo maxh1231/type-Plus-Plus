@@ -24,7 +24,10 @@ const ActivityLeaderBoard = () => {
                                     {user.gameCount}
                                 </td>
                                 <td className="text-center p-2" key={uuid()}>
-                                    <Link to={`/profile/${user.username}`}>
+                                    <Link
+                                        to={`/profile/${user.username}`}
+                                        className="text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
+                                    >
                                         {user.username}
                                     </Link>
                                 </td>
@@ -62,7 +65,7 @@ const ActivityLeaderBoard = () => {
 
         return (
             <>
-                <table className="table-auto mx-auto">
+                <table className="table-auto mx-auto text-gray-600 dark:text-gray-400">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -91,8 +94,8 @@ const ActivityLeaderBoard = () => {
     }
 
     return (
-        <section className="w-3/4 mx-auto my-4">
-            <h1 className="block text-center text-2xl underline text-gray-600 dark:text-gray-300">
+        <section className="mx-auto my-4">
+            <h1 className="block my-4 text-center text-2xl underline text-gray-600 dark:text-gray-300">
                 Activity Leaderboard
             </h1>
             <PaginatedItems itemsPerPage={5} />
