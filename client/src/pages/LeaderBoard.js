@@ -4,29 +4,44 @@ import WeeklyLeaderBoard from '../components/WeeklyLeaderBoard/';
 import React, { useState } from 'react';
 
 const LeaderBoard = () => {
-    const [activeBoard, setActiveBoard] = useState('global')
-    
+    const [activeBoard, setActiveBoard] = useState('global');
+
     return (
-        <section>
-            <div>
-                <ol className='flex justify-around m-2'>
-                    <p className='cursor-pointer' onClick={() => setActiveBoard('global')}>Global</p>
-                    <p className='cursor-pointer' onClick={() => setActiveBoard('weekly')}>Weekly</p>
-                    <p className='cursor-pointer' onClick={() => setActiveBoard('games')}>Games Played</p>
-                </ol>
+        <main className="flex-grow flex flex-col items-center text-gray-700 dark:text-gray-400 dark:bg-gray-800">
+            <div className="grid grid-cols-3 container my-5">
+                <p className="text-center">
+                    <span
+                        className="cursor-pointer  text-lg hover:text-theme-red transition-all duration-300"
+                        onClick={() => setActiveBoard('global')}
+                    >
+                        Global
+                    </span>
+                </p>
+                <p className="text-center">
+                    <span
+                        className="cursor-pointer  text-lg hover:text-theme-red transition-all duration-300"
+                        onClick={() => setActiveBoard('weekly')}
+                    >
+                        Weekly
+                    </span>
+                </p>
+                <p className="text-center">
+                    <span
+                        className="cursor-pointer  text-lg hover:text-theme-red transition-all duration-300"
+                        onClick={() => setActiveBoard('games')}
+                    >
+                        Games Played
+                    </span>
+                </p>
             </div>
-            <main className="flex-grow">
+            <section className="flex-grow">
                 {activeBoard === 'global' && (
-                    <GlobalLeaderBoard displayCount={10}/>
+                    <GlobalLeaderBoard displayCount={10} />
                 )}
-                {activeBoard === 'games' && (
-                    <ActivityLeaderBoard />
-                )}
-                {activeBoard === 'weekly' && (
-                    <WeeklyLeaderBoard />
-                )}
-            </main>
-        </section>
+                {activeBoard === 'games' && <ActivityLeaderBoard />}
+                {activeBoard === 'weekly' && <WeeklyLeaderBoard />}
+            </section>
+        </main>
     );
 };
 
