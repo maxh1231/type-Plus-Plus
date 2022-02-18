@@ -87,7 +87,7 @@ const Home = () => {
                 )}
                 {runGame && (
                     <>
-                        <div id="sampleText" className="hidden m-4 w-3/4">
+                        <div id="sampleText" className="hidden m-4 mx-auto w-3/4">
                             {sampleArr.length !== 0 ? (
                                 sampleArr.map((char, i) => (
                                     <span
@@ -123,7 +123,7 @@ const Home = () => {
                         {loggedIn && <RecentBadge runGame={runGame} />}
                     </div>
                 </div>
-                <div className="bg-gray-400">High Scores</div>
+                {loggedIn && <Highscore /> }
             </div>
         </main>
     );

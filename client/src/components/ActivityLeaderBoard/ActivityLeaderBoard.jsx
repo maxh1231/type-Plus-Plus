@@ -98,7 +98,7 @@ const ActivityLeaderBoard = () => {
             <h1 className="block my-4 text-center text-2xl underline text-gray-600 dark:text-gray-300">
                 Activity Leaderboard
             </h1>
-            <PaginatedItems itemsPerPage={5} />
+            <PaginatedItems itemsPerPage={10} />
         </section>
     );
 };
