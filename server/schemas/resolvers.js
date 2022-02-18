@@ -51,6 +51,11 @@ const resolvers = {
         .populate('friends')
         .populate('badges')
     },
+    // get user by email
+    userByEmail: async (parent, { email }) => {
+      return User.findOne({ email })
+        .select('-__v -password')
+    },
     // get scores by username
     scoresByUser: async (parent, { username }) => {
       const params = { username };

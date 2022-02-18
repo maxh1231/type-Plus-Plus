@@ -1,9 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
-import Modal from 'react-modal';
+import { useLazyQuery } from '@apollo/client';
+import { QUERY_USER_EMAIL } from '../../utils/queries';
 
 const ForgotPassword = () => {
+    const [getUser, {data, loading, error }] = useLazyQuery(QUERY_USER_EMAIL);
 
     const {
         register,
@@ -13,11 +15,17 @@ const ForgotPassword = () => {
 
     const onSubmit = async () => {
         try {
-          
+            getUser({variables: {...data.email}})
+            // const { data } = await getUser({
+            //     variables: { ...userData }
+            // });
+            // console.log(error);
+            // console.log(data);
         } catch (e) {
-            document.getElementById('loginInvalid').classList.remove('hidden');
+            console.log(e);
+            document.getElementById('emailInvalid').classList.remove('hidden');
             setTimeout(() => {
-                document.getElementById('loginInvalid').classList.add('hidden');
+                document.getElementById('emailInvalid').classList.add('hidden');
             }, 3000)
         }
     };
@@ -65,9 +73,10 @@ const ForgotPassword = () => {
                             className="block border border-grey-light w-full p-3 rounded mb-4"
                         />
 
-                        <div className="p-2 font-bold text-red-500 text-center hidden" id="loginInvalid">Email not found</div>
+                        <div className="p-2 font-bold text-red-500 text-center hidden" id="emailInvalid">Email not found</div>
 
                         <button
+                            // onClick={getUser({variables: {data.value}})}
                             type="submit"
                             className="w-full text-center py-3 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none my-1"
                         >

@@ -64,6 +64,7 @@ const typeDefs = gql`
     meScores: [Scores]
     users: [User]
     user(username: String!): User
+    userByEmail(email: String!): User
     scoresByUser(username: String): [Scores]
     badgesByUser(username: String): [Badge]
     scores: [Scores]

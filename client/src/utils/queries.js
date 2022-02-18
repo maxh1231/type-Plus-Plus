@@ -24,6 +24,16 @@ export const QUERY_USER = gql`
     }
 `;
 
+export const QUERY_USER_EMAIL = gql`
+    query userByEmail($email: String!) {
+        user(email: $email) {
+            email
+            question
+            answer
+        }
+    }
+`;
+
 
 // query logged in user's information and scores sorted by WPM
 export const QUERY_ME = gql`
