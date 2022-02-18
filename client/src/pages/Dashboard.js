@@ -11,14 +11,13 @@ import DashboardUserInfo from '../components/DashboardUserInfo';
 // import Progress from '../components/DashboardProgress'
 import EditModal from '../components/EditModal';
 import Friends from '../components/Friends';
-import Uploader from '../components/Uploader'
-import RecentBadge from '../components/RecentBadge'
-import Chart from '../components/Chart'
+import Uploader from '../components/Uploader';
+import RecentBadge from '../components/RecentBadge';
+import Chart from '../components/Chart';
 
-import defaultPhoto from '../assets/images/no-profile-picture.svg'
+import defaultPhoto from '../assets/images/no-profile-picture.svg';
 
-import { PencilAltIcon } from '@heroicons/react/outline'
-
+import { PencilAltIcon } from '@heroicons/react/outline';
 
 // Modal Styles, remove later for custom styles
 const customStyles = {
@@ -36,7 +35,7 @@ Modal.setAppElement('#root');
 
 const Dashboard = () => {
     let subtitle;
-    const [image, setImage] = useState(defaultPhoto)
+    const [image, setImage] = useState(defaultPhoto);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalBio, setModalBio] = useState('');
     function openModal() {
@@ -49,8 +48,7 @@ const Dashboard = () => {
         setIsOpen(false);
     }
     const { username: userParam } = useParams();
-    const { loading, data, refetch } = useQuery(QUERY_ME)
-
+    const { loading, data, refetch } = useQuery(QUERY_ME);
 
     const user = data?.me || data?.user || {};
 
@@ -58,8 +56,7 @@ const Dashboard = () => {
         if (user.profilePic) {
             setImage(user.profilePic);
         }
-    }, [user])
-
+    }, [user]);
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
@@ -73,11 +70,13 @@ const Dashboard = () => {
         return <h4 className="flex-grow">Must be logged in</h4>;
     }
 
-
     return (
-        <section className="mt-2 ml-2 py-2 px-2 h-1/2 flex border-1 border-black justify-around">
+        <main className="mt-2 ml-2 py-2 px-2 h-1/2 flex border-1 border-black justify-around flex-grow">
             <div className="bg-gray-100">
-                <PencilAltIcon onClick={openModal} className='w-5 h-5 m-2 ml-auto text-right' />
+                <PencilAltIcon
+                    onClick={openModal}
+                    className="w-5 h-5 m-2 ml-auto text-right cursor-pointer"
+                />
                 <DashboardUserInfo
                     data={data}
                     modalBio={modalBio}
@@ -87,7 +86,6 @@ const Dashboard = () => {
                     refetch={refetch}
                 />
             </div>
-
 
             <div>
                 <Modal
@@ -114,7 +112,9 @@ const Dashboard = () => {
             <div className="bg-gray-100 w-[500px]">
                 <div>
                     <RecentBadge />
-                    <Link to='/badges'><h2 className="text-lg text-center">View All Badges</h2></Link>
+                    <Link to="/badges">
+                        <h2 className="text-lg text-center">View All Badges</h2>
+                    </Link>
                 </div>
                 <div>
                     <h2 className="text-lg text-center">Friends</h2>
@@ -124,8 +124,7 @@ const Dashboard = () => {
                     <Chart />
                 </div>
             </div>
-
-        </section>
+        </main>
     );
 };
 

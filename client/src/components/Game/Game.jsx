@@ -3,8 +3,8 @@ import { useMutation, useQuery } from '@apollo/client';
 import Modal from 'react-modal';
 import { ADD_SCORE, ADD_BADGE } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
-import Auth from '../../utils/auth';
 import { checkGame, checkScore, checkAccuracy } from '../../utils/helpers';
+import { Link } from 'react-router-dom';
 
 const Game = ({ sampleArr, unmount, loggedIn }) => {
     const [inputText, setInputText] = useState('');
@@ -14,8 +14,8 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
     const [wpm, setWpm] = useState(0);
     const [intervalId, setIntervalId] = useState(0);
     const [timer, setTimer] = useState(0);
-    // const [loggedIn, setLoggedIn] = useState(false);
     const [isMounted, setIsMounted] = useState(true);
+    const [modalBadge, setModalBadge] = useState(false);
     const [addScore] = useMutation(ADD_SCORE);
     const [addBadge] = useMutation(ADD_BADGE);
     const { loading, data } = useQuery(QUERY_ME);
@@ -27,19 +27,16 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
     useEffect(() => {
         const startGame = async () => {
             setTimeout(() => {
-                document.getElementById('readyIcon').textContent = 2;
+                document.getElementById('readyMsg').textContent = 2;
             }, 1000);
             setTimeout(() => {
-                document.getElementById('readyIcon').textContent = 1;
+                document.getElementById('readyMsg').textContent = 1;
             }, 2000);
             setTimeout(() => {
                 document.getElementById('readyIcon').style.display = 'none';
                 document.getElementById('sampleText').style.display = 'block';
                 document.getElementById('gameInfo').style.display = 'block';
                 document.getElementById(0).style.textDecoration = 'underline';
-                // if (Auth.loggedIn) {
-                //     setLoggedIn(true);
-                // }
                 toggleTimer();
                 document.getElementById('gameInput').focus();
             }, 3000);
@@ -83,23 +80,44 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
 
     const endGame = async () => {
         toggleTimer();
+        let badgeData = []
+        if (userData.length > 0) {
+            if (userData.badges.length > 0) {
+                badgeData = [...userData.badges];
+            }
+        }
+        const userBadges = badgeData.map(badge => badge.badgeName);
         const newData = { wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount };
         // check for badges
+        let addedBadge;
         const gameCheck = checkGame(userData.gameCount + 1);
         const scoreCheck = checkScore(newData.wpm);
         const accuracyCheck = checkAccuracy(newData.accuracy);
+        
+        let newBadgeArr = []
+
+        if (gameCheck) {
+            newBadgeArr.push(gameCheck)
+        } if (scoreCheck) {
+            let tmpArr = newBadgeArr
+            newBadgeArr = tmpArr.concat(scoreCheck)
+        } if (accuracyCheck) {
+            let tmpArr = newBadgeArr
+            newBadgeArr = tmpArr.concat(accuracyCheck)
+        }
+        
+        // create array of new badges to add to the user
+        let earnedBadges = newBadgeArr.filter(badge => !userBadges.includes(badge));
+        console.log(userData)
+        console.log(badgeData)
+        console.log(newBadgeArr);
+        console.log(userBadges);
+        console.log(earnedBadges);
+
         if (loggedIn) {
-            if (gameCheck) {
-                await addBadge({ variables: {badgeName: gameCheck}});
-            }
-            if (scoreCheck) {
-                for (let i = 0; i < scoreCheck.length; i++) {
-                    await addBadge({ variables: {badgeName: scoreCheck[i]}});
-                }
-            }
-            if (accuracyCheck) {
-                for (let i = 0; i < accuracyCheck.length; i++) {
-                    await addBadge({ variables: {badgeName: accuracyCheck[i]}});
+            if (earnedBadges.length > 0) {
+                for (let i = 0; i < earnedBadges.length; i++) {
+                    addedBadge = await addBadge({ variables: { badgeName: earnedBadges[i] }})
                 }
             }
             try {
@@ -107,6 +125,9 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
             } catch (e) {
                 console.error(e);
             }
+        }
+        if (addedBadge) {
+            setModalBadge(addedBadge.data.addBadge)
         }
         openModal();
     };
@@ -116,16 +137,22 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         let tmpErrorCount = 0;
         for (let i = 0; i < inputText.length; i++) {
             if (inputText[i] !== sampleArr[i]) {
+                // add error styling
+                document.getElementById(i).style.backgroundColor = 'rgba(191, 66, 66, 0.2)';
                 document.getElementById(i).style.color = 'red';
                 setValidInput(false);
                 tmpErrorCount++;
             } else {
+                // add correct styling
+                document.getElementById(i).style.backgroundColor = 'rgba(63, 191, 66, 0.1)';
                 document.getElementById(i).style.color = 'green';
                 setValidInput(true);
             }
         }
         for (let i = inputText.length; i < sampleArr.length; i++) {
-            document.getElementById(i).style.color = 'black';
+            document.getElementById(i).style.color = 'inherit';
+            document.getElementById(i).style.backgroundColor = 'transparent';
+            document.getElementById(i).style.textDecoration = 'none';
         }
         setErrorCount(tmpErrorCount);
     };
@@ -134,18 +161,18 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
     const updateUnderline = () => {
         if (inputText.length > 0) {
             try {
-                document.getElementById(inputText.length).style.textDecoration =
-                    'underline';
-                document.getElementById(
-                    inputText.length - 1
-                ).style.textDecoration = 'none';
-                document.getElementById(
-                    inputText.length + 1
-                ).style.textDecoration = 'none';
+                document.getElementById(inputText.length).style.textDecoration = 'underline';
+                document.getElementById(inputText.length).style.backgroundColor = 'rgba(100, 100, 100, 0.2)';
+                document.getElementById(inputText.length - 1).style.textDecoration = 'none';
+                document.getElementById(inputText.length - 1).style.backgroundColor = 'none';
+                document.getElementById(inputText.length + 1).style.textDecoration = 'none';
+                document.getElementById(inputText.length + 1).style.backgroundColor = 'transparent';
             } catch {}
         } else {
             document.getElementById(0).style.textDecoration = 'underline';
+            document.getElementById(0).style.backgroundColor = 'rgba(100, 100, 100, 0.2)';
             document.getElementById(1).style.textDecoration = 'none';
+            document.getElementById(1).style.backgroundColor = 'transparent';
         }
     };
 
@@ -172,14 +199,14 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         }
     };
 
-    function openModal() {
+    const openModal = () => {
         setIsOpen(true);
     }
 
-    function afterOpenModal() {
+    const afterOpenModal = () => {
     }
 
-    function closeModal() {
+    const closeModal = () => {
         setIsOpen(false);
         unmount();
     }
@@ -207,20 +234,14 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                 <p>Time: {timer}</p>
                 <p>WPM: {wpm}</p>
             </div>
-            {/* <p id='readyMsg' className='mx-auto my-6 w-fit text-2xl'>Ready?</p> */}
             <div
                 id="readyIcon"
                 className="animate-bounce bg-gray-100 p-2 w-10 m-auto h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center"
             >
-                <p id="readyMsg" className="">
+                <p id="readyMsg" className="text-gray-800">
                     3
                 </p>
             </div>
-            {!loggedIn && (
-                <p className="mx-auto my-6 w-fit">
-                    Log in to save your scores!
-                </p>
-            )}
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
@@ -247,6 +268,21 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                         <p>Time: {timer}</p>
                         <p>WPM: {wpm}</p>
                     </div>
+                    {modalBadge && 
+                    <div className='m-auto text-center'>
+                        <h2>You just earned:</h2>
+                        <img src={modalBadge.img} className='m-auto' alt='badge img'></img>
+                        <div>{modalBadge.badgeName}</div>
+                        <div>{modalBadge.description}</div>
+                    </div>
+                    }
+                    {!loggedIn && (
+                        <div className="mx-auto my-6 w-fit">
+                            <Link to='/signup'>
+                                Log in to save your scores!
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </Modal>
         </div>

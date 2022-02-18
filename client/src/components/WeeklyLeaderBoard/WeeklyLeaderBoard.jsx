@@ -9,28 +9,63 @@ import ReactPaginate from 'react-paginate';
 const WeeklyLeaderBoard = () => {
     const { loading, data, refetch } = useQuery(QUERY_WEEKLY_SCORES);
     refetch();
-    const leaderBoard = data?.weeklyScores.map(score => { return {wpm: score.wpm, accuracy: score.accuracy, username: score.username, date: formatTime(score.createdAt)} });
+    const leaderBoard = data?.weeklyScores.map((score) => {
+        return {
+            wpm: score.wpm,
+            accuracy: score.accuracy,
+            username: score.username,
+            date: formatTime(score.createdAt),
+        };
+    });
 
     function Items({ leaderBoard, page }) {
         return (
             <>
-            {leaderBoard ? (
+                {leaderBoard ? (
                     <tbody>
                         {leaderBoard.map((score, i) => (
                             <tr key={uuid()}>
-                                <td className='text-center p-2' key={uuid()}>{i + 1}</td>
-                                <td className='text-center p-2' key={uuid()}>{score.wpm}</td>
-                                <td className='text-center p-2' key={uuid()}>
-                                    {i + page === 0 && 
-                                        <img alt='1st place badge' className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto.png"/>
-                                    } {i + page === 1 && 
-                                        <img alt='2nd place badge' className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-2.png"/>
-                                    } {i + page === 2 && 
-                                        <img alt='3rd place badge' className='inline m1' src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-13.png"/>}
-                                    <Link to={`/profile/${score.username}`}>{score.username}</Link>
+                                <td className="text-center p-2" key={uuid()}>
+                                    {i + 1}
                                 </td>
-                                <td className='text-center p-2' key={uuid()}>{score.accuracy}</td>
-                                <td className='text-center p-2' key={uuid()}>{score.date}</td>
+                                <td className="text-center p-2" key={uuid()}>
+                                    {score.wpm}
+                                </td>
+                                <td className="text-center p-2" key={uuid()}>
+                                    {i + page === 0 && (
+                                        <img
+                                            alt="1st place badge"
+                                            className="inline m1"
+                                            src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto.png"
+                                        />
+                                    )}{' '}
+                                    {i + page === 1 && (
+                                        <img
+                                            alt="2nd place badge"
+                                            className="inline m1"
+                                            src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-2.png"
+                                        />
+                                    )}{' '}
+                                    {i + page === 2 && (
+                                        <img
+                                            alt="3rd place badge"
+                                            className="inline m1"
+                                            src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-13.png"
+                                        />
+                                    )}
+                                    <Link
+                                        to={`/profile/${score.username}`}
+                                        className="text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
+                                    >
+                                        {score.username}
+                                    </Link>
+                                </td>
+                                <td className="text-center p-2" key={uuid()}>
+                                    {score.accuracy}
+                                </td>
+                                <td className="text-center p-2" key={uuid()}>
+                                    {score.date}
+                                </td>
                             </tr>
                         ))}
                     </tbody>
@@ -58,13 +93,14 @@ const WeeklyLeaderBoard = () => {
 
         // Invoke when user click to request another page.
         const handlePageClick = (event) => {
-            const newOffset = (event.selected * itemsPerPage) % leaderBoard.length;
+            const newOffset =
+                (event.selected * itemsPerPage) % leaderBoard.length;
             setItemOffset(newOffset);
         };
 
         return (
             <>
-                <table className='table-auto mx-auto'>
+                <table className="table-auto mx-auto text-gray-600 dark:text-gray-400">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -74,7 +110,7 @@ const WeeklyLeaderBoard = () => {
                             <th>Date</th>
                         </tr>
                     </thead>
-                    <Items leaderBoard={currentItems} page={itemOffset}/>
+                    <Items leaderBoard={currentItems} page={itemOffset} />
                 </table>
                 <ReactPaginate
                     breakLabel="..."
@@ -84,22 +120,24 @@ const WeeklyLeaderBoard = () => {
                     pageCount={pageCount}
                     previousLabel="<<"
                     renderOnZeroPageCount={null}
-                    className='m-auto w-1/3 flex p-2 justify-around pagination-nav'
+                    className="m-auto w-1/3 flex p-2 justify-around pagination-nav"
                 />
             </>
         );
     }
 
     if (loading) {
-        return <p>Loading...</p>
+        return <p>Loading...</p>;
     }
 
     return (
-        <section  className='w-3/4 mx-auto my-4'>
-            <h1 className='block text-center text-2xl underline'>Weekly Leaderboard</h1>
-            <PaginatedItems itemsPerPage={5}/>
+        <section className="mx-auto my-4">
+            <h1 className="block my-4 text-center text-2xl underline text-gray-600 dark:text-gray-300">
+                Weekly Leaderboard
+            </h1>
+            <PaginatedItems itemsPerPage={10} />
         </section>
-    )
-}
+    );
+};
 
-export default WeeklyLeaderBoard
+export default WeeklyLeaderBoard;

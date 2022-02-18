@@ -1,5 +1,5 @@
 {
-  "name": "type-master",
+  "name": "type-plus-plus",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001",
@@ -24,6 +24,7 @@
     "react-paginate": "^8.1.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "socket.io-client": "^4.4.1",
     "tw-elements": "^1.0.0-alpha10",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"

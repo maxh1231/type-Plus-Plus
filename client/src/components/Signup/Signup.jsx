@@ -1,3 +1,4 @@
+// Imports
 import { React, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
@@ -20,11 +21,11 @@ const Signup = () => {
         register,
         formState: { errors },
         handleSubmit,
-        watch
+        watch,
     } = useForm({ criteriaMode: 'all' });
     
     const password = useRef(null);
-    password.current = watch("password", "");
+    password.current = watch('password', '');
 
     const onSubmit = async (newData) => {
         try {
@@ -37,15 +38,17 @@ const Signup = () => {
         } catch (e) {
             document.getElementById('signupInvalid').classList.remove('hidden');
             setTimeout(() => {
-                document.getElementById('signupInvalid').classList.add('hidden');
-            }, 3000)
+                document
+                    .getElementById('signupInvalid')
+                    .classList.add('hidden');
+            }, 3000);
         }
     };
 
     return (
-        <main className="bg-gray-200 flex-grow flex flex-col">
+        <main className="bg-gray-200 flex-grow flex flex-col dark:bg-gray-800 transition duration-200">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full text-gray-700 dark:text-gray-300 dark:bg-gray-900 transition duration-200">
                     <h1 className="mb-8 text-3xl text-center">Sign Up</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <input
@@ -64,7 +67,7 @@ const Signup = () => {
                             })}
                             type="text"
                             placeholder="Username"
-                            className="block border border-grey-light w-full p-3 rounded mb-4"
+                            className="block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"
                         />
                         <ErrorMessage
                             errors={errors}
@@ -73,14 +76,14 @@ const Signup = () => {
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
-                                            <p
-                                                key={type}
-                                                className="p-2 font-bold text-red-500 text-center"
-                                            >
-                                                {message}
-                                            </p>
-                                        )
-                                    )
+                                              <p
+                                                  key={type}
+                                                  className="p-2 font-bold text-theme-red text-center"
+                                              >
+                                                  {message}
+                                              </p>
+                                          )
+                                      )
                                     : null;
                             }}
                             className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -101,7 +104,7 @@ const Signup = () => {
                             })}
                             type="email"
                             placeholder="Email"
-                            className="block border border-grey-light w-full p-3 rounded mb-4"
+                            className="block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"
                         />
                         <ErrorMessage
                             errors={errors}
@@ -110,14 +113,14 @@ const Signup = () => {
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
-                                            <p
-                                                key={type}
-                                                className="p-2 font-bold text-red-500 text-center"
-                                            >
-                                                {message}
-                                            </p>
-                                        )
-                                    )
+                                              <p
+                                                  key={type}
+                                                  className="p-2 font-bold text-theme-red text-center"
+                                              >
+                                                  {message}
+                                              </p>
+                                          )
+                                      )
                                     : null;
                             }}
                             className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -137,10 +140,10 @@ const Signup = () => {
                                         'Password cannot exceed 20 characters',
                                 },
                             })}
-                            id ="signupPassword"
-                            type={passwordShown ? "text" : "password"}
+                            id="signupPassword"
+                            type={passwordShown ? 'text' : 'password'}
                             placeholder="Password"
-                            className="block border border-grey-light w-full p-3 rounded mb-4"
+                            className="block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"
                         />
                         <ErrorMessage
                             errors={errors}
@@ -149,30 +152,32 @@ const Signup = () => {
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
-                                            <p
-                                                key={type}
-                                                className="p-2 font-bold text-red-500 text-center"
-                                            >
-                                                {message}
-                                            </p>
-                                        )
-                                    )
+                                              <p
+                                                  key={type}
+                                                  className="p-2 font-bold text-theme-red text-center"
+                                              >
+                                                  {message}
+                                              </p>
+                                          )
+                                      )
                                     : null;
                             }}
                         />
 
-                        <div className='flex'>
+                        <div className="flex">
                             <input
                                 {...register('confirmPassword', {
                                     required: 'Please confirm your password',
                                     validate: {
-                                        value: value => value === password.current || "Passwords must match"
-                                    }
+                                        value: (value) =>
+                                            value === password.current ||
+                                            'Passwords must match',
+                                    },
                                 })}
                                 id="confirmPassword"
-                                type={passwordShown ? "text" : "password"}
+                                type={passwordShown ? 'text' : 'password'}
                                 placeholder="Confirm password"
-                                className="block border border-grey-light w-5/6 p-3 rounded mb-4"
+                                className="block border border-grey-light w-5/6 p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"
                             />
                             {passwordShown ? (<i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>): (<i onClick={togglePasswordVisiblity}><EyeOffIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>)}
                         </div>
@@ -183,14 +188,14 @@ const Signup = () => {
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
-                                            <p
-                                                key={type}
-                                                className="p-2 font-bold text-red-500 text-center"
-                                            >
-                                                {message}
-                                            </p>
-                                        )
-                                    )
+                                              <p
+                                                  key={type}
+                                                  className="p-2 font-bold text-theme-red text-center"
+                                              >
+                                                  {message}
+                                              </p>
+                                          )
+                                      )
                                     : null;
                             }}
                         />
@@ -264,14 +269,18 @@ const Signup = () => {
 
                         <button
                             type="submit"
-                            className="w-full text-center py-3 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none my-1"
+                            className="w-full text-center py-3 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
                         >
                             Create Account
                         </button>
 
-                        <div className='flex justify-center m-1'>
-                            <p className="items-center underline text-blue-600 hover:text-blue-900"><Link to="/login">Already Have An Account?</Link></p>
-                        </div>                        
+                        <div className="flex justify-center m-1">
+                            <p className="items-center underline text-gray-600 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300">
+                                <Link to="/login">
+                                    Already Have An Account?
+                                </Link>
+                            </p>
+                        </div>
                     </form>
                 </div>
             </div>
