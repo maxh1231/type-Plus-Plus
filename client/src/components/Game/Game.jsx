@@ -116,16 +116,22 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         let tmpErrorCount = 0;
         for (let i = 0; i < inputText.length; i++) {
             if (inputText[i] !== sampleArr[i]) {
+                // add error styling
+                document.getElementById(i).style.backgroundColor = 'rgba(191, 66, 66, 0.4)';
                 document.getElementById(i).style.color = 'red';
                 setValidInput(false);
                 tmpErrorCount++;
             } else {
+                // add correct styling
+                document.getElementById(i).style.backgroundColor = 'rgba(63, 191, 66, 0.4)';
                 document.getElementById(i).style.color = 'green';
                 setValidInput(true);
             }
         }
         for (let i = inputText.length; i < sampleArr.length; i++) {
-            document.getElementById(i).style.color = 'black';
+            document.getElementById(i).style.color = 'inherit';
+            document.getElementById(i).style.backgroundColor = 'transparent';
+            document.getElementById(i).style.textDecoration = 'none';
         }
         setErrorCount(tmpErrorCount);
     };
@@ -134,18 +140,18 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
     const updateUnderline = () => {
         if (inputText.length > 0) {
             try {
-                document.getElementById(inputText.length).style.textDecoration =
-                    'underline';
-                document.getElementById(
-                    inputText.length - 1
-                ).style.textDecoration = 'none';
-                document.getElementById(
-                    inputText.length + 1
-                ).style.textDecoration = 'none';
+                document.getElementById(inputText.length).style.textDecoration = 'underline';
+                document.getElementById(inputText.length).style.backgroundColor = 'rgba(100, 100, 100, 0.3)';
+                document.getElementById(inputText.length - 1).style.textDecoration = 'none';
+                document.getElementById(inputText.length - 1).style.backgroundColor = 'none';
+                document.getElementById(inputText.length + 1).style.textDecoration = 'none';
+                document.getElementById(inputText.length + 1).style.backgroundColor = 'transparent';
             } catch {}
         } else {
             document.getElementById(0).style.textDecoration = 'underline';
+            document.getElementById(0).style.backgroundColor = 'rgba(100, 100, 100, 0.3)';
             document.getElementById(1).style.textDecoration = 'none';
+            document.getElementById(1).style.backgroundColor = 'transparent';
         }
     };
 
@@ -207,7 +213,6 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                 <p>Time: {timer}</p>
                 <p>WPM: {wpm}</p>
             </div>
-            {/* <p id='readyMsg' className='mx-auto my-6 w-fit text-2xl'>Ready?</p> */}
             <div
                 id="readyIcon"
                 className="animate-bounce bg-gray-100 p-2 w-10 m-auto h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center"

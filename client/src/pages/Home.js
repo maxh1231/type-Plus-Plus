@@ -87,7 +87,7 @@ const Home = () => {
                 )}
                 {runGame && (
                     <>
-                        <div id="sampleText" className="hidden m-4 w-3/4">
+                        <div id="sampleText" className="hidden m-4 mx-auto w-3/4">
                             {sampleArr.length !== 0 ? (
                                 sampleArr.map((char, i) => (
                                     <span
