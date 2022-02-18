@@ -4,7 +4,6 @@ import Modal from 'react-modal';
 import { ADD_SCORE, ADD_BADGE } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 import { checkGame, checkScore, checkAccuracy } from '../../utils/helpers';
-import RecentBadge from '../RecentBadge/RecentBadge';
 import { Link } from 'react-router-dom';
 
 const Game = ({ sampleArr, unmount, loggedIn }) => {
@@ -28,19 +27,16 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
     useEffect(() => {
         const startGame = async () => {
             setTimeout(() => {
-                document.getElementById('readyIcon').textContent = 2;
+                document.getElementById('readyMsg').textContent = 2;
             }, 1000);
             setTimeout(() => {
-                document.getElementById('readyIcon').textContent = 1;
+                document.getElementById('readyMsg').textContent = 1;
             }, 2000);
             setTimeout(() => {
                 document.getElementById('readyIcon').style.display = 'none';
                 document.getElementById('sampleText').style.display = 'block';
                 document.getElementById('gameInfo').style.display = 'block';
                 document.getElementById(0).style.textDecoration = 'underline';
-                // if (Auth.loggedIn) {
-                //     setLoggedIn(true);
-                // }
                 toggleTimer();
                 document.getElementById('gameInput').focus();
             }, 3000);
@@ -86,7 +82,9 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         toggleTimer();
         let badgeData = []
         if (userData.length > 0) {
-            badgeData = [...userData.badges];
+            if (userData.badges.length > 0) {
+                badgeData = [...userData.badges];
+            }
         }
         const userBadges = badgeData.map(badge => badge.badgeName);
         const newData = { wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount };
@@ -100,21 +98,21 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
 
         if (gameCheck) {
             newBadgeArr.push(gameCheck)
-        }
-        if (scoreCheck) {
+        } if (scoreCheck) {
             let tmpArr = newBadgeArr
             newBadgeArr = tmpArr.concat(scoreCheck)
-        }
-        if (accuracyCheck) {
+        } if (accuracyCheck) {
             let tmpArr = newBadgeArr
             newBadgeArr = tmpArr.concat(accuracyCheck)
         }
         
-        // currently return any matching badges between 2 arrays
+        // create array of new badges to add to the user
         let earnedBadges = newBadgeArr.filter(badge => !userBadges.includes(badge));
-        console.log(userBadges)
-        console.log(newBadgeArr)
-        console.log(earnedBadges)
+        console.log(userData)
+        console.log(badgeData)
+        console.log(newBadgeArr);
+        console.log(userBadges);
+        console.log(earnedBadges);
 
         if (loggedIn) {
             if (earnedBadges.length > 0) {
@@ -129,7 +127,6 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
             }
         }
         if (addedBadge) {
-            console.log(addedBadge)
             setModalBadge(addedBadge.data.addBadge)
         }
         openModal();
@@ -147,7 +144,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                 tmpErrorCount++;
             } else {
                 // add correct styling
-                document.getElementById(i).style.backgroundColor = 'rgba(63, 191, 66, 0.2)';
+                document.getElementById(i).style.backgroundColor = 'rgba(63, 191, 66, 0.1)';
                 document.getElementById(i).style.color = 'green';
                 setValidInput(true);
             }
@@ -202,14 +199,14 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         }
     };
 
-    function openModal() {
+    const openModal = () => {
         setIsOpen(true);
     }
 
-    function afterOpenModal() {
+    const afterOpenModal = () => {
     }
 
-    function closeModal() {
+    const closeModal = () => {
         setIsOpen(false);
         unmount();
     }
@@ -241,7 +238,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                 id="readyIcon"
                 className="animate-bounce bg-gray-100 p-2 w-10 m-auto h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center"
             >
-                <p id="readyMsg" className="">
+                <p id="readyMsg" className="text-gray-800">
                     3
                 </p>
             </div>
