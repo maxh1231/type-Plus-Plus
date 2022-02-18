@@ -271,7 +271,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     {modalBadge && 
                     <div className='m-auto text-center'>
                         <h2>You just earned:</h2>
-                        <img src={modalBadge.img} className='m-auto'></img>
+                        <img src={modalBadge.img} className='m-auto' alt='badge img'></img>
                         <div>{modalBadge.badgeName}</div>
                         <div>{modalBadge.description}</div>
                     </div>
