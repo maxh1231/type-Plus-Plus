@@ -13,7 +13,8 @@ const Highscore = () => {
     let newArr = []
 
     if (data.meScores.length > 3) {
-        newArr = data.meScores.splice(0,3)
+        let tmpArr = [...data.meScores]
+        newArr = tmpArr.splice(0,3)
     } else if (data.meScores.length > 0) {
         newArr = [...data.meScores]
     } 

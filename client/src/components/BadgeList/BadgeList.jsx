@@ -43,6 +43,7 @@ const BadgeList = ({view}) => {
             }
         }
     }
+    
     // Toggle display view
     const setGrid = () => {
         setViewGrid(true);

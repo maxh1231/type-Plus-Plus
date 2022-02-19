@@ -7,6 +7,7 @@ import GlobalLeaderBoard from '../components/GlobalLeaderBoard';
 import RecentBadge from '../components/RecentBadge/RecentBadge';
 import Auth from '../utils/auth';
 import Highscore from '../components/Highscore';
+import UpcomingBadge from '../components/UpcomingBadge/UpcomingBadge';
 
 const Home = () => {
     const [runGame, setRunGame] = useState(false);
@@ -118,9 +119,9 @@ const Home = () => {
                     <h1 className="block text-center text-2xl underline text-gray-600 dark:text-gray-300">
                         Badge Progress
                     </h1>
-                    <div className="flex flex-grow items-center text-gray-600 dark:text-gray-400 my-6">
+                    <div className="flex flex-grow flex-col items-center text-gray-600 dark:text-gray-400 my-6">
                         {loggedIn && <RecentBadge runGame={runGame} />}
-                        {loggedIn && <RecentBadge runGame={runGame} />}
+                        {loggedIn && <UpcomingBadge runGame={runGame} />}
                     </div>
                 </div>
                 {loggedIn && <Highscore /> }
