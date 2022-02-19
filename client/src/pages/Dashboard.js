@@ -26,6 +26,7 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
     },
+    overlay: { zIndex: 100 },
 };
 
 Modal.setAppElement('#root');
@@ -64,26 +65,37 @@ const Dashboard = () => {
     }
 
     if (!Auth.loggedIn()) {
-        return <h4 className="flex-grow">Must be logged in</h4>;
+        return <h4 className="grow">Must be logged in</h4>;
     }
 
     return (
-        <main className="flex justify-around flex-grow dark:bg-gray-800">
-            <section className="">
-                <PencilAltIcon
-                    onClick={openModal}
-                    className="w-5 h-5 m-2 ml-auto text-right cursor-pointer"
-                />
-                <DashboardUserInfo
-                    data={data}
-                    modalBio={modalBio}
-                    setModalBio={setModalBio}
-                    image={image}
-                    setImage={setImage}
-                    refetch={refetch}
-                />
+        <main className="grow container flex dark:bg-gray-800 ">
+            <section className="grow grid grid-cols-3">
+                <div>
+                    <PencilAltIcon
+                        onClick={openModal}
+                        className="w-5 h-5 m-2 ml-auto text-right cursor-pointer"
+                    />
+                    <DashboardUserInfo
+                        data={data}
+                        modalBio={modalBio}
+                        setModalBio={setModalBio}
+                        image={image}
+                        setImage={setImage}
+                        refetch={refetch}
+                    />
+                    <h2 className="text-lg text-center">Friends</h2>
+                    <Friends friends={data.me.friends} />
+                </div>
+                <div className="col-span-2">
+                    <Chart />
+                    <RecentBadge />
+                    <Link to="/badges">
+                        <h2 className="text-lg text-center">View All Badges</h2>
+                    </Link>
+                </div>
             </section>
-
+            {/* Modal */}
             <div>
                 <Modal
                     isOpen={modalIsOpen}
@@ -105,21 +117,6 @@ const Dashboard = () => {
                     />
                     <button onClick={closeModal}>Done</button>
                 </Modal>
-            </div>
-            <div className="w-[500px]">
-                <div>
-                    <RecentBadge />
-                    <Link to="/badges">
-                        <h2 className="text-lg text-center">View All Badges</h2>
-                    </Link>
-                </div>
-                <div>
-                    <h2 className="text-lg text-center">Friends</h2>
-                    <Friends friends={data.me.friends} />
-                </div>
-                <div className="">
-                    <Chart />
-                </div>
             </div>
         </main>
     );
