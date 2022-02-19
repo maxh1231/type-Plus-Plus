@@ -78,7 +78,7 @@ const resolvers = {
       const formatStartDate = moment(startDate).valueOf();
       return Scores.find({
         createdAt: { $gt: formatStartDate }
-      })
+      }).sort({ 'wpm': -1 })
     }
   },
 
@@ -88,7 +88,7 @@ const resolvers = {
         args
       );
       const token = signToken(user)
-      return {token, user}
+      return { token, user }
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -244,14 +244,14 @@ const resolvers = {
       }
     },
     updatePassword: async (parent, args) => {
-        const saltRounds = 10;
-        let password = await bcrypt.hash(args.password, saltRounds);
-        const updatePassword = await User.findOneAndUpdate(
-          { _id: args._id },
-          { $set: { password: password } },
-          { new: true, runValidators: true }
-        );
-        return updatePassword;
+      const saltRounds = 10;
+      let password = await bcrypt.hash(args.password, saltRounds);
+      const updatePassword = await User.findOneAndUpdate(
+        { _id: args._id },
+        { $set: { password: password } },
+        { new: true, runValidators: true }
+      );
+      return updatePassword;
     },
   }
 }
