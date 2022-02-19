@@ -69,13 +69,9 @@ const Dashboard = () => {
     }
 
     return (
-        <main className="grow container flex dark:bg-gray-800 ">
-            <section className="grow grid grid-cols-3">
-                <div>
-                    <PencilAltIcon
-                        onClick={openModal}
-                        className="w-5 h-5 m-2 ml-auto text-right cursor-pointer"
-                    />
+        <main className="grow flex items-center dark:bg-gray-800">
+            <section className="grow grid grid-cols-4">
+                <div className="flex flex-col items-center justify-center">
                     <DashboardUserInfo
                         data={data}
                         modalBio={modalBio}
@@ -84,15 +80,22 @@ const Dashboard = () => {
                         setImage={setImage}
                         refetch={refetch}
                     />
-                    <h2 className="text-lg text-center">Friends</h2>
+                    <span className="flex mt-2">
+                        Edit Profile
+                        <PencilAltIcon
+                            onClick={openModal}
+                            className="w-5 h-5 mx-1 cursor-pointer text-gray-700 hover:text-theme-red dark:hover:text-theme-red dark:text-gray-400 transition duration-300"
+                        />
+                    </span>
+                    <h2 className="mt-2 text-lg text-center">Friends</h2>
                     <Friends friends={data.me.friends} />
-                </div>
-                <div className="col-span-2">
-                    <Chart />
                     <RecentBadge />
                     <Link to="/badges">
                         <h2 className="text-lg text-center">View All Badges</h2>
                     </Link>
+                </div>
+                <div className="col-span-3">
+                    <Chart />
                 </div>
             </section>
             {/* Modal */}

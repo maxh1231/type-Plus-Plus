@@ -155,14 +155,12 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
                 </h3>
             </div>
             <div className="mt-2">
-                {!modalBio && (
-                    <p className="text-lg text-center">{data.me.bio}</p>
-                )}
-                {modalBio && <p className="text-lg text-center">{modalBio}</p>}
+                {!modalBio && <p className="text-center">{data.me.bio}</p>}
+                {modalBio && <p className="text-center">{modalBio}</p>}
             </div>
             <div className="mt-2">
                 {data.meScores[0] && (
-                    <p className="text-lg text-center mt-2">
+                    <p className="text-center mt-2">
                         Highest WPM: {data.meScores[0].wpm}
                     </p>
                 )}
@@ -170,24 +168,22 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
                     <Link to="/"> Take a few tests to show your scores!</Link>
                 )}
                 {data.meScores[0] && (
-                    <p className="text-lg text-center mt-2">
+                    <p className="text-center mt-2">
                         Average WPM: {averageWPM}{' '}
                     </p>
                 )}
                 {data.meScores[0] && (
-                    <p className="text-lg text-center mt-2">
+                    <p className="text-center mt-2">
                         Games Played: {data.meScores.length}{' '}
                     </p>
                 )}
             </div>
             <div className="mt-2">
                 {data.me.location && (
-                    <p className="text-lg text-center">
-                        Location: {data.me.location}{' '}
-                    </p>
+                    <p className="text-center">Location: {data.me.location} </p>
                 )}
                 {!data.me.location && (
-                    <p className="text-lg text-center">No location set</p>
+                    <p className="text-center">No location set</p>
                 )}
             </div>
         </section>
