@@ -1,3 +1,3 @@
-import ForgotPassword from './ForgotPassword';
+import EmailInput from './EmailInput';
 
-export default ForgotPassword;
+export default EmailInput;

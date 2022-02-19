@@ -81,7 +81,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
     const endGame = async () => {
         toggleTimer();
         let badgeData = []
-        if (userData.length > 0) {
+        if (userData.length !== 0) {
             if (userData.badges.length > 0) {
                 badgeData = [...userData.badges];
             }
@@ -108,11 +108,6 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         
         // create array of new badges to add to the user
         let earnedBadges = newBadgeArr.filter(badge => !userBadges.includes(badge));
-        console.log(userData)
-        console.log(badgeData)
-        console.log(newBadgeArr);
-        console.log(userBadges);
-        console.log(earnedBadges);
 
         if (loggedIn) {
             if (earnedBadges.length > 0) {

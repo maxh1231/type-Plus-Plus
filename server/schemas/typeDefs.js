@@ -11,6 +11,7 @@ const typeDefs = gql`
     _id: ID
     username: String!
     email: String!
+    password: String!
     createdAt: String!
     bio: String
     location: String
@@ -26,6 +27,8 @@ const typeDefs = gql`
     badgeCount: Int
     maxAccuracy: Float
     age: Int
+    question: String
+    answer: String
   }
 
   type Scores {
@@ -62,6 +65,7 @@ const typeDefs = gql`
     meScores: [Scores]
     users: [User]
     user(username: String!): User
+    userByEmail(email: String!): User
     scoresByUser(username: String): [Scores]
     badgesByUser(username: String): [Badge]
     scores: [Scores]
@@ -73,7 +77,7 @@ const typeDefs = gql`
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!, question: String!, answer: String!): Auth
     addScore(wpm: Float!, accuracy: Float! ): Scores
     addBio(bio: String!): User
     addLocation(location: String!): User
@@ -82,6 +86,7 @@ const typeDefs = gql`
     addBadge(badgeName: String!): Badge
     createBadge(badgeName: String!): Badge
     uploadFile(file: Upload!): File!
+    updatePassword(password: String!, _id: ID!): User
   }
 `;
 

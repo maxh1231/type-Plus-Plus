@@ -16,13 +16,13 @@ import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import LeaderBoard from './pages/LeaderBoard';
 import Badges from './pages/Badges';
+import ForgotPassword from './pages/ForgotPassword';
 
 // Component imports
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 
 const uploadLink = createUploadLink({
     uri: '/graphql',
@@ -67,11 +67,6 @@ function App() {
                         <Route exact path="/signup" element={<Signup />} />
                         <Route
                             exact
-                            path="/password-reset"
-                            element={<ForgotPassword />}
-                        />
-                        <Route
-                            exact
                             path="/dashboard"
                             element={<Dashboard />}
                         />
@@ -86,6 +81,11 @@ function App() {
                             path="/profile/:username"
                             element={<Profile />}
                         />
+                        <Route
+                            exact
+                            path="/password-reset"
+                            exact element={<ForgotPassword />}
+                        />                        
                         <Route
                             render={() => (
                                 <h1 className="">You've Been 404'd! Oops...</h1>

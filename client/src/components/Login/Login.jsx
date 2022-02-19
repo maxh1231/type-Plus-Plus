@@ -6,7 +6,8 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER, ADD_BADGE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { checkStreak } from '../../utils/helpers';
-import { EyeIcon } from '@heroicons/react/solid';
+import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [login, { error }] = useMutation(LOGIN_USER);
@@ -80,18 +81,18 @@ const Login = () => {
                         />
 
                         <div className="flex">
-                            <input
-                                {...register('password', {
-                                    required: 'Password is required',
-                                })}
-                                type={passwordShown ? 'text' : 'password'}
-                                placeholder="Password"
-                                className="block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"
-                            />
+                            <div className="flex block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800">
+                                <input
+                                    {...register('password', {
+                                        required: 'Password is required',
+                                    })}
+                                    type={passwordShown ? 'text' : 'password'}
+                                    placeholder="Password"
+                                    className="dark:bg-gray-800 w-full"
+                                    />
 
-                            <i onClick={togglePasswordVisiblity}>
-                                <EyeIcon className="h-7 m-3 text-theme-blue hover:text-blue-600 transition-all duration-300" />
-                            </i>
+                                {passwordShown ? (<i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>): (<i onClick={togglePasswordVisiblity}><EyeOffIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>)}
+                            </div>
                         </div>
                         <ErrorMessage
                             errors={errors}
@@ -127,12 +128,9 @@ const Login = () => {
                         </button>
 
                         <div className="flex justify-center m-1">
-                            <a
-                                href="/password-reset"
-                                className="items-center underline text-gray-600 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
-                            >
-                                Forgot Password?
-                            </a>
+                            <div className="items-center underline text-gray-600 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300">
+                                <Link to="/password-reset">Forgot Password?</Link>
+                            </div>
                         </div>
                     </form>
                 </div>
