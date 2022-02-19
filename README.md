@@ -39,6 +39,6 @@ Find us on GitHub:
 <ul>
     <li><a href="https://github.com/Thenlie">Leithen Crider</a></li>
     <li><a href="https://github.com/Thorulfr">Ben Holt</a></li>
-    <li><a href="https://github.com/maxh1231">Gluteus Maximus Humpherys</a></li>
+    <li><a href="https://github.com/maxh1231">Max Humpherys</a></li>
     <li><a href="https://github.com/t-norm">Tyler Norman</a></li>
 </ul>
