@@ -16,6 +16,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
     const [timer, setTimer] = useState(0);
     const [isMounted, setIsMounted] = useState(true);
     const [modalBadge, setModalBadge] = useState(false);
+    const [isCheater, setIsCheater] = useState(false);
     const [addScore] = useMutation(ADD_SCORE);
     const [addBadge] = useMutation(ADD_BADGE);
     const { loading, data } = useQuery(QUERY_ME);
@@ -51,19 +52,31 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
     // Update input value and wpm every time a character is typed
     useEffect(() => {
         if (isMounted) {
-            updateError();
-            updateAccuracy();
-            updateUnderline();
-            updateWpm();
+            // check if game is over
+            if (inputText.length === sampleArr.length) {
+                updateError();
+                updateUnderline();
+                updateWpm();
+                endGame();
+                return;
+            // check if user cheated
+            } else if (inputText.length > sampleArr.length) {
+                catchCheater();
+                return;
+            } else {
+                updateError();
+                updateUnderline();
+                updateWpm();
+            }
         }
-    });
+    }, [inputText]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const handleChange = (evt) => {
+    useEffect(() => {
+        updateAccuracy();
+    }, [errorCount]) // eslint-disable-line react-hooks/exhaustive-deps
+
+    const handleChange = async (evt) => {
         setInputText(evt.target.value);
-        // Check if game is over
-        if (inputText.length + 1 === sampleArr.length) {
-            endGame();
-        }
     };
 
     const toggleTimer = () => {
@@ -77,9 +90,10 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         }, 1000);
         setIntervalId(gameTimer);
     };
-
+    
     const endGame = async () => {
         toggleTimer();
+        console.log({userData: userData})
         let badgeData = []
         if (userData.length !== 0) {
             if (userData.badges.length > 0) {
@@ -124,8 +138,17 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         if (addedBadge) {
             setModalBadge(addedBadge.data.addBadge)
         }
+
+        console.log({userBadges: userBadges, earnedBadges: newBadgeArr, addedBadges: earnedBadges})
+
         openModal();
     };
+
+    const catchCheater = () => {
+        toggleTimer();
+        setIsCheater(true);
+        openModal();
+    }
 
     // count errors and style accordingly
     const updateError = () => {
@@ -149,7 +172,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
             document.getElementById(i).style.backgroundColor = 'transparent';
             document.getElementById(i).style.textDecoration = 'none';
         }
-        setErrorCount(tmpErrorCount);
+        setErrorCount(tmpErrorCount)
     };
 
     // underline current character
@@ -176,10 +199,10 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         if (isNaN(Math.abs((errorCount / inputText.length) * 100 - 100))) {
             setAccuracy(100);
         } else {
-            const accuracy = Math.abs(
+            const newAccuracy = Math.abs(
                 (errorCount / inputText.length) * 100 - 100
             );
-            setAccuracy(Math.round((accuracy + Number.EPSILON) * 100) / 100);
+            setAccuracy(Math.round((newAccuracy + Number.EPSILON) * 100) / 100);
         }
     };
 
@@ -253,32 +276,41 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     },
                 }}
             >
-                <div id="modal-container" className="w-fit flex flex-col">
-                    <button onClick={closeModal} className="text-right">
-                        ❌
-                    </button>
-                    <div id="modal-info" className="p-10">
-                        <p>Errors: {errorCount}</p>
-                        <p>Accuracy: {accuracy}%</p>
-                        <p>Time: {timer}</p>
-                        <p>WPM: {wpm}</p>
-                    </div>
-                    {modalBadge && 
-                    <div className='m-auto text-center'>
-                        <h2>You just earned:</h2>
-                        <img src={modalBadge.img} className='m-auto' alt='badge img'></img>
-                        <div>{modalBadge.badgeName}</div>
-                        <div>{modalBadge.description}</div>
-                    </div>
-                    }
-                    {!loggedIn && (
-                        <div className="mx-auto my-6 w-fit">
-                            <Link to='/signup'>
-                                Log in to save your scores!
-                            </Link>
+                {!isCheater ? (
+                    <div id="modal-container" className="w-fit flex flex-col">
+                        <button onClick={closeModal} className="text-right">
+                            ❌
+                        </button>
+                        <div id="modal-info" className="p-10">
+                            <p>Errors: {errorCount}</p>
+                            <p>Accuracy: {accuracy}%</p>
+                            <p>Time: {timer}</p>
+                            <p>WPM: {wpm}</p>
                         </div>
-                    )}
-                </div>
+                        {modalBadge && 
+                        <div className='m-auto text-center'>
+                            <h2>You just earned:</h2>
+                            <img src={modalBadge.img} className='m-auto' alt='badge img'></img>
+                            <div>{modalBadge.badgeName}</div>
+                            <div>{modalBadge.description}</div>
+                        </div>
+                        }
+                        {!loggedIn && (
+                            <div className="mx-auto my-6 w-fit">
+                                <Link to='/signup'>
+                                    Log in to save your scores!
+                                </Link>
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    <>
+                        <button onClick={closeModal} className="text-right">
+                            ❌
+                        </button>
+                        <div>You cheated!!</div>
+                    </>
+                )}
             </Modal>
         </div>
     );

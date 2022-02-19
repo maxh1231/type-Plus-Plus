@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
-import { CircularProgressbar } from 'react-circular-progressbar';
 import { useQuery } from '@apollo/client';
 import { QUERY_BADGES, QUERY_MYBADGE, QUERY_ME } from '../../utils/queries';
 
@@ -63,9 +62,8 @@ const UpcomingBadge = (runGame) => {
         }
     }
 
-    const randomNum = Math.floor(Math.random() * tmpArr.length)
-    const displayBadge = tmpArr[randomNum]
-    console.log({allBadge: badgeArr, userBadge: myBadgeArr, tmpAr: tmpArr, displayBadge: displayBadge})
+    // const randomNum = Math.floor(Math.random() * tmpArr.length)
+    const displayBadge = tmpArr[0];
     return (
         <div className='container'>
             <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>

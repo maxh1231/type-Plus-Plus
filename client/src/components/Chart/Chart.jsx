@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_MYSCORE } from '../../utils/queries';
 import Auth from '../../utils/auth';
@@ -28,10 +28,12 @@ ChartJS.register(
 );
 
 const Chart = () => {
-    const { loading, data } = useQuery(QUERY_MYSCORE, {
-        pollInterval: 500,
-    });
+    const { loading, data, refetch } = useQuery(QUERY_MYSCORE);
     
+    useEffect(() => {
+        refetch();
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
     let wpm = [];
     let accuracy = [];
     let dates = [];

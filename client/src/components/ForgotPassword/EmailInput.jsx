@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
-import { useLazyQuery } from '@apollo/client';
-import { QUERY_USER_EMAIL } from '../../utils/queries';
 
 const EmailInput = ({setCurrentComponent, getUser, data}) => {
     const {

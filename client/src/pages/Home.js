@@ -113,7 +113,7 @@ const Home = () => {
             </section>
             <div className="grid grid-cols-3 container">
                 <div>
-                    <GlobalLeaderBoard displayCount={5} />
+                    <GlobalLeaderBoard displayCount={5} runGame={runGame} />
                 </div>
                 <div className="my-4 flex flex-col">
                     <h1 className="block text-center text-2xl underline text-gray-600 dark:text-gray-300">
@@ -124,7 +124,7 @@ const Home = () => {
                         {loggedIn && <UpcomingBadge runGame={runGame} />}
                     </div>
                 </div>
-                {loggedIn && <Highscore /> }
+                {loggedIn && <Highscore runGame={runGame} /> }
             </div>
         </main>
     );
