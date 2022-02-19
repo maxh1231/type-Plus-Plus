@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 
 const ForgotPassword = () => {
-
     const {
         register,
         formState: { errors },
@@ -12,20 +11,21 @@ const ForgotPassword = () => {
 
     const onSubmit = async () => {
         try {
-
         } catch (e) {
             document.getElementById('loginInvalid').classList.remove('hidden');
             setTimeout(() => {
                 document.getElementById('loginInvalid').classList.add('hidden');
-            }, 3000)
+            }, 3000);
         }
     };
 
     return (
-        <main className="bg-gray-200 flex-grow flex flex-col">
+        <main className="bg-gray-200 flex-grow flex flex-col dark:bg-gray-800 transition duration-200">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                    <h1 className="mb-8 text-3xl text-center">Password Reset</h1>
+                <div className="bg-white px-6 py-8 rounded shadow-md w-full text-gray-700 dark:text-gray-300 dark:bg-gray-900 transition duration-200">
+                    <h1 className="mb-8 text-3xl text-center">
+                        Password Reset
+                    </h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <input
                             {...register('email', {
@@ -42,7 +42,7 @@ const ForgotPassword = () => {
                             })}
                             type="email"
                             placeholder="Email"
-                            className="block border border-grey-light w-full p-3 rounded mb-4"
+                            className="block border w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"
                         />
                         <ErrorMessage
                             errors={errors}
@@ -51,30 +51,40 @@ const ForgotPassword = () => {
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
-                                            <p
-                                                key={type}
-                                                className="p-2 font-bold text-red-500 text-center"
-                                            >
-                                                {message}
-                                            </p>
-                                        )
-                                    )
+                                              <p
+                                                  key={type}
+                                                  className="p-2 font-bold text-theme-red text-center"
+                                              >
+                                                  {message}
+                                              </p>
+                                          )
+                                      )
                                     : null;
                             }}
                             className="block border border-grey-light w-full p-3 rounded mb-4"
                         />
 
-                        <div className="p-2 font-bold text-red-500 text-center hidden" id="loginInvalid">Email not found</div>
+                        <div
+                            className="p-2 font-bold text-theme-red text-center hidden"
+                            id="loginInvalid"
+                        >
+                            Email not found
+                        </div>
 
                         <button
                             type="submit"
-                            className="w-full text-center py-3 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none my-1"
+                            className="w-full text-center py-3 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
                         >
                             Send Email
                         </button>
 
-                        <div className='flex justify-center m-1'>
-                            <a href='/login' className="items-center underline text-blue-600 hover:text-blue-900">Return To Login</a>
+                        <div className="flex justify-center m-1">
+                            <a
+                                href="/login"
+                                className="items-center underline text-gray-600 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
+                            >
+                                Return To Login
+                            </a>
                         </div>
                     </form>
                 </div>
