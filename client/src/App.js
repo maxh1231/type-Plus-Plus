@@ -84,7 +84,7 @@ function App() {
                         <Route
                             exact
                             path="/password-reset"
-                            exact element={<ForgotPassword />}
+                            element={<ForgotPassword />}
                         />                        
                         <Route
                             render={() => (

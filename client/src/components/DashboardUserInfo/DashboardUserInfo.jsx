@@ -82,12 +82,6 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
         levelProgress = null;
     }
 
-    console.log(totalXP)
-    console.log(userLevel)
-    console.log(levelProgress);
-
-
-
     let levelIcon;
     switch (userLevel) {
         case 1:
@@ -121,8 +115,6 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
             levelIcon = "/assets/level-icons/level-10.png";
             break;
     }
-
-    console.log(levelIcon);
 
     // refetch();
 

@@ -6,10 +6,13 @@ import { formatTime } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 
-const GlobalLeaderBoard = ({ displayCount }) => {
-    const { loading, data } = useQuery(QUERY_SCORES, {
-        pollInterval: 500,
-    });
+const GlobalLeaderBoard = ({ displayCount, runGame }) => {
+    const { loading, data, refetch } = useQuery(QUERY_SCORES);
+
+    useEffect(() => {
+        refetch();
+    }, [runGame]) // eslint-disable-line react-hooks/exhaustive-deps
+
     const leaderBoard = data?.scores.map((score) => {
         return {
             wpm: score.wpm,

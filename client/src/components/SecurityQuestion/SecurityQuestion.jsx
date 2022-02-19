@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
-import { useMutation, useQuery } from '@apollo/client';
 
 const SecurityQuestion = ({data, setCurrentComponent}) => {
     const {
@@ -11,7 +10,7 @@ const SecurityQuestion = ({data, setCurrentComponent}) => {
     } = useForm({ criteriaMode: 'all' });
 
     const onSubmit = async (answerData) => {
-        if (answerData.answer == data.userByEmail.answer) {
+        if (answerData.answer === data.userByEmail.answer) {
             setCurrentComponent('UpdatePassword');
         } else {
             
