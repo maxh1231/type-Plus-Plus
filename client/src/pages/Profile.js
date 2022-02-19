@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_FRIENDS } from '../utils/queries';
@@ -18,18 +18,35 @@ const Profile = () => {
         variables: { username: userParam },
     });
     const myFriends = useQuery(QUERY_FRIENDS);
+    const [addFriend] = useMutation(ADD_FRIEND);
+    const [removeFriend] = useMutation(REMOVE_FRIEND);
+    const [addBadge] = useMutation(ADD_BADGE);
+
+    const handler = async () => {
+        const friendArr = await myFriends.data?.me.friends.map((friend) => {
+            return friend.username;
+        });
+        if (!myFriends.loading) {
+            if (friendArr.includes(`${userParam}`)) {
+                setFriendStatus(true);
+            } else {
+                setFriendStatus(false);
+            }
+        }
+    };
+
+    useEffect(() => {
+        handler();
+    }, []);
+
+    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+        return <Navigate to="/dashboard" />;
+    }
 
     let friendID;
     if (data) {
         friendID = data.user._id;
     }
-    const [addFriend] = useMutation(ADD_FRIEND);
-    const [removeFriend] = useMutation(REMOVE_FRIEND);
-    const [addBadge] = useMutation(ADD_BADGE);
-
-    useEffect(() => {
-        handler();
-    }, []);
 
     const handleAddFriend = async (event) => {
         event.preventDefault();
@@ -39,7 +56,7 @@ const Profile = () => {
         if (data) {
             const friendBadge = checkFriends(data.data.addFriend.friendCount)
             if (friendBadge) {
-                addBadge({ variables: { badgeName: friendBadge }})
+                addBadge({ variables: { badgeName: friendBadge } })
             }
         }
         setFriendStatus(true);
@@ -54,18 +71,6 @@ const Profile = () => {
         setFriendStatus(false);
     };
 
-    const handler = async () => {
-        const friendArr = await myFriends.data?.me.friends.map((friend) => {
-            return friend.username;
-        });
-        if (!myFriends.loading) {
-            if (friendArr.includes(`${userParam}`)) {
-                setFriendStatus(true);
-            } else {
-                setFriendStatus(false);
-            }
-        }
-    };
     console.log(friendStatus);
     return (
         <main className="flex-grow">

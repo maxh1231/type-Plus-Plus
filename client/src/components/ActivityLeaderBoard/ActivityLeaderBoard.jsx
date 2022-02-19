@@ -10,12 +10,37 @@ const ActivityLeaderBoard = () => {
     refetch();
     const leaderBoard = data?.users;
 
+    console.log(data);
+    // if (data) {
+    //     const sortedData = data.users.sort((a, b) => (users.a.gameCount > users.b.gameCount) ? 1 : -1)
+    //     console.log(sortedData);
+    // }
+
+
+
+    function compare(a, b) {
+        if (a.gameCount < b.gameCount) {
+            return 1
+        }
+        if (a.gameCount > b.gameCount) {
+            return -1;
+        }
+        return 0;
+    }
+
+    let tempArr = []
+    if (data) {
+        tempArr = data.users.slice().sort(compare)
+        console.log(tempArr);
+    }
+
+
     function Items({ leaderBoard, page }) {
         return (
             <>
-                {leaderBoard ? (
+                {tempArr ? (
                     <tbody>
-                        {leaderBoard.map((user, i) => (
+                        {tempArr.map((user, i) => (
                             <tr key={uuid()}>
                                 <td className="text-center p-2" key={uuid()}>
                                     {i + 1}
