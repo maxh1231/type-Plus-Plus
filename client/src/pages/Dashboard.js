@@ -87,7 +87,6 @@ const Dashboard = () => {
                             className="w-5 h-5 mx-1 cursor-pointer text-gray-700 hover:text-theme-red dark:hover:text-theme-red dark:text-gray-400 transition duration-300"
                         />
                     </span>
-                    <h2 className="mt-2 text-lg text-center">Friends</h2>
                     <Friends friends={data.me.friends} />
                     <RecentBadge />
                     <Link to="/badges">
