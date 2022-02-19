@@ -1,4 +1,3 @@
-import ForgotPassword from './ForgotPassword';
-import SecurityQuestion from './SecurityQuestion';
+import EmailInput from './EmailInput';
 
-export default { ForgotPassword, SecurityQuestion };
+export default EmailInput;

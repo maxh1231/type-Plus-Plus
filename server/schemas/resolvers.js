@@ -8,6 +8,7 @@ const {
 } = require('graphql-upload');
 const path = require('path');
 const fs = require('fs');
+const bcrypt = require('bcrypt');
 
 const resolvers = {
   Upload: GraphQLUpload,
@@ -52,9 +53,8 @@ const resolvers = {
         .populate('badges')
     },
     // get user by email
-    userByEmail: async (parent, { email }) => {
-      return User.findOne({ email })
-        .select('-__v -password')
+    userByEmail: async (parent, args) => {
+      return User.findOne({ email: args.email })
     },
     // get scores by username
     scoresByUser: async (parent, { username }) => {
@@ -84,7 +84,6 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, args) => {
-      console.log(args)
       const user = await User.create(
         args
       );
@@ -243,6 +242,16 @@ const resolvers = {
           url: `images/${filename}`
         }
       }
+    },
+    updatePassword: async (parent, args) => {
+        const saltRounds = 10;
+        let password = await bcrypt.hash(args.password, saltRounds);
+        const updatePassword = await User.findOneAndUpdate(
+          { _id: args._id },
+          { $set: { password: password } },
+          { new: true, runValidators: true }
+        );
+        return updatePassword;
     },
   }
 }

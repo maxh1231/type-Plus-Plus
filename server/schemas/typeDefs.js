@@ -11,6 +11,7 @@ const typeDefs = gql`
     _id: ID
     username: String!
     email: String!
+    password: String!
     createdAt: String!
     bio: String
     location: String
@@ -85,6 +86,7 @@ const typeDefs = gql`
     addBadge(badgeName: String!): Badge
     createBadge(badgeName: String!): Badge
     uploadFile(file: Upload!): File!
+    updatePassword(password: String!, _id: ID!): User
   }
 `;
 

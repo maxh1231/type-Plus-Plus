@@ -102,3 +102,12 @@ export const ADD_BADGE = gql`
     }
   }
 `;
+
+export const UPDATE_PASSWORD = gql`
+  mutation UpdatePassword($password: String!, $_id: ID!) {
+    updatePassword(password: $password, _id: $_id) {
+      username
+      email
+    }
+  }
+`;

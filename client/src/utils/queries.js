@@ -26,7 +26,8 @@ export const QUERY_USER = gql`
 
 export const QUERY_USER_EMAIL = gql`
     query userByEmail($email: String!) {
-        user(email: $email) {
+        userByEmail(email: $email) {
+            _id
             email
             question
             answer
