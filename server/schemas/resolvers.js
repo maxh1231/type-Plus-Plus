@@ -252,6 +252,12 @@ const resolvers = {
       );
       return updatePassword;
     },
+    removeUser: async (parent, args, context) => {
+      const user = await User.findOneAndDelete(
+        { _id: context.user._id }
+      )
+      return user;
+    }
   }
 }
 
