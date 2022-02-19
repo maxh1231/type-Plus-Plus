@@ -2,9 +2,14 @@ import { useQuery } from '@apollo/client'
 import { QUERY_ME } from '../../utils/queries'
 import { formatTime } from '../../utils/helpers'
 import { v4 as uuid } from 'uuid';
+import { useEffect } from 'react';
 
-const Highscore = () => {
-    const { loading, data } = useQuery(QUERY_ME)
+const Highscore = ({ runGame }) => {
+    const { loading, data, refetch } = useQuery(QUERY_ME)
+
+    useEffect(() => {
+        refetch();
+    }, [runGame]);
 
     if (loading) {
         return <p>Loading...</p>
