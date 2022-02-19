@@ -54,7 +54,6 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         if (isMounted) {
             // check if game is over
             if (inputText.length === sampleArr.length) {
-                console.log('hit end')
                 updateError();
                 updateUnderline();
                 updateWpm();
@@ -62,7 +61,6 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                 return;
             // check if user cheated
             } else if (inputText.length > sampleArr.length) {
-                console.log('hit cheat')
                 catchCheater();
                 return;
             } else {
@@ -92,9 +90,10 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         }, 1000);
         setIntervalId(gameTimer);
     };
-
+    
     const endGame = async () => {
         toggleTimer();
+        console.log({userData: userData})
         let badgeData = []
         if (userData.length !== 0) {
             if (userData.badges.length > 0) {
@@ -139,6 +138,9 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         if (addedBadge) {
             setModalBadge(addedBadge.data.addBadge)
         }
+
+        console.log({userBadges: userBadges, earnedBadges: newBadgeArr, addedBadges: earnedBadges})
+
         openModal();
     };
 
@@ -195,15 +197,11 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
     //calculate and display accuracy
     const updateAccuracy = () => {
         if (isNaN(Math.abs((errorCount / inputText.length) * 100 - 100))) {
-            console.log(100)
             setAccuracy(100);
         } else {
-            console.log(errorCount)
             const newAccuracy = Math.abs(
                 (errorCount / inputText.length) * 100 - 100
             );
-            console.log(newAccuracy)
-            console.log(Math.round((newAccuracy + Number.EPSILON) * 100) / 100)
             setAccuracy(Math.round((newAccuracy + Number.EPSILON) * 100) / 100);
         }
     };
