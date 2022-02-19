@@ -69,7 +69,7 @@ const Dashboard = () => {
     }
 
     return (
-        <main className="grow flex items-center dark:bg-gray-800">
+        <main className="grow flex items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
             <section className="grow grid grid-cols-4">
                 <div className="flex flex-col items-center justify-center">
                     <DashboardUserInfo

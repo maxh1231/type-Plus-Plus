@@ -9,7 +9,6 @@ import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
-
     const [addUser, { error }] = useMutation(ADD_USER);
 
     const [passwordShown, setPasswordShown] = useState(false);
@@ -23,7 +22,7 @@ const Signup = () => {
         handleSubmit,
         watch,
     } = useForm({ criteriaMode: 'all' });
-    
+
     const password = useRef(null);
     password.current = watch('password', '');
 
@@ -179,7 +178,15 @@ const Signup = () => {
                                 placeholder="Confirm password"
                                 className="block border border-grey-light w-5/6 p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"
                             />
-                            {passwordShown ? (<i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>): (<i onClick={togglePasswordVisiblity}><EyeOffIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>)}
+                            {passwordShown ? (
+                                <i onClick={togglePasswordVisiblity}>
+                                    <EyeIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" />
+                                </i>
+                            ) : (
+                                <i onClick={togglePasswordVisiblity}>
+                                    <EyeOffIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" />
+                                </i>
+                            )}
                         </div>
                         <ErrorMessage
                             errors={errors}
@@ -202,18 +209,30 @@ const Signup = () => {
 
                         <select
                             {...register('question', {
-                                required: 'You must pick a security question'
-                            })}>
+                                required: 'You must pick a security question',
+                            })}
+                        >
                             <option value="">Select a security question</option>
-                            <option value="1">What city were you born in?</option>
-                            <option value="2">What is your mother's maiden name?</option>
-                            <option value="3">What is your dream vacation spot?</option>
-                            <option value="4">What is your favorite pizza topping?</option>
-                            <option value="5">Who is your favorite band/artist?</option>
+                            <option value="1">
+                                What city were you born in?
+                            </option>
+                            <option value="2">
+                                What is your mother's maiden name?
+                            </option>
+                            <option value="3">
+                                What is your dream vacation spot?
+                            </option>
+                            <option value="4">
+                                What is your favorite pizza topping?
+                            </option>
+                            <option value="5">
+                                Who is your favorite band/artist?
+                            </option>
                         </select>
                         <input
                             {...register('answer', {
-                                required: 'You must answer the security question',
+                                required:
+                                    'You must answer the security question',
                                 minLength: {
                                     value: 3,
                                     message:
@@ -235,14 +254,14 @@ const Signup = () => {
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
-                                            <p
-                                                key={type}
-                                                className="p-2 font-bold text-red-500 text-center"
-                                            >
-                                                {message}
-                                            </p>
-                                        )
-                                    )
+                                              <p
+                                                  key={type}
+                                                  className="p-2 font-bold text-theme-red text-center"
+                                              >
+                                                  {message}
+                                              </p>
+                                          )
+                                      )
                                     : null;
                             }}
                         />
@@ -253,19 +272,24 @@ const Signup = () => {
                                 return messages
                                     ? Object.entries(messages).map(
                                           ([type, message]) => (
-                                            <p
-                                                key={type}
-                                                className="p-2 font-bold text-red-500 text-center"
-                                            >
-                                                {message}
-                                            </p>
-                                        )
-                                    )
+                                              <p
+                                                  key={type}
+                                                  className="p-2 font-bold text-theme-red text-center"
+                                              >
+                                                  {message}
+                                              </p>
+                                          )
+                                      )
                                     : null;
                             }}
-                        />                        
+                        />
 
-                        <div className="p-2 font-bold text-red-500 text-center hidden" id="signupInvalid">Username or email already in use</div>
+                        <div
+                            className="p-2 font-bold text-theme-red text-center hidden"
+                            id="signupInvalid"
+                        >
+                            Username or email already in use
+                        </div>
 
                         <button
                             type="submit"

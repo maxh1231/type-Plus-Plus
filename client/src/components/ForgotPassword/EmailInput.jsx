@@ -67,7 +67,7 @@ const EmailInput = ({ setCurrentComponent, getUser, data }) => {
                         />
 
                         <div
-                            className="p-2 font-bold text-red-500 text-center hidden"
+                            className="p-2 font-bold text-theme-red text-center hidden"
                             id="emailInvalid"
                         >
                             Email not found
