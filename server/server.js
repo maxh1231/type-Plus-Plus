@@ -62,7 +62,14 @@ const io = new Server(httpServer, {
 
 // Socket logging
 io.on('connection', (socket) => {
-    console.log('Step one is a success!');
+    console.log('User connected!');
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+    });
+    socket.on('score', (wpm) => {
+        console.log(wpm);
+    });
+    socket.on('test', () => console.log("It's working!"));
 });
 
 db.once('open', () => {

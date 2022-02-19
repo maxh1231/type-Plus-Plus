@@ -24,6 +24,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 
+import { socket, SocketContext } from './contexts/socket';
+
 const uploadLink = createUploadLink({
     uri: '/graphql',
 });
@@ -57,46 +59,50 @@ const client = new ApolloClient({
 
 function App() {
     return (
-        <ApolloProvider client={client}>
-            <div className="flex flex-col min-h-screen">
-                <Router className="test">
-                    <Header />
-                    <Routes>
-                        <Route exact path="/" element={<Home />} />
-                        <Route exact path="/login" element={<Login />} />
-                        <Route exact path="/signup" element={<Signup />} />
-                        <Route
-                            exact
-                            path="/password-reset"
-                            element={<ForgotPassword />}
-                        />
-                        <Route
-                            exact
-                            path="/dashboard"
-                            element={<Dashboard />}
-                        />
-                        <Route
-                            exact
-                            path="/leaderboard"
-                            element={<LeaderBoard />}
-                        />
-                        <Route exact path="/badges" element={<Badges />} />
-                        <Route
-                            exact
-                            path="/profile/:username"
-                            element={<Profile />}
-                        />
-                        <Route
-                            render={() => (
-                                <h1 className="">You've Been 404'd! Oops...</h1>
-                            )}
-                        />{' '}
-                        {/* To Do: Build out a custom 404 page */}
-                    </Routes>
-                    <Footer />
-                </Router>
-            </div>
-        </ApolloProvider>
+        <SocketContext.Provider value={socket}>
+            <ApolloProvider client={client}>
+                <div className="flex flex-col min-h-screen">
+                    <Router className="test">
+                        <Header />
+                        <Routes>
+                            <Route exact path="/" element={<Home />} />
+                            <Route exact path="/login" element={<Login />} />
+                            <Route exact path="/signup" element={<Signup />} />
+                            <Route
+                                exact
+                                path="/password-reset"
+                                element={<ForgotPassword />}
+                            />
+                            <Route
+                                exact
+                                path="/dashboard"
+                                element={<Dashboard />}
+                            />
+                            <Route
+                                exact
+                                path="/leaderboard"
+                                element={<LeaderBoard />}
+                            />
+                            <Route exact path="/badges" element={<Badges />} />
+                            <Route
+                                exact
+                                path="/profile/:username"
+                                element={<Profile />}
+                            />
+                            <Route
+                                render={() => (
+                                    <h1 className="">
+                                        You've Been 404'd! Oops...
+                                    </h1>
+                                )}
+                            />{' '}
+                            {/* To Do: Build out a custom 404 page */}
+                        </Routes>
+                        <Footer />
+                    </Router>
+                </div>
+            </ApolloProvider>
+        </SocketContext.Provider>
     );
 }
 
