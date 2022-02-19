@@ -74,7 +74,7 @@ const UpcomingBadge = (runGame) => {
                 <p key={uuid()} className='p-1 text-center italic'>{displayBadge.description}</p>
                 <p>Progress: {renderProgress(displayBadge.category)}/{displayBadge.targetVal}</p>
                 <div className="w-full bg-gray-200 rounded-full">
-                    <div className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: `${renderProgress(displayBadge.category)/displayBadge.targetVal * 100}%`}}>{Math.floor(renderProgress(displayBadge.category)/displayBadge.targetVal * 100)}%</div>
+                    <div className="bg-blue-600 text-xs font-bold text-black text-center p-0.5 leading-none rounded-l-full" style={{width: `${renderProgress(displayBadge.category)/displayBadge.targetVal * 100}%`}}>{Math.floor(renderProgress(displayBadge.category)/displayBadge.targetVal * 100)}%</div>
                 </div>
             </div>
         </div>
