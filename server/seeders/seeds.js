@@ -3,6 +3,7 @@ const Badge = require('../models/Badge');
 
 db.once('open', async () => {
     await Badge.deleteMany({});
+
     const badgeData = [
         // Games Played
         {badgeName: 'Baby Gamer', description: 'Played a Game', placeholder: '/assets/badges/placeholder-games-badge-1.png', img: '/assets/badges/games-badge-1.png', targetVal: 1, category: 'games', xp: 10, createdAt: Date.now},

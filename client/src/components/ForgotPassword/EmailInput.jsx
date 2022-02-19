@@ -1,22 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import { useLazyQuery } from '@apollo/client';
+import { QUERY_USER_EMAIL } from '../../utils/queries';
 
-const ForgotPassword = () => {
-
+const EmailInput = ({setCurrentComponent, getUser, data}) => {
     const {
         register,
         formState: { errors },
         handleSubmit,
     } = useForm({ criteriaMode: 'all' });
 
-    const onSubmit = async () => {
+    const onSubmit = async (formData) => {
         try {
-
+            await getUser({variables: {"email": formData.email}})
+            setCurrentComponent('SecurityQuestion')
         } catch (e) {
-            document.getElementById('loginInvalid').classList.remove('hidden');
+            document.getElementById('emailInvalid').classList.remove('hidden');
             setTimeout(() => {
-                document.getElementById('loginInvalid').classList.add('hidden');
+                document.getElementById('emailInvalid').classList.add('hidden');
             }, 3000)
         }
     };
@@ -64,13 +66,13 @@ const ForgotPassword = () => {
                             className="block border border-grey-light w-full p-3 rounded mb-4"
                         />
 
-                        <div className="p-2 font-bold text-red-500 text-center hidden" id="loginInvalid">Email not found</div>
+                        <div className="p-2 font-bold text-red-500 text-center hidden" id="emailInvalid">Email not found</div>
 
                         <button
                             type="submit"
                             className="w-full text-center py-3 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none my-1"
                         >
-                            Send Email
+                            Reset Password
                         </button>
 
                         <div className='flex justify-center m-1'>
@@ -83,4 +85,4 @@ const ForgotPassword = () => {
     );
 };
 
-export default ForgotPassword;
+export default EmailInput;

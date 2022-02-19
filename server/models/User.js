@@ -62,7 +62,17 @@ const userSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: "Badge"
       }
-    ]
+    ],
+    question: {
+      
+      type: String
+      
+    },
+    answer: {
+      
+      type: String
+      
+    },
   },
   // set this to use virtual below
   {
