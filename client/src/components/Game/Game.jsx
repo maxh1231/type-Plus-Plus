@@ -52,7 +52,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
     // Update input value and wpm every time a character is typed
     useEffect(() => {
         if (isMounted) {
-            console.log(inputText.length)
+            // check if game is over
             if (inputText.length === sampleArr.length) {
                 console.log('hit end')
                 updateError();
@@ -60,40 +60,25 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                 updateWpm();
                 endGame();
                 return;
+            // check if user cheated
             } else if (inputText.length > sampleArr.length) {
                 console.log('hit cheat')
                 catchCheater();
                 return;
             } else {
                 updateError();
-                // updateAccuracy();
                 updateUnderline();
                 updateWpm();
             }
         }
-    }, [inputText]);
-
-
+    }, [inputText]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         updateAccuracy();
-    }, [errorCount])
-
-
-
+    }, [errorCount]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleChange = async (evt) => {
         setInputText(evt.target.value);
-        console.log(evt.target.value.length)
-        console.log(sampleArr.length)
-        // Check if game is over
-        // if (evt.target.value.length === sampleArr.length) {
-        //     console.log('hit end')
-        //     endGame();
-        // } else if (evt.target.value.length > sampleArr.length) {
-        //     console.log('hit cheat')
-        //     catchCheater();
-        // }
     };
 
     const toggleTimer = () => {
