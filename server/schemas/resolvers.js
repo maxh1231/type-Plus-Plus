@@ -38,11 +38,13 @@ const resolvers = {
     },
     // all users
     users: async () => {
-      return User.find()
-        .select('-__v -password')
-        .populate('scores')
-        .populate('badges')
-        .sort({ wpm: -1 })
+      return await User.find().sort({ gameCount: -1 }).exec();
+
+      // .select('-__v -password')
+      // .populate('scores')
+      // .populate('badges')
+
+
     },
     // get user by username
     user: async (parent, { username }) => {
@@ -78,7 +80,7 @@ const resolvers = {
       const formatStartDate = moment(startDate).valueOf();
       return Scores.find({
         createdAt: { $gt: formatStartDate }
-      })
+      }).sort({ 'wpm': -1 })
     }
   },
 
@@ -88,7 +90,7 @@ const resolvers = {
         args
       );
       const token = signToken(user)
-      return {token, user}
+      return { token, user }
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -244,14 +246,14 @@ const resolvers = {
       }
     },
     updatePassword: async (parent, args) => {
-        const saltRounds = 10;
-        let password = await bcrypt.hash(args.password, saltRounds);
-        const updatePassword = await User.findOneAndUpdate(
-          { _id: args._id },
-          { $set: { password: password } },
-          { new: true, runValidators: true }
-        );
-        return updatePassword;
+      const saltRounds = 10;
+      let password = await bcrypt.hash(args.password, saltRounds);
+      const updatePassword = await User.findOneAndUpdate(
+        { _id: args._id },
+        { $set: { password: password } },
+        { new: true, runValidators: true }
+      );
+      return updatePassword;
     },
   }
 }
