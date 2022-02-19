@@ -62,7 +62,7 @@ const io = new Server(httpServer, {
 
 // Socket logging
 io.on('connection', (socket) => {
-    console.log('Step one is a success!');
+    console.log('User connected!');
 });
 
 db.once('open', () => {
