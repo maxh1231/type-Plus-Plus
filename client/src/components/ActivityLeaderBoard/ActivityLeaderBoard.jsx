@@ -79,7 +79,7 @@ const ActivityLeaderBoard = () => {
                     breakLabel="..."
                     nextLabel=">>"
                     onPageChange={handlePageClick}
-                    pageRangeDisplayed={5}
+                    pageRangeDisplayed={3}
                     pageCount={pageCount}
                     previousLabel="<<"
                     renderOnZeroPageCount={null}
