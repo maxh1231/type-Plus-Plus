@@ -38,11 +38,13 @@ const resolvers = {
     },
     // all users
     users: async () => {
-      return User.find()
-        .select('-__v -password')
-        .populate('scores')
-        .populate('badges')
-        .sort({ wpm: -1 })
+      return await User.find().sort({ gameCount: -1 }).exec();
+
+      // .select('-__v -password')
+      // .populate('scores')
+      // .populate('badges')
+
+
     },
     // get user by username
     user: async (parent, { username }) => {
