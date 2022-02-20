@@ -48,7 +48,7 @@ const Login = () => {
 
     return (
         <main className="bg-gray-200 flex-grow flex flex-col dark:bg-gray-800 transition duration-200">
-            <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div className="container max-w-sm mx-auto my-5 flex-1 flex flex-col items-center justify-center px-2">
                 <div className="bg-white px-6 py-8 rounded shadow-md w-full text-gray-700 dark:text-gray-300 dark:bg-gray-900 transition duration-200">
                     <h1 className="mb-8 text-3xl text-center">Welcome Back!</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -80,19 +80,22 @@ const Login = () => {
                             className="block border border-grey-light w-full p-3 rounded mb-4"
                         />
 
-                        <div className="flex">
-                            <div className="flex block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800">
+                        <div className="flex items-center bg-gray-100 dark:bg-gray-800 border rounded">
+                            {/* <div className="flex border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"> */}
                                 <input
                                     {...register('password', {
                                         required: 'Password is required',
                                     })}
                                     type={passwordShown ? 'text' : 'password'}
                                     placeholder="Password"
-                                    className="dark:bg-gray-800 w-full"
+                                    className="block  w-full p-3 rounded-x rounded-l bg-gray-100 dark:bg-gray-800 focus-visible:outline-none"
                                     />
-
-                                {passwordShown ? (<i onClick={togglePasswordVisiblity}><EyeIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>): (<i onClick={togglePasswordVisiblity}><EyeOffIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" /></i>)}
-                            </div>
+                                <div className='h-full bg-gray-100 dark:bg-gray-800 p-2'>
+                                    {passwordShown ? (
+                                    <EyeIcon className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-gray-100 dark:bg-gray-800" onClick={togglePasswordVisiblity}/>) : (
+                                    <EyeOffIcon className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-gray-100 dark:bg-gray-800" onClick={togglePasswordVisiblity}/>)}
+                                </div>
+                            {/* </div> */}
                         </div>
                         <ErrorMessage
                             errors={errors}
@@ -122,7 +125,7 @@ const Login = () => {
 
                         <button
                             type="submit"
-                            className="w-full text-center py-3 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
+                            className="w-full text-center mt-3 py-3 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
                         >
                             Log In
                         </button>
