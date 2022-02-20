@@ -88,16 +88,18 @@ const Header = ({ currentPage, setCurrentPage }) => {
                             >
                                 <li className="nav-item p-2">
                                     <Link
+                                        onClick={() => setCurrentPage('Home')}
                                         to="/"
-                                        className="nav-link p-0 hover:text-theme-red transition-all duration-300 opacity-0"
+                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${currentPage === 'Home' && 'navActive'}`}
                                     >
                                         Home
                                     </Link>
                                 </li>
                                 <li className="nav-item p-2">
                                     <Link
+                                        onClick={() => setCurrentPage('Leaderboard')}
                                         to="/leaderboard"
-                                        className="nav-link p-0 hover:text-theme-red transition-all duration-300 opacity-0"
+                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${currentPage === 'Leaderboard' && 'navActive'}`}
                                     >
                                         Leaderboard
                                     </Link>
@@ -106,16 +108,18 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                     <>
                                         <li className="nav-item p-2">
                                             <Link
+                                                onClick={() => setCurrentPage('Dashboard')}
                                                 to="/dashboard"
-                                                className="nav-link p-0 hover:text-theme-red transition-all duration-300 opacity-0"
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Dashboard' && 'navActive'}`}
                                             >
                                                 Dashboard
                                             </Link>
                                         </li>
                                         <li className="nav-item p-2">
                                             <a
+                                                onClick={() => setCurrentPage('Logout')}
                                                 href="/"
-                                                className="nav-link p-0 hover:text-theme-red transition-all duration-300 opacity-0"
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Logout' && 'navActive'}`}
                                                 onClick={logout}
                                             >
                                                 Logout
@@ -126,16 +130,18 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                     <>
                                         <li className="nav-item p-2">
                                             <Link
+                                                onClick={() => setCurrentPage('Login')}
                                                 to="/login"
-                                                className="nav-link p-0 hover:text-theme-red transition-all duration-300 opacity-0"
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Login' && 'navActive'}`}
                                             >
                                                 Login
                                             </Link>
                                         </li>
                                         <li className="nav-item p-2">
                                             <Link
+                                                onClick={() => setCurrentPage('Signup')}
                                                 to="/signup"
-                                                className="nav-link p-0 hover:text-theme-red transition-all duration-300 opacity-0"
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Signup' && 'navActive'}`}
                                             >
                                                 Sign Up
                                             </Link>
