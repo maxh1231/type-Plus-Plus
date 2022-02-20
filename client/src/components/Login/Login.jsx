@@ -81,21 +81,19 @@ const Login = () => {
                         />
 
                         <div className="flex items-center bg-gray-100 dark:bg-gray-800 border rounded">
-                            {/* <div className="flex border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"> */}
-                                <input
-                                    {...register('password', {
-                                        required: 'Password is required',
-                                    })}
-                                    type={passwordShown ? 'text' : 'password'}
-                                    placeholder="Password"
-                                    className="block  w-full p-3 rounded-x rounded-l bg-gray-100 dark:bg-gray-800 focus-visible:outline-none"
-                                    />
-                                <div className='h-full bg-gray-100 dark:bg-gray-800 p-2'>
-                                    {passwordShown ? (
-                                    <EyeIcon className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-gray-100 dark:bg-gray-800" onClick={togglePasswordVisiblity}/>) : (
-                                    <EyeOffIcon className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-gray-100 dark:bg-gray-800" onClick={togglePasswordVisiblity}/>)}
-                                </div>
-                            {/* </div> */}
+                            <input
+                                {...register('password', {
+                                    required: 'Password is required',
+                                })}
+                                type={passwordShown ? 'text' : 'password'}
+                                placeholder="Password"
+                                className="block  w-full p-3 rounded-x rounded-l bg-gray-100 dark:bg-gray-800 focus-visible:outline-none"
+                                />
+                            <div className='h-full bg-gray-100 dark:bg-gray-800 p-2'>
+                                {passwordShown ? (
+                                <EyeIcon className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-gray-100 dark:bg-gray-800" onClick={togglePasswordVisiblity}/>) : (
+                                <EyeOffIcon className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-gray-100 dark:bg-gray-800" onClick={togglePasswordVisiblity}/>)}
+                            </div>
                         </div>
                         <ErrorMessage
                             errors={errors}
