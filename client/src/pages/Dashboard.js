@@ -1,11 +1,10 @@
+// Imports
 import React, { useEffect, useMemo, useState } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
-
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-
 import DashboardUserInfo from '../components/DashboardUserInfo';
 // import Achievements from '../components/DashboardAchievements';
 // import Progress from '../components/DashboardProgress'
@@ -14,9 +13,7 @@ import Friends from '../components/Friends';
 import Uploader from '../components/Uploader';
 import RecentBadge from '../components/RecentBadge';
 import Chart from '../components/Chart';
-
 import defaultPhoto from '../assets/images/no-profile-picture.svg';
-
 import { PencilAltIcon } from '@heroicons/react/outline';
 
 // Modal Styles, remove later for custom styles
@@ -29,6 +26,7 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
     },
+    overlay: { zIndex: 100 },
 };
 
 Modal.setAppElement('#root');
@@ -67,33 +65,61 @@ const Dashboard = () => {
     }
 
     if (!Auth.loggedIn()) {
-        return <h4 className="flex-grow">Must be logged in</h4>;
+        return (
+            <section className="grow flex justify-center items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300 transition-all">
+                <h4 className="">
+                    <Link
+                        to="/login"
+                        className="hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
+                    >
+                        Log in
+                    </Link>{' '}
+                    to see your dashboard!
+                </h4>
+            </section>
+        );
     }
 
     return (
-        <main className="mt-2 ml-2 py-2 px-2 h-1/2 flex border-1 border-black justify-around flex-grow">
-            <div className="bg-gray-100">
-                <PencilAltIcon
-                    onClick={openModal}
-                    className="w-5 h-5 m-2 ml-auto text-right cursor-pointer"
-                />
-                <DashboardUserInfo
-                    data={data}
-                    modalBio={modalBio}
-                    setModalBio={setModalBio}
-                    image={image}
-                    setImage={setImage}
-                    refetch={refetch}
-                />
-            </div>
-
+        <main className="grow flex items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
+            <section className="grow grid grid-cols-4">
+                <div className="h-full flex flex-col items-center justify-evenly">
+                    <div className="flex flex-col items-center">
+                        <DashboardUserInfo
+                            data={data}
+                            modalBio={modalBio}
+                            setModalBio={setModalBio}
+                            image={image}
+                            setImage={setImage}
+                            refetch={refetch}
+                        />
+                        <span
+                            onClick={openModal}
+                            className="flex mt-2 text-gray-700 hover:text-theme-red dark:hover:text-theme-red dark:text-gray-300 transition duration-300 cursor-pointer"
+                        >
+                            Edit Profile
+                            <PencilAltIcon className="w-5 h-5 mx-1" />
+                        </span>
+                    </div>
+                    <div className="flex flex-wrap justify-evenly w-full">
+                        <Friends friends={data.me.friends} />
+                        <RecentBadge />
+                    </div>
+                </div>
+                <div className="col-span-3 flex justify-center items-center">
+                    <div className="w-5/6">
+                        <Chart />
+                    </div>
+                </div>
+            </section>
+            {/* Modal */}
             <div>
                 <Modal
                     isOpen={modalIsOpen}
                     onAfterOpen={afterOpenModal}
                     onRequestClose={closeModal}
                     style={customStyles}
-                    contentLabel="Example Modal"
+                    contentLabel="Modal"
                 >
                     <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
                         Edit Profile
@@ -108,21 +134,6 @@ const Dashboard = () => {
                     />
                     <button onClick={closeModal}>Done</button>
                 </Modal>
-            </div>
-            <div className="bg-gray-100 w-[500px]">
-                <div>
-                    <RecentBadge />
-                    <Link to="/badges">
-                        <h2 className="text-lg text-center">View All Badges</h2>
-                    </Link>
-                </div>
-                <div>
-                    <h2 className="text-lg text-center">Friends</h2>
-                    <Friends friends={data.me.friends} />
-                </div>
-                <div className="">
-                    <Chart />
-                </div>
             </div>
         </main>
     );
