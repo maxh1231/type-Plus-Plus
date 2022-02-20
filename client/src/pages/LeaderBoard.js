@@ -14,7 +14,7 @@ const LeaderBoard = () => {
                         Global
                     </span>
                 </p>
-                <p className={`text-center bg-mid-gray h-full pt-1 rounded-t-xl border-x-2 border-t-2 hover:text-theme-red hover:opacity-80 cursor-pointer ${activeBoard === 'weekly' ? ('bg-inherit text-theme-red') : ('border-b-2')}`} onClick={() => setActiveBoard('weekly')}>
+                <p className={`text-center bg-mid-gray h-full pt-1 rounded-t-xl border-x border-t-2 hover:text-theme-red hover:opacity-80 cursor-pointer ${activeBoard === 'weekly' ? ('bg-inherit text-theme-red') : ('border-b-2')}`} onClick={() => setActiveBoard('weekly')}>
                     <span className="text-lg transition-all duration-300" >
                         Weekly
                     </span>
@@ -25,7 +25,7 @@ const LeaderBoard = () => {
                     </span>
                 </p>
             </div>
-            <section className="flex-grow border-x-2 border-b-2 rounded-b-xl mb-5">
+            <section className="flex-grow border-x-2 border-b-2 rounded-b-xl mb-5 w-1/2">
                 {activeBoard === 'global' && (
                     <GlobalLeaderBoard displayCount={10} />
                 )}
