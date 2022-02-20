@@ -51,11 +51,6 @@ code {
     opacity: 1;
 }
 
-.navActive {
-    color: #ff6384;
-    opacity: 1;
-}
-
 .navbar-nav-active {
     transform: unset;
 }

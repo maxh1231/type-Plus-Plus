@@ -90,7 +90,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                     <Link
                                         onClick={() => setCurrentPage('Home')}
                                         to="/"
-                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${currentPage === 'Home' && 'navActive'}`}
+                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${currentPage === 'Home' && 'text-theme-red opacity-1'}`}
                                     >
                                         Home
                                     </Link>
@@ -99,7 +99,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                     <Link
                                         onClick={() => setCurrentPage('Leaderboard')}
                                         to="/leaderboard"
-                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${currentPage === 'Leaderboard' && 'navActive'}`}
+                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${currentPage === 'Leaderboard' && 'text-theme-red opacity-1'}`}
                                     >
                                         Leaderboard
                                     </Link>
@@ -110,7 +110,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                             <Link
                                                 onClick={() => setCurrentPage('Dashboard')}
                                                 to="/dashboard"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Dashboard' && 'navActive'}`}
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Dashboard' && 'text-theme-red opacity-1'}`}
                                             >
                                                 Dashboard
                                             </Link>
@@ -119,7 +119,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                             <a
                                                 onClick={() => setCurrentPage('Logout')}
                                                 href="/"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Logout' && 'navActive'}`}
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Logout' && 'text-theme-red opacity-1'}`}
                                                 onClick={logout}
                                             >
                                                 Logout
@@ -132,7 +132,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                             <Link
                                                 onClick={() => setCurrentPage('Login')}
                                                 to="/login"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Login' && 'navActive'}`}
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Login' && 'text-theme-red opacity-1'}`}
                                             >
                                                 Login
                                             </Link>
@@ -141,7 +141,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                             <Link
                                                 onClick={() => setCurrentPage('Signup')}
                                                 to="/signup"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Signup' && 'navActive'}`}
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Signup' && 'text-theme-red opacity-1'}`}
                                             >
                                                 Sign Up
                                             </Link>
