@@ -71,23 +71,25 @@ const Dashboard = () => {
     return (
         <main className="grow flex items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
             <section className="grow grid grid-cols-4">
-                <div className="flex flex-col items-center justify-center">
-                    <DashboardUserInfo
-                        data={data}
-                        modalBio={modalBio}
-                        setModalBio={setModalBio}
-                        image={image}
-                        setImage={setImage}
-                        refetch={refetch}
-                    />
-                    <span className="flex mt-2">
-                        Edit Profile
-                        <PencilAltIcon
-                            onClick={openModal}
-                            className="w-5 h-5 mx-1 cursor-pointer text-gray-700 hover:text-theme-red dark:hover:text-theme-red dark:text-gray-400 transition duration-300"
+                <div className="h-full flex flex-col items-center justify-evenly">
+                    <div className="flex flex-col items-center">
+                        <DashboardUserInfo
+                            data={data}
+                            modalBio={modalBio}
+                            setModalBio={setModalBio}
+                            image={image}
+                            setImage={setImage}
+                            refetch={refetch}
                         />
-                    </span>
-                    <div className="flex">
+                        <span
+                            onClick={openModal}
+                            className="flex mt-2 text-gray-700 hover:text-theme-red dark:hover:text-theme-red dark:text-gray-300 transition duration-300 cursor-pointer"
+                        >
+                            Edit Profile
+                            <PencilAltIcon className="w-5 h-5 mx-1" />
+                        </span>
+                    </div>
+                    <div className="flex flex-wrap justify-evenly w-full">
                         <Friends friends={data.me.friends} />
                         <RecentBadge />
                     </div>
