@@ -192,7 +192,6 @@ code {
     background: transparent;
     border-radius: 50%;
     opacity: 0;
-    /* opacity: 1; */
 }
 
 .toggle--checkbox:checked + .toggle--label:after {
@@ -205,15 +204,37 @@ code {
     top: 14px;
     width: 2px;
 }
+
 .toggle--checkbox:checked + .toggle--label .toggle--label-background:before {
     width: 5px;
     height: 5px;
     top: -7px;
     left: -8px;
 }
+
 .toggle--checkbox:checked + .toggle--label .toggle--label-background:after {
     width: 3px;
     height: 3px;
     left: -10px;
     top: 6px;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ff6384;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #f9acbd;
 }
