@@ -35,8 +35,13 @@ const RecentBadge = ({ runGame }) => {
                         </h5>
                         <p className="mb-2">{activeBadge.description}</p>
                     </div>
-                    <div className="p-1 border-t dark:border-gray-400">
-                        <Link to="/badges">View all badges</Link>
+                    <div className="p-1 border-t dark:border-gray-400 ">
+                        <Link
+                            to="/badges"
+                            className="hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
+                        >
+                            View all badges
+                        </Link>
                     </div>
                 </div>
             ) : (
