@@ -111,11 +111,14 @@ const Chart = () => {
                         y: {
                             ticks: {
                                 color: '#6b7280',
+                                autoSkip: true,
                             },
                         },
                         x: {
                             ticks: {
                                 color: '#6b7280',
+                                autoSkip: true,
+                                maxTicksLimit: 5
                             },
                         },
                     },
