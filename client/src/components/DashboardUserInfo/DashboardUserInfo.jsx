@@ -127,7 +127,7 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
     // refetch();
 
     return (
-        <section className="w-[300px]">
+        <section className="w-[200px]">
             <CircularProgressbarWithChildren
                 value={levelProgress}
                 styles={buildStyles({
@@ -136,12 +136,12 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
                 })}
             >
                 <img
-                    className="rounded-full w-[255px] h-[255px]"
+                    className="rounded-full w-[171px] h-[171px]"
                     src={image}
                     alt="User avatar"
                 ></img>
                 <img
-                    className="w-[64px] h-[64px] absolute top-[256px]"
+                    className="w-[64px] h-[64px] absolute top-[158px]"
                     src={levelIcon}
                     alt="level icon"
                 ></img>

@@ -65,6 +65,10 @@ const Chart = () => {
         return <p>Loading...</p>;
     }
 
+    // Determine labeling colors
+    let theme = localStorage.theme === 'light';
+
+    console.log(theme);
     return (
         <>
             <Line
@@ -97,9 +101,25 @@ const Chart = () => {
                         title: {
                             display: true,
                             text: 'Typing Progress',
-                            color: 'white',
+                            font: {
+                                size: 20,
+                            },
+                            color: '#6b7280',
                         },
                     },
+                    scales: {
+                        y: {
+                            ticks: {
+                                color: '#6b7280',
+                            },
+                        },
+                        x: {
+                            ticks: {
+                                color: '#6b7280',
+                            },
+                        },
+                    },
+                    color: '#6b7280',
                 }}
             />
         </>

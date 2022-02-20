@@ -21,7 +21,7 @@ const RecentBadge = ({ runGame }) => {
         <div className="flex justify-center transition-all duration-200 h-60">
             {badgeArr.length > 0 ? (
                 <div className="block rounded-lg w-44 shadow-sm border max-w-sm text-center dark:border-gray-400">
-                    <div className="py-3 px-6 text-lg border-b dark:border-gray-400">
+                    <div className="py-3 px-6 text-lg border-b dark:border-gray-400 bg-gray-100 dark:bg-gray-900 rounded-t-lg">
                         Recent Badge
                     </div>
                     <img
@@ -35,7 +35,7 @@ const RecentBadge = ({ runGame }) => {
                         </h5>
                         <p className="mb-2">{activeBadge.description}</p>
                     </div>
-                    <div className="p-1 border-t dark:border-gray-400 ">
+                    <div className="p-1 border-t dark:border-gray-400">
                         <Link
                             to="/badges"
                             className="hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"

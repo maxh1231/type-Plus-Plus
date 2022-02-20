@@ -106,8 +106,10 @@ const Dashboard = () => {
                         <RecentBadge />
                     </div>
                 </div>
-                <div className="col-span-3">
-                    <Chart />
+                <div className="col-span-3 flex justify-center items-center">
+                    <div className="w-5/6">
+                        <Chart />
+                    </div>
                 </div>
             </section>
             {/* Modal */}
@@ -117,7 +119,7 @@ const Dashboard = () => {
                     onAfterOpen={afterOpenModal}
                     onRequestClose={closeModal}
                     style={customStyles}
-                    contentLabel="Example Modal"
+                    contentLabel="Modal"
                 >
                     <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
                         Edit Profile

@@ -6,7 +6,7 @@ const Friends = ({ friends }) => {
     }
     return (
         <div className="block rounded-lg shadow-sm border w-44 text-center transition-all duration-200 dark:border-gray-400 h-60">
-            <div className="py-3 px-6 text-lg border-b dark:border-gray-400 rounded-t-lg">
+            <div className="py-3 px-6 text-lg border-b bg-gray-100 dark:bg-gray-900 dark:border-gray-400 rounded-t-lg">
                 Friends
             </div>
             <div className="p-1 h-44">
