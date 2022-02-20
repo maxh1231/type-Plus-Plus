@@ -5,17 +5,17 @@ const Friends = ({ friends }) => {
         return null;
     }
     return (
-        <div className="block rounded-lg shadow-sm border w-44 text-center transition-all duration-200 dark:border-gray-400">
+        <div className="block rounded-lg shadow-sm border w-44 text-center transition-all duration-200 dark:border-gray-400 h-60">
             <div className="py-3 px-6 text-lg border-b dark:border-gray-400 rounded-t-lg">
                 Friends
             </div>
-            <div className="p-1 flex flex-col overflow-y-auto h-40">
+            <div className="p-1 flex flex-col flex-1 overflow-y-auto h-44">
                 {friends.map((friend) => (
-                    <button key={friend._id} className="">
+                    <span key={friend._id}>
                         <Link to={`/profile/${friend.username}`}>
                             {friend.username}
                         </Link>
-                    </button>
+                    </span>
                 ))}
             </div>
         </div>

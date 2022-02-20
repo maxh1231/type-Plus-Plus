@@ -90,11 +90,6 @@ const Dashboard = () => {
                     <div className="flex">
                         <Friends friends={data.me.friends} />
                         <RecentBadge />
-                        <Link to="/badges">
-                            <h2 className="text-lg text-center">
-                                View All Badges
-                            </h2>
-                        </Link>
                     </div>
                 </div>
                 <div className="col-span-3">
