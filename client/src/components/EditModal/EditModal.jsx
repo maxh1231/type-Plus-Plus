@@ -50,29 +50,27 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
 
     return (
         <section>
-            <div>
+            <div className="flex flex-col items-center justify-around">
                 {data.me.profilePic && (
                     <img src={image} alt="" width="100" height="100"></img>
                 )}
                 {!data.me.profilePic && (
                     <img src={image} alt="" width="100" height="100"></img>
                 )}
-            </div>
-
-            <div>
                 <Uploader image={image} setImage={setImage} />
             </div>
 
             <div>
-                <h3>Hello {data.me.username}</h3>
-            </div>
-            <div>
-                <form onSubmit={handleBioSubmit}>
+                <form
+                    className="flex flex-col items-center"
+                    onSubmit={handleBioSubmit}
+                >
                     {data.me.bio && (
                         <input
                             value={bio}
                             placeholder="Update Bio"
                             onChange={handleBioChange}
+                            className="rounded p-1"
                         ></input>
                     )}
                     {!data.me.bio && (
@@ -80,18 +78,28 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
                             value={bio}
                             placeholder="Add Bio"
                             onChange={handleBioChange}
+                            className="rounded p-1"
                         ></input>
                     )}
-                    <button type="submit">Submit</button>
+                    <button
+                        className="px-2 py-1 text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 font-medium uppercase rounded shadow-sm hover:shadow-md focus:shadow-lg transition duration-300 ease-in-out my-2"
+                        type="submit"
+                    >
+                        Submit
+                    </button>
                 </form>
             </div>
-            <div>
-                <form onSubmit={handleLocationSubmit}>
+            <div className="pt-2">
+                <form
+                    className="flex flex-col items-center justify-around"
+                    onSubmit={handleLocationSubmit}
+                >
                     {data.me.location && (
                         <input
                             value={location}
                             placeholder="Update Location"
                             onChange={handleLocationChange}
+                            className="rounded p-1"
                         ></input>
                     )}
                     {!data.me.location && (
@@ -99,9 +107,15 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
                             value={location}
                             placeholder="Add Location"
                             onChange={handleLocationChange}
+                            className="rounded p-1"
                         ></input>
                     )}
-                    <button type="submit">Submit</button>
+                    <button
+                        className="px-2 py-1 text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 font-medium uppercase rounded shadow-sm hover:shadow-md focus:shadow-lg transition duration-300 ease-in-out my-2"
+                        type="submit"
+                    >
+                        Submit
+                    </button>
                 </form>
             </div>
         </section>

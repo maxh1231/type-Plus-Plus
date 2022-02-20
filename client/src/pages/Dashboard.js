@@ -28,6 +28,7 @@ if (localStorage.theme === 'dark') {
             alignItems: 'center',
             backgroundColor: 'rgba(17, 24, 39, 1)',
             borderRadius: '0.5rem',
+            color: '#e5e7eb',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -152,7 +153,15 @@ const Dashboard = () => {
                         image={image}
                         setImage={setImage}
                     />
-                    <button onClick={closeModal}>Done</button>
+                    <button
+                        type="button"
+                        data-mdb-ripple="true"
+                        data-mdb-ripple-color="light"
+                        className="flex items-center justify-between px-6 py-2.5 text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 font-medium uppercase rounded shadow-sm hover:shadow-md focus:shadow-lg transition duration-300 ease-in-out mt-6"
+                        onClick={closeModal}
+                    >
+                        Save Changes
+                    </button>
                 </Modal>
             </div>
         </main>
