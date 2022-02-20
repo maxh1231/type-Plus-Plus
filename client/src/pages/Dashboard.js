@@ -16,18 +16,42 @@ import Chart from '../components/Chart';
 import defaultPhoto from '../assets/images/no-profile-picture.svg';
 import { PencilAltIcon } from '@heroicons/react/outline';
 
-// Modal Styles, remove later for custom styles
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    },
-    overlay: { zIndex: 100 },
-};
+// Modal Styles
+let customStyles;
+if (localStorage.theme === 'dark') {
+    customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            alignItems: 'center',
+            backgroundColor: 'rgba(17, 24, 39, 1)',
+            borderRadius: '0.5rem',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            opacity: 1,
+            padding: '2rem',
+            transform: 'translate(-50%, -50%)',
+        },
+        overlay: { backgroundColor: 'rgba(17, 24, 39, 0.75)', zIndex: 100 },
+    };
+} else {
+    customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            borderRadius: '0.5rem',
+            // marginRight: '-50%',
+            opacity: 1,
+            transform: 'translate(-50%, -50%)',
+        },
+        overlay: { backgroundColor: 'rgba(243, 244, 246, 0.75)', zIndex: 100 },
+    };
+}
 
 Modal.setAppElement('#root');
 
@@ -121,10 +145,6 @@ const Dashboard = () => {
                     style={customStyles}
                     contentLabel="Modal"
                 >
-                    <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
-                        Edit Profile
-                    </h2>
-
                     <EditModal
                         data={data}
                         modalBio={modalBio}
