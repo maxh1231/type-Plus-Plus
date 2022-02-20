@@ -130,9 +130,12 @@ const Login = () => {
                             Log In
                         </button>
 
-                        <div className="flex justify-center m-1">
+                        <div className="flex flex-col items-center mt-3 mb-1">
                             <div className="items-center underline text-gray-600 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300">
                                 <Link to="/password-reset">Forgot Password?</Link>
+                            </div>
+                            <div className="items-center underline text-gray-600 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300">
+                                <Link to="/signup">Already have an account?</Link>
                             </div>
                         </div>
                     </form>
