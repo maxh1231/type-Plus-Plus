@@ -29,10 +29,10 @@ ChartJS.register(
 
 const Chart = () => {
     const { loading, data, refetch } = useQuery(QUERY_MYSCORE);
-    
+
     useEffect(() => {
         refetch();
-    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     let wpm = [];
     let accuracy = [];
@@ -41,12 +41,12 @@ const Chart = () => {
     // Create new array so we can sort by createdAt
     let userDataArray = data?.meScores
         ? data?.meScores
-            .map((score) => {
-                return score;
-            })
-            .sort(function (a, b) {
-                return a.createdAt - b.createdAt;
-            })
+              .map((score) => {
+                  return score;
+              })
+              .sort(function (a, b) {
+                  return a.createdAt - b.createdAt;
+              })
         : [];
 
     if (Auth.loggedIn()) {
@@ -60,9 +60,9 @@ const Chart = () => {
             return formatTime(score.createdAt);
         });
     }
-    
+
     if (loading) {
-        return <p>Loading...</p>
+        return <p>Loading...</p>;
     }
 
     return (
@@ -97,6 +97,7 @@ const Chart = () => {
                         title: {
                             display: true,
                             text: 'Typing Progress',
+                            color: 'white',
                         },
                     },
                 }}

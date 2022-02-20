@@ -65,7 +65,19 @@ const Dashboard = () => {
     }
 
     if (!Auth.loggedIn()) {
-        return <h4 className="grow">Must be logged in</h4>;
+        return (
+            <section className="grow flex justify-center items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300 transition-all">
+                <h4 className="">
+                    <Link
+                        to="/login"
+                        className="hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
+                    >
+                        Log in
+                    </Link>{' '}
+                    to see your dashboard!
+                </h4>
+            </section>
+        );
     }
 
     return (

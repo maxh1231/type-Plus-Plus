@@ -130,29 +130,27 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
         <section className="w-[300px]">
             <CircularProgressbarWithChildren
                 value={levelProgress}
-                styles={buildStyles({})}
+                styles={buildStyles({
+                    pathColor: '#35a2eb',
+                    trailColor: '#94cbf1',
+                })}
             >
                 <img
                     className="rounded-full w-[255px] h-[255px]"
                     src={image}
-                    alt=""
+                    alt="User avatar"
                 ></img>
                 <img
-                    className="w-[64px] h-[64px] absolute top-[255px]"
+                    className="w-[64px] h-[64px] absolute top-[256px]"
                     src={levelIcon}
+                    alt="level icon"
                 ></img>
             </CircularProgressbarWithChildren>
 
-            {/* <div className="flex justify-center">
-                {data.me.profilePic && <img className="rounded-full w-[200px] h-[200px]" src={image} alt='' ></img>}
-                {!data.me.profilePic && <img src={image} alt='' width='200' height='200'></img>}
-            </div> */}
-            <div className="mt-2">
-                <h3 className="text-2xl text-center">
-                    Hello {data.me.username}
-                </h3>
+            <div className="mt-5">
+                <h3 className="text-2xl text-center">{data.me.username}</h3>
             </div>
-            <div className="mt-2">
+            <div className="mt-3">
                 {!modalBio && <p className="text-center">{data.me.bio}</p>}
                 {modalBio && <p className="text-center">{modalBio}</p>}
             </div>
