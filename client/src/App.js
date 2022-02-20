@@ -1,5 +1,5 @@
 // Imports
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {
     ApolloClient,
@@ -56,11 +56,13 @@ const client = new ApolloClient({
 });
 
 function App() {
+    const [currentPage, setCurrentPage] = useState('Home')
+
     return (
         <ApolloProvider client={client}>
             <div className="flex flex-col min-h-screen">
                 <Router className="test">
-                    <Header />
+                    <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
                     <Routes>
                         <Route exact path="/" element={<Home />} />
                         <Route exact path="/login" element={<Login />} />
@@ -85,7 +87,7 @@ function App() {
                             exact
                             path="/password-reset"
                             element={<ForgotPassword />}
-                        />                        
+                        />
                         <Route
                             render={() => (
                                 <h1 className="">You've Been 404'd! Oops...</h1>
