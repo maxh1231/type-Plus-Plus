@@ -87,11 +87,15 @@ const Dashboard = () => {
                             className="w-5 h-5 mx-1 cursor-pointer text-gray-700 hover:text-theme-red dark:hover:text-theme-red dark:text-gray-400 transition duration-300"
                         />
                     </span>
-                    <Friends friends={data.me.friends} />
-                    <RecentBadge />
-                    <Link to="/badges">
-                        <h2 className="text-lg text-center">View All Badges</h2>
-                    </Link>
+                    <div className="flex">
+                        <Friends friends={data.me.friends} />
+                        <RecentBadge />
+                        <Link to="/badges">
+                            <h2 className="text-lg text-center">
+                                View All Badges
+                            </h2>
+                        </Link>
+                    </div>
                 </div>
                 <div className="col-span-3">
                     <Chart />

@@ -9,9 +9,9 @@ const Friends = ({ friends }) => {
             <div className="py-3 px-6 text-lg border-b dark:border-gray-400 rounded-t-lg">
                 Friends
             </div>
-            <div className="p-1">
+            <div className="p-1 flex flex-col overflow-y-auto h-40">
                 {friends.map((friend) => (
-                    <button key={friend._id}>
+                    <button key={friend._id} className="">
                         <Link to={`/profile/${friend.username}`}>
                             {friend.username}
                         </Link>
