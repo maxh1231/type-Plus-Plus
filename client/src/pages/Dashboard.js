@@ -14,20 +14,51 @@ import Uploader from '../components/Uploader';
 import RecentBadge from '../components/RecentBadge';
 import Chart from '../components/Chart';
 import defaultPhoto from '../assets/images/no-profile-picture.svg';
-import { PencilAltIcon } from '@heroicons/react/outline';
+import { PencilAltIcon, XIcon } from '@heroicons/react/outline';
 
-// Modal Styles, remove later for custom styles
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    },
-    overlay: { zIndex: 100 },
-};
+// Modal Styles
+let customStyles;
+if (localStorage.theme === 'dark') {
+    customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            transform: 'translate(-50%, -50%)',
+            alignItems: 'center',
+            backgroundColor: 'rgba(17, 24, 39, 1)',
+            borderRadius: '0.5rem',
+            color: '#e5e7eb',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            opacity: 1,
+            padding: '2rem',
+        },
+        overlay: { backgroundColor: 'rgba(17, 24, 39, 0.75)', zIndex: 100 },
+    };
+} else {
+    customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            alignItems: 'center',
+            backgroundColor: '#ffffff',
+            borderRadius: '0.5rem',
+            color: '#e5e7eb',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            opacity: 1,
+            padding: '2rem',
+            transform: 'translate(-50%, -50%)',
+        },
+        overlay: { backgroundColor: 'rgba(243, 244, 246, 0.75)', zIndex: 100 },
+    };
+}
 
 Modal.setAppElement('#root');
 
@@ -121,10 +152,12 @@ const Dashboard = () => {
                     style={customStyles}
                     contentLabel="Modal"
                 >
-                    <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
-                        Edit Profile
-                    </h2>
-
+                    <button
+                        onClick={closeModal}
+                        className="absolute top-0 left-[15.5rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
+                    >
+                        <XIcon className="h-6 w-6 m-2" />
+                    </button>
                     <EditModal
                         data={data}
                         modalBio={modalBio}
@@ -132,7 +165,15 @@ const Dashboard = () => {
                         image={image}
                         setImage={setImage}
                     />
-                    <button onClick={closeModal}>Done</button>
+                    <button
+                        type="button"
+                        data-mdb-ripple="true"
+                        data-mdb-ripple-color="light"
+                        className="w-full text-center py-3 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
+                        onClick={closeModal}
+                    >
+                        Save Changes
+                    </button>
                 </Modal>
             </div>
         </main>

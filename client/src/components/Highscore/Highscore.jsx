@@ -24,8 +24,6 @@ const Highscore = ({ runGame }) => {
         newArr = [...data.meScores];
     }
 
-    console.log(newArr);
-
     return (
         <section className="flex flex-col">
             <div>
@@ -34,13 +32,17 @@ const Highscore = ({ runGame }) => {
                 </h3>
             </div>
             <div className="flex-grow">
-                <ol>
-                    {newArr.map((score) => (
-                        <li className="text-center mt-1" key={uuid()}>
-                            {score.wpm} WPM on {formatTime(score.createdAt)}
-                        </li>
-                    ))}
-                </ol>
+                {newArr.length === 0 ? (
+                    <p className="text-center mt-1 text-lg">No scores yet!</p>
+                ) : (
+                    <ol>
+                        {newArr.map((score) => (
+                            <li className="text-center mt-1" key={uuid()}>
+                                {score.wpm} WPM on {formatTime(score.createdAt)}
+                            </li>
+                        ))}
+                    </ol>
+                )}
             </div>
         </section>
     );

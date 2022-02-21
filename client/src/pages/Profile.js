@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
-
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_FRIENDS } from '../utils/queries';
 import { ADD_BADGE, ADD_FRIEND, REMOVE_FRIEND } from '../utils/mutations';
 import Auth from '../utils/auth';
-
 import ProfileUserInfo from '../components/ProfileUserInfo';
 import { checkFriends } from '../utils/helpers';
-// import Achievements from '../components/Achievements';
-// import Progress from '../components/Progress'
 
 const Profile = () => {
     const [friendStatus, setFriendStatus] = useState(false);
@@ -63,9 +59,9 @@ const Profile = () => {
             variables: { friendID },
         });
         if (data) {
-            const friendBadge = checkFriends(data.data.addFriend.friendCount)
+            const friendBadge = checkFriends(data.data.addFriend.friendCount);
             if (friendBadge) {
-                addBadge({ variables: { badgeName: friendBadge } })
+                addBadge({ variables: { badgeName: friendBadge } });
             }
         }
         setFriendStatus(true);
@@ -86,13 +82,23 @@ const Profile = () => {
 
     console.log(friendStatus);
     return (
-        <main className="flex-grow">
-            {data && <ProfileUserInfo data={data} />}
-            <div>
+        <main className="grow flex flex-col items-center justify-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
+            <div>{data && <ProfileUserInfo data={data} />}</div>
+            <div className="mt-2">
                 {friendStatus ? (
-                    <button className="text-lg" onClick={handleRemoveFriend}>Remove Friend</button>
+                    <button
+                        className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
+                        onClick={handleRemoveFriend}
+                    >
+                        Remove Friend
+                    </button>
                 ) : (
-                    <button className="text-lg" onClick={handleAddFriend}>Add Friend</button>
+                    <button
+                        className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
+                        onClick={handleAddFriend}
+                    >
+                        Add Friend
+                    </button>
                 )}
             </div>
         </main>

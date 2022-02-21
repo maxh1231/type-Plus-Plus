@@ -13,6 +13,7 @@ module.exports = {
                 'theme-red-light': '#f9acbd',
                 'theme-blue': '#35a2eb',
                 'theme-blue-light': '#94cbf1',
+                transparent: 'transparent',
             },
             keyframes: {
                 reverse: {
