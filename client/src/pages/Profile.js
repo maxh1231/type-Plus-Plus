@@ -43,7 +43,7 @@ const Profile = ({ currentPage, setCurrentPage }) => {
     useEffect(() => {
         if (!myFriends.loading)
             handler();
-    }, []);
+    }, [myFriends.data]);
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
