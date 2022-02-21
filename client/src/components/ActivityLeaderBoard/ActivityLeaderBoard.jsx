@@ -10,14 +10,6 @@ const ActivityLeaderBoard = () => {
     refetch();
     const leaderBoard = data?.users;
 
-    console.log(data);
-    // if (data) {
-    //     const sortedData = data.users.sort((a, b) => (users.a.gameCount > users.b.gameCount) ? 1 : -1)
-    //     console.log(sortedData);
-    // }
-
-
-
     function compare(a, b) {
         if (a.gameCount < b.gameCount) {
             return 1
