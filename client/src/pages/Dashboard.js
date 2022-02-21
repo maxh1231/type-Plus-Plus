@@ -110,15 +110,14 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
     function openModal() {
         setIsOpen(true);
     }
-    function afterOpenModal() {
-    }
+    function afterOpenModal() {}
     function closeModal() {
         setIsOpen(false);
     }
 
     const toggleDeleteBtn = () => {
         setToggleDelete(false);
-    }
+    };
 
     const deleteAccount = async () => {
         try {
@@ -129,11 +128,12 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
         } catch (err) {
             console.error(err);
         }
-    }
+    };
 
     return (
         <main className="grow flex items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
-            <section className="grow grid grid-cols-4">
+            {/* <section className="grow grid grid-cols-4"> */}
+            <section className="grow flex flex-wrap">
                 <div className="h-full flex flex-col items-center justify-evenly">
                     <div className="flex flex-col items-center">
                         <DashboardUserInfo
@@ -152,7 +152,7 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
                             <PencilAltIcon className="w-5 h-5 mx-1" />
                         </span>
                     </div>
-                    <div className="flex flex-wrap justify-evenly w-full">
+                    <div className="flex flex-wrap justify-evenly w-full pt-4">
                         <Friends friends={data.me.friends} />
                         <RecentBadge />
                     </div>
