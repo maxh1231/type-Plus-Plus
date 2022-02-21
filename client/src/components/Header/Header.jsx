@@ -22,7 +22,8 @@ const Header = ({ currentPage, setCurrentPage }) => {
         document
             .getElementById('nav-list')
             .classList.toggle('navbar-nav-active');
-        document.getElementById('nav-list').classList.toggle('max-h-0');
+        document.getElementById('nav-list').classList.toggle('max-h-[0px]');
+        document.getElementById('nav-list').classList.toggle('max-h-[200px]');
         document.getElementById('menu-tag').classList.toggle('text-theme-red');
         let navLinks = document.getElementsByClassName('nav-link');
         for (let i = 0; i < navLinks.length; i++) {
@@ -110,7 +111,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                         <div>
                             <ul
                                 id="nav-list"
-                                className="navbar-nav max-h-0 flex flex-row flex-wrap justify-center pl-0 list-style-none mr-auto sm:transition-all sm:duration-300 -translate-y-44 sm:-translate-x-full sm:translate-y-0 sm:justify-start sm:h-full"
+                                className="navbar-nav max-h-[0px] flex flex-row flex-wrap justify-center pl-0 list-style-none mr-auto transition-all duration-300 -translate-y-44 sm:-translate-x-full sm:translate-y-0 sm:justify-start sm:h-full"
                             >
                                 <li className="nav-item p-2">
                                     <Link
