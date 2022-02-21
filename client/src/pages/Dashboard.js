@@ -2,8 +2,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
+import { REMOVE_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import DashboardUserInfo from '../components/DashboardUserInfo';
 // import Achievements from '../components/DashboardAchievements';
@@ -63,21 +64,13 @@ if (localStorage.theme === 'dark') {
 Modal.setAppElement('#root');
 
 const Dashboard = () => {
-    let subtitle;
     const [image, setImage] = useState(defaultPhoto);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalBio, setModalBio] = useState('');
-    function openModal() {
-        setIsOpen(true);
-    }
-    function afterOpenModal() {
-        subtitle.style.color = '#f00';
-    }
-    function closeModal() {
-        setIsOpen(false);
-    }
+    const [toggleDelete, setToggleDelete] = useState(true);
     const { username: userParam } = useParams();
     const { loading, data, refetch } = useQuery(QUERY_ME);
+    const [deleteUser, { error }] = useMutation(REMOVE_USER);
 
     const user = data?.me || data?.user || {};
 
@@ -109,6 +102,30 @@ const Dashboard = () => {
                 </h4>
             </section>
         );
+    }
+
+    function openModal() {
+        setIsOpen(true);
+    }
+    function afterOpenModal() {
+    }
+    function closeModal() {
+        setIsOpen(false);
+    }
+
+    const toggleDeleteBtn = () => {
+        setToggleDelete(false);
+    }
+
+    const deleteAccount = async () => {
+        try {
+            const { data } = await deleteUser();
+            console.log(data);
+            localStorage.clear();
+            document.location.replace('/');
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     return (
@@ -151,6 +168,7 @@ const Dashboard = () => {
                     onRequestClose={closeModal}
                     style={customStyles}
                     contentLabel="Modal"
+                    toggleDelete={toggleDelete}
                 >
                     <button
                         onClick={closeModal}
@@ -174,6 +192,27 @@ const Dashboard = () => {
                     >
                         Save Changes
                     </button>
+                    {toggleDelete ? (
+                        <button
+                            type="button"
+                            data-mdb-ripple="true"
+                            data-mdb-ripple-color="light"
+                            className="w-full text-center py-2 rounded bg-theme-red text-gray-100 dark:text-gray-300 hover:bg-red-600 focus:outline-none my-1 transition-all duration-300"
+                            onClick={toggleDeleteBtn}
+                        >
+                            Delete Account
+                        </button>
+                    ) : (
+                        <button
+                            type="button"
+                            data-mdb-ripple="true"
+                            data-mdb-ripple-color="light"
+                            className="w-full text-center py-2 rounded bg-red-600 text-gray-100 dark:text-gray-300 hover:bg-red-800 focus:outline-none my-1 transition-all duration-300"
+                            onClick={deleteAccount}
+                        >
+                            Are you sure?
+                        </button>
+                    )}
                 </Modal>
             </div>
         </main>

@@ -44,9 +44,9 @@ const UpcomingBadge = (runGame) => {
     const renderProgress = (category) => {
         switch (category) {
             case 'games':
-                return gameCount;
+                return gameCount
             case 'friends':
-                return friendCount;
+                return friendCount
             case 'scores':
                 return maxScore;
             case 'accuracy':
@@ -95,17 +95,16 @@ const UpcomingBadge = (runGame) => {
                             <div
                                 className="bg-theme-blue text-xs font-bold text-gray-700 text-center p-0.5 leading-none rounded-l-full"
                                 style={{
-                                    width: `${
-                                        (renderProgress(displayBadge.category) /
-                                            displayBadge.targetVal) *
+                                    width: `${(renderProgress(displayBadge.category) /
+                                        displayBadge.targetVal) *
                                         100
-                                    }%`,
+                                        }%`,
                                 }}
                             >
                                 {Math.floor(
                                     (renderProgress(displayBadge.category) /
                                         displayBadge.targetVal) *
-                                        100
+                                    100
                                 )}
                                 %
                             </div>
