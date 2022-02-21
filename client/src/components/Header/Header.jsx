@@ -22,6 +22,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
         document
             .getElementById('nav-list')
             .classList.toggle('navbar-nav-active');
+        document.getElementById('menu-tag').classList.toggle('text-theme-red');
         let navLinks = document.getElementsByClassName('nav-link');
         for (let i = 0; i < navLinks.length; i++) {
             navLinks[i].classList.toggle('nav-active');
@@ -48,43 +49,71 @@ const Header = ({ currentPage, setCurrentPage }) => {
         <header>
             {/* Colored div to block the sliding links */}
             <div
-                className="absolute w-16 h-10 left-0 top-4 bg-gray-100 z-10
-            dark:bg-gray-900 transition duration-200"
+                className="invisible absolute w-16 h-10 left-0 top-4 bg-gray-100 z-10
+            dark:bg-gray-900 transition duration-200 sm:visible"
             ></div>
             {/* Actual navbar */}
-            <nav className="relative w-full flex flex-wrap items-center justify-around py-4 bg-gray-100 text-gray-600 shadow-md dark:bg-gray-900 dark:text-gray-200 transition duration-200">
-                <div className="w-full grid grid-cols-3 px-6">
+            <nav className="w-full py-4 bg-gray-100 text-gray-600 shadow-md dark:bg-gray-900 dark:text-gray-200 transition duration-200">
+                {/* <div className="w-full grid grid-cols-3 px-6"> */}
+                <div className="w-full 2xl:grid 2xl:grid-cols-3 px-6">
+                    {/* Logo for mobile */}
+                    <div className="flex justify-center items-center text-2xl h-10 sm:hidden">
+                        {localStorage.theme === 'light' && (
+                            <img
+                                src="/assets/images/logo.svg"
+                                alt="Text Plus Plus logo"
+                                className="h-12"
+                                id="logo-image"
+                            />
+                        )}
+                        {localStorage.theme === 'dark' && (
+                            <img
+                                src="/assets/images/logo-dark.svg"
+                                alt="Text Plus Plus logo"
+                                className="h-12"
+                                id="logo-image"
+                            />
+                        )}
+                    </div>
                     {/* Nav menu */}
-                    <div className="flex flex-wrap">
-                        <button
-                            className="text-gray-700 w-10 h-10 relative focus:outline-none z-20 dark:text-gray-200"
-                            onClick={hamburgerToggle}
-                        >
-                            <span className="sr-only">Open main menu</span>
-                            {/* Hamburger elements */}
-                            <div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                <span
-                                    id="hamburger-top"
-                                    aria-hidden="true"
-                                    className="block h-0.5 w-5 bg-current transition-all duration-300 -translate-y-1 rounded-full"
-                                ></span>
-                                <span
-                                    id="hamburger-middle"
-                                    aria-hidden="true"
-                                    className="block h-0.5 w-5 bg-current transition-all duration-300 rounded-full"
-                                ></span>
-                                <span
-                                    id="hamburger-bottom"
-                                    aria-hidden="true"
-                                    className="block h-0.5 w-5 bg-current transition-all duration-300 translate-y-1 rounded-full"
-                                ></span>
-                            </div>
-                        </button>
+                    <div className="flex flex-col items-center flex-wrap pt-2 sm:pt-0 sm:flex-row sm:items-start">
+                        <div className="flex items-center">
+                            <button
+                                className="text-gray-700 w-10 h-10 relative focus:outline-none z-20 dark:text-gray-200"
+                                onClick={hamburgerToggle}
+                            >
+                                <span className="sr-only">Open main menu</span>
+                                {/* Hamburger elements */}
+                                <div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                    <span
+                                        id="hamburger-top"
+                                        aria-hidden="true"
+                                        className="block h-0.5 w-5 bg-current transition-all duration-300 -translate-y-1 rounded-full"
+                                    ></span>
+                                    <span
+                                        id="hamburger-middle"
+                                        aria-hidden="true"
+                                        className="block h-0.5 w-5 bg-current transition-all duration-300 rounded-full"
+                                    ></span>
+                                    <span
+                                        id="hamburger-bottom"
+                                        aria-hidden="true"
+                                        className="block h-0.5 w-5 bg-current transition-all duration-300 translate-y-1 rounded-full"
+                                    ></span>
+                                </div>
+                            </button>
+                            <span
+                                className="sm:hidden relative mr-2 transition-all duration-300"
+                                id="menu-tag"
+                            >
+                                Menu
+                            </span>
+                        </div>
                         {/* Nav links */}
-                        <div className="flex-grow items-center">
+                        <div className="">
                             <ul
                                 id="nav-list"
-                                className="navbar-nav flex pl-0 list-style-none mr-auto -translate-x-full transition-all duration-300"
+                                className="navbar-nav flex flex-row flex-wrap pl-0 list-style-none mr-auto transition-all duration-300 -translate-x-full"
                             >
                                 <li className="nav-item p-2">
                                     <Link
@@ -196,7 +225,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                         </div>
                     </div>
                     {/* Logo column */}
-                    <div className="flex justify-center items-center text-2xl h-10">
+                    <div className="hidden sm:flex justify-center items-center text-2xl h-10">
                         {localStorage.theme === 'light' && (
                             <img
                                 src="/assets/images/logo.svg"
@@ -215,7 +244,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                         )}
                     </div>
                     {/* Dark mode switch */}
-                    <div className="flex justify-end items-center">
+                    <div className="absolute sm:static flex justify-end items-center">
                         {/* Inspired by https://daily-dev-tips.com/posts/creating-day-night-css-only-toggle-switch/ */}
                         {localStorage.theme === 'light' && (
                             <input
