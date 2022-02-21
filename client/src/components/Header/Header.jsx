@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
-const Header = () => {
+const Header = ({ currentPage, setCurrentPage }) => {
     const logout = (event) => {
         event.preventDefault();
         Auth.logout();
@@ -88,16 +88,18 @@ const Header = () => {
                             >
                                 <li className="nav-item p-2">
                                     <Link
+                                        onClick={() => setCurrentPage('Home')}
                                         to="/"
-                                        className="nav-link p-0 hover:text-theme-red transition-all duration-300 opacity-0"
+                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${currentPage === 'Home' && 'text-theme-red opacity-1'}`}
                                     >
                                         Home
                                     </Link>
                                 </li>
                                 <li className="nav-item p-2">
                                     <Link
+                                        onClick={() => setCurrentPage('Leaderboard')}
                                         to="/leaderboard"
-                                        className="nav-link p-0 hover:text-theme-red transition-all duration-300 opacity-0"
+                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${currentPage === 'Leaderboard' && 'text-theme-red opacity-1'}`}
                                     >
                                         Leaderboard
                                     </Link>
@@ -106,16 +108,18 @@ const Header = () => {
                                     <>
                                         <li className="nav-item p-2">
                                             <Link
+                                                onClick={() => setCurrentPage('Dashboard')}
                                                 to="/dashboard"
-                                                className="nav-link p-0 hover:text-theme-red transition-all duration-300 opacity-0"
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Dashboard' && 'text-theme-red opacity-1'}`}
                                             >
                                                 Dashboard
                                             </Link>
                                         </li>
                                         <li className="nav-item p-2">
                                             <a
+                                                onClick={() => setCurrentPage('Logout')}
                                                 href="/"
-                                                className="nav-link p-0 hover:text-theme-red transition-all duration-300 opacity-0"
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Logout' && 'text-theme-red opacity-1'}`}
                                                 onClick={logout}
                                             >
                                                 Logout
@@ -126,16 +130,18 @@ const Header = () => {
                                     <>
                                         <li className="nav-item p-2">
                                             <Link
+                                                onClick={() => setCurrentPage('Login')}
                                                 to="/login"
-                                                className="nav-link p-0 hover:text-theme-red transition-all duration-300 opacity-0"
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Login' && 'text-theme-red opacity-1'}`}
                                             >
                                                 Login
                                             </Link>
                                         </li>
                                         <li className="nav-item p-2">
                                             <Link
+                                                onClick={() => setCurrentPage('Signup')}
                                                 to="/signup"
-                                                className="nav-link p-0 hover:text-theme-red transition-all duration-300 opacity-0"
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Signup' && 'text-theme-red opacity-1'}`}
                                             >
                                                 Sign Up
                                             </Link>
