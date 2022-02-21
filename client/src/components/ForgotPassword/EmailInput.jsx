@@ -24,7 +24,7 @@ const EmailInput = ({ setCurrentComponent, getUser, data }) => {
 
     return (
         <main className="bg-gray-200 flex-grow flex flex-col dark:bg-gray-800 transition duration-200">
-            <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div className="container max-w-sm mx-auto my-5 flex-1 flex flex-col items-center justify-center px-2">
                 <div className="bg-white px-6 py-8 rounded shadow-md w-full text-gray-700 dark:text-gray-300 dark:bg-gray-900 transition duration-200">
                     <h1 className="mb-8 text-3xl text-center">
                         Password Reset

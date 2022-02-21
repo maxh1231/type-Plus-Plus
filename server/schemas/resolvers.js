@@ -38,13 +38,10 @@ const resolvers = {
     },
     // all users
     users: async () => {
-      return await User.find().sort({ gameCount: -1 }).exec();
-
-      // .select('-__v -password')
-      // .populate('scores')
-      // .populate('badges')
-
-
+      return await User.find()
+        .select('-__v -password')
+        .populate('scores')
+        .populate('badges')
     },
     // get user by username
     user: async (parent, { username }) => {
@@ -255,6 +252,12 @@ const resolvers = {
       );
       return updatePassword;
     },
+    removeUser: async (parent, args, context) => {
+      const user = await User.findOneAndDelete(
+        { _id: context.user._id }
+      )
+      return user;
+    }
   }
 }
 
