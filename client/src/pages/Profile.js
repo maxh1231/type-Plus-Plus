@@ -12,7 +12,11 @@ import { checkFriends } from '../utils/helpers';
 // import Progress from '../components/Progress'
 
 const Profile = ({ currentPage, setCurrentPage }) => {
-    setCurrentPage('Profile')
+
+    useEffect(() => {
+        setCurrentPage('Profile')
+    })
+
     const [friendStatus, setFriendStatus] = useState(false);
     const { username: userParam } = useParams();
     const { loading, error, data } = useQuery(QUERY_USER, {
@@ -29,8 +33,6 @@ const Profile = ({ currentPage, setCurrentPage }) => {
         const friendArr = await newData.friends.map((friend) => {
             return friend.username;
         });
-
-        console.log("hi")
         if (friendArr.includes(`${userParam}`)) {
             setFriendStatus(true);
         } else {
@@ -41,10 +43,7 @@ const Profile = ({ currentPage, setCurrentPage }) => {
     useEffect(() => {
         if (!myFriends.loading)
             handler();
-        console.log(myFriends);
-
     }, []);
-
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
@@ -74,15 +73,9 @@ const Profile = ({ currentPage, setCurrentPage }) => {
         await removeFriend({
             variables: { friendID },
         });
-        console.log('click');
         setFriendStatus(false);
     };
 
-
-
-
-
-    console.log(friendStatus);
     return (
         <main className="grow flex flex-col items-center justify-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
             {data && <ProfileUserInfo data={data} />}
