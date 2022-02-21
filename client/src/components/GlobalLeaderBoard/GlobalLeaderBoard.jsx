@@ -11,7 +11,7 @@ const GlobalLeaderBoard = ({ displayCount, runGame }) => {
 
     useEffect(() => {
         refetch();
-    }, [runGame]) // eslint-disable-line react-hooks/exhaustive-deps
+    }, [runGame]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const leaderBoard = data?.scores.map((score) => {
         return {
@@ -65,9 +65,12 @@ const GlobalLeaderBoard = ({ displayCount, runGame }) => {
                                     </Link>
                                 </td>
                                 <td className="text-center p-2" key={uuid()}>
-                                    {score.accuracy}
+                                    {score.accuracy}%
                                 </td>
-                                <td className="text-center p-2" key={uuid()}>
+                                <td
+                                    className="text-center p-2 hidden sm:block xl:hidden 2xl:block"
+                                    key={uuid()}
+                                >
                                     {score.date}
                                 </td>
                             </tr>
@@ -111,7 +114,9 @@ const GlobalLeaderBoard = ({ displayCount, runGame }) => {
                             <th>WPM</th>
                             <th>User</th>
                             <th>Accuracy</th>
-                            <th>Date</th>
+                            <th className="hidden sm:block xl:hidden 2xl:block">
+                                Date
+                            </th>
                         </tr>
                     </thead>
                     <Items leaderBoard={currentItems} page={itemOffset} />
