@@ -22,6 +22,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
         document
             .getElementById('nav-list')
             .classList.toggle('navbar-nav-active');
+        document.getElementById('nav-list').classList.toggle('max-h-0');
         document.getElementById('menu-tag').classList.toggle('text-theme-red');
         let navLinks = document.getElementsByClassName('nav-link');
         for (let i = 0; i < navLinks.length; i++) {
@@ -46,7 +47,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
     };
 
     return (
-        <header>
+        <header id="nav-header">
             {/* Colored div to block the sliding links */}
             <div className="absolute w-full h-28 bg-gray-100 z-10 dark:bg-gray-900 transition duration-200 sm:w-16 sm:h-10 sm:left-0 sm:top-4"></div>
             {/* Actual navbar */}
@@ -106,10 +107,10 @@ const Header = ({ currentPage, setCurrentPage }) => {
                             </span>
                         </div>
                         {/* Nav links */}
-                        <div className="">
+                        <div>
                             <ul
                                 id="nav-list"
-                                className="navbar-nav flex flex-row flex-wrap justify-center pl-0 list-style-none mr-auto transition-all duration-300 -translate-y-44 sm:-translate-x-full sm:translate-y-0 sm:justify-start"
+                                className="navbar-nav max-h-0 flex flex-row flex-wrap justify-center pl-0 list-style-none mr-auto sm:transition-all sm:duration-300 -translate-y-44 sm:-translate-x-full sm:translate-y-0 sm:justify-start sm:h-full"
                             >
                                 <li className="nav-item p-2">
                                     <Link
