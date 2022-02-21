@@ -49,7 +49,10 @@ const LeaderBoard = () => {
             </div>
             <section className="w-full grow border-b-2 border-x-2 rounded-b-xl mb-5 pt-5 sm:w-5/6 md:w-2/3 lg:w-1/2 ">
                 {activeBoard === 'global' && (
-                    <GlobalLeaderBoard displayCount={10} />
+                    <GlobalLeaderBoard
+                        displayCount={10}
+                        leaderboardPage={true}
+                    />
                 )}
                 {activeBoard === 'games' && <ActivityLeaderBoard />}
                 {activeBoard === 'weekly' && <WeeklyLeaderBoard />}
