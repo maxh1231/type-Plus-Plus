@@ -16,13 +16,15 @@ const Friends = ({ friends }) => {
                     {friends.map((friend) => (
 
                         <span key={friend._id}>
-                            <img src={friend.profilePic}></img>
-                            <Link
-                                to={`/profile/${friend.username}`}
-                                className="hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
-                            >
-                                {friend.username}
-                            </Link>
+                            <div className="flex flex-row justify-center">
+                                <img className="w-[32px] h-[32px] object-cover rounded-full mr-1" src={friend.profilePic}></img>
+                                <Link
+                                    to={`/profile/${friend.username}`}
+                                    className="hover:text-theme-red dark:hover:text-theme-red transition-all duration-300 ml-1"
+                                >
+                                    {friend.username}
+                                </Link>
+                            </div>
                         </span>
                     ))}
                 </div>
