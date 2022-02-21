@@ -63,15 +63,14 @@ if (localStorage.theme === 'dark') {
 Modal.setAppElement('#root');
 
 const Dashboard = () => {
-    let subtitle;
     const [image, setImage] = useState(defaultPhoto);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalBio, setModalBio] = useState('');
+    const [toggleDelete, setToggleDelete] = useState(true);
     function openModal() {
         setIsOpen(true);
     }
     function afterOpenModal() {
-        subtitle.style.color = '#f00';
     }
     function closeModal() {
         setIsOpen(false);
@@ -109,6 +108,10 @@ const Dashboard = () => {
                 </h4>
             </section>
         );
+    }
+
+    const toggleDeleteBtn = () => {
+        setToggleDelete(false);
     }
 
     return (
@@ -151,6 +154,7 @@ const Dashboard = () => {
                     onRequestClose={closeModal}
                     style={customStyles}
                     contentLabel="Modal"
+                    toggleDelete={toggleDelete}
                 >
                     <button
                         onClick={closeModal}
@@ -174,6 +178,27 @@ const Dashboard = () => {
                     >
                         Save Changes
                     </button>
+                    {toggleDelete ? (
+                        <button
+                            type="button"
+                            data-mdb-ripple="true"
+                            data-mdb-ripple-color="light"
+                            className="w-full text-center py-2 rounded bg-theme-red text-gray-100 dark:text-gray-300 hover:bg-red-600 focus:outline-none my-1 transition-all duration-300"
+                            onClick={toggleDeleteBtn}
+                        >
+                            Delete Account
+                        </button>
+                    ) : (
+                        <button
+                            type="button"
+                            data-mdb-ripple="true"
+                            data-mdb-ripple-color="light"
+                            className="w-full text-center py-2 rounded bg-red-600 text-gray-100 dark:text-gray-300 hover:bg-red-800 focus:outline-none my-1 transition-all duration-300"
+                            onClick={closeModal}
+                        >
+                            Are you sure?
+                        </button>
+                    )}
                 </Modal>
             </div>
         </main>
