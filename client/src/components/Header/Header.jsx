@@ -24,6 +24,10 @@ const Header = ({ currentPage, setCurrentPage }) => {
             .classList.toggle('navbar-nav-active');
         document.getElementById('nav-list').classList.toggle('max-h-[0px]');
         document.getElementById('nav-list').classList.toggle('max-h-[200px]');
+        document.getElementById('toggle-container').classList.toggle('left-96');
+        document
+            .getElementById('toggle-container')
+            .classList.toggle('left-[14.25rem]');
         document.getElementById('menu-tag').classList.toggle('text-theme-red');
         let navLinks = document.getElementsByClassName('nav-link');
         for (let i = 0; i < navLinks.length; i++) {
@@ -242,7 +246,10 @@ const Header = ({ currentPage, setCurrentPage }) => {
                         )}
                     </div>
                     {/* Dark mode switch */}
-                    <div className="absolute sm:static flex justify-end items-center">
+                    <div
+                        id="toggle-container"
+                        className="absolute flex justify-end items-center left-96 top-[4.33rem] transition-all duration-300 z-20 sm:static"
+                    >
                         {/* Inspired by https://daily-dev-tips.com/posts/creating-day-night-css-only-toggle-switch/ */}
                         {localStorage.theme === 'light' && (
                             <input
