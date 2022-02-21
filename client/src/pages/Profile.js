@@ -27,6 +27,7 @@ const Profile = () => {
             return friend.username;
         });
         if (!myFriends.loading) {
+
             if (friendArr.includes(`${userParam}`)) {
                 setFriendStatus(true);
             } else {
@@ -35,9 +36,15 @@ const Profile = () => {
         }
     };
 
-    useEffect(() => {
-        handler();
-    }, []);
+    // useEffect(() => {
+    //     if (!myFriends.loading) {
+    //         handler();
+    //         console.log(myFriends);
+    //     }
+    // }, []);
+
+    handler();
+
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
