@@ -113,7 +113,7 @@ const Home = () => {
                     <h1 className="block text-center text-2xl underline text-gray-600 dark:text-gray-300">
                         Badge Progress
                     </h1>
-                    <div className="flex flex-grow flex-col items-center text-gray-600 dark:text-gray-400 my-6">
+                    <div className="flex flex-grow justify-around text-gray-600 dark:text-gray-400 my-6">
                         {loggedIn && <RecentBadge runGame={runGame} />}
                         {loggedIn && <UpcomingBadge runGame={runGame} />}
                     </div>

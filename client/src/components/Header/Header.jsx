@@ -35,12 +35,12 @@ const Header = ({ currentPage, setCurrentPage }) => {
             document.documentElement.classList.add('dark');
             localStorage.theme = 'dark';
             document.getElementById('logo-image').src =
-                './assets/images/logo-dark.svg';
+                '/assets/images/logo-dark.svg';
         } else {
             document.documentElement.classList.remove('dark');
             localStorage.theme = 'light';
             document.getElementById('logo-image').src =
-                './assets/images/logo.svg';
+                '/assets/images/logo.svg';
         }
     };
 
@@ -184,7 +184,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                     <div className="flex justify-center items-center text-2xl h-10">
                         {localStorage.theme === 'light' && (
                             <img
-                                src="./assets/images/logo.svg"
+                                src="/assets/images/logo.svg"
                                 alt="Text Plus Plus logo"
                                 className="h-12"
                                 id="logo-image"
@@ -192,7 +192,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                         )}
                         {localStorage.theme === 'dark' && (
                             <img
-                                src="./assets/images/logo-dark.svg"
+                                src="/assets/images/logo-dark.svg"
                                 alt="Text Plus Plus logo"
                                 className="h-12"
                                 id="logo-image"
