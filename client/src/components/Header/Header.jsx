@@ -56,12 +56,12 @@ const Header = ({ currentPage, setCurrentPage }) => {
     return (
         <header id="nav-header">
             {/* Colored div to block the sliding links */}
-            <div className="absolute w-full h-28 bg-gray-100 z-10 dark:bg-gray-900 transition duration-200 sm:w-16 sm:h-10 sm:left-0 sm:top-4"></div>
+            <div className="absolute w-full h-28 bg-gray-100 z-10 dark:bg-gray-900 transition duration-200 2xl:w-16 2xl:h-10 2xl:left-0 2xl:top-4"></div>
             {/* Actual navbar */}
-            <nav className="w-full pt-4 pb-2 bg-gray-100 text-gray-600 shadow-md dark:bg-gray-900 dark:text-gray-200 transition duration-200 sm:py-4">
-                <div className="w-full sm:grid sm:grid-cols-3 px-6">
+            <nav className="w-full pt-4 pb-2 bg-gray-100 text-gray-600 shadow-md dark:bg-gray-900 dark:text-gray-200 transition duration-200 2xl:py-4">
+                <div className="w-full 2xl:grid 2xl:grid-cols-3 px-6">
                     {/* Logo for mobile */}
-                    <div className="flex justify-center items-center text-2xl h-10 sm:hidden">
+                    <div className="flex justify-center items-center text-2xl h-10 2xl:hidden">
                         {localStorage.theme === 'light' && (
                             <img
                                 src="/assets/images/logo.svg"
@@ -80,7 +80,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                         )}
                     </div>
                     {/* Nav menu */}
-                    <div className="flex flex-col items-center flex-wrap pt-2 sm:pt-0 sm:flex-row sm:items-start">
+                    <div className="flex flex-col items-center flex-wrap pt-2 2xl:pt-0 2xl:flex-row 2xl:items-start">
                         <div className="flex items-center">
                             <button
                                 className="text-gray-700 w-10 h-10 relative focus:outline-none z-20 dark:text-gray-200"
@@ -107,7 +107,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                 </div>
                             </button>
                             <span
-                                className="sm:hidden relative mr-2 transition-all duration-300 z-20"
+                                className="2xl:hidden relative mr-2 transition-all duration-300 z-20"
                                 id="menu-tag"
                             >
                                 Menu
@@ -117,7 +117,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                         <div>
                             <ul
                                 id="nav-list"
-                                className="navbar-nav max-h-[0px] flex flex-row flex-wrap justify-center pl-0 list-style-none mr-auto transition-all duration-300 -translate-y-44 sm:-translate-x-full sm:translate-y-0 sm:justify-start sm:h-full"
+                                className="navbar-nav max-h-[0px] flex flex-row flex-wrap justify-center pl-0 list-style-none mr-auto transition-all duration-300 -translate-y-44 2xl:-translate-x-full 2xl:translate-y-0 2xl:justify-start 2xl:h-full"
                             >
                                 <li className="nav-item p-2">
                                     <Link
@@ -229,7 +229,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                         </div>
                     </div>
                     {/* Logo column */}
-                    <div className="hidden sm:flex justify-center items-center text-2xl h-10">
+                    <div className="hidden 2xl:flex justify-center items-center text-2xl h-10">
                         {localStorage.theme === 'light' && (
                             <img
                                 src="/assets/images/logo.svg"
@@ -250,7 +250,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                     {/* Dark mode switch */}
                     <div
                         id="toggle-container"
-                        className="absolute hidden left-[14.25rem] top-[4.33rem] transition-all duration-300 z-20 sm:static sm:flex sm:justify-end sm:items-center"
+                        className="absolute hidden left-[14.25rem] top-[4.33rem] transition-all duration-300 z-20 sm:left-[35.25rem] sm:top-[1.33rem] md:left-[42.25rem] lg:left-[58.25rem] xl:left-[74.25rem] 2xl:static 2xl:flex 2xl:justify-end 2xl:items-center"
                     >
                         {/* Inspired by https://daily-dev-tips.com/posts/creating-day-night-css-only-toggle-switch/ */}
                         {localStorage.theme === 'light' && (
