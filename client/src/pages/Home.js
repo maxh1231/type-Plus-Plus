@@ -48,7 +48,7 @@ const Home = () => {
     return (
         <main className="flex-grow flex flex-col content-around justify-evenly items-center text-gray-700 dark:text-gray-400 dark:bg-gray-800 transition duration-200">
             {/* Intro text */}
-            <section className="container" id="welcome-text">
+            <section className="container p-3" id="welcome-text">
                 <p className="p-2 text-justify">
                     Welcome to Type++! Looking to test out your overpriced
                     custom keyboard? Wanna show off how much faster you can type
@@ -56,12 +56,11 @@ const Home = () => {
                     speed for a job application? You’ve come to the right place!
                 </p>
                 <p className="p-2 text-justify">
-                    Just hit “Start Game” below to immediately take a
-                    typing-speed test. If you really want to experience
-                    everything Type++ has to offer, though, create an account
-                    first – you’ll be able to save your WPM and accuracy scores,
-                    track your improvement over time, add friends, compete in
-                    our leaderboards, and more!
+                    Hit “Start Game” below to take a typing-speed test. If you
+                    really want to experience everything Type++ has to offer,
+                    though, create an account first – you’ll be able to save
+                    your WPM and accuracy scores, track your improvement over
+                    time, follow friends, compete in our leaderboards, and more!
                 </p>
             </section>
             <section className="m-4">
@@ -105,22 +104,28 @@ const Home = () => {
                     </>
                 )}
             </section>
-            <div className="grid grid-cols-3 container">
-                <div>
+            <div className="container flex flex-wrap justify-around">
+                <div className="xl:w-1/3">
                     <GlobalLeaderBoard displayCount={5} runGame={runGame} />
                 </div>
-                <div className="my-4 flex flex-col">
+                <div className="xl:w-1/3 my-4 flex flex-col">
                     {loggedIn && (
                         <h1 className="block text-center text-2xl underline text-gray-600 dark:text-gray-300">
                             Badge Progress
                         </h1>
                     )}
-                    <div className="flex flex-grow justify-around text-gray-600 dark:text-gray-400 my-6">
-                        {loggedIn && <RecentBadge runGame={runGame} />}
-                        {loggedIn && <UpcomingBadge runGame={runGame} />}
+                    <div className="flex grow flex-wrap flex-col justify-around text-gray-600 dark:text-gray-400 my-6 sm:flex-row">
+                        <div className="pb-4 sm:pr-6">
+                            {loggedIn && <RecentBadge runGame={runGame} />}
+                        </div>
+                        <div>
+                            {loggedIn && <UpcomingBadge runGame={runGame} />}
+                        </div>
                     </div>
                 </div>
-                {loggedIn && <Highscore runGame={runGame} />}
+                <div className="pb-10 xl:w-1/3">
+                    {loggedIn && <Highscore runGame={runGame} />}
+                </div>
             </div>
         </main>
     );
