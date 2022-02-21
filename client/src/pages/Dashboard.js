@@ -63,7 +63,10 @@ if (localStorage.theme === 'dark') {
 
 Modal.setAppElement('#root');
 
-const Dashboard = () => {
+const Dashboard = ({ currentPage, setCurrentPage }) => {
+    useEffect(() => {
+        setCurrentPage('Dashboard')
+    })
     const [image, setImage] = useState(defaultPhoto);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalBio, setModalBio] = useState('');
