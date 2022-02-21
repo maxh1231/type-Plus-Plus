@@ -65,26 +65,39 @@ code {
     display: flex;
 }
 
-.pagination-nav li {
-    margin: 0 1px;
+.pagination-nav li a {
+    margin: 0 2px;
+    background-color: #d1d5db;
+    color: #1f2937;
+}
+
+.pagination-nav li a:hover {
+    background-color: #4b5563;
+    color: #d1d5db;
+}
+
+.pagination-nav li.selected a {
+    background-color: #35a2eb;
+    color: #f3f4f6;
+}
+
+.pagination-nav li.selected a:hover {
+    background-color: #2563eb;
 }
 
 .pagination-nav a {
     display: block;
     padding: 0.5em 1em;
-    border: 1px solid #999;
     border-radius: 0.2em;
     text-decoration: none;
+    transition: all;
+    transition-duration: 300ms;
 }
 
 .pagination-nav a:hover {
     background-color: rgb(206, 206, 206);
 }
 
-.pagination-nav a[aria-current='page'] {
-    background-color: #333;
-    color: #fff;
-}
 /* Dark Mode Toggle */
 
 .toggle--label:before {
