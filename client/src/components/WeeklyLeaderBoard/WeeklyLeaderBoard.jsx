@@ -63,7 +63,10 @@ const WeeklyLeaderBoard = () => {
                                 <td className="text-center p-2" key={uuid()}>
                                     {score.accuracy}
                                 </td>
-                                <td className="text-center p-2" key={uuid()}>
+                                <td
+                                    className="text-center p-2 hidden sm:block xl:hidden 2xl:block"
+                                    key={uuid()}
+                                >
                                     {score.date}
                                 </td>
                             </tr>
@@ -107,7 +110,9 @@ const WeeklyLeaderBoard = () => {
                             <th>WPM</th>
                             <th>User</th>
                             <th>Accuracy</th>
-                            <th>Date</th>
+                            <th className="hidden sm:block xl:hidden 2xl:block">
+                                Date
+                            </th>
                         </tr>
                     </thead>
                     <Items leaderBoard={currentItems} page={itemOffset} />

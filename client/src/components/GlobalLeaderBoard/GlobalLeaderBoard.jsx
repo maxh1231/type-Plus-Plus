@@ -6,7 +6,7 @@ import { formatTime } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 
-const GlobalLeaderBoard = ({ displayCount, runGame }) => {
+const GlobalLeaderBoard = ({ displayCount, runGame, leaderboardPage }) => {
     const { loading, data, refetch } = useQuery(QUERY_SCORES);
 
     useEffect(() => {
@@ -67,12 +67,21 @@ const GlobalLeaderBoard = ({ displayCount, runGame }) => {
                                 <td className="text-center p-2" key={uuid()}>
                                     {score.accuracy}%
                                 </td>
-                                <td
-                                    className="text-center p-2 hidden sm:block xl:hidden 2xl:block"
-                                    key={uuid()}
-                                >
-                                    {score.date}
-                                </td>
+                                {leaderboardPage === true ? (
+                                    <td
+                                        className="text-center p-2 hidden sm:block"
+                                        key={uuid()}
+                                    >
+                                        {score.date}
+                                    </td>
+                                ) : (
+                                    <td
+                                        className="text-center p-2 hidden sm:block xl:hidden 2xl:block"
+                                        key={uuid()}
+                                    >
+                                        {score.date}
+                                    </td>
+                                )}
                             </tr>
                         ))}
                     </tbody>
@@ -114,9 +123,13 @@ const GlobalLeaderBoard = ({ displayCount, runGame }) => {
                             <th>WPM</th>
                             <th>User</th>
                             <th>Accuracy</th>
-                            <th className="hidden sm:block xl:hidden 2xl:block">
-                                Date
-                            </th>
+                            {leaderboardPage === true ? (
+                                <th className="hidden sm:block">Date</th>
+                            ) : (
+                                <th className="hidden sm:block xl:hidden 2xl:block">
+                                    Date
+                                </th>
+                            )}
                         </tr>
                     </thead>
                     <Items leaderBoard={currentItems} page={itemOffset} />

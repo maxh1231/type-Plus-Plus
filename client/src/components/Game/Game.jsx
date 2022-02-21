@@ -304,7 +304,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     rows="4"
                     cols="50"
                     onChange={handleChange}
-                    className="block border-2 w-full"
+                    className="block border-2 w-full rounded p-2 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 focus-visible:outline-theme-red"
                     value={inputText}
                 ></textarea>
             ) : (

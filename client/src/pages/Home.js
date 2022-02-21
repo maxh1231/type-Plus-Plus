@@ -108,24 +108,32 @@ const Home = () => {
                 <div className="xl:w-1/3">
                     <GlobalLeaderBoard displayCount={5} runGame={runGame} />
                 </div>
-                <div className="xl:w-1/3 my-4 flex flex-col">
-                    {loggedIn && (
-                        <h1 className="block text-center text-2xl underline text-gray-600 dark:text-gray-300">
-                            Badge Progress
-                        </h1>
-                    )}
-                    <div className="flex grow flex-wrap flex-col justify-around text-gray-600 dark:text-gray-400 my-6 sm:flex-row">
-                        <div className="pb-4 sm:pr-6">
-                            {loggedIn && <RecentBadge runGame={runGame} />}
+                {loggedIn && (
+                    <>
+                        <div className="xl:w-1/3 my-4 flex flex-col">
+                            {loggedIn && (
+                                <h1 className="block text-center text-2xl underline text-gray-600 dark:text-gray-300">
+                                    Badge Progress
+                                </h1>
+                            )}
+                            <div className="flex grow flex-wrap flex-col justify-around text-gray-600 dark:text-gray-400 my-6 sm:flex-row">
+                                <div className="pb-4 sm:pr-6">
+                                    {loggedIn && (
+                                        <RecentBadge runGame={runGame} />
+                                    )}
+                                </div>
+                                <div>
+                                    {loggedIn && (
+                                        <UpcomingBadge runGame={runGame} />
+                                    )}
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            {loggedIn && <UpcomingBadge runGame={runGame} />}
+                        <div className="pb-10 xl:w-1/3">
+                            {loggedIn && <Highscore runGame={runGame} />}
                         </div>
-                    </div>
-                </div>
-                <div className="pb-10 xl:w-1/3">
-                    {loggedIn && <Highscore runGame={runGame} />}
-                </div>
+                    </>
+                )}
             </div>
         </main>
     );
