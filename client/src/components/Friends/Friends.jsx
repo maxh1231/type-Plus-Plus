@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import defaultPhoto from '../../assets/images/no-profile-picture.svg'
 
 const Friends = ({ friends }) => {
     if (!friends || !friends.length) {
@@ -17,10 +18,10 @@ const Friends = ({ friends }) => {
 
                         <span key={friend._id}>
                             <div className="flex flex-row justify-center">
-                                <img className="w-[32px] h-[32px] object-cover rounded-full mr-1" src={friend.profilePic}></img>
+                                {friend.profilePic ? <img className="w-[32px] h-[32px] object-cover rounded-full mr-1" src={friend.profilePic}></img> : <img className="w-[32px] h-[32px] object-cover rounded-full mr-1" src={defaultPhoto}></img>}
                                 <Link
                                     to={`/profile/${friend.username}`}
-                                    className="hover:text-theme-red dark:hover:text-theme-red transition-all duration-300 ml-1"
+                                    className="hover:text-theme-red dark:hover:text-theme-red transition-all duration-300 ml-1 "
                                 >
                                     {friend.username}
                                 </Link>
