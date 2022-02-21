@@ -80,8 +80,8 @@ const BadgeList = ({view}) => {
     return (
         <section className='w-full'>
             <div className='h-12 m-1 p-1'>
-                <button className='m-2 float-right bg-gray-100' onClick={setGrid}><ViewGridIcon className='h-5 w-5 m-2 inline'/></button>
-                <button className='m-2 float-right bg-gray-100' onClick={setList}><ViewListIcon className='h-5 w-5 m-2 inline'/></button>
+                <button className='p-2 float-right bg-gray-100' onClick={setGrid}><ViewGridIcon className={`h-5 w-5 inline ${viewGrid && 'stroke-theme-red'}`}/></button>
+                <button className='p-2 float-right bg-gray-100' onClick={setList}><ViewListIcon className={`h-5 f-2 inline ${!viewGrid && 'stroke-theme-red'}`}/></button>
             </div>
             {viewGrid ? (
                 <div className='flex flex-wrap w-full p-4'>
