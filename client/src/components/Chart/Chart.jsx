@@ -41,12 +41,12 @@ const Chart = () => {
     // Create new array so we can sort by createdAt
     let userDataArray = data?.meScores
         ? data?.meScores
-              .map((score) => {
-                  return score;
-              })
-              .sort(function (a, b) {
-                  return a.createdAt - b.createdAt;
-              })
+            .map((score) => {
+                return score;
+            })
+            .sort(function (a, b) {
+                return a.createdAt - b.createdAt;
+            })
         : [];
 
     if (Auth.loggedIn()) {
@@ -68,7 +68,6 @@ const Chart = () => {
     // Determine labeling colors
     let theme = localStorage.theme === 'light';
 
-    console.log(theme);
     return (
         <>
             <Line

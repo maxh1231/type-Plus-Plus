@@ -1,5 +1,5 @@
 // Imports
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { useMutation } from '@apollo/client';
@@ -9,7 +9,12 @@ import { checkStreak } from '../../utils/helpers';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ currentPage, setCurrentPage }) => {
+
+    useEffect(() => {
+        setCurrentPage('Login')
+    })
+
     const [login, { error }] = useMutation(LOGIN_USER);
     const [addBadge] = useMutation(ADD_BADGE);
     const [passwordShown, setPasswordShown] = useState(false);
@@ -66,15 +71,15 @@ const Login = () => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
-                                              <p
-                                                  key={type}
-                                                  className="p-2 font-bold text-theme-red text-center"
-                                              >
-                                                  {message}
-                                              </p>
-                                          )
-                                      )
+                                        ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-theme-red text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
                                     : null;
                             }}
                             className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -109,15 +114,15 @@ const Login = () => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
-                                              <p
-                                                  key={type}
-                                                  className="p-2 font-bold text-theme-red text-center"
-                                              >
-                                                  {message}
-                                              </p>
-                                          )
-                                      )
+                                        ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-theme-red text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
                                     : null;
                             }}
                         />
