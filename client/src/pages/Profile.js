@@ -83,13 +83,13 @@ const Profile = () => {
 
     console.log(friendStatus);
     return (
-        <main className="flex-grow">
+        <main className="grow flex flex-col items-center justify-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
             {data && <ProfileUserInfo data={data} />}
-            <div>
+            <div className="mt-2">
                 {friendStatus ? (
-                    <button className="text-lg" onClick={handleRemoveFriend}>Remove Friend</button>
+                    <button className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300" onClick={handleRemoveFriend}>Remove Friend</button>
                 ) : (
-                    <button className="text-lg" onClick={handleAddFriend}>Add Friend</button>
+                    <button className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300" onClick={handleAddFriend}>Add Friend</button>
                 )}
             </div>
         </main>
