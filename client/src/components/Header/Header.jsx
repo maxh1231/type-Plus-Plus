@@ -84,7 +84,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                         <div className="flex-grow items-center">
                             <ul
                                 id="nav-list"
-                                className="navbar-nav flex pl-0 list-style-none mr-auto -translate-x-96 transition-all duration-300"
+                                className="navbar-nav flex pl-0 list-style-none mr-auto -translate-x-full transition-all duration-300"
                             >
                                 <li className="nav-item p-2">
                                     <Link
@@ -110,6 +110,18 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                         }`}
                                     >
                                         Leaderboard
+                                    </Link>
+                                </li>
+                                <li className="nav-item p-2">
+                                    <Link
+                                        onClick={() => setCurrentPage('Badges')}
+                                        to="/badges"
+                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
+                                            currentPage === 'Badge' &&
+                                            'text-theme-red opacity-1'
+                                        }`}
+                                    >
+                                        Badges
                                     </Link>
                                 </li>
                                 {Auth.loggedIn() ? (
