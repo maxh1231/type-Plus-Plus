@@ -48,7 +48,7 @@ const Home = () => {
     return (
         <main className="flex-grow flex flex-col content-around justify-evenly items-center text-gray-700 dark:text-gray-400 dark:bg-gray-800 transition duration-200">
             {/* Intro text */}
-            <section className="container" id="welcome-text">
+            <section className="container px-3" id="welcome-text">
                 <p className="p-2 text-justify">
                     Welcome to Type++! Looking to test out your overpriced
                     custom keyboard? Wanna show off how much faster you can type
@@ -56,12 +56,11 @@ const Home = () => {
                     speed for a job application? You’ve come to the right place!
                 </p>
                 <p className="p-2 text-justify">
-                    Just hit “Start Game” below to immediately take a
-                    typing-speed test. If you really want to experience
-                    everything Type++ has to offer, though, create an account
-                    first – you’ll be able to save your WPM and accuracy scores,
-                    track your improvement over time, add friends, compete in
-                    our leaderboards, and more!
+                    Hit “Start Game” below to take a typing-speed test. If you
+                    really want to experience everything Type++ has to offer,
+                    though, create an account first – you’ll be able to save
+                    your WPM and accuracy scores, track your improvement over
+                    time, follow friends, compete in our leaderboards, and more!
                 </p>
             </section>
             <section className="m-4">
