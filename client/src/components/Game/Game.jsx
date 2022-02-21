@@ -338,7 +338,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     <div id="modal-container" className="w-fit flex flex-col">
                         <button
                             onClick={closeModal}
-                            className="absolute top-0 left-56 text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
+                            className="absolute top-0 left-[11.2rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300 sm:left-60"
                         >
                             <XIcon className="h-6 w-6 m-2" />
                         </button>
@@ -370,8 +370,11 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     </div>
                 ) : (
                     <>
-                        <button onClick={closeModal} className="text-right">
-                            ❌
+                        <button
+                            onClick={closeModal}
+                            className="absolute top-0 left-[11.2rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300 sm:left-60"
+                        >
+                            <XIcon className="h-6 w-6 m-2" />
                         </button>
                         <div>You cheated!!</div>
                     </>
