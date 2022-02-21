@@ -97,7 +97,7 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
                         className="w-full text-center py-1 rounded text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 focus:outline-none my-1 transition-all duration-300"
                         type="submit"
                     >
-                        Store
+                        Save
                     </button>
                 </form>
             </div>
@@ -126,7 +126,7 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
                         className="w-full text-center py-1 rounded text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 focus:outline-none my-1 transition-all duration-300"
                         type="submit"
                     >
-                        Store
+                        Save
                     </button>
                 </form>
             </div>

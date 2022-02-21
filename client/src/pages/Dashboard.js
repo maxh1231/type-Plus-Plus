@@ -156,7 +156,7 @@ const Dashboard = () => {
                         onClick={closeModal}
                         className="absolute top-0 left-[15.5rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
                     >
-                        <XIcon className="h-6 w-6 m-2 " />
+                        <XIcon className="h-6 w-6 m-2" />
                     </button>
                     <EditModal
                         data={data}

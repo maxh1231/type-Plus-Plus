@@ -34,6 +34,7 @@ const Home = () => {
     };
 
     const startGame = () => {
+        document.getElementById('welcome-text').classList.add('hidden');
         setTimeout(() => {
             setRunGame(true);
         }, 250);
@@ -41,36 +42,26 @@ const Home = () => {
 
     const endGame = () => {
         setRunGame(false);
+        document.getElementById('welcome-text').classList.remove('hidden');
     };
 
     return (
         <main className="flex-grow flex flex-col content-around justify-evenly items-center text-gray-700 dark:text-gray-400 dark:bg-gray-800 transition duration-200">
             {/* Intro text */}
-            <section className="container">
+            <section className="container" id="welcome-text">
                 <p className="p-2 text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Pellentesque orci mi, dapibus in volutpat ac, bibendum vel
-                    dui. Duis lacinia odio tincidunt justo commodo, vel feugiat
-                    elit molestie. Mauris ut convallis elit. Sed interdum, dui
-                    faucibus faucibus consequat, odio magna ultricies neque, et
-                    dictum nisi nisl et eros. Pellentesque posuere et metus in
-                    accumsan. Ut mollis dui eu consectetur mattis. Nam tempor
-                    consequat semper. Pellentesque consectetur consectetur urna.
-                    Vestibulum interdum mauris justo, id vulputate enim iaculis
-                    sit amet.
+                    Welcome to Type++! Looking to test out your overpriced
+                    custom keyboard? Wanna show off how much faster you can type
+                    than your buddies? Need to find out your words-per-minute
+                    speed for a job application? You’ve come to the right place!
                 </p>
                 <p className="p-2 text-justify">
-                    Donec quis felis sagittis, scelerisque ante sit amet,
-                    bibendum neque. Nulla facilisi. Cras iaculis ex velit, nec
-                    consectetur nulla suscipit eget. Ut imperdiet est quis ipsum
-                    condimentum, non finibus arcu venenatis. Cras pretium
-                    accumsan diam, in auctor dolor elementum ut. Mauris pulvinar
-                    quam in ultrices suscipit. Donec laoreet mi nunc, vel
-                    aliquet tortor convallis fermentum. Phasellus rhoncus auctor
-                    nisi et vestibulum. Nam scelerisque ipsum quis urna posuere
-                    condimentum. Nulla quis facilisis nulla. Sed lacinia
-                    accumsan diam, id ultrices quam laoreet at. Sed sit amet
-                    varius nibh. Nullam quis sodales lacus.
+                    Just hit “Start Game” below to immediately take a
+                    typing-speed test. If you really want to experience
+                    everything Type++ has to offer, though, create an account
+                    first – you’ll be able to save your WPM and accuracy scores,
+                    track your improvement over time, add friends, compete in
+                    our leaderboards, and more!
                 </p>
             </section>
             <section className="m-4">
@@ -88,7 +79,10 @@ const Home = () => {
                 )}
                 {runGame && (
                     <>
-                        <div id="sampleText" className="hidden m-4 mx-auto w-3/4">
+                        <div
+                            id="sampleText"
+                            className="hidden m-4 mx-auto w-3/4"
+                        >
                             {sampleArr.length !== 0 ? (
                                 sampleArr.map((char, i) => (
                                     <span
@@ -124,7 +118,7 @@ const Home = () => {
                         {loggedIn && <UpcomingBadge runGame={runGame} />}
                     </div>
                 </div>
-                {loggedIn && <Highscore runGame={runGame} /> }
+                {loggedIn && <Highscore runGame={runGame} />}
             </div>
         </main>
     );
