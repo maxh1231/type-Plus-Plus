@@ -14,7 +14,7 @@ import Uploader from '../components/Uploader';
 import RecentBadge from '../components/RecentBadge';
 import Chart from '../components/Chart';
 import defaultPhoto from '../assets/images/no-profile-picture.svg';
-import { PencilAltIcon } from '@heroicons/react/outline';
+import { PencilAltIcon, XIcon } from '@heroicons/react/outline';
 
 // Modal Styles
 let customStyles;
@@ -152,6 +152,12 @@ const Dashboard = () => {
                     style={customStyles}
                     contentLabel="Modal"
                 >
+                    <button
+                        onClick={closeModal}
+                        className="absolute top-0 left-[15.5rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
+                    >
+                        <XIcon className="h-6 w-6 m-2 " />
+                    </button>
                     <EditModal
                         data={data}
                         modalBio={modalBio}

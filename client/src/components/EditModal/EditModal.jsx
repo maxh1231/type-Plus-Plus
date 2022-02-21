@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import defaultPhoto from '../../assets/images/no-profile-picture.svg';
 import { useMutation } from '@apollo/client';
 import { ADD_BIO, ADD_LOCATION } from '../../utils/mutations';
-import { X } from '@heroicons/react/outline';
 
 import Uploader from '../Uploader';
 
@@ -53,10 +52,22 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
         <section>
             <div className="w-full flex flex-col items-center justify-around">
                 {data.me.profilePic && (
-                    <img src={image} alt="" width="100" height="100"></img>
+                    <img
+                        src={image}
+                        alt=""
+                        width="100"
+                        height="100"
+                        className="rounded-md"
+                    ></img>
                 )}
                 {!data.me.profilePic && (
-                    <img src={image} alt="" width="100" height="100"></img>
+                    <img
+                        src={image}
+                        alt=""
+                        width="100"
+                        height="100"
+                        className="rounded-md"
+                    ></img>
                 )}
                 <Uploader image={image} setImage={setImage} />
             </div>

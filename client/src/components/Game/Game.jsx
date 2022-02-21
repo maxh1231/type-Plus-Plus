@@ -5,6 +5,7 @@ import { ADD_SCORE, ADD_BADGE } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 import { checkGame, checkScore, checkAccuracy } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
+import { XIcon } from '@heroicons/react/outline';
 
 const Game = ({ sampleArr, unmount, loggedIn }) => {
     const [inputText, setInputText] = useState('');
@@ -335,8 +336,11 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
             >
                 {!isCheater ? (
                     <div id="modal-container" className="w-fit flex flex-col">
-                        <button onClick={closeModal} className="text-right">
-                            {/* <X className="h-5 w-5 m-2" /> */}
+                        <button
+                            onClick={closeModal}
+                            className="absolute top-0 left-56 text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
+                        >
+                            <XIcon className="h-6 w-6 m-2" />
                         </button>
                         <div id="modal-info" className="p-10">
                             <p>Errors: {errorCount}</p>
