@@ -54,7 +54,7 @@ code {
 }
 
 .navbar-nav-active {
-    transform: unset;
+    transform: unset !important;
 }
 
 /* Pagination styles */
