@@ -18,7 +18,7 @@ const Uploader = ({ image, setImage }) => {
     return (
         <section className="flex items-center text-center">
             <label
-                for="file-upload"
+                htmlFor="file-upload"
                 className="px-3 py-1 text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 font-medium uppercase rounded shadow-sm hover:shadow-md focus:shadow-lg transition duration-300 ease-in-out my-6"
             >
                 Upload New Photo
