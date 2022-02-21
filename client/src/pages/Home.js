@@ -110,9 +110,11 @@ const Home = () => {
                     <GlobalLeaderBoard displayCount={5} runGame={runGame} />
                 </div>
                 <div className="my-4 flex flex-col">
-                    <h1 className="block text-center text-2xl underline text-gray-600 dark:text-gray-300">
-                        Badge Progress
-                    </h1>
+                    {loggedIn && (
+                        <h1 className="block text-center text-2xl underline text-gray-600 dark:text-gray-300">
+                            Badge Progress
+                        </h1>
+                    )}
                     <div className="flex flex-grow justify-around text-gray-600 dark:text-gray-400 my-6">
                         {loggedIn && <RecentBadge runGame={runGame} />}
                         {loggedIn && <UpcomingBadge runGame={runGame} />}

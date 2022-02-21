@@ -112,20 +112,23 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                         Leaderboard
                                     </Link>
                                 </li>
-                                <li className="nav-item p-2">
-                                    <Link
-                                        onClick={() => setCurrentPage('Badges')}
-                                        to="/badges"
-                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
-                                            currentPage === 'Badge' &&
-                                            'text-theme-red opacity-1'
-                                        }`}
-                                    >
-                                        Badges
-                                    </Link>
-                                </li>
+
                                 {Auth.loggedIn() ? (
                                     <>
+                                        <li className="nav-item p-2">
+                                            <Link
+                                                onClick={() =>
+                                                    setCurrentPage('Badges')
+                                                }
+                                                to="/badges"
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
+                                                    currentPage === 'Badge' &&
+                                                    'text-theme-red opacity-1'
+                                                }`}
+                                            >
+                                                Badges
+                                            </Link>
+                                        </li>
                                         <li className="nav-item p-2">
                                             <Link
                                                 onClick={() =>
