@@ -11,7 +11,7 @@ const UpcomingBadge = (runGame) => {
     useEffect(() => {
         refetch();
     }, [runGame]) // eslint-disable-line react-hooks/exhaustive-deps
-    
+
     if (loading) {
         return <p>Loading...</p>
     }
@@ -45,7 +45,7 @@ const UpcomingBadge = (runGame) => {
         switch (category) {
             case 'games':
                 return gameCount
-            case 'friends': 
+            case 'friends':
                 return friendCount
             case 'scores':
                 return maxScore
@@ -72,7 +72,7 @@ const UpcomingBadge = (runGame) => {
                 <p key={uuid()} className='p-1 text-center italic'>{displayBadge.description}</p>
                 <p>Progress: {renderProgress(displayBadge.category)}/{displayBadge.targetVal}</p>
                 <div className="w-full bg-gray-200 rounded-full">
-                    <div className="bg-blue-600 text-xs font-bold text-black text-center p-0.5 leading-none rounded-l-full" style={{width: `${renderProgress(displayBadge.category)/displayBadge.targetVal * 100}%`}}>{Math.floor(renderProgress(displayBadge.category)/displayBadge.targetVal * 100)}%</div>
+                    <div className="bg-blue-600 text-xs font-bold text-black text-center p-0.5 leading-none rounded-l-full" style={{ width: `${renderProgress(displayBadge.category) / displayBadge.targetVal * 100}%` }}>{Math.floor(renderProgress(displayBadge.category) / displayBadge.targetVal * 100)}%</div>
                 </div>
             </div>
         </div>

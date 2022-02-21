@@ -22,28 +22,30 @@ const Profile = () => {
     const [removeFriend] = useMutation(REMOVE_FRIEND);
     const [addBadge] = useMutation(ADD_BADGE);
 
+    const newData = myFriends.data?.me || [];
+
     const handler = async () => {
-        const friendArr = await myFriends.data?.me.friends.map((friend) => {
+        const friendArr = await newData.friends.map((friend) => {
             return friend.username;
         });
-        if (!myFriends.loading) {
 
-            if (friendArr.includes(`${userParam}`)) {
-                setFriendStatus(true);
-            } else {
-                setFriendStatus(false);
-            }
+        console.log("hi")
+        if (friendArr.includes(`${userParam}`)) {
+            setFriendStatus(true);
+        } else {
+            setFriendStatus(false);
         }
     };
 
-    // useEffect(() => {
-    //     if (!myFriends.loading) {
-    //         handler();
-    //         console.log(myFriends);
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (!myFriends.loading)
+            handler();
+        console.log(myFriends);
 
-    handler();
+    }, []);
+
+
+
 
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -77,6 +79,10 @@ const Profile = () => {
         console.log('click');
         setFriendStatus(false);
     };
+
+
+
+
 
     console.log(friendStatus);
     return (
