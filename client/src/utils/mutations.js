@@ -26,6 +26,14 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const REMOVE_USER = gql`
+  mutation RemoveUser {
+    removeUser {
+      username
+    }
+  }
+`
+
 export const ADD_BIO = gql`
   mutation addBio($bio: String!) {
     addBio(bio: $bio) {
