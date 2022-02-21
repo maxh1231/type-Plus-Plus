@@ -66,7 +66,7 @@ const Signup = () => {
                             })}
                             type="text"
                             placeholder="Username"
-                            className="block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"
+                            className="block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800 focus-visible:outline-none"
                         />
                         <ErrorMessage
                             errors={errors}
@@ -92,7 +92,7 @@ const Signup = () => {
                             {...register('email', {
                                 required: 'Email is required',
                                 pattern: {
-                                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/i,
+                                    value: /[a-z0-9]+@[a-z]+\.[a-z0-9]{2,3}/i,
                                     message: 'Email format is invalid',
                                 },
                                 maxLength: {
@@ -103,7 +103,7 @@ const Signup = () => {
                             })}
                             type="email"
                             placeholder="Email"
-                            className="block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"
+                            className="block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800 focus-visible:outline-none"
                         />
                         <ErrorMessage
                             errors={errors}
@@ -142,7 +142,7 @@ const Signup = () => {
                             id="signupPassword"
                             type={passwordShown ? 'text' : 'password'}
                             placeholder="Password"
-                            className="block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"
+                            className="block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800 focus-visible:outline-none"
                         />
                         <ErrorMessage
                             errors={errors}
@@ -163,7 +163,7 @@ const Signup = () => {
                             }}
                         />
 
-                        <div className="flex">
+                        <div className="flex items-center bg-gray-100 dark:bg-gray-800 border rounded mb-4">
                             <input
                                 {...register('confirmPassword', {
                                     required: 'Please confirm your password',
@@ -176,17 +176,21 @@ const Signup = () => {
                                 id="confirmPassword"
                                 type={passwordShown ? 'text' : 'password'}
                                 placeholder="Confirm password"
-                                className="block border border-grey-light w-5/6 p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"
+                                className="block w-full p-3 rounded-x rounded-l bg-gray-100 dark:bg-gray-800 focus-visible:outline-none"
                             />
-                            {passwordShown ? (
-                                <i onClick={togglePasswordVisiblity}>
-                                    <EyeIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" />
-                                </i>
-                            ) : (
-                                <i onClick={togglePasswordVisiblity}>
-                                    <EyeOffIcon className="h-7 m-3 text-blue-500 hover:text-blue-600" />
-                                </i>
-                            )}
+                            <div className="h-full bg-gray-100 dark:bg-gray-800 p-2">
+                                {passwordShown ? (
+                                    <EyeIcon
+                                        className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-transparent transition-all duration-300 hover:cursor-pointer"
+                                        onClick={togglePasswordVisiblity}
+                                    />
+                                ) : (
+                                    <EyeOffIcon
+                                        className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-transparent transition-all duration-300 hover:cursor-pointer"
+                                        onClick={togglePasswordVisiblity}
+                                    />
+                                )}
+                            </div>
                         </div>
                         <ErrorMessage
                             errors={errors}
@@ -208,24 +212,27 @@ const Signup = () => {
                         />
 
                         <select
+                            className="bg-transparent focus:outline-none w-full"
                             {...register('question', {
                                 required: 'You must pick a security question',
                             })}
                         >
-                            <option value="">Select a security question</option>
-                            <option value="1">
+                            <option value="" className="dark:bg-gray-800">
+                                Select a security question
+                            </option>
+                            <option value="1" className="dark:bg-gray-800">
                                 What city were you born in?
                             </option>
-                            <option value="2">
+                            <option value="2" className="dark:bg-gray-800">
                                 What is your mother's maiden name?
                             </option>
-                            <option value="3">
+                            <option value="3" className="dark:bg-gray-800">
                                 What is your dream vacation spot?
                             </option>
-                            <option value="4">
+                            <option value="4" className="dark:bg-gray-800">
                                 What is your favorite pizza topping?
                             </option>
-                            <option value="5">
+                            <option value="5" className="dark:bg-gray-800">
                                 Who is your favorite band/artist?
                             </option>
                         </select>
@@ -245,7 +252,7 @@ const Signup = () => {
                                 },
                             })}
                             placeholder="Answer"
-                            className="block border border-grey-light w-full p-3 rounded mb-4"
+                            className="block border border-grey-light w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800 focus-visible:outline-none"
                         />
                         <ErrorMessage
                             errors={errors}
@@ -301,7 +308,7 @@ const Signup = () => {
                         <div className="flex justify-center m-1">
                             <p className="items-center underline text-gray-600 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300">
                                 <Link to="/login">
-                                    Already Have An Account?
+                                    Already have an account?
                                 </Link>
                             </p>
                         </div>

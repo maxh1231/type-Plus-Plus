@@ -58,7 +58,7 @@ const Login = () => {
                             })}
                             type="text"
                             placeholder="Email"
-                            className="block border w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800"
+                            className="block border w-full p-3 rounded mb-4 bg-gray-100 dark:bg-gray-800 focus-visible:outline-none"
                         />
                         <ErrorMessage
                             errors={errors}
@@ -92,12 +92,12 @@ const Login = () => {
                             <div className="h-full bg-gray-100 dark:bg-gray-800 p-2">
                                 {passwordShown ? (
                                     <EyeIcon
-                                        className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-gray-100 dark:bg-gray-800"
+                                        className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-transparent transition-all duration-300 hover:cursor-pointer"
                                         onClick={togglePasswordVisiblity}
                                     />
                                 ) : (
                                     <EyeOffIcon
-                                        className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-gray-100 dark:bg-gray-800"
+                                        className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-transparent transition-all duration-300 hover:cursor-pointer"
                                         onClick={togglePasswordVisiblity}
                                     />
                                 )}
@@ -144,7 +144,7 @@ const Login = () => {
                             </div>
                             <div className="items-center underline text-gray-600 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300">
                                 <Link to="/signup">
-                                    Already have an account?
+                                    Don't have an account? Sign up!
                                 </Link>
                             </div>
                         </div>
