@@ -70,14 +70,14 @@ function App() {
                         <Route
                             exact
                             path="/dashboard"
-                            element={<Dashboard />}
+                            element={<Dashboard currentPage={currentPage} setCurrentPage={setCurrentPage} />}
                         />
                         <Route
                             exact
                             path="/leaderboard"
                             element={<LeaderBoard />}
                         />
-                        <Route exact path="/badges" element={<Badges />} />
+                        <Route exact path="/badges" element={<Badges currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
                         <Route
                             exact
                             path="/profile/:username"

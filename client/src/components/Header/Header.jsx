@@ -123,10 +123,9 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                     <Link
                                         onClick={() => setCurrentPage('Home')}
                                         to="/"
-                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${
-                                            currentPage === 'Home' &&
+                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${currentPage === 'Home' &&
                                             'text-theme-red opacity-1'
-                                        }`}
+                                            }`}
                                     >
                                         Home
                                     </Link>
@@ -137,10 +136,9 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                             setCurrentPage('Leaderboard')
                                         }
                                         to="/leaderboard"
-                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${
-                                            currentPage === 'Leaderboard' &&
+                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${currentPage === 'Leaderboard' &&
                                             'text-theme-red opacity-1'
-                                        }`}
+                                            }`}
                                     >
                                         Leaderboard
                                     </Link>
@@ -154,10 +152,9 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                                     setCurrentPage('Badges')
                                                 }
                                                 to="/badges"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
-                                                    currentPage === 'Badge' &&
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Badges' &&
                                                     'text-theme-red opacity-1'
-                                                }`}
+                                                    }`}
                                             >
                                                 Badges
                                             </Link>
@@ -168,11 +165,10 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                                     setCurrentPage('Dashboard')
                                                 }
                                                 to="/dashboard"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
-                                                    currentPage ===
-                                                        'Dashboard' &&
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage ===
+                                                    'Dashboard' &&
                                                     'text-theme-red opacity-1'
-                                                }`}
+                                                    }`}
                                             >
                                                 Dashboard
                                             </Link>
@@ -183,10 +179,9 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                                     setCurrentPage('Logout')
                                                 }
                                                 href="/"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
-                                                    currentPage === 'Logout' &&
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Logout' &&
                                                     'text-theme-red opacity-1'
-                                                }`}
+                                                    }`}
                                                 onClick={logout}
                                             >
                                                 Logout
@@ -201,10 +196,9 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                                     setCurrentPage('Login')
                                                 }
                                                 to="/login"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
-                                                    currentPage === 'Login' &&
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Login' &&
                                                     'text-theme-red opacity-1'
-                                                }`}
+                                                    }`}
                                             >
                                                 Login
                                             </Link>
@@ -215,10 +209,9 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                                     setCurrentPage('Signup')
                                                 }
                                                 to="/signup"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
-                                                    currentPage === 'Signup' &&
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Signup' &&
                                                     'text-theme-red opacity-1'
-                                                }`}
+                                                    }`}
                                             >
                                                 Sign Up
                                             </Link>

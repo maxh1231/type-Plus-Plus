@@ -3,7 +3,12 @@ import { Navigate } from 'react-router-dom'
 import BadgeList from '../components/BadgeList/BadgeList';
 import Auth from '../utils/auth';
 
-const Badges = () => {
+const Badges = ({ currentPage, setCurrentPage }) => {
+
+    useEffect(() => {
+        setCurrentPage('Badges')
+    })
+
     const [view, setView] = useState(false);
 
     useEffect(() => {
