@@ -87,12 +87,20 @@ const Login = () => {
                                 })}
                                 type={passwordShown ? 'text' : 'password'}
                                 placeholder="Password"
-                                className="block  w-full p-3 rounded-x rounded-l bg-gray-100 dark:bg-gray-800 focus-visible:outline-none"
-                                />
-                            <div className='h-full bg-gray-100 dark:bg-gray-800 p-2'>
+                                className="block w-full p-3 rounded-x rounded-l bg-gray-100 dark:bg-gray-800 focus-visible:outline-none"
+                            />
+                            <div className="h-full bg-gray-100 dark:bg-gray-800 p-2">
                                 {passwordShown ? (
-                                <EyeIcon className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-gray-100 dark:bg-gray-800" onClick={togglePasswordVisiblity}/>) : (
-                                <EyeOffIcon className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-gray-100 dark:bg-gray-800" onClick={togglePasswordVisiblity}/>)}
+                                    <EyeIcon
+                                        className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-gray-100 dark:bg-gray-800"
+                                        onClick={togglePasswordVisiblity}
+                                    />
+                                ) : (
+                                    <EyeOffIcon
+                                        className="h-7 w-7 text-blue-500 hover:text-blue-600 bg-gray-100 dark:bg-gray-800"
+                                        onClick={togglePasswordVisiblity}
+                                    />
+                                )}
                             </div>
                         </div>
                         <ErrorMessage
@@ -130,10 +138,14 @@ const Login = () => {
 
                         <div className="flex flex-col items-center mt-3 mb-1">
                             <div className="items-center underline text-gray-600 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300">
-                                <Link to="/password-reset">Forgot Password?</Link>
+                                <Link to="/password-reset">
+                                    Forgot Password?
+                                </Link>
                             </div>
                             <div className="items-center underline text-gray-600 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300">
-                                <Link to="/signup">Already have an account?</Link>
+                                <Link to="/signup">
+                                    Already have an account?
+                                </Link>
                             </div>
                         </div>
                     </form>

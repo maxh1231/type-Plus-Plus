@@ -257,6 +257,44 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         unmount();
     };
 
+    // Modal styles
+    let customStyles;
+    if (localStorage.theme === 'dark') {
+        customStyles = {
+            content: {
+                top: '50%',
+                left: '50%',
+                right: 'auto',
+                bottom: 'auto',
+                transform: 'translate(-50%, -50%)',
+                backgroundColor: 'rgba(17, 24, 39, 1)',
+                borderRadius: '0.5rem',
+                color: '#e5e7eb',
+                opacity: 1,
+                padding: '2rem',
+            },
+            overlay: { backgroundColor: 'rgba(17, 24, 39, 0.75)', zIndex: 100 },
+        };
+    } else {
+        customStyles = {
+            content: {
+                top: '50%',
+                left: '50%',
+                right: 'auto',
+                bottom: 'auto',
+                transform: 'translate(-50%, -50%)',
+                backgroundColor: '#ffffff',
+                borderRadius: '0.5rem',
+                color: '#374151',
+                opacity: 1,
+                padding: '2rem',
+            },
+            overlay: {
+                backgroundColor: 'rgba(243, 244, 246, 0.75)',
+                zIndex: 100,
+            },
+        };
+    }
     return (
         <div id="inputArea" className="m-4">
             {intervalId ? (
@@ -293,22 +331,12 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                 onAfterOpen={afterOpenModal}
                 onRequestClose={closeModal}
                 contentLabel="Example Modal"
-                style={{
-                    content: {
-                        top: '50%',
-                        left: '50%',
-                        right: 'auto',
-                        bottom: 'auto',
-                        marginRight: '-50%',
-                        transform: 'translate(-50%, -50%)',
-                    },
-                    overlay: { zIndex: 100 },
-                }}
+                style={customStyles}
             >
                 {!isCheater ? (
                     <div id="modal-container" className="w-fit flex flex-col">
                         <button onClick={closeModal} className="text-right">
-                            ❌
+                            {/* <X className="h-5 w-5 m-2" /> */}
                         </button>
                         <div id="modal-info" className="p-10">
                             <p>Errors: {errorCount}</p>

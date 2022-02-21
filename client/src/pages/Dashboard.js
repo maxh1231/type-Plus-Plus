@@ -25,6 +25,7 @@ if (localStorage.theme === 'dark') {
             left: '50%',
             right: 'auto',
             bottom: 'auto',
+            transform: 'translate(-50%, -50%)',
             alignItems: 'center',
             backgroundColor: 'rgba(17, 24, 39, 1)',
             borderRadius: '0.5rem',
@@ -34,7 +35,6 @@ if (localStorage.theme === 'dark') {
             justifyContent: 'center',
             opacity: 1,
             padding: '2rem',
-            transform: 'translate(-50%, -50%)',
         },
         overlay: { backgroundColor: 'rgba(17, 24, 39, 0.75)', zIndex: 100 },
     };
@@ -46,7 +46,7 @@ if (localStorage.theme === 'dark') {
             right: 'auto',
             bottom: 'auto',
             alignItems: 'center',
-            backgroundColor: 'rgba(17, 24, 39, 1)',
+            backgroundColor: '#ffffff',
             borderRadius: '0.5rem',
             color: '#e5e7eb',
             display: 'flex',
@@ -163,7 +163,7 @@ const Dashboard = () => {
                         type="button"
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light"
-                        className="flex items-center justify-between px-6 py-2.5 text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 font-medium uppercase rounded shadow-sm hover:shadow-md focus:shadow-lg transition duration-300 ease-in-out mt-6"
+                        className="w-full text-center py-3 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
                         onClick={closeModal}
                     >
                         Save Changes

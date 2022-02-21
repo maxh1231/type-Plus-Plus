@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import defaultPhoto from '../../assets/images/no-profile-picture.svg';
 import { useMutation } from '@apollo/client';
 import { ADD_BIO, ADD_LOCATION } from '../../utils/mutations';
+import { X } from '@heroicons/react/outline';
 
 import Uploader from '../Uploader';
 
@@ -50,7 +51,7 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
 
     return (
         <section>
-            <div className="flex flex-col items-center justify-around">
+            <div className="w-full flex flex-col items-center justify-around">
                 {data.me.profilePic && (
                     <img src={image} alt="" width="100" height="100"></img>
                 )}
@@ -60,7 +61,7 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
                 <Uploader image={image} setImage={setImage} />
             </div>
 
-            <div>
+            <div className="mb-4">
                 <form
                     className="flex flex-col items-center"
                     onSubmit={handleBioSubmit}
@@ -70,7 +71,7 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
                             value={bio}
                             placeholder="Update Bio"
                             onChange={handleBioChange}
-                            className="rounded p-1"
+                            className="border w-full p-3 rounded mb-2 text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800"
                         ></input>
                     )}
                     {!data.me.bio && (
@@ -78,18 +79,18 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
                             value={bio}
                             placeholder="Add Bio"
                             onChange={handleBioChange}
-                            className="rounded p-1"
+                            className="border w-full p-3 rounded mb-2 text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800"
                         ></input>
                     )}
                     <button
-                        className="px-2 py-1 text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 font-medium uppercase rounded shadow-sm hover:shadow-md focus:shadow-lg transition duration-300 ease-in-out my-2"
+                        className="w-full text-center py-1 rounded text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 focus:outline-none my-1 transition-all duration-300"
                         type="submit"
                     >
-                        Submit
+                        Store
                     </button>
                 </form>
             </div>
-            <div className="pt-2">
+            <div className="mb-4">
                 <form
                     className="flex flex-col items-center justify-around"
                     onSubmit={handleLocationSubmit}
@@ -99,7 +100,7 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
                             value={location}
                             placeholder="Update Location"
                             onChange={handleLocationChange}
-                            className="rounded p-1"
+                            className="border w-full p-3 rounded mb-2 text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800"
                         ></input>
                     )}
                     {!data.me.location && (
@@ -107,14 +108,14 @@ const EditModal = ({ data, setModalBio, image, setImage }) => {
                             value={location}
                             placeholder="Add Location"
                             onChange={handleLocationChange}
-                            className="rounded p-1"
+                            className="border w-full p-3 rounded mb-2 text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800"
                         ></input>
                     )}
                     <button
-                        className="px-2 py-1 text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 font-medium uppercase rounded shadow-sm hover:shadow-md focus:shadow-lg transition duration-300 ease-in-out my-2"
+                        className="w-full text-center py-1 rounded text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 focus:outline-none my-1 transition-all duration-300"
                         type="submit"
                     >
-                        Submit
+                        Store
                     </button>
                 </form>
             </div>
