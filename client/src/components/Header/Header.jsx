@@ -48,13 +48,9 @@ const Header = ({ currentPage, setCurrentPage }) => {
     return (
         <header>
             {/* Colored div to block the sliding links */}
-            <div
-                className="invisible absolute w-16 h-10 left-0 top-4 bg-gray-100 z-10
-            dark:bg-gray-900 transition duration-200 sm:visible"
-            ></div>
+            <div className="absolute w-full h-28 bg-gray-100 z-10 dark:bg-gray-900 transition duration-200 sm:w-16 sm:h-10 sm:left-0 sm:top-4"></div>
             {/* Actual navbar */}
             <nav className="w-full py-4 bg-gray-100 text-gray-600 shadow-md dark:bg-gray-900 dark:text-gray-200 transition duration-200">
-                {/* <div className="w-full grid grid-cols-3 px-6"> */}
                 <div className="w-full 2xl:grid 2xl:grid-cols-3 px-6">
                     {/* Logo for mobile */}
                     <div className="flex justify-center items-center text-2xl h-10 sm:hidden">
@@ -62,7 +58,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                             <img
                                 src="/assets/images/logo.svg"
                                 alt="Text Plus Plus logo"
-                                className="h-12"
+                                className="h-12 z-20"
                                 id="logo-image"
                             />
                         )}
@@ -70,7 +66,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                             <img
                                 src="/assets/images/logo-dark.svg"
                                 alt="Text Plus Plus logo"
-                                className="h-12"
+                                className="h-12 z-20"
                                 id="logo-image"
                             />
                         )}
@@ -103,7 +99,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                 </div>
                             </button>
                             <span
-                                className="sm:hidden relative mr-2 transition-all duration-300"
+                                className="sm:hidden relative mr-2 transition-all duration-300 z-20"
                                 id="menu-tag"
                             >
                                 Menu
@@ -113,7 +109,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                         <div className="">
                             <ul
                                 id="nav-list"
-                                className="navbar-nav flex flex-row flex-wrap pl-0 list-style-none mr-auto transition-all duration-300 -translate-x-full"
+                                className="navbar-nav flex flex-row flex-wrap justify-center pl-0 list-style-none mr-auto transition-all duration-300 -translate-y-44 sm:-translate-x-full sm:translate-y-0 sm:justify-start"
                             >
                                 <li className="nav-item p-2">
                                     <Link
