@@ -19,7 +19,11 @@ const Badges = ({ currentPage, setCurrentPage }) => {
         return <Navigate to='/login'></Navigate>
     }
 
-    return <BadgeList view={view} />;
+    return (
+        <main className="flex-grow flex flex-col content-around justify-evenly items-center text-gray-700 dark:text-gray-400 dark:bg-gray-800 transition duration-200">
+            <BadgeList view={view} />
+        </main>
+    );
 };
 
 export default Badges;

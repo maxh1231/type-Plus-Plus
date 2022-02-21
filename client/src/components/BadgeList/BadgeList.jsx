@@ -84,21 +84,21 @@ const BadgeList = ({view}) => {
                 <button className='m-2 float-right bg-gray-100' onClick={setList}><ViewListIcon className='h-5 w-5 m-2 inline'/></button>
             </div>
             {viewGrid ? (
-                <div className='flex flex-wrap w-full'>
-                    <div className='flex flex-wrap w-full'>
-                        <p className='text-xl font-bold text-center w-full'>Earned</p>
+                <div className='flex flex-wrap w-full p-4'>
+                    <p className='text-xl font-bold text-center w-full'>Earned</p>
+                    <div className='w-full grid grid-cols-2 gap-4'>
                         {myBadgeArr.map(badge => (
-                            <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
+                            <div id='card' key={uuid()} className='border rounded-md p-2 w-full'>
                                 <img src={`.${badge.img}`} key={uuid()} className='m-auto' alt='badge'></img>
                                 <p key={uuid()} className='p-1 text-center font-bold'>{badge.badgeName}</p>
                                 <p key={uuid()} className='p-1 text-center italic'>{badge.description}</p>
                             </div>
                         ))}
                     </div>
-                    <div className='flex flex-wrap w-full'>
-                        <p className='text-xl font-bold text-center w-full'>Unearned</p>
+                    <p className='text-xl font-bold text-center w-full'>Unearned</p>
+                    <div className='grid w-full grid-cols-2 gap-4'>
                         {tmpArr.map(badge => (
-                            <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
+                            <div id='card' key={uuid()} className='border rounded-md p-2 w-full'>
                                 <img src={`.${badge.placeholder}`} key={uuid()} className='m-auto' alt='badge'></img>
                                 <p key={uuid()} className='p-1 text-center font-bold'>{badge.badgeName}</p>
                                 <p key={uuid()} className='p-1 text-center italic'>{badge.description}</p>
