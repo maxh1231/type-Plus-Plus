@@ -11,7 +11,8 @@ import { checkFriends } from '../utils/helpers';
 // import Achievements from '../components/Achievements';
 // import Progress from '../components/Progress'
 
-const Profile = () => {
+const Profile = ({ currentPage, setCurrentPage }) => {
+    setCurrentPage('Profile')
     const [friendStatus, setFriendStatus] = useState(false);
     const { username: userParam } = useParams();
     const { loading, error, data } = useQuery(QUERY_USER, {

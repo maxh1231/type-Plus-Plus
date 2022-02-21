@@ -1,5 +1,5 @@
 // Imports
-import { React, useRef, useState } from 'react';
+import { React, useRef, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { useMutation } from '@apollo/client';
@@ -8,7 +8,12 @@ import Auth from '../../utils/auth';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
 import { Link } from 'react-router-dom';
 
-const Signup = () => {
+const Signup = ({ currentPage, setCurrentPage }) => {
+
+    useEffect(() => {
+        setCurrentPage('Signup')
+    })
+
     const [addUser, { error }] = useMutation(ADD_USER);
 
     const [passwordShown, setPasswordShown] = useState(false);
@@ -74,15 +79,15 @@ const Signup = () => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
-                                              <p
-                                                  key={type}
-                                                  className="p-2 font-bold text-theme-red text-center"
-                                              >
-                                                  {message}
-                                              </p>
-                                          )
-                                      )
+                                        ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-theme-red text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
                                     : null;
                             }}
                             className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -111,15 +116,15 @@ const Signup = () => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
-                                              <p
-                                                  key={type}
-                                                  className="p-2 font-bold text-theme-red text-center"
-                                              >
-                                                  {message}
-                                              </p>
-                                          )
-                                      )
+                                        ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-theme-red text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
                                     : null;
                             }}
                             className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -150,15 +155,15 @@ const Signup = () => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
-                                              <p
-                                                  key={type}
-                                                  className="p-2 font-bold text-theme-red text-center"
-                                              >
-                                                  {message}
-                                              </p>
-                                          )
-                                      )
+                                        ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-theme-red text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
                                     : null;
                             }}
                         />
@@ -198,15 +203,15 @@ const Signup = () => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
-                                              <p
-                                                  key={type}
-                                                  className="p-2 font-bold text-theme-red text-center"
-                                              >
-                                                  {message}
-                                              </p>
-                                          )
-                                      )
+                                        ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-theme-red text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
                                     : null;
                             }}
                         />
@@ -260,15 +265,15 @@ const Signup = () => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
-                                              <p
-                                                  key={type}
-                                                  className="p-2 font-bold text-theme-red text-center"
-                                              >
-                                                  {message}
-                                              </p>
-                                          )
-                                      )
+                                        ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-theme-red text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
                                     : null;
                             }}
                         />
@@ -278,15 +283,15 @@ const Signup = () => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
-                                              <p
-                                                  key={type}
-                                                  className="p-2 font-bold text-theme-red text-center"
-                                              >
-                                                  {message}
-                                              </p>
-                                          )
-                                      )
+                                        ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-theme-red text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
                                     : null;
                             }}
                         />
