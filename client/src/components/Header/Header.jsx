@@ -24,10 +24,8 @@ const Header = ({ currentPage, setCurrentPage }) => {
             .classList.toggle('navbar-nav-active');
         document.getElementById('nav-list').classList.toggle('max-h-[0px]');
         document.getElementById('nav-list').classList.toggle('max-h-[200px]');
-        document.getElementById('toggle-container').classList.toggle('left-96');
-        document
-            .getElementById('toggle-container')
-            .classList.toggle('left-[14.25rem]');
+        document.getElementById('toggle-container').classList.toggle('hidden');
+
         document.getElementById('menu-tag').classList.toggle('text-theme-red');
         let navLinks = document.getElementsByClassName('nav-link');
         for (let i = 0; i < navLinks.length; i++) {
@@ -43,10 +41,14 @@ const Header = ({ currentPage, setCurrentPage }) => {
             localStorage.theme = 'dark';
             document.getElementById('logo-image').src =
                 '/assets/images/logo-dark.svg';
+            document.getElementById('logo-image-mobile').src =
+                '/assets/images/logo-dark.svg';
         } else {
             document.documentElement.classList.remove('dark');
             localStorage.theme = 'light';
             document.getElementById('logo-image').src =
+                '/assets/images/logo.svg';
+            document.getElementById('logo-image-mobile').src =
                 '/assets/images/logo.svg';
         }
     };
@@ -56,8 +58,8 @@ const Header = ({ currentPage, setCurrentPage }) => {
             {/* Colored div to block the sliding links */}
             <div className="absolute w-full h-28 bg-gray-100 z-10 dark:bg-gray-900 transition duration-200 sm:w-16 sm:h-10 sm:left-0 sm:top-4"></div>
             {/* Actual navbar */}
-            <nav className="w-full py-4 bg-gray-100 text-gray-600 shadow-md dark:bg-gray-900 dark:text-gray-200 transition duration-200">
-                <div className="w-full 2xl:grid 2xl:grid-cols-3 px-6">
+            <nav className="w-full pt-4 pb-2 bg-gray-100 text-gray-600 shadow-md dark:bg-gray-900 dark:text-gray-200 transition duration-200 sm:py-4">
+                <div className="w-full sm:grid sm:grid-cols-3 px-6">
                     {/* Logo for mobile */}
                     <div className="flex justify-center items-center text-2xl h-10 sm:hidden">
                         {localStorage.theme === 'light' && (
@@ -65,7 +67,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                 src="/assets/images/logo.svg"
                                 alt="Text Plus Plus logo"
                                 className="h-12 z-20"
-                                id="logo-image"
+                                id="logo-image-mobile"
                             />
                         )}
                         {localStorage.theme === 'dark' && (
@@ -73,7 +75,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                 src="/assets/images/logo-dark.svg"
                                 alt="Text Plus Plus logo"
                                 className="h-12 z-20"
-                                id="logo-image"
+                                id="logo-image-mobile"
                             />
                         )}
                     </div>
@@ -248,7 +250,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                     {/* Dark mode switch */}
                     <div
                         id="toggle-container"
-                        className="absolute flex justify-end items-center left-96 top-[4.33rem] transition-all duration-300 z-20 sm:static"
+                        className="absolute hidden left-[14.25rem] top-[4.33rem] transition-all duration-300 z-20 sm:static sm:flex sm:justify-end sm:items-center"
                     >
                         {/* Inspired by https://daily-dev-tips.com/posts/creating-day-night-css-only-toggle-switch/ */}
                         {localStorage.theme === 'light' && (
