@@ -155,7 +155,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                                 }
                                                 to="/badges"
                                                 className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
-                                                    currentPage === 'Badge' &&
+                                                    currentPage === 'Badges' &&
                                                     'text-theme-red opacity-1'
                                                 }`}
                                             >
