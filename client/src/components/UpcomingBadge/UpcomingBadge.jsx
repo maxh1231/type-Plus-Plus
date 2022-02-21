@@ -10,10 +10,10 @@ const UpcomingBadge = (runGame) => {
 
     useEffect(() => {
         refetch();
-    }, [runGame]) // eslint-disable-line react-hooks/exhaustive-deps
-    
+    }, [runGame]); // eslint-disable-line react-hooks/exhaustive-deps
+
     if (loading) {
-        return <p>Loading...</p>
+        return <p>Loading...</p>;
     }
 
     const badgeArr = data?.badges || [];
@@ -29,14 +29,14 @@ const UpcomingBadge = (runGame) => {
     const streak = myDataArr.streak;
 
     // Get badges that have not been earned
-    let tmpArr = [...badgeArr]
+    let tmpArr = [...badgeArr];
     for (let i = 0; i < badgeArr.length; i++) {
         for (let j = 0; j < myBadgeArr.length; j++) {
             if (badgeArr[i]._id === myBadgeArr[j]._id) {
-                const index = tmpArr.findIndex(x => {
-                    return x._id === badgeArr[i]._id
+                const index = tmpArr.findIndex((x) => {
+                    return x._id === badgeArr[i]._id;
                 });
-                tmpArr.splice(index, 1)
+                tmpArr.splice(index, 1);
             }
         }
     }
@@ -44,39 +44,79 @@ const UpcomingBadge = (runGame) => {
     const renderProgress = (category) => {
         switch (category) {
             case 'games':
-                return gameCount
-            case 'friends': 
-                return friendCount
+                return gameCount;
+            case 'friends':
+                return friendCount;
             case 'scores':
-                return maxScore
+                return maxScore;
             case 'accuracy':
-                return maxAccuracy
+                return maxAccuracy;
             case 'streak':
-                return streak
+                return streak;
             case 'age':
-                return userAge
+                return userAge;
             case 'secret':
-                return 0
+                return 0;
             default:
-                return 0
+                return 0;
         }
-    }
+    };
 
     // const randomNum = Math.floor(Math.random() * tmpArr.length)
     const displayBadge = tmpArr[0];
     return (
-        <div className='container'>
-            <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
-                <img src={`.${displayBadge.placeholder}`} key={uuid()} className='m-auto' alt='badge'></img>
-                <p key={uuid()} className='p-1 text-center font-bold'>{displayBadge.badgeName}</p>
-                <p key={uuid()} className='p-1 text-center italic'>{displayBadge.description}</p>
-                <p>Progress: {renderProgress(displayBadge.category)}/{displayBadge.targetVal}</p>
-                <div className="w-full bg-gray-200 rounded-full">
-                    <div className="bg-blue-600 text-xs font-bold text-black text-center p-0.5 leading-none rounded-l-full" style={{width: `${renderProgress(displayBadge.category)/displayBadge.targetVal * 100}%`}}>{Math.floor(renderProgress(displayBadge.category)/displayBadge.targetVal * 100)}%</div>
+        <div className="flex justify-center transition-all duration-200 h-60">
+            {badgeArr.length > 0 ? (
+                <div className="block rounded-lg w-44 shadow-sm border max-w-sm text-center dark:border-gray-400">
+                    <div className="py-3 text-center text-lg border-b dark:border-gray-400 bg-gray-100 dark:bg-gray-900 rounded-t-lg">
+                        Upcoming Badge
+                    </div>
+                    <div id="card" key={uuid()} className="px-2">
+                        <img
+                            src={`.${displayBadge.placeholder}`}
+                            key={uuid()}
+                            className="m-auto"
+                            alt="badge"
+                        ></img>
+                        <p
+                            key={uuid()}
+                            className="px-1 text-center font-bold text-lg"
+                        >
+                            {displayBadge.badgeName}
+                        </p>
+                        <p key={uuid()} className="px-1 text-center italic">
+                            {displayBadge.description}
+                        </p>
+                        <p>
+                            Progress: {renderProgress(displayBadge.category)}/
+                            {displayBadge.targetVal}
+                        </p>
+                        <div className="w-full rounded-full p-2">
+                            <div
+                                className="bg-theme-blue text-xs font-bold text-gray-700 text-center p-0.5 leading-none rounded-l-full"
+                                style={{
+                                    width: `${
+                                        (renderProgress(displayBadge.category) /
+                                            displayBadge.targetVal) *
+                                        100
+                                    }%`,
+                                }}
+                            >
+                                {Math.floor(
+                                    (renderProgress(displayBadge.category) /
+                                        displayBadge.targetVal) *
+                                        100
+                                )}
+                                %
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <p className="text-lg text-center">No badges yet!</p>
+            )}
         </div>
-    )
-}
+    );
+};
 
 export default UpcomingBadge;

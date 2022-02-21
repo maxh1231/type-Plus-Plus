@@ -35,12 +35,12 @@ const Header = ({ currentPage, setCurrentPage }) => {
             document.documentElement.classList.add('dark');
             localStorage.theme = 'dark';
             document.getElementById('logo-image').src =
-                './assets/images/logo-dark.svg';
+                '/assets/images/logo-dark.svg';
         } else {
             document.documentElement.classList.remove('dark');
             localStorage.theme = 'light';
             document.getElementById('logo-image').src =
-                './assets/images/logo.svg';
+                '/assets/images/logo.svg';
         }
     };
 
@@ -84,42 +84,76 @@ const Header = ({ currentPage, setCurrentPage }) => {
                         <div className="flex-grow items-center">
                             <ul
                                 id="nav-list"
-                                className="navbar-nav flex pl-0 list-style-none mr-auto -translate-x-80 transition-all duration-300"
+                                className="navbar-nav flex pl-0 list-style-none mr-auto -translate-x-full transition-all duration-300"
                             >
                                 <li className="nav-item p-2">
                                     <Link
                                         onClick={() => setCurrentPage('Home')}
                                         to="/"
-                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${currentPage === 'Home' && 'text-theme-red opacity-1'}`}
+                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${
+                                            currentPage === 'Home' &&
+                                            'text-theme-red opacity-1'
+                                        }`}
                                     >
                                         Home
                                     </Link>
                                 </li>
                                 <li className="nav-item p-2">
                                     <Link
-                                        onClick={() => setCurrentPage('Leaderboard')}
+                                        onClick={() =>
+                                            setCurrentPage('Leaderboard')
+                                        }
                                         to="/leaderboard"
-                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${currentPage === 'Leaderboard' && 'text-theme-red opacity-1'}`}
+                                        className={`nav-link p-0 hover:text-theme-red transition-all duration-300  ${
+                                            currentPage === 'Leaderboard' &&
+                                            'text-theme-red opacity-1'
+                                        }`}
                                     >
                                         Leaderboard
                                     </Link>
                                 </li>
+
                                 {Auth.loggedIn() ? (
                                     <>
                                         <li className="nav-item p-2">
                                             <Link
-                                                onClick={() => setCurrentPage('Dashboard')}
+                                                onClick={() =>
+                                                    setCurrentPage('Badges')
+                                                }
+                                                to="/badges"
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
+                                                    currentPage === 'Badge' &&
+                                                    'text-theme-red opacity-1'
+                                                }`}
+                                            >
+                                                Badges
+                                            </Link>
+                                        </li>
+                                        <li className="nav-item p-2">
+                                            <Link
+                                                onClick={() =>
+                                                    setCurrentPage('Dashboard')
+                                                }
                                                 to="/dashboard"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Dashboard' && 'text-theme-red opacity-1'}`}
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
+                                                    currentPage ===
+                                                        'Dashboard' &&
+                                                    'text-theme-red opacity-1'
+                                                }`}
                                             >
                                                 Dashboard
                                             </Link>
                                         </li>
                                         <li className="nav-item p-2">
                                             <a
-                                                onClick={() => setCurrentPage('Logout')}
+                                                onClick={() =>
+                                                    setCurrentPage('Logout')
+                                                }
                                                 href="/"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Logout' && 'text-theme-red opacity-1'}`}
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
+                                                    currentPage === 'Logout' &&
+                                                    'text-theme-red opacity-1'
+                                                }`}
                                                 onClick={logout}
                                             >
                                                 Logout
@@ -130,18 +164,28 @@ const Header = ({ currentPage, setCurrentPage }) => {
                                     <>
                                         <li className="nav-item p-2">
                                             <Link
-                                                onClick={() => setCurrentPage('Login')}
+                                                onClick={() =>
+                                                    setCurrentPage('Login')
+                                                }
                                                 to="/login"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Login' && 'text-theme-red opacity-1'}`}
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
+                                                    currentPage === 'Login' &&
+                                                    'text-theme-red opacity-1'
+                                                }`}
                                             >
                                                 Login
                                             </Link>
                                         </li>
                                         <li className="nav-item p-2">
                                             <Link
-                                                onClick={() => setCurrentPage('Signup')}
+                                                onClick={() =>
+                                                    setCurrentPage('Signup')
+                                                }
                                                 to="/signup"
-                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${currentPage === 'Signup' && 'text-theme-red opacity-1'}`}
+                                                className={`nav-link p-0 hover:text-theme-red transition-all duration-300 ${
+                                                    currentPage === 'Signup' &&
+                                                    'text-theme-red opacity-1'
+                                                }`}
                                             >
                                                 Sign Up
                                             </Link>
@@ -155,7 +199,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                     <div className="flex justify-center items-center text-2xl h-10">
                         {localStorage.theme === 'light' && (
                             <img
-                                src="./assets/images/logo.svg"
+                                src="/assets/images/logo.svg"
                                 alt="Text Plus Plus logo"
                                 className="h-12"
                                 id="logo-image"
@@ -163,7 +207,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                         )}
                         {localStorage.theme === 'dark' && (
                             <img
-                                src="./assets/images/logo-dark.svg"
+                                src="/assets/images/logo-dark.svg"
                                 alt="Text Plus Plus logo"
                                 className="h-12"
                                 id="logo-image"
