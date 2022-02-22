@@ -115,7 +115,6 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         const accuracyCheck = checkAccuracy(newData.accuracy);
 
         let newBadgeArr = [];
-
         if (gameCheck) {
             newBadgeArr.push(gameCheck);
         }
@@ -150,12 +149,6 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         if (addedBadge) {
             setModalBadge(addedBadge.data.addBadge);
         }
-
-        console.log({
-            userBadges: userBadges,
-            earnedBadges: newBadgeArr,
-            addedBadges: earnedBadges,
-        });
 
         openModal();
     };
@@ -304,14 +297,11 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     rows="4"
                     cols="50"
                     onChange={handleChange}
-                    className="block border-2 w-full rounded p-2 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 focus-visible:outline-theme-red"
+                    className={`block border-2 w-full rounded p-2 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 ${!validInput ? 'focus-visible:outline-theme-red' : 'focus-visible:outline-theme-blue'}`}
                     value={inputText}
                 ></textarea>
             ) : (
                 <></>
-            )}
-            {!validInput && (
-                <p className="text-xl mx-auto my-4 w-fit">Incorrect!</p>
             )}
             <div id="gameInfo" className="mx-auto my-6 w-fit hidden">
                 <p>Errors: {errorCount}</p>
