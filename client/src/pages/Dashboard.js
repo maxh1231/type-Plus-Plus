@@ -18,11 +18,7 @@ import defaultPhoto from '../assets/images/no-profile-picture.svg';
 import { PencilAltIcon, XIcon } from '@heroicons/react/outline';
 
 // Modal Styles
-let customStyles = { content: {} };
-let windowWidth = window.screen.width;
-console.log(windowWidth);
-
-console.log(customStyles);
+let customStyles;
 
 if (localStorage.theme === 'dark') {
     customStyles = {
@@ -66,12 +62,11 @@ if (localStorage.theme === 'dark') {
     };
 }
 
+// Resize modal if user is on mobile
+let windowWidth = window.screen.width;
 if (windowWidth < 640) {
-    console.log('success');
     customStyles.content.width = '80%';
 }
-
-console.log(customStyles);
 
 Modal.setAppElement('#root');
 
