@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import defaultPhoto from '../../assets/images/no-profile-picture.svg';
 import {
     CircularProgressbarWithChildren,
     buildStyles,
@@ -36,6 +35,7 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
     if (data) {
         data.meBadges.badges.map((badge) => {
             totalXP += badge.xp;
+            return totalXP;
         });
     }
 
@@ -117,6 +117,9 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
             break;
         case 10:
             levelIcon = '/assets/level-icons/level-10.png';
+            break;
+        default:
+            levelIcon = '/assets/level-icons/level-1.png'
             break;
     }
 

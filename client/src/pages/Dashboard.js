@@ -76,9 +76,9 @@ const Dashboard = () => {
     const [toggleDelete, setToggleDelete] = useState(true);
     const { username: userParam } = useParams();
     const { loading, data, refetch } = useQuery(QUERY_ME);
-    const [deleteUser, { error }] = useMutation(REMOVE_USER);
+    const [deleteUser] = useMutation(REMOVE_USER);
 
-    const user = data?.me || data?.user || {};
+    const user = data?.me || data?.user || {}; // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if (user.profilePic) {
@@ -135,7 +135,6 @@ const Dashboard = () => {
 
     return (
         <main className="grow flex items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
-            {/* <section className="grow grid grid-cols-4"> */}
             <section className="grow py-6 lg:grid lg:grid-cols-4">
                 <div className="h-full flex flex-col items-center justify-evenly">
                     <div className="flex flex-col items-center">
@@ -165,7 +164,6 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="flex justify-center col-span-3 items-center">
-                    {/* <div className="w-5/6"> */}
                     <div className="w-5/6 h-80 pt-4 lg:h-2/5 xl:h-3/5 2xl:h-full">
                         <Chart />
                     </div>

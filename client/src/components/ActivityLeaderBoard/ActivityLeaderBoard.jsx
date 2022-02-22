@@ -23,9 +23,7 @@ const ActivityLeaderBoard = () => {
     let tempArr = []
     if (data) {
         tempArr = data.users.slice().sort(compare)
-        console.log(tempArr);
     }
-
 
     function Items({ leaderBoard, page }) {
         return (

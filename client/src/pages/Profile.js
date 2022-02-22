@@ -21,7 +21,7 @@ const Profile = ({ currentPage, setCurrentPage }) => {
     const { username: userParam } = useParams();
 
 
-    const { loading, error, data } = useQuery(QUERY_USER, {
+    const { loading, data } = useQuery(QUERY_USER, {
         errorPolicy: 'all',
         variables: { username: userParam },
     });
@@ -48,7 +48,7 @@ const Profile = ({ currentPage, setCurrentPage }) => {
 
     useEffect(() => {
         handler();
-    }, [myFriends.data]);
+    }, [myFriends.data]); // eslint-disable-line react-hooks/exhaustive-deps
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
