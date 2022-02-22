@@ -160,7 +160,7 @@ const Dashboard = () => {
                 </div>
                 <div className="flex justify-center col-span-3 items-center">
                     {/* <div className="w-5/6"> */}
-                    <div className="w-[225px] h-[300px] pt-4">
+                    <div className="w-5/6 h-80 pt-4 lg:h-2/5 xl:h-3/5 2xl:h-full">
                         <Chart />
                     </div>
                 </div>
