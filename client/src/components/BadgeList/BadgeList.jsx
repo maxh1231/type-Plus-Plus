@@ -79,30 +79,30 @@ const BadgeList = ({view}) => {
 
     return (
         <section className='w-full'>
-            <div className='h-12 m-1 p-1'>
-                <button className='m-2 float-right bg-gray-100' onClick={setGrid}><ViewGridIcon className='h-5 w-5 m-2 inline'/></button>
-                <button className='m-2 float-right bg-gray-100' onClick={setList}><ViewListIcon className='h-5 w-5 m-2 inline'/></button>
+            <div className='h-12 m-1 p-4'>
+                <button className='p-2 float-right bg-gray-100 dark:bg-gray-900' onClick={setGrid}><ViewGridIcon className={`h-5 w-5 inline ${viewGrid && 'stroke-theme-red'}`}/></button>
+                <button className='p-2 float-right bg-gray-100 dark:bg-gray-900' onClick={setList}><ViewListIcon className={`h-5 f-2 inline ${!viewGrid && 'stroke-theme-red'}`}/></button>
             </div>
             {viewGrid ? (
-                <div className='flex flex-wrap w-full'>
-                    <div className='flex flex-wrap w-full'>
-                        <p className='text-xl font-bold text-center w-full'>Earned</p>
+                <div className='flex flex-wrap w-full p-4'>
+                    <p className='text-xl font-bold text-center w-full text-gray-600 dark:text-gray-200 p-2'>Earned</p>
+                    <div className='w-full grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
                         {myBadgeArr.map(badge => (
-                            <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
+                            <div id='card' key={uuid()} className='border rounded-md p-2 w-full bg-gray-100 dark:bg-inherit shadow-md'>
                                 <img src={`.${badge.img}`} key={uuid()} className='m-auto' alt='badge'></img>
-                                <p key={uuid()} className='p-1 text-center font-bold'>{badge.badgeName}</p>
+                                <p key={uuid()} className='p-1 text-center font-bold dark:text-gray-200'>{badge.badgeName}</p>
                                 <p key={uuid()} className='p-1 text-center italic'>{badge.description}</p>
                             </div>
                         ))}
                     </div>
-                    <div className='flex flex-wrap w-full'>
-                        <p className='text-xl font-bold text-center w-full'>Unearned</p>
+                    <p className='text-xl font-bold text-center w-full text-gray-600 dark:text-gray-200 p-2'>Unearned</p>
+                    <div className='grid w-full grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
                         {tmpArr.map(badge => (
-                            <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
+                            <div id='card' key={uuid()} className='border rounded-md p-2 w-full flex flex-col justify-between bg-gray-100 dark:bg-inherit shadow-md'>
                                 <img src={`.${badge.placeholder}`} key={uuid()} className='m-auto' alt='badge'></img>
-                                <p key={uuid()} className='p-1 text-center font-bold'>{badge.badgeName}</p>
+                                <p key={uuid()} className='p-1 text-center font-bold dark:text-gray-200'>{badge.badgeName}</p>
                                 <p key={uuid()} className='p-1 text-center italic'>{badge.description}</p>
-                                <div className='w-20 h-20 m-auto'>
+                                <div className='w-20 h-20 m-auto bottom-0'>
                                     <CircularProgressbar value={Math.round(renderProgress(badge.category)/badge.targetVal * 100)} text={`${Math.round(renderProgress(badge.category)/badge.targetVal * 100)}%`} />
                                 </div>
                             </div>
@@ -110,27 +110,33 @@ const BadgeList = ({view}) => {
                     </div>
                 </div>
             ) : (                
-                <div className='w-full'>
+                <div className='w-full p-4'>
                     <div className='w-full justify-center'>
-                        <p className='text-xl font-bold m-2'>Earned</p>
+                        <p className='text-xl font-bold m-2 text-gray-600 dark:text-gray-200'>Earned</p>
                         {myBadgeArr.map(badge => (
-                            <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
-                                <img src={`.${badge.img}`} key={uuid()} className='m-auto p-2 inline border-r' alt='badge'></img>
-                                <p key={uuid()} className='p-2 text-center font-bold inline'>{badge.badgeName}</p>
-                                <p key={uuid()} className='p-2 text-center italic inline'>{badge.description}</p>
+                            <div id='card' key={uuid()} className='flex border rounded-md p-2 m-4 bg-gray-100 dark:bg-inherit shadow-md'>
+                                <img src={`.${badge.img}`} key={uuid()} className='p-2 h-max my-auto' alt='badge'></img>
+                                <div className='p-1 border-l'>
+                                    <p key={uuid()} className='p-2 font-bold block dark:text-gray-200'>{badge.badgeName}</p>
+                                    <p key={uuid()} className='p-2 italic block'>{badge.description}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
                     <div className='w-full justify-center'>
-                        <p className='text-xl font-bold m-2'>Not Yet Earned</p>
+                        <p className='text-xl font-bold m-2 text-gray-600 dark:text-gray-200'>Not Yet Earned</p>
                         {tmpArr.map(badge => (
-                            <div id='card' key={uuid()} className='border rounded-md p-2 m-2'>
-                                <img src={`.${badge.placeholder}`} key={uuid()} className='m-auto p-2 inline border-r' alt='badge'></img>
-                                <p key={uuid()} className='p-2 text-center font-bold inline'>{badge.badgeName}</p>
-                                <p key={uuid()} className='p-2 text-center italic inline'>{badge.description}</p>
-                                <p>Progress: {renderProgress(badge.category)}/{badge.targetVal}</p>
-                                <div className="w-full bg-gray-200 rounded-full">
-                                    <div className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: `${renderProgress(badge.category)/badge.targetVal * 100}%`}}>{Math.floor(renderProgress(badge.category)/badge.targetVal * 100)}%</div>
+                            <div id='card' key={uuid()} className='border rounded-md p-2 m-4 bg-gray-100 dark:bg-inherit shadow-md'>
+                                <div className='flex'>
+                                    <img src={`.${badge.placeholder}`} key={uuid()} className='p-2 h-max my-auto' alt='badge'></img>
+                                    <div className='p-1 border-l'>
+                                        <p key={uuid()} className='p-2 font-bold block dark:text-gray-200'>{badge.badgeName}</p>
+                                        <p key={uuid()} className='p-2 italic block'>{badge.description}</p>
+                                    </div>
+                                </div>
+                                <p className='mt-2'>Progress: {renderProgress(badge.category)}/{badge.targetVal}</p>
+                                <div className="w-full bg-gray-300 rounded-full">
+                                    <div className="bg-theme-blue text-xs font-bold text-black text-center p-0.5 leading-none rounded-l-full" style={{width: `${renderProgress(badge.category)/badge.targetVal * 100}%`}}>{Math.floor(renderProgress(badge.category)/badge.targetVal * 100)}%</div>
                                 </div>
                             </div>
                         ))}
