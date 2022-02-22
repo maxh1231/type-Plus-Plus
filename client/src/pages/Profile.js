@@ -11,7 +11,12 @@ import { checkFriends } from '../utils/helpers';
 // import Achievements from '../components/Achievements';
 // import Progress from '../components/Progress'
 
-const Profile = () => {
+const Profile = ({ currentPage, setCurrentPage }) => {
+
+    useEffect(() => {
+        setCurrentPage('Profile')
+    })
+
     const [friendStatus, setFriendStatus] = useState(false);
     const { username: userParam } = useParams();
     const { loading, error, data } = useQuery(QUERY_USER, {
@@ -22,22 +27,23 @@ const Profile = () => {
     const [removeFriend] = useMutation(REMOVE_FRIEND);
     const [addBadge] = useMutation(ADD_BADGE);
 
+    const newData = myFriends.data?.me || [];
+
     const handler = async () => {
-        const friendArr = await myFriends.data?.me.friends.map((friend) => {
+        const friendArr = await newData.friends.map((friend) => {
             return friend.username;
         });
-        if (!myFriends.loading) {
-            if (friendArr.includes(`${userParam}`)) {
-                setFriendStatus(true);
-            } else {
-                setFriendStatus(false);
-            }
+        if (friendArr.includes(`${userParam}`)) {
+            setFriendStatus(true);
+        } else {
+            setFriendStatus(false);
         }
     };
 
     useEffect(() => {
-        handler();
-    }, []);
+        if (!myFriends.loading)
+            handler();
+    }, [myFriends.data]);
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
@@ -67,19 +73,17 @@ const Profile = () => {
         await removeFriend({
             variables: { friendID },
         });
-        console.log('click');
         setFriendStatus(false);
     };
 
-    console.log(friendStatus);
     return (
-        <main className="flex-grow">
+        <main className="grow flex flex-col items-center justify-center dark:bg-gray-800 text-gray-600 dark:text-gray-300 py-4">
             {data && <ProfileUserInfo data={data} />}
-            <div>
+            <div className="mt-2">
                 {friendStatus ? (
-                    <button className="text-lg" onClick={handleRemoveFriend}>Remove Friend</button>
+                    <button className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300" onClick={handleRemoveFriend}>Remove Friend</button>
                 ) : (
-                    <button className="text-lg" onClick={handleAddFriend}>Add Friend</button>
+                    <button className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300" onClick={handleAddFriend}>Add Friend</button>
                 )}
             </div>
         </main>

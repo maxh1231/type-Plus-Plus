@@ -86,10 +86,6 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
         levelProgress = null;
     }
 
-    console.log(totalXP);
-    console.log(userLevel);
-    console.log(levelProgress);
-
     let levelIcon;
     switch (userLevel) {
         case 1:
@@ -150,7 +146,7 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
             <div className="mt-5">
                 <h3 className="text-2xl text-center">{data.me.username}</h3>
             </div>
-            <div className="mt-3">
+            <div className="mt-2">
                 {!modalBio && <p className="text-center">{data.me.bio}</p>}
                 {modalBio && <p className="text-center">{modalBio}</p>}
             </div>

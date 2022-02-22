@@ -24,9 +24,9 @@ const WeeklyLeaderBoard = () => {
                 {leaderBoard ? (
                     <tbody>
                         {leaderBoard.map((score, i) => (
-                            <tr key={uuid()}>
+                            <tr key={uuid()} className='even:bg-gray-200 dark:even:bg-mid-gray'>
                                 <td className="text-center p-2" key={uuid()}>
-                                    {i + 1}
+                                    {i + 1}.
                                 </td>
                                 <td className="text-center p-2" key={uuid()}>
                                     {score.wpm}
@@ -63,7 +63,10 @@ const WeeklyLeaderBoard = () => {
                                 <td className="text-center p-2" key={uuid()}>
                                     {score.accuracy}
                                 </td>
-                                <td className="text-center p-2" key={uuid()}>
+                                <td
+                                    className="text-center p-2 hidden sm:block xl:hidden 2xl:block"
+                                    key={uuid()}
+                                >
                                     {score.date}
                                 </td>
                             </tr>
@@ -72,7 +75,17 @@ const WeeklyLeaderBoard = () => {
                 ) : (
                     <tbody>
                         <tr>
-                            <td>Loading...</td>
+                            <td>
+                                <div className='m-auto text center w-fit pt-6'>
+                                    <div className="inline-flex items-center w-fit px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-theme-blue transition ease-in-out duration-150">
+                                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                    Loading...
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 )}
@@ -100,14 +113,16 @@ const WeeklyLeaderBoard = () => {
 
         return (
             <>
-                <table className="table-auto mx-auto text-gray-600 dark:text-gray-400">
+                <table className="table-auto mx-auto text-gray-800 dark:text-gray-400  rounded overflow-hidden">
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>WPM</th>
-                            <th>User</th>
-                            <th>Accuracy</th>
-                            <th>Date</th>
+                        <tr className='bg-gray-400 dark:bg-gray-900'>
+                            <th className='p-2'>#</th>
+                            <th className='p-2'>WPM</th>
+                            <th className='p-2'>User</th>
+                            <th className='p-2'>Accuracy</th>
+                            <th className="p-2 hidden sm:block xl:hidden 2xl:block">
+                                Date
+                            </th>
                         </tr>
                     </thead>
                     <Items leaderBoard={currentItems} page={itemOffset} />
@@ -127,7 +142,17 @@ const WeeklyLeaderBoard = () => {
     }
 
     if (loading) {
-        return <p>Loading...</p>;
+        return (
+            <div className='m-auto text center w-fit pt-6'>
+                <div className="inline-flex items-center w-fit px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-theme-blue transition ease-in-out duration-150">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                Loading...
+                </div>
+            </div>
+        )
     }
 
     return (

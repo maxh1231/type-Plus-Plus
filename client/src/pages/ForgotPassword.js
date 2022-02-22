@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_USER_EMAIL } from '../utils/queries';
 import EmailInput from '../components/ForgotPassword';
 import SecurityQuestion from '../components/SecurityQuestion';
 import UpdatePassword from '../components/UpdatePassword';
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ currentPage, setCurrentPage }) => {
+
+    useEffect(() => {
+        setCurrentPage('ForgotPassword')
+    })
+
     const [currentComponent, setCurrentComponent] = useState('EmailInput');
-    const [getUser, {data, loading, error }] = useLazyQuery(QUERY_USER_EMAIL);
+    const [getUser, { data, loading, error }] = useLazyQuery(QUERY_USER_EMAIL);
 
     const renderPage = () => {
         if (currentComponent === 'EmailInput') {

@@ -65,28 +65,28 @@ function App() {
                     <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
                     <Routes>
                         <Route exact path="/" element={<Home />} />
-                        <Route exact path="/login" element={<Login />} />
-                        <Route exact path="/signup" element={<Signup />} />
+                        <Route exact path="/login" element={<Login currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
+                        <Route exact path="/signup" element={<Signup currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
                         <Route
                             exact
                             path="/dashboard"
-                            element={<Dashboard />}
+                            element={<Dashboard currentPage={currentPage} setCurrentPage={setCurrentPage} />}
                         />
                         <Route
                             exact
                             path="/leaderboard"
                             element={<LeaderBoard />}
                         />
-                        <Route exact path="/badges" element={<Badges />} />
+                        <Route exact path="/badges" element={<Badges currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
                         <Route
                             exact
                             path="/profile/:username"
-                            element={<Profile />}
+                            element={<Profile currentPage={currentPage} setCurrentPage={setCurrentPage} />}
                         />
                         <Route
                             exact
                             path="/password-reset"
-                            element={<ForgotPassword />}
+                            element={<ForgotPassword currentPage={currentPage} setCurrentPage={setCurrentPage} />}
                         />
                         <Route
                             render={() => (

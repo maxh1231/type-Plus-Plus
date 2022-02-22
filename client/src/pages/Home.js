@@ -34,6 +34,7 @@ const Home = () => {
     };
 
     const startGame = () => {
+        document.getElementById('welcome-text').classList.add('hidden');
         setTimeout(() => {
             setRunGame(true);
         }, 250);
@@ -41,36 +42,25 @@ const Home = () => {
 
     const endGame = () => {
         setRunGame(false);
+        document.getElementById('welcome-text').classList.remove('hidden');
     };
 
     return (
         <main className="flex-grow flex flex-col content-around justify-evenly items-center text-gray-700 dark:text-gray-400 dark:bg-gray-800 transition duration-200">
             {/* Intro text */}
-            <section className="container">
+            <section className="container p-3" id="welcome-text">
                 <p className="p-2 text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Pellentesque orci mi, dapibus in volutpat ac, bibendum vel
-                    dui. Duis lacinia odio tincidunt justo commodo, vel feugiat
-                    elit molestie. Mauris ut convallis elit. Sed interdum, dui
-                    faucibus faucibus consequat, odio magna ultricies neque, et
-                    dictum nisi nisl et eros. Pellentesque posuere et metus in
-                    accumsan. Ut mollis dui eu consectetur mattis. Nam tempor
-                    consequat semper. Pellentesque consectetur consectetur urna.
-                    Vestibulum interdum mauris justo, id vulputate enim iaculis
-                    sit amet.
+                    Welcome to Type++! Looking to test out your overpriced
+                    custom keyboard? Wanna show off how much faster you can type
+                    than your buddies? Need to find out your words-per-minute
+                    speed for a job application? You’ve come to the right place!
                 </p>
                 <p className="p-2 text-justify">
-                    Donec quis felis sagittis, scelerisque ante sit amet,
-                    bibendum neque. Nulla facilisi. Cras iaculis ex velit, nec
-                    consectetur nulla suscipit eget. Ut imperdiet est quis ipsum
-                    condimentum, non finibus arcu venenatis. Cras pretium
-                    accumsan diam, in auctor dolor elementum ut. Mauris pulvinar
-                    quam in ultrices suscipit. Donec laoreet mi nunc, vel
-                    aliquet tortor convallis fermentum. Phasellus rhoncus auctor
-                    nisi et vestibulum. Nam scelerisque ipsum quis urna posuere
-                    condimentum. Nulla quis facilisis nulla. Sed lacinia
-                    accumsan diam, id ultrices quam laoreet at. Sed sit amet
-                    varius nibh. Nullam quis sodales lacus.
+                    Hit “Start Game” below to take a typing-speed test. If you
+                    really want to experience everything Type++ has to offer,
+                    though, create an account first – you’ll be able to save
+                    your WPM and accuracy scores, track your improvement over
+                    time, follow friends, compete in our leaderboards, and more!
                 </p>
             </section>
             <section className="m-4">
@@ -88,7 +78,10 @@ const Home = () => {
                 )}
                 {runGame && (
                     <>
-                        <div id="sampleText" className="hidden m-4 mx-auto w-3/4">
+                        <div
+                            id="sampleText"
+                            className="hidden m-4 mx-auto w-3/4"
+                        >
                             {sampleArr.length !== 0 ? (
                                 sampleArr.map((char, i) => (
                                     <span
@@ -100,7 +93,15 @@ const Home = () => {
                                     </span>
                                 ))
                             ) : (
-                                <p>Loading...</p>
+                                <div className='m-auto text center w-fit pt-6'>
+                                    <div className="inline-flex items-center w-fit px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-theme-blue transition ease-in-out duration-150">
+                                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                    Loading...
+                                    </div>
+                                </div>
                             )}
                         </div>
                         <Game
@@ -111,20 +112,36 @@ const Home = () => {
                     </>
                 )}
             </section>
-            <div className="grid grid-cols-3 container">
-                <div>
+            <div className="container flex flex-wrap justify-around">
+                <div className="xl:w-1/3">
                     <GlobalLeaderBoard displayCount={5} runGame={runGame} />
                 </div>
-                <div className="my-4 flex flex-col">
-                    <h1 className="block text-center text-2xl underline text-gray-600 dark:text-gray-300">
-                        Badge Progress
-                    </h1>
-                    <div className="flex flex-grow flex-col items-center text-gray-600 dark:text-gray-400 my-6">
-                        {loggedIn && <RecentBadge runGame={runGame} />}
-                        {loggedIn && <UpcomingBadge runGame={runGame} />}
-                    </div>
-                </div>
-                {loggedIn && <Highscore runGame={runGame} /> }
+                {loggedIn && (
+                    <>
+                        <div className="xl:w-1/3 my-4 flex flex-col">
+                            {loggedIn && (
+                                <h1 className="block text-center text-2xl underline text-gray-600 dark:text-gray-300">
+                                    Badge Progress
+                                </h1>
+                            )}
+                            <div className="flex grow flex-wrap flex-col justify-around text-gray-600 dark:text-gray-400 my-6 sm:flex-row">
+                                <div className="pb-4 sm:pr-6">
+                                    {loggedIn && (
+                                        <RecentBadge runGame={runGame} />
+                                    )}
+                                </div>
+                                <div>
+                                    {loggedIn && (
+                                        <UpcomingBadge runGame={runGame} />
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="pb-10 xl:w-1/3">
+                            {loggedIn && <Highscore runGame={runGame} />}
+                        </div>
+                    </>
+                )}
             </div>
         </main>
     );

@@ -5,18 +5,17 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="text-center lg:text-left bg-gray-100 text-gray-600 dark:bg-gray-900 dark:text-gray-400 transition duration-200">
+        <footer className="text-center bg-gray-100 text-gray-600 dark:bg-gray-900 dark:text-gray-400 transition duration-200 lg:text-left">
             <div className="mx-6 py-10 text-center md:text-left">
-                <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
-                    <div className="flex justify-center">
+                <div className="grid grid-1 gap-8 justify-center md:grid-cols-4">
+                    <div className="flex justify-center md:justify-start lg:justify-center">
                         <div className="w-7/12">
                             <h6 className="uppercase text-gray-800 font-semibold mb-4 flex items-center justify-center md:justify-start dark:text-gray-200">
                                 Type++
                             </h6>
-                            <p className="mb-4">
-                                We developed this application as our capstone
-                                project for the University of Utah's full-stack
-                                web-development bootcamp.
+                            <p className="hidden mb-4 xl:block">
+                                Our capstone project for the University of
+                                Utah's full-stack web-development bootcamp.
                             </p>
                             <p>
                                 Check out the{' '}
@@ -32,7 +31,7 @@ const Footer = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center md:justify-start lg:justify-center">
                         <div>
                             <h6 className="uppercase text-gray-800 font-semibold mb-4 flex justify-center md:justify-start dark:text-gray-200">
                                 Stack
@@ -79,7 +78,7 @@ const Footer = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center md:justify-start lg:justify-center">
                         <div>
                             <h6 className="uppercase text-gray-800 font-semibold mb-4 flex justify-center md:justify-start dark:text-gray-200">
                                 Resources
@@ -126,7 +125,7 @@ const Footer = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center md:justify-start lg:justify-center">
                         <div>
                             <h6 className="uppercase text-gray-800 font-semibold mb-4 flex justify-center md:justify-start dark:text-gray-200">
                                 Find us on GitHub

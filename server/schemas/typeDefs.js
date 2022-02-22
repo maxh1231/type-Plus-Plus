@@ -11,7 +11,6 @@ const typeDefs = gql`
     _id: ID
     username: String!
     email: String!
-    password: String!
     createdAt: String!
     bio: String
     location: String
@@ -78,6 +77,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!, question: String!, answer: String!): Auth
+    removeUser: User
     addScore(wpm: Float!, accuracy: Float! ): Scores
     addBio(bio: String!): User
     addLocation(location: String!): User

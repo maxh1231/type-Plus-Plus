@@ -5,6 +5,7 @@ import { ADD_SCORE, ADD_BADGE } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 import { checkGame, checkScore, checkAccuracy } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
+import { XIcon } from '@heroicons/react/outline';
 
 const Game = ({ sampleArr, unmount, loggedIn }) => {
     const [inputText, setInputText] = useState('');
@@ -257,6 +258,44 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         unmount();
     };
 
+    // Modal styles
+    let customStyles;
+    if (localStorage.theme === 'dark') {
+        customStyles = {
+            content: {
+                top: '50%',
+                left: '50%',
+                right: 'auto',
+                bottom: 'auto',
+                transform: 'translate(-50%, -50%)',
+                backgroundColor: 'rgba(17, 24, 39, 1)',
+                borderRadius: '0.5rem',
+                color: '#e5e7eb',
+                opacity: 1,
+                padding: '2rem',
+            },
+            overlay: { backgroundColor: 'rgba(17, 24, 39, 0.75)', zIndex: 100 },
+        };
+    } else {
+        customStyles = {
+            content: {
+                top: '50%',
+                left: '50%',
+                right: 'auto',
+                bottom: 'auto',
+                transform: 'translate(-50%, -50%)',
+                backgroundColor: '#ffffff',
+                borderRadius: '0.5rem',
+                color: '#374151',
+                opacity: 1,
+                padding: '2rem',
+            },
+            overlay: {
+                backgroundColor: 'rgba(243, 244, 246, 0.75)',
+                zIndex: 100,
+            },
+        };
+    }
     return (
         <div id="inputArea" className="m-4">
             {intervalId ? (
@@ -265,7 +304,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     rows="4"
                     cols="50"
                     onChange={handleChange}
-                    className="block border-2 w-full"
+                    className="block border-2 w-full rounded p-2 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 focus-visible:outline-theme-red"
                     value={inputText}
                 ></textarea>
             ) : (
@@ -293,22 +332,15 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                 onAfterOpen={afterOpenModal}
                 onRequestClose={closeModal}
                 contentLabel="Example Modal"
-                style={{
-                    content: {
-                        top: '50%',
-                        left: '50%',
-                        right: 'auto',
-                        bottom: 'auto',
-                        marginRight: '-50%',
-                        transform: 'translate(-50%, -50%)',
-                    },
-                    overlay: { zIndex: 100 },
-                }}
+                style={customStyles}
             >
                 {!isCheater ? (
                     <div id="modal-container" className="w-fit flex flex-col">
-                        <button onClick={closeModal} className="text-right">
-                            ❌
+                        <button
+                            onClick={closeModal}
+                            className="absolute top-0 left-[11.2rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300 sm:left-60"
+                        >
+                            <XIcon className="h-6 w-6 m-2" />
                         </button>
                         <div id="modal-info" className="p-10">
                             <p>Errors: {errorCount}</p>
@@ -338,8 +370,11 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     </div>
                 ) : (
                     <>
-                        <button onClick={closeModal} className="text-right">
-                            ❌
+                        <button
+                            onClick={closeModal}
+                            className="absolute top-0 left-[11.2rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300 sm:left-60"
+                        >
+                            <XIcon className="h-6 w-6 m-2" />
                         </button>
                         <div>You cheated!!</div>
                     </>
