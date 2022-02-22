@@ -19,9 +19,13 @@ const Profile = ({ currentPage, setCurrentPage }) => {
 
     const [friendStatus, setFriendStatus] = useState(false);
     const { username: userParam } = useParams();
+
+
     const { loading, error, data } = useQuery(QUERY_USER, {
+        errorPolicy: 'all',
         variables: { username: userParam },
     });
+
     const myFriends = useQuery(QUERY_FRIENDS);
     const [addFriend] = useMutation(ADD_FRIEND);
     const [removeFriend] = useMutation(REMOVE_FRIEND);
@@ -47,6 +51,10 @@ const Profile = ({ currentPage, setCurrentPage }) => {
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
+    }
+
+    if (!loading && data.user === null) {
+        return <Navigate to='/'></Navigate>
     }
 
     let friendID;
