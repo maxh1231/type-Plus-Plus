@@ -92,12 +92,12 @@ const ActivityLeaderBoard = () => {
 
         return (
             <>
-                <table className="table-auto mx-auto text-gray-600 dark:text-gray-400">
+                <table className="table-auto mx-auto text-gray-600 dark:text-gray-400  rounded overflow-hidden">
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Games Played</th>
-                            <th>User</th>
+                        <tr className='bg-gray-400'>
+                            <th className='p-2'>#</th>
+                            <th className='p-2'>Games Played</th>
+                            <th className='p-2'>User</th>
                         </tr>
                     </thead>
                     <Items leaderBoard={currentItems} page={itemOffset} />

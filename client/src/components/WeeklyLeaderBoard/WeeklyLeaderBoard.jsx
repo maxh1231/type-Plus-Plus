@@ -113,14 +113,14 @@ const WeeklyLeaderBoard = () => {
 
         return (
             <>
-                <table className="table-auto mx-auto text-gray-600 dark:text-gray-400">
+                <table className="table-auto mx-auto text-gray-600 dark:text-gray-400  rounded overflow-hidden">
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>WPM</th>
-                            <th>User</th>
-                            <th>Accuracy</th>
-                            <th className="hidden sm:block xl:hidden 2xl:block">
+                        <tr className='bg-gray-400'>
+                            <th className='p-2'>#</th>
+                            <th className='p-2'>WPM</th>
+                            <th className='p-2'>User</th>
+                            <th className='p-2'>Accuracy</th>
+                            <th className="p-2 hidden sm:block xl:hidden 2xl:block">
                                 Date
                             </th>
                         </tr>

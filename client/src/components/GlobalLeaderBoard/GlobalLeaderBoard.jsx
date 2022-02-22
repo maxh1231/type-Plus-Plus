@@ -28,7 +28,7 @@ const GlobalLeaderBoard = ({ displayCount, runGame, leaderboardPage }) => {
                 {leaderBoard ? (
                     <tbody>
                         {leaderBoard.map((score, i) => (
-                            <tr key={uuid()}>
+                            <tr key={uuid()} className='even:bg-gray-200'>
                                 <td className="text-center p-2" key={uuid()}>
                                     {i + page + 1}
                                 </td>
@@ -126,17 +126,17 @@ const GlobalLeaderBoard = ({ displayCount, runGame, leaderboardPage }) => {
 
         return (
             <>
-                <table className="table-auto mx-auto text-gray-600 dark:text-gray-400">
+                <table className="table-auto mx-auto text-gray-600 dark:text-gray-400 rounded overflow-hidden">
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>WPM</th>
-                            <th>User</th>
-                            <th>Accuracy</th>
+                        <tr className='bg-gray-400'>
+                            <th className='p-1'>#</th>
+                            <th className='p-1'>WPM</th>
+                            <th className='p-1'>User</th>
+                            <th className='p-1'>Accuracy</th>
                             {leaderboardPage === true ? (
-                                <th className="hidden sm:block">Date</th>
+                                <th className="p-1 hidden sm:block">Date</th>
                             ) : (
-                                <th className="hidden sm:block xl:hidden 2xl:block">
+                                <th className="p-1 hidden sm:block xl:hidden 2xl:block">
                                     Date
                                 </th>
                             )}
