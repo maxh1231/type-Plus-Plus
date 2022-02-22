@@ -1,5 +1,5 @@
 // Imports
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import { useQuery, useMutation } from '@apollo/client';
@@ -11,7 +11,6 @@ import DashboardUserInfo from '../components/DashboardUserInfo';
 // import Progress from '../components/DashboardProgress'
 import EditModal from '../components/EditModal';
 import Friends from '../components/Friends';
-import Uploader from '../components/Uploader';
 import RecentBadge from '../components/RecentBadge';
 import Chart from '../components/Chart';
 import defaultPhoto from '../assets/images/no-profile-picture.svg';
@@ -114,7 +113,7 @@ const Dashboard = () => {
     function openModal() {
         setIsOpen(true);
     }
-    function afterOpenModal() {}
+    function afterOpenModal() { }
     function closeModal() {
         setIsOpen(false);
     }
