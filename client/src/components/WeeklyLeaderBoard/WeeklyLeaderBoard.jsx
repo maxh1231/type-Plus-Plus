@@ -24,7 +24,7 @@ const WeeklyLeaderBoard = () => {
                 {leaderBoard ? (
                     <tbody>
                         {leaderBoard.map((score, i) => (
-                            <tr key={uuid()}>
+                            <tr key={uuid()} className='even:bg-gray-200'>
                                 <td className="text-center p-2" key={uuid()}>
                                     {i + 1}
                                 </td>

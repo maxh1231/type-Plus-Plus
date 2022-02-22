@@ -33,7 +33,7 @@ const ActivityLeaderBoard = () => {
                 {tempArr ? (
                     <tbody>
                         {tempArr.map((user, i) => (
-                            <tr key={uuid()}>
+                            <tr key={uuid()} className='even:bg-gray-200'>
                                 <td className="text-center p-2" key={uuid()}>
                                     {i + 1}
                                 </td>
