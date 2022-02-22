@@ -34,19 +34,20 @@ const Profile = ({ currentPage, setCurrentPage }) => {
     const newData = myFriends.data?.me || [];
 
     const handler = async () => {
-        const friendArr = await newData.friends.map((friend) => {
-            return friend.username;
-        });
-        if (friendArr.includes(`${userParam}`)) {
-            setFriendStatus(true);
-        } else {
-            setFriendStatus(false);
+        if (!myFriends.loading) {
+            const friendArr = await newData.friends.map((friend) => {
+                return friend.username;
+            });
+            if (friendArr.includes(`${userParam}`)) {
+                setFriendStatus(true);
+            } else {
+                setFriendStatus(false);
+            }
         }
     };
 
     useEffect(() => {
-        if (!myFriends.loading)
-            handler();
+        handler();
     }, [myFriends.data]);
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
