@@ -144,7 +144,7 @@ const BadgeList = ({ view }) => {
                                 <img
                                     src={`.${badge.img}`}
                                     key={uuid()}
-                                    className="m-auto"
+                                    className="m-auto border-b"
                                     alt="badge"
                                 ></img>
                                 <p
@@ -175,7 +175,7 @@ const BadgeList = ({ view }) => {
                                 <img
                                     src={`.${badge.placeholder}`}
                                     key={uuid()}
-                                    className="m-auto"
+                                    className="m-auto border-b"
                                     alt="badge"
                                 ></img>
                                 <p

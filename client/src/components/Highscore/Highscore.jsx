@@ -41,13 +41,13 @@ const Highscore = ({ runGame }) => {
                     Your Highest Scores
                 </h3>
             </div>
-            <div className="flex-grow">
+            <div className="flex-grow flex justify-center">
                 {newArr.length === 0 ? (
                     <p className="text-center mt-1 text-lg">No scores yet!</p>
                 ) : (
                     <ol>
                         {newArr.map((score) => (
-                            <li className="text-center mt-1" key={uuid()}>
+                            <li className="text-center p-1 even:bg-gray-200 dark:even:bg-mid-gray" key={uuid()}>
                                 {score.wpm} WPM on {formatTime(score.createdAt)}
                             </li>
                         ))}
