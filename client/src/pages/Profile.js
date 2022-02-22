@@ -77,7 +77,7 @@ const Profile = ({ currentPage, setCurrentPage }) => {
     };
 
     return (
-        <main className="grow flex flex-col items-center justify-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
+        <main className="grow flex flex-col items-center justify-center dark:bg-gray-800 text-gray-600 dark:text-gray-300 py-4">
             {data && <ProfileUserInfo data={data} />}
             <div className="mt-2">
                 {friendStatus ? (

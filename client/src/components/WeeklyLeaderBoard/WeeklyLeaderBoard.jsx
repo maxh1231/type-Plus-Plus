@@ -24,9 +24,9 @@ const WeeklyLeaderBoard = () => {
                 {leaderBoard ? (
                     <tbody>
                         {leaderBoard.map((score, i) => (
-                            <tr key={uuid()} className='even:bg-gray-200'>
+                            <tr key={uuid()} className='even:bg-gray-200 dark:even:bg-mid-gray'>
                                 <td className="text-center p-2" key={uuid()}>
-                                    {i + 1}
+                                    {i + 1}.
                                 </td>
                                 <td className="text-center p-2" key={uuid()}>
                                     {score.wpm}
@@ -113,9 +113,9 @@ const WeeklyLeaderBoard = () => {
 
         return (
             <>
-                <table className="table-auto mx-auto text-gray-600 dark:text-gray-400  rounded overflow-hidden">
+                <table className="table-auto mx-auto text-gray-800 dark:text-gray-400  rounded overflow-hidden">
                     <thead>
-                        <tr className='bg-gray-400'>
+                        <tr className='bg-gray-400 dark:bg-gray-900'>
                             <th className='p-2'>#</th>
                             <th className='p-2'>WPM</th>
                             <th className='p-2'>User</th>
