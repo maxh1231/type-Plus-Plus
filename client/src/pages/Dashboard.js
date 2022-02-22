@@ -1,5 +1,5 @@
 // Imports
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import { useQuery, useMutation } from '@apollo/client';
@@ -11,7 +11,6 @@ import DashboardUserInfo from '../components/DashboardUserInfo';
 // import Progress from '../components/DashboardProgress'
 import EditModal from '../components/EditModal';
 import Friends from '../components/Friends';
-import Uploader from '../components/Uploader';
 import RecentBadge from '../components/RecentBadge';
 import Chart from '../components/Chart';
 import defaultPhoto from '../assets/images/no-profile-picture.svg';
@@ -70,22 +69,26 @@ if (windowWidth < 640) {
 
 Modal.setAppElement('#root');
 
-const Dashboard = () => {
+const Dashboard = ({ currentPage, setCurrentPage }) => {
     const [image, setImage] = useState(defaultPhoto);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalBio, setModalBio] = useState('');
     const [toggleDelete, setToggleDelete] = useState(true);
     const { username: userParam } = useParams();
     const { loading, data, refetch } = useQuery(QUERY_ME);
-    const [deleteUser, { error }] = useMutation(REMOVE_USER);
+    const [deleteUser] = useMutation(REMOVE_USER);
 
-    const user = data?.me || data?.user || {};
+    const user = data?.me || data?.user || {}; // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if (user.profilePic) {
             setImage(user.profilePic);
         }
     }, [user]);
+
+    useEffect(() => {
+        setCurrentPage('Dashboard')
+    })
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
@@ -96,10 +99,10 @@ const Dashboard = () => {
             <div className='m-auto text center w-fit pt-6'>
                 <div className="inline-flex items-center w-fit px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-theme-blue transition ease-in-out duration-150">
                     <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                Loading...
+                    Loading...
                 </div>
             </div>
         )
@@ -124,7 +127,7 @@ const Dashboard = () => {
     function openModal() {
         setIsOpen(true);
     }
-    function afterOpenModal() {}
+    function afterOpenModal() { }
     function closeModal() {
         setIsOpen(false);
     }
@@ -146,7 +149,6 @@ const Dashboard = () => {
 
     return (
         <main className="grow flex items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
-            {/* <section className="grow grid grid-cols-4"> */}
             <section className="grow py-6 lg:grid lg:grid-cols-4">
                 <div className="h-full flex flex-col items-center justify-evenly">
                     <div className="flex flex-col items-center">
@@ -176,7 +178,6 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="flex justify-center col-span-3 items-center">
-                    {/* <div className="w-5/6"> */}
                     <div className="w-5/6 h-80 pt-4 lg:h-2/5 xl:h-3/5 2xl:h-full">
                         <Chart />
                     </div>
