@@ -91,7 +91,7 @@ const UpcomingBadge = (runGame) => {
                             Progress: {renderProgress(displayBadge.category)}/
                             {displayBadge.targetVal}
                         </p>
-                        <div className="w-full rounded-full p-2">
+                        <div className="w-full rounded-full m-1 bg-gray-300">
                             <div
                                 className="bg-theme-blue text-xs font-bold text-gray-700 text-center p-0.5 leading-none rounded-l-full"
                                 style={{
