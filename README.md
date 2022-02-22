@@ -1,7 +1,7 @@
-# Type++ ![Project License Badge](https://img.shields.io/badge/license-MIT-brightgreen)
+# [Type++](https://typeplusplus.herokuapp.com/) ![Project License Badge](https://img.shields.io/badge/license-MIT-brightgreen)
 
-## Check out [Type++](https://typeplusplus.herokuapp.com/)
 
+Welcome to Type++! Looking to test out your overpriced custom keyboard? Wanna show off how much faster you can type than your buddies? Need to find out your words-per-minute speed for a job application? You’ve come to the right place! Type++ is a full stack MERN application started by four friends in a coding bootcamp. 
 ## Technology Stack
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -24,8 +24,9 @@
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 
-## Description:
-A full stack MERN SPA for improving typing skills.
+## View Type++ on Heroku at [https://typeplusplus.herokuapp.com/](https://typeplusplus.herokuapp.com/)
+
+---
 
 ## Table of Contents:
 - [Usage](#usage)
