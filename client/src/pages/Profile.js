@@ -55,7 +55,7 @@ const Profile = ({ currentPage, setCurrentPage }) => {
     }
 
     if (!loading && data.user === null) {
-        return <Navigate to='/'></Navigate>
+        return <Navigate to='/notfound'></Navigate>
     }
 
     let friendID;
