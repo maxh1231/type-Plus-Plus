@@ -41,12 +41,12 @@ const Chart = () => {
     // Create new array so we can sort by createdAt
     let userDataArray = data?.meScores
         ? data?.meScores
-            .map((score) => {
-                return score;
-            })
-            .sort(function (a, b) {
-                return a.createdAt - b.createdAt;
-            })
+              .map((score) => {
+                  return score;
+              })
+              .sort(function (a, b) {
+                  return a.createdAt - b.createdAt;
+              })
         : [];
 
     if (Auth.loggedIn()) {
@@ -64,9 +64,6 @@ const Chart = () => {
     if (loading) {
         return <p>Loading...</p>;
     }
-
-    // Determine labeling colors
-    let theme = localStorage.theme === 'light';
 
     return (
         <>
@@ -93,6 +90,7 @@ const Chart = () => {
                     ],
                 }}
                 options={{
+                    maintainAspectRatio: false,
                     plugins: {
                         legend: {
                             position: 'top',
@@ -117,7 +115,7 @@ const Chart = () => {
                             ticks: {
                                 color: '#6b7280',
                                 autoSkip: true,
-                                maxTicksLimit: 5
+                                maxTicksLimit: 5,
                             },
                         },
                     },
