@@ -63,10 +63,7 @@ if (localStorage.theme === 'dark') {
 
 Modal.setAppElement('#root');
 
-const Dashboard = ({ currentPage, setCurrentPage }) => {
-    useEffect(() => {
-        setCurrentPage('Dashboard')
-    })
+const Dashboard = () => {
     const [image, setImage] = useState(defaultPhoto);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalBio, setModalBio] = useState('');
@@ -133,7 +130,7 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
     return (
         <main className="grow flex items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
             {/* <section className="grow grid grid-cols-4"> */}
-            <section className="grow flex flex-wrap">
+            <section className="grow py-6 lg:grid lg:grid-cols-4">
                 <div className="h-full flex flex-col items-center justify-evenly">
                     <div className="flex flex-col items-center">
                         <DashboardUserInfo
@@ -153,12 +150,17 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
                         </span>
                     </div>
                     <div className="flex flex-wrap justify-evenly w-full pt-4">
-                        <Friends friends={data.me.friends} />
-                        <RecentBadge />
+                        <div className="pb-5">
+                            <Friends friends={data.me.friends} />
+                        </div>
+                        <div>
+                            <RecentBadge />
+                        </div>
                     </div>
                 </div>
-                <div className="col-span-3 flex justify-center items-center">
-                    <div className="w-5/6">
+                <div className="flex justify-center col-span-3 items-center">
+                    {/* <div className="w-5/6"> */}
+                    <div className="w-[225px] h-[300px] pt-4">
                         <Chart />
                     </div>
                 </div>

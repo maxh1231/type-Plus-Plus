@@ -10,10 +10,9 @@ import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
 import { Link } from 'react-router-dom';
 
 const Login = ({ currentPage, setCurrentPage }) => {
-
     useEffect(() => {
-        setCurrentPage('Login')
-    })
+        setCurrentPage('Login');
+    });
 
     const [login, { error }] = useMutation(LOGIN_USER);
     const [addBadge] = useMutation(ADD_BADGE);
@@ -71,15 +70,15 @@ const Login = ({ currentPage, setCurrentPage }) => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                        ([type, message]) => (
-                                            <p
-                                                key={type}
-                                                className="p-2 font-bold text-theme-red text-center"
-                                            >
-                                                {message}
-                                            </p>
-                                        )
-                                    )
+                                          ([type, message]) => (
+                                              <p
+                                                  key={type}
+                                                  className="p-2 font-bold text-theme-red text-center"
+                                              >
+                                                  {message}
+                                              </p>
+                                          )
+                                      )
                                     : null;
                             }}
                             className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -114,15 +113,15 @@ const Login = ({ currentPage, setCurrentPage }) => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                        ([type, message]) => (
-                                            <p
-                                                key={type}
-                                                className="p-2 font-bold text-theme-red text-center"
-                                            >
-                                                {message}
-                                            </p>
-                                        )
-                                    )
+                                          ([type, message]) => (
+                                              <p
+                                                  key={type}
+                                                  className="p-2 font-bold text-theme-red text-center"
+                                              >
+                                                  {message}
+                                              </p>
+                                          )
+                                      )
                                     : null;
                             }}
                         />
