@@ -18,7 +18,12 @@ import defaultPhoto from '../assets/images/no-profile-picture.svg';
 import { PencilAltIcon, XIcon } from '@heroicons/react/outline';
 
 // Modal Styles
-let customStyles;
+let customStyles = { content: {} };
+let windowWidth = window.screen.width;
+console.log(windowWidth);
+
+console.log(customStyles);
+
 if (localStorage.theme === 'dark') {
     customStyles = {
         content: {
@@ -60,6 +65,13 @@ if (localStorage.theme === 'dark') {
         overlay: { backgroundColor: 'rgba(243, 244, 246, 0.75)', zIndex: 100 },
     };
 }
+
+if (windowWidth < 640) {
+    console.log('success');
+    customStyles.content.width = '80%';
+}
+
+console.log(customStyles);
 
 Modal.setAppElement('#root');
 
@@ -177,7 +189,7 @@ const Dashboard = () => {
                 >
                     <button
                         onClick={closeModal}
-                        className="absolute top-0 left-[15.5rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
+                        className="absolute top-0 left-[13.25rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300 sm:left-[15.5rem]"
                     >
                         <XIcon className="h-6 w-6 m-2" />
                     </button>
