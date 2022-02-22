@@ -250,7 +250,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
                     {/* Dark mode switch */}
                     <div
                         id="toggle-container"
-                        className="absolute hidden left-[14.25rem] top-[4.33rem] transition-all duration-300 z-20 sm:left-[35.25rem] sm:top-[1.33rem] md:left-[42.25rem] lg:left-[58.25rem] xl:left-[74.25rem] 2xl:static 2xl:flex 2xl:justify-end 2xl:items-center"
+                        className="absolute hidden right-4 top-[4.33rem] transition-all duration-300 z-20 sm:top-[1.33rem] 2xl:static 2xl:flex 2xl:justify-end 2xl:items-center"
                     >
                         {/* Inspired by https://daily-dev-tips.com/posts/creating-day-night-css-only-toggle-switch/ */}
                         {localStorage.theme === 'light' && (

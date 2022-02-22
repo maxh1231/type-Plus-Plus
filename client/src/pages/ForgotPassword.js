@@ -6,31 +6,42 @@ import SecurityQuestion from '../components/SecurityQuestion';
 import UpdatePassword from '../components/UpdatePassword';
 
 const ForgotPassword = ({ currentPage, setCurrentPage }) => {
-
     useEffect(() => {
-        setCurrentPage('ForgotPassword')
-    })
+        setCurrentPage('ForgotPassword');
+    });
 
     const [currentComponent, setCurrentComponent] = useState('EmailInput');
     const [getUser, { data, loading, error }] = useLazyQuery(QUERY_USER_EMAIL);
 
     const renderPage = () => {
         if (currentComponent === 'EmailInput') {
-            return <EmailInput setCurrentComponent={setCurrentComponent} getUser={getUser} data={data} />
+            return (
+                <EmailInput
+                    setCurrentComponent={setCurrentComponent}
+                    getUser={getUser}
+                    data={data}
+                />
+            );
         }
         if (currentComponent === 'SecurityQuestion') {
-            return <SecurityQuestion setCurrentComponent={setCurrentComponent} data={data} />
+            return (
+                <SecurityQuestion
+                    setCurrentComponent={setCurrentComponent}
+                    data={data}
+                />
+            );
         }
         if (currentComponent === 'UpdatePassword') {
-            return <UpdatePassword setCurrentComponent={setCurrentComponent} data={data} />
+            return (
+                <UpdatePassword
+                    setCurrentComponent={setCurrentComponent}
+                    data={data}
+                />
+            );
         }
-    }
+    };
 
-    return (
-        <div>
-            {renderPage()}
-        </div>
-    );
-}
+    return <div className="grow flex">{renderPage()}</div>;
+};
 
 export default ForgotPassword;

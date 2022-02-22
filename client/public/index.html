@@ -45,12 +45,20 @@
     </body>
 
     <script>
-        (function() {
-          if("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("/svcWorker.js")
-              .then(() => console.log("Service Worker registered successfully."))
-              .catch(error => console.log("Service Worker registration failed:", error));
-          }
+        (function () {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker
+                    .register('svcWorker.js')
+                    .then(() =>
+                        console.log('Service Worker registered successfully.')
+                    )
+                    .catch((error) =>
+                        console.log(
+                            'Service Worker registration failed:',
+                            error
+                        )
+                    );
+            }
         })();
-        </script>
+    </script>
 </html>

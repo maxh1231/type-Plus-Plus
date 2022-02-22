@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const NotFound = () => {
     return (
@@ -8,14 +8,17 @@ const NotFound = () => {
             </div>
             <div>
                 <h3 className="text-2xl my-4">
-                    Oops, looks like you need some more typing practice, this URL does not exist.
+                    Oops – looks like you need some more typing practice! This
+                    URL does not exist.
                 </h3>
             </div>
             <div>
-                <button className="w-full text-center py-3 px-7 my-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"><Link to="/">Home</Link></button>
+                <button className="w-full text-center py-3 px-7 my-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300">
+                    <Link to="/">Home</Link>
+                </button>
             </div>
-        </section >
-    )
-}
+        </section>
+    );
+};
 
 export default NotFound;
