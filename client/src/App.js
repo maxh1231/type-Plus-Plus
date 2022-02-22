@@ -75,7 +75,7 @@ function App() {
                         <Route
                             exact
                             path="/leaderboard"
-                            element={<LeaderBoard />}
+                            element={<LeaderBoard currentPage={currentPage} setCurrentPage={setCurrentPage} />}
                         />
                         <Route exact path="/badges" element={<Badges currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
                         <Route
