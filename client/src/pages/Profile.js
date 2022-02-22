@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_FRIENDS } from '../utils/queries';
@@ -19,9 +19,13 @@ const Profile = ({ currentPage, setCurrentPage }) => {
 
     const [friendStatus, setFriendStatus] = useState(false);
     const { username: userParam } = useParams();
-    const { loading, error, data } = useQuery(QUERY_USER, {
+
+
+    const { loading, data } = useQuery(QUERY_USER, {
+        errorPolicy: 'all',
         variables: { username: userParam },
     });
+
     const myFriends = useQuery(QUERY_FRIENDS);
     const [addFriend] = useMutation(ADD_FRIEND);
     const [removeFriend] = useMutation(REMOVE_FRIEND);
@@ -30,23 +34,28 @@ const Profile = ({ currentPage, setCurrentPage }) => {
     const newData = myFriends.data?.me || [];
 
     const handler = async () => {
-        const friendArr = await newData.friends.map((friend) => {
-            return friend.username;
-        });
-        if (friendArr.includes(`${userParam}`)) {
-            setFriendStatus(true);
-        } else {
-            setFriendStatus(false);
+        if (!myFriends.loading) {
+            const friendArr = await newData.friends.map((friend) => {
+                return friend.username;
+            });
+            if (friendArr.includes(`${userParam}`)) {
+                setFriendStatus(true);
+            } else {
+                setFriendStatus(false);
+            }
         }
     };
 
     useEffect(() => {
-        if (!myFriends.loading)
-            handler();
-    }, [myFriends.data]);
+        handler();
+    }, [myFriends.data]); // eslint-disable-line react-hooks/exhaustive-deps
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/dashboard" />;
+    }
+
+    if (!loading && data.user === null) {
+        return <Navigate to='/notfound'></Navigate>
     }
 
     let friendID;
@@ -76,15 +85,20 @@ const Profile = ({ currentPage, setCurrentPage }) => {
         setFriendStatus(false);
     };
 
+    let button;
+    if (Auth.loggedIn() && friendStatus) {
+        button = <button id="1" className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300" onClick={handleRemoveFriend}>Remove Friend</button>
+    } else if (Auth.loggedIn() && !friendStatus) {
+        button = <button id="2" className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300" onClick={handleAddFriend}>Add Friend</button>
+    } else {
+        button = <button id="3" className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"><Link to='/login'>Login to Add Friend</Link></button>
+    }
+
     return (
         <main className="grow flex flex-col items-center justify-center dark:bg-gray-800 text-gray-600 dark:text-gray-300 py-4">
             {data && <ProfileUserInfo data={data} />}
             <div className="mt-2">
-                {friendStatus ? (
-                    <button className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300" onClick={handleRemoveFriend}>Remove Friend</button>
-                ) : (
-                    <button className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300" onClick={handleAddFriend}>Add Friend</button>
-                )}
+                {button}
             </div>
         </main>
     );
