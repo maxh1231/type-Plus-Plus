@@ -63,10 +63,7 @@ if (localStorage.theme === 'dark') {
 
 Modal.setAppElement('#root');
 
-const Dashboard = ({ currentPage, setCurrentPage }) => {
-    useEffect(() => {
-        setCurrentPage('Dashboard')
-    })
+const Dashboard = () => {
     const [image, setImage] = useState(defaultPhoto);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalBio, setModalBio] = useState('');
@@ -110,15 +107,14 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
     function openModal() {
         setIsOpen(true);
     }
-    function afterOpenModal() {
-    }
+    function afterOpenModal() {}
     function closeModal() {
         setIsOpen(false);
     }
 
     const toggleDeleteBtn = () => {
         setToggleDelete(false);
-    }
+    };
 
     const deleteAccount = async () => {
         try {
@@ -129,12 +125,13 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
         } catch (err) {
             console.error(err);
         }
-    }
+    };
 
     return (
         <main className="grow flex items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
-            <section className="grow grid grid-cols-4">
-                <div className="h-full flex flex-col items-center justify-evenly py-4">
+            {/* <section className="grow grid grid-cols-4"> */}
+            <section className="grow py-6 lg:grid lg:grid-cols-4">
+                <div className="h-full flex flex-col items-center justify-evenly">
                     <div className="flex flex-col items-center">
                         <DashboardUserInfo
                             data={data}
@@ -152,13 +149,18 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
                             <PencilAltIcon className="w-5 h-5 mx-1" />
                         </span>
                     </div>
-                    <div className="flex flex-wrap justify-evenly w-full">
-                        <Friends friends={data.me.friends} />
-                        <RecentBadge />
+                    <div className="flex flex-wrap justify-evenly w-full pt-4">
+                        <div className="pb-5">
+                            <Friends friends={data.me.friends} />
+                        </div>
+                        <div>
+                            <RecentBadge />
+                        </div>
                     </div>
                 </div>
-                <div className="col-span-3 flex justify-center items-center">
-                    <div className="w-5/6">
+                <div className="flex justify-center col-span-3 items-center">
+                    {/* <div className="w-5/6"> */}
+                    <div className="w-[225px] h-[300px] pt-4">
                         <Chart />
                     </div>
                 </div>
