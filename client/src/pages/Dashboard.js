@@ -19,6 +19,7 @@ import { PencilAltIcon, XIcon } from '@heroicons/react/outline';
 
 // Modal Styles
 let customStyles;
+
 if (localStorage.theme === 'dark') {
     customStyles = {
         content: {
@@ -61,12 +62,15 @@ if (localStorage.theme === 'dark') {
     };
 }
 
+// Resize modal if user is on mobile
+let windowWidth = window.screen.width;
+if (windowWidth < 640) {
+    customStyles.content.width = '80%';
+}
+
 Modal.setAppElement('#root');
 
-const Dashboard = ({ currentPage, setCurrentPage }) => {
-    useEffect(() => {
-        setCurrentPage('Dashboard')
-    })
+const Dashboard = () => {
     const [image, setImage] = useState(defaultPhoto);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalBio, setModalBio] = useState('');
@@ -120,15 +124,14 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
     function openModal() {
         setIsOpen(true);
     }
-    function afterOpenModal() {
-    }
+    function afterOpenModal() {}
     function closeModal() {
         setIsOpen(false);
     }
 
     const toggleDeleteBtn = () => {
         setToggleDelete(false);
-    }
+    };
 
     const deleteAccount = async () => {
         try {
@@ -139,12 +142,13 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
         } catch (err) {
             console.error(err);
         }
-    }
+    };
 
     return (
         <main className="grow flex items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
-            <section className="grow grid grid-cols-4">
-                <div className="h-full flex flex-col items-center justify-evenly py-4">
+            {/* <section className="grow grid grid-cols-4"> */}
+            <section className="grow py-6 lg:grid lg:grid-cols-4">
+                <div className="h-full flex flex-col items-center justify-evenly">
                     <div className="flex flex-col items-center">
                         <DashboardUserInfo
                             data={data}
@@ -162,13 +166,18 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
                             <PencilAltIcon className="w-5 h-5 mx-1" />
                         </span>
                     </div>
-                    <div className="flex flex-wrap justify-evenly w-full">
-                        <Friends friends={data.me.friends} />
-                        <RecentBadge />
+                    <div className="flex flex-wrap justify-evenly w-full pt-4">
+                        <div className="pb-5">
+                            <Friends friends={data.me.friends} />
+                        </div>
+                        <div>
+                            <RecentBadge />
+                        </div>
                     </div>
                 </div>
-                <div className="col-span-3 flex justify-center items-center">
-                    <div className="w-5/6">
+                <div className="flex justify-center col-span-3 items-center">
+                    {/* <div className="w-5/6"> */}
+                    <div className="w-5/6 h-80 pt-4 lg:h-2/5 xl:h-3/5 2xl:h-full">
                         <Chart />
                     </div>
                 </div>
@@ -185,7 +194,7 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
                 >
                     <button
                         onClick={closeModal}
-                        className="absolute top-0 left-[15.5rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
+                        className="absolute top-0 left-[13.25rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300 sm:left-[15.5rem]"
                     >
                         <XIcon className="h-6 w-6 m-2" />
                     </button>
