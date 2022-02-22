@@ -17,6 +17,7 @@ import Profile from './pages/Profile';
 import LeaderBoard from './pages/LeaderBoard';
 import Badges from './pages/Badges';
 import ForgotPassword from './pages/ForgotPassword';
+import NotFound from './pages/NotFound'
 
 // Component imports
 import Signup from './components/Signup';
@@ -89,10 +90,10 @@ function App() {
                             element={<ForgotPassword currentPage={currentPage} setCurrentPage={setCurrentPage} />}
                         />
                         <Route
-                            render={() => (
-                                <h1 className="">You've Been 404'd! Oops...</h1>
-                            )}
-                        />{' '}
+                            exact
+                            path="/notfound"
+                            element={<NotFound />}
+                        />
                         {/* To Do: Build out a custom 404 page */}
                     </Routes>
                     <Footer />
