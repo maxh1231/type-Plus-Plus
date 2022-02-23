@@ -13,14 +13,12 @@ import ProfileChart from '../components/ProfileChart/ProfileChart';
 // import Progress from '../components/Progress'
 
 const Profile = ({ currentPage, setCurrentPage }) => {
-
     useEffect(() => {
-        setCurrentPage('Profile')
-    })
+        setCurrentPage('Profile');
+    });
 
     const [friendStatus, setFriendStatus] = useState(false);
     const { username: userParam } = useParams();
-
 
     const { loading, data } = useQuery(QUERY_USER, {
         errorPolicy: 'all',
@@ -56,7 +54,7 @@ const Profile = ({ currentPage, setCurrentPage }) => {
     }
 
     if (!loading && data.user === null) {
-        return <Navigate to='/notfound'></Navigate>
+        return <Navigate to="/notfound"></Navigate>;
     }
 
     let friendID;
@@ -70,9 +68,9 @@ const Profile = ({ currentPage, setCurrentPage }) => {
             variables: { friendID },
         });
         if (data) {
-            const friendBadge = checkFriends(data.data.addFriend.friendCount)
+            const friendBadge = checkFriends(data.data.addFriend.friendCount);
             if (friendBadge) {
-                addBadge({ variables: { badgeName: friendBadge } })
+                addBadge({ variables: { badgeName: friendBadge } });
             }
         }
         setFriendStatus(true);
@@ -88,24 +86,49 @@ const Profile = ({ currentPage, setCurrentPage }) => {
 
     let button;
     if (Auth.loggedIn() && friendStatus) {
-        button = <button id="1" className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300" onClick={handleRemoveFriend}>Remove Friend</button>
+        button = (
+            <button
+                id="1"
+                className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
+                onClick={handleRemoveFriend}
+            >
+                Remove Friend
+            </button>
+        );
     } else if (Auth.loggedIn() && !friendStatus) {
-        button = <button id="2" className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300" onClick={handleAddFriend}>Add Friend</button>
+        button = (
+            <button
+                id="2"
+                className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
+                onClick={handleAddFriend}
+            >
+                Add Friend
+            </button>
+        );
     } else {
-        button = <button id="3" className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"><Link to='/login'>Login to Add Friend</Link></button>
+        button = (
+            <button
+                id="3"
+                className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
+            >
+                <Link to="/login">Login to Add Friend</Link>
+            </button>
+        );
     }
 
     return (
-        <main className="grow flex flex-col items-center justify-center dark:bg-gray-800 text-gray-600 dark:text-gray-300 py-4">
-            {data && <ProfileUserInfo data={data} />}
-            <div className="mt-2">
-                {button}
-            </div>
-            <div className="flex justify-center col-span-3 items-center w-full">
-                    <div className="w-5/6 h-80 pt-4 xl:h-3/5 2xl:h-full m-auto">
-                        <ProfileChart userParam={userParam}/>
+        <main className="grow flex items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300">
+            <section className="grow py-6 lg:grid lg:grid-cols-4">
+                <div className="h-full flex flex-col items-center justify-evenly">
+                    {data && <ProfileUserInfo data={data} />}
+                    <div className="mt-2">{button}</div>
+                </div>
+                <div className="flex justify-center col-span-3 items-center">
+                    <div className="w-5/6 h-80 pt-4 lg:h-full">
+                        <ProfileChart userParam={userParam} />
                     </div>
                 </div>
+            </section>
         </main>
     );
 };
