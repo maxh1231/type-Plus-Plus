@@ -131,7 +131,7 @@ const ProfileUserInfo = ({ data }) => {
             >
                 {data.user.profilePic && (
                     <img
-                        className="rounded-full w-[255px] h-[255px]"
+                        className="rounded-full w-[255px] h-[255px] object-cover"
                         src={`../${data.user.profilePic}`}
                         alt=""
                     ></img>

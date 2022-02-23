@@ -243,7 +243,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noreferrer"
                 >
-                    Team Kickass
+                    Team Type++
                 </a>
             </div>
         </footer>
