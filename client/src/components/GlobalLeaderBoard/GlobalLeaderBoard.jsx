@@ -152,7 +152,7 @@ const GlobalLeaderBoard = ({ displayCount, runGame, leaderboardPage }) => {
                     pageCount={pageCount}
                     previousLabel="<<"
                     renderOnZeroPageCount={null}
-                    className="m-auto w-1/3 flex p-2 justify-between pagination-nav"
+                    className="m-auto flex p-2 justify-center pagination-nav"
                 />
             </>
         );
