@@ -16,10 +16,10 @@ export const QUERY_USER = gql`
             }
         }
         scoresByUser(username: $username) {
-          wpm
-          accuracy
-          createdAt
-          username
+            wpm
+            accuracy
+            createdAt
+            username
         }
     }
 `;
@@ -34,7 +34,6 @@ export const QUERY_USER_EMAIL = gql`
         }
     }
 `;
-
 
 // query logged in user's information and scores sorted by WPM
 export const QUERY_ME = gql`
@@ -83,7 +82,7 @@ export const QUERY_ME = gql`
                 targetVal
                 createdAt
                 _id
-            }   
+            }
             badgeCount
         }
     }
@@ -110,7 +109,7 @@ export const QUERY_SCORES = gql`
             createdAt
         }
     }
-`
+`;
 
 // query logged in user's scores sorted by date (for chart)
 export const QUERY_MYSCORE = gql`
@@ -134,7 +133,7 @@ export const QUERY_MYBADGE = gql`
                 xp
                 targetVal
                 createdAt
-            }   
+            }
             badgeCount
         }
     }
@@ -147,53 +146,63 @@ export const QUERY_SCORE_COUNT = gql`
             username
         }
     }
-`
+`;
 export const QUERY_WEEKLY_SCORES = gql`
     query WeeklyScores {
         weeklyScores {
-        wpm
-        createdAt
-        username
-        accuracy
+            wpm
+            createdAt
+            username
+            accuracy
         }
     }
-`
+`;
 
 export const QUERY_BADGES = gql`
     query Badge {
-        badges{
-        _id
-        badgeName
-        description
-        xp
-        createdAt
-        img
-        placeholder
-        targetVal
-        category
+        badges {
+            _id
+            badgeName
+            description
+            xp
+            createdAt
+            img
+            placeholder
+            targetVal
+            category
         }
     }
-`
+`;
 
 export const QUERY_FRIEND_SCORES = gql`
     query Me {
-    me {
-        username
-        scores {
-        wpm
-        accuracy
-        createdAt
-        username
+        me {
+            username
+            scores {
+                wpm
+                accuracy
+                createdAt
+                username
+            }
+            friends {
+                username
+                scores {
+                    wpm
+                    accuracy
+                    createdAt
+                    username
+                }
+            }
         }
-        friends {
-        username
-        scores {
+    }
+`;
+
+export const QUERY_USER_SCORE = gql`
+    query ScoresByUser($username: String) {
+        scoresByUser(username: $username) {
             wpm
             accuracy
             createdAt
-            username
-        }
         }
     }
-    }
-`
+`;

@@ -37,7 +37,7 @@ const Home = () => {
         document.getElementById('welcome-text').classList.add('hidden');
         setTimeout(() => {
             setRunGame(true);
-        }, 250);
+        }, 350);
     };
 
     const endGame = () => {
@@ -48,7 +48,10 @@ const Home = () => {
     return (
         <main className="flex-grow flex flex-col content-around justify-evenly items-center text-gray-700 dark:text-gray-400 dark:bg-gray-800 transition duration-200">
             {/* Intro text */}
-            <section className="container p-3" id="welcome-text">
+            <section
+                className="container grow flex flex-col justify-center p-3"
+                id="welcome-text"
+            >
                 <p className="p-2 text-justify">
                     Welcome to Type++! Looking to test out your overpriced
                     custom keyboard? Wanna show off how much faster you can type
@@ -63,7 +66,7 @@ const Home = () => {
                     time, follow friends, compete in our leaderboards, and more!
                 </p>
             </section>
-            <section className="m-4">
+            <section className="grow flex flex-col justify-center items-center m-4">
                 {!runGame && (
                     <button
                         type="button"
