@@ -209,7 +209,7 @@ const BadgeList = ({ view }) => {
                     </div>
                 </div>
             ) : (
-                <div className="w-full p-4">
+                <div className="w-full justify-center p-4">
                     <div className="w-full justify-center">
                         <p className="text-xl font-bold m-2 text-gray-600 dark:text-gray-200 text-center">
                             Earned
@@ -243,9 +243,9 @@ const BadgeList = ({ view }) => {
                             </div>
                         ))}
                     </div>
-                    <div className="w-full justify-center">
+                    <div className="w-full justify-center p-4">
                         <p className="text-xl font-bold m-2 text-gray-600 dark:text-gray-200">
-                            Not Yet Earned
+                            Unearned
                         </p>
                         {tmpArr.map((badge) => (
                             <div
