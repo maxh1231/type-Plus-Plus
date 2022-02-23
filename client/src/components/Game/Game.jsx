@@ -1,3 +1,4 @@
+// Imports
 import React, { useState, useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import Modal from 'react-modal';
@@ -297,7 +298,11 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     rows="4"
                     cols="50"
                     onChange={handleChange}
-                    className={`block border-2 w-full rounded p-2 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 ${!validInput ? 'focus-visible:outline-theme-red' : 'focus-visible:outline-theme-blue'}`}
+                    className={`block border-2 w-full rounded p-2 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 ${
+                        !validInput
+                            ? 'focus-visible:outline-theme-red'
+                            : 'focus-visible:outline-theme-blue'
+                    }`}
                     value={inputText}
                 ></textarea>
             ) : (
@@ -328,7 +333,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     <div id="modal-container" className="w-fit flex flex-col">
                         <button
                             onClick={closeModal}
-                            className="absolute top-0 left-[11.2rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300 sm:left-60"
+                            className="absolute top-0 right-0 text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
                         >
                             <XIcon className="h-6 w-6 m-2" />
                         </button>
