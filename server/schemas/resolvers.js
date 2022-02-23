@@ -108,8 +108,10 @@ const resolvers = {
       // log in streak logic
       const now = moment().format('DDD');
       const lastLog = moment(user.lastLog).format('DDD');
+      console.log(now, lastLog)
       // logged in twice in one day
       if (now === lastLog) {
+        console.log('if')
         await User.findOneAndUpdate(
           { _id: user._id },
           { $set: { lastLog: Date.now() } },
@@ -130,9 +132,11 @@ const resolvers = {
         );
         // logged in more than one day after previous
       } else {
+        console.log('else')
+        console.log(Date.now())
         await User.findOneAndUpdate(
           { _id: user._id },
-          { $set: { lastLog: Date.now() }, $set: { streak: 0 } },
+          { $set: { lastLog: Date.now(), streak: 0 }},
           { new: true }
         );
       }
