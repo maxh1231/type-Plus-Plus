@@ -6,9 +6,13 @@ import { formatTime } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 
-const WeeklyLeaderBoard = () => {
+const WeeklyLeaderBoard = ({ runGame }) => {
     const { loading, data, refetch } = useQuery(QUERY_WEEKLY_SCORES);
-    refetch();
+    
+    useEffect(() => {
+        refetch();
+    }, [runGame]); // eslint-disable-line react-hooks/exhaustive-deps
+
     const leaderBoard = data?.weeklyScores.map((score) => {
         return {
             wpm: score.wpm,

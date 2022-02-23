@@ -5,12 +5,15 @@ import { QUERY_FRIEND_SCORES } from '../../utils/queries';
 import { formatTime } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
-import { isConstValueNode } from 'graphql';
 
-const FriendLeaderBoard = () => {
+const FriendLeaderBoard = ({ runGame }) => {
     const { loading, data, refetch } = useQuery(QUERY_FRIEND_SCORES);
-    // refetch();
     const myScore = data?.me.scores || [];
+    
+    useEffect(() => {
+        refetch();
+    }, [runGame]); // eslint-disable-line react-hooks/exhaustive-deps
+
     const myScoreArr = myScore.map((score) => {
         return {
             wpm: score.wpm,
@@ -21,11 +24,26 @@ const FriendLeaderBoard = () => {
     });
 
     const friendsList = data?.me.friends || [];
-    const friendScoreArr = friendsList.map((friend) => {
+    const friendScore = friendsList.map(friend => {
         return friend.scores
     })
+    const friendScoreArr = []
+    for (let i = 0; i < friendScore.length; i++) {
+        for (let j = 0; j < friendScore[i].length; j++) {
+            let tmp = friendScore[i];
+            friendScoreArr.push({
+                wpm: tmp[j].wpm,
+                accuracy: tmp[j].accuracy,
+                username: tmp[j].username,
+                date: formatTime(tmp[j].createdAt),
+            });
+        }
+    }
 
-    console.log(myScoreArr, friendsList, friendScoreArr)
+    const unsortedArr = myScoreArr.concat(friendScoreArr);
+    const leaderBoardArr = unsortedArr.sort(function(a, b) {
+        return b.wpm - a.wpm
+    });
 
     function Items({ leaderBoard, page }) {
         return (
@@ -102,53 +120,53 @@ const FriendLeaderBoard = () => {
         );
     }
 
-    // function PaginatedItems({ itemsPerPage }) {
-    //     const [currentItems, setCurrentItems] = useState(null);
-    //     const [pageCount, setPageCount] = useState(0);
-    //     const [itemOffset, setItemOffset] = useState(0);
+    function PaginatedItems({ itemsPerPage }) {
+        const [currentItems, setCurrentItems] = useState(null);
+        const [pageCount, setPageCount] = useState(0);
+        const [itemOffset, setItemOffset] = useState(0);
 
-        // useEffect(() => {
-        //     const endOffset = itemOffset + itemsPerPage;
-        //     setCurrentItems(leaderBoard.slice(itemOffset, endOffset));
-        //     setPageCount(Math.ceil(leaderBoard.length / itemsPerPage));
-        // }, [itemOffset, itemsPerPage]);
+        useEffect(() => {
+            const endOffset = itemOffset + itemsPerPage;
+            setCurrentItems(leaderBoardArr.slice(itemOffset, endOffset));
+            setPageCount(Math.ceil(leaderBoardArr.length / itemsPerPage));
+        }, [itemOffset, itemsPerPage]);
 
         // Invoke when user click to request another page.
-        // const handlePageClick = (event) => {
-        //     const newOffset =
-        //         (event.selected * itemsPerPage) % leaderBoard.length;
-        //     setItemOffset(newOffset);
-        // };
+        const handlePageClick = (event) => {
+            const newOffset =
+                (event.selected * itemsPerPage) % leaderBoardArr.length;
+            setItemOffset(newOffset);
+        };
 
-    //     return (
-    //         <>
-    //             <table className="table-auto mx-auto text-gray-800 dark:text-gray-400  rounded overflow-hidden">
-    //                 <thead>
-    //                     <tr className='bg-gray-400 dark:bg-gray-900'>
-    //                         <th className='p-2'>#</th>
-    //                         <th className='p-2'>WPM</th>
-    //                         <th className='p-2'>User</th>
-    //                         <th className='p-2'>Accuracy</th>
-    //                         <th className="p-2 hidden sm:block xl:hidden 2xl:block">
-    //                             Date
-    //                         </th>
-    //                     </tr>
-    //                 </thead>
-    //                 <Items leaderBoard={currentItems} page={itemOffset} />
-    //             </table>
-    //             <ReactPaginate
-    //                 breakLabel="..."
-    //                 nextLabel=">>"
-    //                 onPageChange={handlePageClick}
-    //                 pageRangeDisplayed={3}
-    //                 pageCount={pageCount}
-    //                 previousLabel="<<"
-    //                 renderOnZeroPageCount={null}
-    //                 className="m-auto flex p-2 justify-center pagination-nav"
-    //             />
-    //         </>
-    //     );
-    // }
+        return (
+            <>
+                <table className="table-auto mx-auto text-gray-800 dark:text-gray-400  rounded overflow-hidden">
+                    <thead>
+                        <tr className='bg-gray-400 dark:bg-gray-900'>
+                            <th className='p-2'>#</th>
+                            <th className='p-2'>WPM</th>
+                            <th className='p-2'>User</th>
+                            <th className='p-2'>Accuracy</th>
+                            <th className="p-2 hidden sm:block xl:hidden 2xl:block">
+                                Date
+                            </th>
+                        </tr>
+                    </thead>
+                    <Items leaderBoard={currentItems} page={itemOffset} />
+                </table>
+                <ReactPaginate
+                    breakLabel="..."
+                    nextLabel=">>"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={3}
+                    pageCount={pageCount}
+                    previousLabel="<<"
+                    renderOnZeroPageCount={null}
+                    className="m-auto flex p-2 justify-center pagination-nav"
+                />
+            </>
+        );
+    }
 
     if (loading) {
         return (
@@ -169,7 +187,7 @@ const FriendLeaderBoard = () => {
             <h1 className="block my-4 text-center text-2xl underline text-gray-600 dark:text-gray-300">
                 Friends Leaderboard
             </h1>
-            {/* <PaginatedItems itemsPerPage={10} /> */}
+            <PaginatedItems itemsPerPage={10} />
         </section>
     );
 };

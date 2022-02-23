@@ -39,15 +39,11 @@ const Chart = () => {
     let dates = [];
 
     // Create new array so we can sort by createdAt
-    let userDataArray = data?.meScores
-        ? data?.meScores
-            .map((score) => {
+    let userDataArray = data?.meScores ? data?.meScores.map(score => {
                 return score;
-            })
-            .sort(function (a, b) {
+            }).sort(function (a, b) {
                 return a.createdAt - b.createdAt;
-            })
-        : [];
+            }) : [];
 
     if (Auth.loggedIn()) {
         wpm = userDataArray.map((score) => {

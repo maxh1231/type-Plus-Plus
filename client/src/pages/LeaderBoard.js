@@ -3,9 +3,15 @@ import GlobalLeaderBoard from '../components/GlobalLeaderBoard/GlobalLeaderBoard
 import ActivityLeaderBoard from '../components/ActivityLeaderBoard/ActivityLeaderBoard';
 import WeeklyLeaderBoard from '../components/WeeklyLeaderBoard/';
 import FriendLeaderBoard from '../components/FriendLeaderBoard/FriendLeaderBoard';
+import Auth from '../utils/auth';
 
 const LeaderBoard = ({ currentPage, setCurrentPage }) => {
-
+    const [loggedIn, setLoggedIn] = useState(false);
+    useEffect(() => {
+        if (Auth.loggedIn()) {
+            setLoggedIn(true);
+        }
+    }, [])
     useEffect(() => {
         setCurrentPage('Leaderboard')
     })
@@ -14,7 +20,7 @@ const LeaderBoard = ({ currentPage, setCurrentPage }) => {
 
     return (
         <main className="flex-grow flex flex-col items-center text-gray-700 dark:text-gray-400 dark:bg-gray-800">
-            <div className="w-full grid grid-cols-3 mt-5 h-10 items-center sm:w-5/6 md:w-2/3 lg:w-1/2">
+            <div className={`w-full grid ${loggedIn ? 'grid-cols-4' : 'grid-cols-3'} mt-5 h-10 items-center sm:w-5/6 md:w-2/3 lg:w-1/2`}>
                 <p
                     className={`text-center bg-mid-gray h-full pt-1 rounded-t-xl border-x-2 border-t-2 hover:text-theme-red hover:opacity-80 cursor-pointer ${activeBoard === 'global'
                         ? 'bg-inherit text-theme-red'
@@ -48,6 +54,19 @@ const LeaderBoard = ({ currentPage, setCurrentPage }) => {
                         Games Played
                     </span>
                 </p>
+                {loggedIn && 
+                    <p
+                        className={`text-center bg-mid-gray h-full pt-1 rounded-t-xl border-x-2 border-t-2 hover:text-theme-red hover:opacity-80 cursor-pointer ${activeBoard === 'friends'
+                            ? 'bg-inherit text-theme-red'
+                            : 'border-b-2'
+                            }`}
+                        onClick={() => setActiveBoard('friends')}
+                    >
+                        <span className="text-lg transition-all duration-300">
+                            Friends
+                        </span>
+                    </p>
+                }
             </div>
             <section className="w-full grow border-b-2 border-x-2 rounded-b-xl mb-5 pt-5 sm:w-5/6 md:w-2/3 lg:w-1/2 ">
                 {activeBoard === 'global' && (
@@ -59,7 +78,6 @@ const LeaderBoard = ({ currentPage, setCurrentPage }) => {
                 {activeBoard === 'games' && <ActivityLeaderBoard />}
                 {activeBoard === 'weekly' && <WeeklyLeaderBoard />}
                 {activeBoard === 'friends' && <FriendLeaderBoard />}
-                <FriendLeaderBoard />
             </section>
         </main>
     );
