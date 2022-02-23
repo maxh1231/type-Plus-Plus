@@ -50,16 +50,18 @@ const RecentBadge = ({ runGame }) => {
                     <div className="py-3 text-center text-lg border-b dark:border-gray-400 bg-gray-100 dark:bg-gray-900 rounded-t-lg">
                         Recent Badge
                     </div>
-                    <img
-                        src={activeBadge.img}
-                        className="mx-auto my-1"
-                        alt="recent badge"
-                    ></img>
-                    <div className="p-1">
-                        <h5 className="text-lg mb-1 font-bold">
-                            {activeBadge.badgeName}
-                        </h5>
-                        <p className="mb-2">{activeBadge.description}</p>
+                    <div className="h-[9.5rem] overflow-auto">
+                        <img
+                            src={activeBadge.img}
+                            className="m-auto"
+                            alt="recent badge"
+                        ></img>
+                        <div className="px-1 ">
+                            <h5 className="text-lg font-bold">
+                                {activeBadge.badgeName}
+                            </h5>
+                            <p className="pb-1">{activeBadge.description}</p>
+                        </div>
                     </div>
                     <div className="p-1 border-t dark:border-gray-400">
                         <Link
