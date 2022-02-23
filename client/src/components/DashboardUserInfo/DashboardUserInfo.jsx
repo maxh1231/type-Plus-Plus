@@ -160,7 +160,11 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
                     </p>
                 )}
                 {!data.meScores[0] && (
-                    <Link to="/"><p className='hover:text-theme-red text-center italic'>Take a few tests to show your scores!</p></Link>
+                    <Link to="/">
+                        <p className="hover:text-theme-red text-center italic transition-all duration-300">
+                            Take a few tests to show your scores!
+                        </p>
+                    </Link>
                 )}
                 {data.meScores[0] && (
                     <p className="text-center mt-2">
