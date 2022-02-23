@@ -187,7 +187,11 @@ const FriendLeaderBoard = ({ runGame }) => {
             <h1 className="block my-4 text-center text-2xl underline text-gray-600 dark:text-gray-300">
                 Friends Leaderboard
             </h1>
-            <PaginatedItems itemsPerPage={10} />
+            {friendScoreArr.length > 0 ? (
+                <PaginatedItems itemsPerPage={10} />
+            ) : (
+                <p className='text-xl text-center'>Add some friends to see how you compare!</p>
+            )}
         </section>
     );
 };
