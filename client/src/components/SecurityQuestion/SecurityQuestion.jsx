@@ -13,6 +13,10 @@ const SecurityQuestion = ({ data, setCurrentComponent }) => {
         if (answerData.answer === data.userByEmail.answer) {
             setCurrentComponent('UpdatePassword');
         } else {
+            document.getElementById('answerInvalid').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('answerInvalid').classList.add('hidden');
+            }, 3000); 
         }
     };
 
@@ -84,6 +88,14 @@ const SecurityQuestion = ({ data, setCurrentComponent }) => {
                             }}
                             className="block border border-grey-light w-full p-3 rounded mb-4"
                         />
+
+                        <div
+                            className="p-2 font-bold text-theme-red text-center hidden"
+                            id="answerInvalid"
+                        >
+                            Answer invalid. Try again.
+                        </div>  
+
                         <button
                             type="submit"
                             className="w-full text-center py-3 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
