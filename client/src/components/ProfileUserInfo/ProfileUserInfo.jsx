@@ -121,7 +121,7 @@ const ProfileUserInfo = ({ data }) => {
     }
 
     return (
-        <section className="w-[300px]">
+        <section className="w-[200px]">
             <CircularProgressbarWithChildren
                 value={levelProgress}
                 styles={buildStyles({
@@ -131,21 +131,22 @@ const ProfileUserInfo = ({ data }) => {
             >
                 {data.user.profilePic && (
                     <img
-                        className="rounded-full w-[255px] h-[255px]"
+                        className="rounded-full w-[171px] h-[171px] object-cover"
                         src={`../${data.user.profilePic}`}
                         alt=""
                     ></img>
                 )}
                 {!data.user.profilePic && (
                     <img
-                        className="rounded-full w-[255px] h-[255px]"
+                        className="rounded-full w-[171px] h-[171px] object-cover"
                         src={defaultPhoto}
                         alt=""
                     ></img>
                 )}
                 <img
-                    className="w-[64px] h-[64px] absolute top-[255px]"
+                    className="w-[64px] h-[64px] absolute top-[158px]"
                     src={levelIcon}
+                    alt="level icon"
                 ></img>
             </CircularProgressbarWithChildren>
             <div className="mt-5">

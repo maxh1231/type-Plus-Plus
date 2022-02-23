@@ -16,7 +16,13 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password').populate('scores').populate('friends').populate('badges');
+        const userData = await User.findOne({ _id: context.user._id })
+        .select('-__v -password')
+        .populate('scores')
+        .populate('badges')
+        .populate({
+          path: 'friends', 
+          populate: { path: 'scores'}})
         return userData;
       }
       throw new AuthenticationError('Log in required');

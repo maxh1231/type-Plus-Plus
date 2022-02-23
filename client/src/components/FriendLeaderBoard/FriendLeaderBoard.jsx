@@ -1,25 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import { useQuery } from '@apollo/client';
-import { QUERY_WEEKLY_SCORES } from '../../utils/queries';
+import { QUERY_FRIEND_SCORES } from '../../utils/queries';
 import { formatTime } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 
-const WeeklyLeaderBoard = ({ runGame }) => {
-    const { loading, data, refetch } = useQuery(QUERY_WEEKLY_SCORES);
+const FriendLeaderBoard = ({ runGame }) => {
+    const { loading, data, refetch } = useQuery(QUERY_FRIEND_SCORES);
+    const myScore = data?.me.scores || [];
     
     useEffect(() => {
         refetch();
     }, [runGame]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const leaderBoard = data?.weeklyScores.map((score) => {
+    const myScoreArr = myScore.map((score) => {
         return {
             wpm: score.wpm,
             accuracy: score.accuracy,
             username: score.username,
             date: formatTime(score.createdAt),
         };
+    });
+
+    const friendsList = data?.me.friends || [];
+    const friendScore = friendsList.map(friend => {
+        return friend.scores
+    })
+    const friendScoreArr = []
+    for (let i = 0; i < friendScore.length; i++) {
+        for (let j = 0; j < friendScore[i].length; j++) {
+            let tmp = friendScore[i];
+            friendScoreArr.push({
+                wpm: tmp[j].wpm,
+                accuracy: tmp[j].accuracy,
+                username: tmp[j].username,
+                date: formatTime(tmp[j].createdAt),
+            });
+        }
+    }
+
+    const unsortedArr = myScoreArr.concat(friendScoreArr);
+    const leaderBoardArr = unsortedArr.sort(function(a, b) {
+        return b.wpm - a.wpm
     });
 
     function Items({ leaderBoard, page }) {
@@ -104,14 +127,14 @@ const WeeklyLeaderBoard = ({ runGame }) => {
 
         useEffect(() => {
             const endOffset = itemOffset + itemsPerPage;
-            setCurrentItems(leaderBoard.slice(itemOffset, endOffset));
-            setPageCount(Math.ceil(leaderBoard.length / itemsPerPage));
+            setCurrentItems(leaderBoardArr.slice(itemOffset, endOffset));
+            setPageCount(Math.ceil(leaderBoardArr.length / itemsPerPage));
         }, [itemOffset, itemsPerPage]);
 
         // Invoke when user click to request another page.
         const handlePageClick = (event) => {
             const newOffset =
-                (event.selected * itemsPerPage) % leaderBoard.length;
+                (event.selected * itemsPerPage) % leaderBoardArr.length;
             setItemOffset(newOffset);
         };
 
@@ -162,11 +185,15 @@ const WeeklyLeaderBoard = ({ runGame }) => {
     return (
         <section className="mx-auto my-4">
             <h1 className="block my-4 text-center text-2xl underline text-gray-600 dark:text-gray-300">
-                Weekly Leaderboard
+                Friends Leaderboard
             </h1>
-            <PaginatedItems itemsPerPage={10} />
+            {friendScoreArr.length > 0 ? (
+                <PaginatedItems itemsPerPage={10} />
+            ) : (
+                <p className='text-xl text-center'>Add some friends to see how you compare!</p>
+            )}
         </section>
     );
 };
 
-export default WeeklyLeaderBoard;
+export default FriendLeaderBoard;

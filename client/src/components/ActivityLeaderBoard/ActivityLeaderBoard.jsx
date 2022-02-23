@@ -6,10 +6,13 @@ import { QUERY_SCORE_COUNT } from '../../utils/queries';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 
-const ActivityLeaderBoard = () => {
+const ActivityLeaderBoard = ({ runGame }) => {
     const { loading, data, refetch } = useQuery(QUERY_SCORE_COUNT);
-    refetch();
     const leaderBoard = data?.users;
+
+    useEffect(() => {
+        refetch();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     function compare(a, b) {
         if (a.gameCount < b.gameCount) {

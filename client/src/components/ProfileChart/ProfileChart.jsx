@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_MYSCORE } from '../../utils/queries';
-import Auth from '../../utils/auth';
+import { QUERY_USER_SCORE } from '../../utils/queries';
 import { formatTime } from '../../utils/helpers';
 import { Line } from 'react-chartjs-2';
 import {
@@ -27,8 +26,9 @@ ChartJS.register(
     Filler
 );
 
-const Chart = () => {
-    const { loading, data, refetch } = useQuery(QUERY_MYSCORE);
+const ProfileChart = ({ userParam }) => {
+    const { loading, data, refetch } = useQuery(QUERY_USER_SCORE, 
+        {variables: { username: userParam }});
 
     useEffect(() => {
         refetch();
@@ -39,13 +39,13 @@ const Chart = () => {
     let dates = [];
 
     // Create new array so we can sort by createdAt
-    let userDataArray = data?.meScores ? data?.meScores.map(score => {
+    let userDataArray = data?.scoresByUser ? data?.scoresByUser.map((score) => {
                 return score;
             }).sort(function (a, b) {
                 return a.createdAt - b.createdAt;
             }) : [];
 
-    if (Auth.loggedIn()) {
+    if (userDataArray.length > 0) {
         wpm = userDataArray.map((score) => {
             return score.wpm;
         });
@@ -132,4 +132,4 @@ const Chart = () => {
     );
 };
 
-export default Chart;
+export default ProfileChart

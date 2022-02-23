@@ -290,7 +290,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         };
     }
     return (
-        <div id="inputArea" className="m-4">
+        <div id="inputArea" className="w-3/4 m-4">
             {intervalId ? (
                 <textarea
                     id="gameInput"
