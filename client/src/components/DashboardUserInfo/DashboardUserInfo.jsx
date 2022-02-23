@@ -6,14 +6,14 @@ import {
 } from 'react-circular-progressbar';
 
 const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
-    const level2 = 25;
-    const level3 = 50;
-    const level4 = 100;
-    const level5 = 200;
-    const level6 = 400;
-    const level7 = 800;
-    const level8 = 1600;
-    const level9 = 2800;
+    const level2 = 100;
+    const level3 = 250;
+    const level4 = 500;
+    const level5 = 800;
+    const level6 = 1200;
+    const level7 = 1650;
+    const level8 = 2100;
+    const level9 = 2700;
     const level10 = 3200;
 
     let averageWPM;

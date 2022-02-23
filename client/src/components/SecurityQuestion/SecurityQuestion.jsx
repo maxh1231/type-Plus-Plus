@@ -16,7 +16,7 @@ const SecurityQuestion = ({ data, setCurrentComponent }) => {
             document.getElementById('answerInvalid').classList.remove('hidden');
             setTimeout(() => {
                 document.getElementById('answerInvalid').classList.add('hidden');
-            }, 3000); 
+            }, 3000);
         }
     };
 
@@ -36,6 +36,9 @@ const SecurityQuestion = ({ data, setCurrentComponent }) => {
             break;
         case '5':
             question = 'Who is your favorite band/artist?';
+            break;
+        default:
+            question = '';
             break;
     }
 
@@ -75,15 +78,15 @@ const SecurityQuestion = ({ data, setCurrentComponent }) => {
                             render={({ messages }) => {
                                 return messages
                                     ? Object.entries(messages).map(
-                                          ([type, message]) => (
-                                              <p
-                                                  key={type}
-                                                  className="p-2 font-bold text-theme-red text-center"
-                                              >
-                                                  {message}
-                                              </p>
-                                          )
-                                      )
+                                        ([type, message]) => (
+                                            <p
+                                                key={type}
+                                                className="p-2 font-bold text-theme-red text-center"
+                                            >
+                                                {message}
+                                            </p>
+                                        )
+                                    )
                                     : null;
                             }}
                             className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -94,7 +97,7 @@ const SecurityQuestion = ({ data, setCurrentComponent }) => {
                             id="answerInvalid"
                         >
                             Answer invalid. Try again.
-                        </div>  
+                        </div>
 
                         <button
                             type="submit"

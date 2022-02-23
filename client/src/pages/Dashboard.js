@@ -138,8 +138,7 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
 
     const deleteAccount = async () => {
         try {
-            const { data } = await deleteUser();
-            console.log(data);
+            await deleteUser();
             localStorage.clear();
             document.location.replace('/');
         } catch (err) {
