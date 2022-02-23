@@ -95,7 +95,6 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
 
     const endGame = async () => {
         toggleTimer();
-        console.log({ userData: userData });
         let badgeData = [];
         if (userData.length !== 0) {
             if (userData.badges.length > 0) {
@@ -356,8 +355,8 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                             </div>
                         )}
                         {!loggedIn && (
-                            <div className="mx-auto my-6 w-fit">
-                                <Link to="/signup">
+                            <div className="w-full text-center mt-3 p-3 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300">
+                                <Link to="/login">
                                     Log in to save your scores!
                                 </Link>
                             </div>
