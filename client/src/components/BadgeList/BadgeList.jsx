@@ -134,7 +134,7 @@ const BadgeList = ({ view }) => {
                     <p className="text-xl font-bold text-center w-full text-gray-600 dark:text-gray-200 m-2">
                         Earned
                     </p>
-                    <div className="w-full grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-2 gap-5">
+                    <div className="w-full grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 my-2 gap-5">
                         {myBadgeArr.map((badge) => (
                             <div
                                 id="card"
@@ -162,10 +162,10 @@ const BadgeList = ({ view }) => {
                             </div>
                         ))}
                     </div>
-                    <p className="text-xl font-bold text-center w-full text-gray-600 dark:text-gray-200 p-2">
+                    <p className="text-xl font-bold text-center w-full text-gray-600 dark:text-gray-200 m-2">
                         Unearned
                     </p>
-                    <div className="grid w-full grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
+                    <div className="grid w-full grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 my-2">
                         {tmpArr.map((badge) => (
                             <div
                                 id="card"
@@ -209,8 +209,8 @@ const BadgeList = ({ view }) => {
                     </div>
                 </div>
             ) : (
-                <div className="w-full p-4">
-                    <div className="w-full justify-center">
+                <div className="w-full justify-center">
+                    <div className="w-full justify-center p-4">
                         <p className="text-xl font-bold m-2 text-gray-600 dark:text-gray-200 text-center">
                             Earned
                         </p>
@@ -243,9 +243,9 @@ const BadgeList = ({ view }) => {
                             </div>
                         ))}
                     </div>
-                    <div className="w-full justify-center">
-                        <p className="text-xl font-bold m-2 text-gray-600 dark:text-gray-200">
-                            Not Yet Earned
+                    <div className="w-full justify-center p-4">
+                        <p className="text-xl text-center font-bold m-2 text-gray-600 dark:text-gray-200">
+                            Unearned
                         </p>
                         {tmpArr.map((badge) => (
                             <div

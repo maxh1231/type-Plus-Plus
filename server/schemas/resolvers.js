@@ -132,7 +132,7 @@ const resolvers = {
       } else {
         await User.findOneAndUpdate(
           { _id: user._id },
-          { $set: { lastLog: Date.now() }, $set: { streak: 0 } },
+          { $set: { lastLog: Date.now(), streak: 0 }},
           { new: true }
         );
       }
