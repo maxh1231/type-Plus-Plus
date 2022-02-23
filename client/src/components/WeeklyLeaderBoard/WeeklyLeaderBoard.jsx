@@ -26,7 +26,7 @@ const WeeklyLeaderBoard = () => {
                         {leaderBoard.map((score, i) => (
                             <tr key={uuid()} className='even:bg-gray-200 dark:even:bg-mid-gray'>
                                 <td className="text-center p-2" key={uuid()}>
-                                    {i + 1}.
+                                    {i + page + 1}.
                                 </td>
                                 <td className="text-center p-2" key={uuid()}>
                                     {score.wpm}
