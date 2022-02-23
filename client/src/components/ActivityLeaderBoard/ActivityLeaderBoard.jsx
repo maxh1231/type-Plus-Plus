@@ -97,14 +97,11 @@ const ActivityLeaderBoard = () => {
 
         
         useEffect(() => {
-            console.log(tempArr.slice(0, 10), itemOffset, itemsPerPage)
             const endOffset = itemOffset + itemsPerPage;
             setCurrentItems(tempArr.slice(itemOffset, endOffset));
             setPageCount(Math.ceil(tempArr.length / itemsPerPage));
         }, [itemOffset, itemsPerPage]);
         
-        console.log(currentItems)
-
         // Invoke when user clicks to request another page
         const handlePageClick = (event) => {
             const newOffset =
@@ -132,7 +129,7 @@ const ActivityLeaderBoard = () => {
                     pageCount={pageCount}
                     previousLabel="<<"
                     renderOnZeroPageCount={null}
-                    className="m-auto w-1/3 flex p-2 justify-around pagination-nav"
+                    className="m-auto w-1/3 flex p-2 justify-between pagination-nav"
                 />
             </>
         );
