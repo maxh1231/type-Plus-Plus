@@ -44,7 +44,7 @@ const RecentBadge = ({ runGame }) => {
     const activeBadge = badgeArr[badgeArr.length - 1];
 
     return (
-        <div className="flex justify-center transition-all duration-200 max-h-60">
+        <div className="flex justify-center transition-all duration-200 h-60">
             {badgeArr.length > 0 ? (
                 <div className="block rounded-lg w-44 shadow-sm border max-w-sm text-center dark:border-gray-400">
                     <div className="py-3 text-center text-lg border-b dark:border-gray-400 bg-gray-100 dark:bg-gray-900 rounded-t-lg">
