@@ -48,22 +48,22 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-// Socket setup
+// Socket setup (future development)
 const { createServer } = require('http');
-const { Server } = require('socket.io');
 const httpServer = createServer(app);
-const io = new Server(httpServer, {
-    /* options */
-    // cors: {
-    //     origin: corsOptions.origin,
-    //     methods: ['GET', 'POST'],
-    // },
-});
+// const { Server } = require('socket.io');
+// const io = new Server(httpServer, {
+/* options */
+// cors: {
+//     origin: corsOptions.origin,
+//     methods: ['GET', 'POST'],
+// },
+// });
 
 // Socket logging
-io.on('connection', (socket) => {
-    console.log('User connected!');
-});
+// io.on('connection', (socket) => {
+//     console.log('User connected!');
+// });
 
 db.once('open', () => {
     console.log(

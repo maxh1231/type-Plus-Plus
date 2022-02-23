@@ -119,7 +119,7 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
             levelIcon = '/assets/level-icons/level-10.png';
             break;
         default:
-            levelIcon = '/assets/level-icons/level-1.png'
+            levelIcon = '/assets/level-icons/level-1.png';
             break;
     }
 
@@ -135,7 +135,7 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
                 })}
             >
                 <img
-                    className="rounded-full w-[171px] h-[171px]"
+                    className="rounded-full w-[171px] h-[171px] object-cover"
                     src={image}
                     alt="User avatar"
                 ></img>
