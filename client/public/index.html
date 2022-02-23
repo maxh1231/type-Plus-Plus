@@ -48,7 +48,7 @@
         (function () {
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker
-                    .register('svcWorker.js')
+                    .register('/svcWorker.js')
                     .then(() =>
                         console.log('Service Worker registered successfully.')
                     )
