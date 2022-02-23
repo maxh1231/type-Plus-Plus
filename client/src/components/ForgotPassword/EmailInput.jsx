@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { Link } from 'react-router-dom';
@@ -12,8 +12,15 @@ const EmailInput = ({ setCurrentComponent, getUser, data }) => {
 
     const onSubmit = async (formData) => {
         try {
-            await getUser({ variables: { email: formData.email } });
-            setCurrentComponent('SecurityQuestion');
+            const data = await getUser({ variables: { email: formData.email } });
+            if (data.data.userByEmail) {
+                setCurrentComponent('SecurityQuestion');
+            } else {
+                document.getElementById('emailInvalid').classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('emailInvalid').classList.add('hidden');
+                }, 3000);                
+            }
         } catch (e) {
             document.getElementById('emailInvalid').classList.remove('hidden');
             setTimeout(() => {
