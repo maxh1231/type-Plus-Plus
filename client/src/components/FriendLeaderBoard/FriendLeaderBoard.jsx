@@ -9,8 +9,9 @@ import { isConstValueNode } from 'graphql';
 
 const FriendLeaderBoard = () => {
     const { loading, data, refetch } = useQuery(QUERY_FRIEND_SCORES);
-    refetch();
-    const myScore = data?.me.scores.map((score) => {
+    // refetch();
+    const myScore = data?.me.scores || [];
+    const myScoreArr = myScore.map((score) => {
         return {
             wpm: score.wpm,
             accuracy: score.accuracy,
@@ -19,16 +20,12 @@ const FriendLeaderBoard = () => {
         };
     });
 
-    const friendScore = data?.friends.scores.map((score) => {
-        return {
-            wpm: score.wpm,
-            accuracy: score.accuracy,
-            username: score.username,
-            date: formatTime(score.createdAt),
-        }
+    const friendsList = data?.me.friends || [];
+    const friendScoreArr = friendsList.map((friend) => {
+        return friend.scores
     })
 
-    console.log(myScore, friendScore)
+    console.log(myScoreArr, friendsList, friendScoreArr)
 
     function Items({ leaderBoard, page }) {
         return (
@@ -105,53 +102,53 @@ const FriendLeaderBoard = () => {
         );
     }
 
-    function PaginatedItems({ itemsPerPage }) {
-        const [currentItems, setCurrentItems] = useState(null);
-        const [pageCount, setPageCount] = useState(0);
-        const [itemOffset, setItemOffset] = useState(0);
+    // function PaginatedItems({ itemsPerPage }) {
+    //     const [currentItems, setCurrentItems] = useState(null);
+    //     const [pageCount, setPageCount] = useState(0);
+    //     const [itemOffset, setItemOffset] = useState(0);
 
-        useEffect(() => {
-            const endOffset = itemOffset + itemsPerPage;
-            setCurrentItems(leaderBoard.slice(itemOffset, endOffset));
-            setPageCount(Math.ceil(leaderBoard.length / itemsPerPage));
-        }, [itemOffset, itemsPerPage]);
+        // useEffect(() => {
+        //     const endOffset = itemOffset + itemsPerPage;
+        //     setCurrentItems(leaderBoard.slice(itemOffset, endOffset));
+        //     setPageCount(Math.ceil(leaderBoard.length / itemsPerPage));
+        // }, [itemOffset, itemsPerPage]);
 
         // Invoke when user click to request another page.
-        const handlePageClick = (event) => {
-            const newOffset =
-                (event.selected * itemsPerPage) % leaderBoard.length;
-            setItemOffset(newOffset);
-        };
+        // const handlePageClick = (event) => {
+        //     const newOffset =
+        //         (event.selected * itemsPerPage) % leaderBoard.length;
+        //     setItemOffset(newOffset);
+        // };
 
-        return (
-            <>
-                <table className="table-auto mx-auto text-gray-800 dark:text-gray-400  rounded overflow-hidden">
-                    <thead>
-                        <tr className='bg-gray-400 dark:bg-gray-900'>
-                            <th className='p-2'>#</th>
-                            <th className='p-2'>WPM</th>
-                            <th className='p-2'>User</th>
-                            <th className='p-2'>Accuracy</th>
-                            <th className="p-2 hidden sm:block xl:hidden 2xl:block">
-                                Date
-                            </th>
-                        </tr>
-                    </thead>
-                    <Items leaderBoard={currentItems} page={itemOffset} />
-                </table>
-                <ReactPaginate
-                    breakLabel="..."
-                    nextLabel=">>"
-                    onPageChange={handlePageClick}
-                    pageRangeDisplayed={3}
-                    pageCount={pageCount}
-                    previousLabel="<<"
-                    renderOnZeroPageCount={null}
-                    className="m-auto flex p-2 justify-center pagination-nav"
-                />
-            </>
-        );
-    }
+    //     return (
+    //         <>
+    //             <table className="table-auto mx-auto text-gray-800 dark:text-gray-400  rounded overflow-hidden">
+    //                 <thead>
+    //                     <tr className='bg-gray-400 dark:bg-gray-900'>
+    //                         <th className='p-2'>#</th>
+    //                         <th className='p-2'>WPM</th>
+    //                         <th className='p-2'>User</th>
+    //                         <th className='p-2'>Accuracy</th>
+    //                         <th className="p-2 hidden sm:block xl:hidden 2xl:block">
+    //                             Date
+    //                         </th>
+    //                     </tr>
+    //                 </thead>
+    //                 <Items leaderBoard={currentItems} page={itemOffset} />
+    //             </table>
+    //             <ReactPaginate
+    //                 breakLabel="..."
+    //                 nextLabel=">>"
+    //                 onPageChange={handlePageClick}
+    //                 pageRangeDisplayed={3}
+    //                 pageCount={pageCount}
+    //                 previousLabel="<<"
+    //                 renderOnZeroPageCount={null}
+    //                 className="m-auto flex p-2 justify-center pagination-nav"
+    //             />
+    //         </>
+    //     );
+    // }
 
     if (loading) {
         return (

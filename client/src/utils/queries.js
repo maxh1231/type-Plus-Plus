@@ -183,6 +183,7 @@ export const QUERY_FRIEND_SCORES = gql`
         wpm
         accuracy
         createdAt
+        username
         }
         friends {
         username
@@ -190,6 +191,7 @@ export const QUERY_FRIEND_SCORES = gql`
             wpm
             accuracy
             createdAt
+            username
         }
         }
     }

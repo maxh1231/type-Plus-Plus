@@ -1,8 +1,8 @@
-// Imports
+import React, { useEffect, useState } from 'react';
 import GlobalLeaderBoard from '../components/GlobalLeaderBoard/GlobalLeaderBoard';
 import ActivityLeaderBoard from '../components/ActivityLeaderBoard/ActivityLeaderBoard';
 import WeeklyLeaderBoard from '../components/WeeklyLeaderBoard/';
-import React, { useEffect, useState } from 'react';
+import FriendLeaderBoard from '../components/FriendLeaderBoard/FriendLeaderBoard';
 
 const LeaderBoard = ({ currentPage, setCurrentPage }) => {
 
@@ -58,6 +58,8 @@ const LeaderBoard = ({ currentPage, setCurrentPage }) => {
                 )}
                 {activeBoard === 'games' && <ActivityLeaderBoard />}
                 {activeBoard === 'weekly' && <WeeklyLeaderBoard />}
+                {activeBoard === 'friends' && <FriendLeaderBoard />}
+                <FriendLeaderBoard />
             </section>
         </main>
     );
