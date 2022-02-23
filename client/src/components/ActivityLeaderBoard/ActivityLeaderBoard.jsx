@@ -22,22 +22,22 @@ const ActivityLeaderBoard = () => {
     }
 
     let tempArr = [];
-    if (data) {
-        tempArr = data.users.slice().sort(compare);
+    if (leaderBoard) {
+        tempArr = leaderBoard.slice().sort(compare);
     }
 
     function Items({ leaderBoard, page }) {
         return (
             <>
-                {tempArr ? (
+                {leaderBoard ? (
                     <tbody>
-                        {tempArr.map((user, i) => (
+                        {leaderBoard.map((user, i) => (
                             <tr
                                 key={uuid()}
                                 className="even:bg-gray-200 dark:even:bg-mid-gray"
                             >
                                 <td className="text-center p-2" key={uuid()}>
-                                    {i + 1}.
+                                    {i + page + 1}.
                                 </td>
                                 <td className="text-center p-2" key={uuid()}>
                                     {user.gameCount}
@@ -95,16 +95,20 @@ const ActivityLeaderBoard = () => {
         const [pageCount, setPageCount] = useState(0);
         const [itemOffset, setItemOffset] = useState(0);
 
+        
         useEffect(() => {
+            console.log(tempArr.slice(0, 10), itemOffset, itemsPerPage)
             const endOffset = itemOffset + itemsPerPage;
-            setCurrentItems(leaderBoard.slice(itemOffset, endOffset));
-            setPageCount(Math.ceil(leaderBoard.length / itemsPerPage));
+            setCurrentItems(tempArr.slice(itemOffset, endOffset));
+            setPageCount(Math.ceil(tempArr.length / itemsPerPage));
         }, [itemOffset, itemsPerPage]);
+        
+        console.log(currentItems)
 
         // Invoke when user clicks to request another page
         const handlePageClick = (event) => {
             const newOffset =
-                (event.selected * itemsPerPage) % leaderBoard.length;
+                (event.selected * itemsPerPage) % tempArr.length;
             setItemOffset(newOffset);
         };
 
