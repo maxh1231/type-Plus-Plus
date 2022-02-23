@@ -174,3 +174,24 @@ export const QUERY_BADGES = gql`
         }
     }
 `
+
+export const QUERY_FRIEND_SCORES = gql`
+    query Me {
+    me {
+        username
+        scores {
+        wpm
+        accuracy
+        createdAt
+        }
+        friends {
+        username
+        scores {
+            wpm
+            accuracy
+            createdAt
+        }
+        }
+    }
+    }
+`
