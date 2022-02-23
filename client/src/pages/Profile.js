@@ -8,6 +8,7 @@ import Auth from '../utils/auth';
 
 import ProfileUserInfo from '../components/ProfileUserInfo';
 import { checkFriends } from '../utils/helpers';
+import ProfileChart from '../components/ProfileChart/ProfileChart';
 // import Achievements from '../components/Achievements';
 // import Progress from '../components/Progress'
 
@@ -100,6 +101,11 @@ const Profile = ({ currentPage, setCurrentPage }) => {
             <div className="mt-2">
                 {button}
             </div>
+            <div className="flex justify-center col-span-3 items-center w-full">
+                    <div className="w-5/6 h-80 pt-4 xl:h-3/5 2xl:h-full m-auto">
+                        <ProfileChart userParam={userParam}/>
+                    </div>
+                </div>
         </main>
     );
 };

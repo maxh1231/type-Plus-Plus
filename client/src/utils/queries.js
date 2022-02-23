@@ -174,3 +174,13 @@ export const QUERY_BADGES = gql`
         }
     }
 `
+
+export const QUERY_USER_SCORE = gql`
+    query ScoresByUser($username: String) {
+    scoresByUser(username: $username) {
+        wpm
+        accuracy
+        createdAt
+    }
+    }
+`
