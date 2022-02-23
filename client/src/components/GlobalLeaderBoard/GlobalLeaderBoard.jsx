@@ -129,10 +129,10 @@ const GlobalLeaderBoard = ({ displayCount, runGame, leaderboardPage }) => {
                 <table className="table-auto mx-auto text-gray-800 dark:text-gray-400 rounded overflow-hidden">
                     <thead>
                         <tr className='bg-gray-400 dark:bg-gray-900'>
-                            <th className='p-1'>#</th>
-                            <th className='p-1'>WPM</th>
-                            <th className='p-1'>User</th>
-                            <th className='p-1'>Accuracy</th>
+                            <th className='p-2'>#</th>
+                            <th className='p-2'>WPM</th>
+                            <th className='p-2'>User</th>
+                            <th className='p-2'>Accuracy</th>
                             {leaderboardPage === true ? (
                                 <th className="p-1 hidden sm:block">Date</th>
                             ) : (
@@ -152,7 +152,7 @@ const GlobalLeaderBoard = ({ displayCount, runGame, leaderboardPage }) => {
                     pageCount={pageCount}
                     previousLabel="<<"
                     renderOnZeroPageCount={null}
-                    className="m-auto w-1/3 flex p-2 justify-around pagination-nav"
+                    className="m-auto w-1/3 flex p-2 justify-between pagination-nav"
                 />
             </>
         );

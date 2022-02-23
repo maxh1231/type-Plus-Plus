@@ -129,7 +129,7 @@ const ActivityLeaderBoard = () => {
                     pageCount={pageCount}
                     previousLabel="<<"
                     renderOnZeroPageCount={null}
-                    className="m-auto w-1/3 flex p-2 justify-around pagination-nav"
+                    className="m-auto w-1/3 flex p-2 justify-between pagination-nav"
                 />
             </>
         );
