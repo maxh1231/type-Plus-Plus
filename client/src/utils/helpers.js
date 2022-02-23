@@ -6,7 +6,6 @@ export const formatTime = (date) => {
 };
 
 export const checkGame = (val) => {
-    console.log(val)
     if (val >= 100) {
         return 'Mega Gamer';
     } else if (val >= 50) {
