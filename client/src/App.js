@@ -94,7 +94,6 @@ function App() {
                             path="/notfound"
                             element={<NotFound />}
                         />
-                        {/* To Do: Build out a custom 404 page */}
                     </Routes>
                     <Footer />
                 </Router>
