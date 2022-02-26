@@ -1,8 +1,4 @@
 const { gql } = require('apollo-server-express');
-const {
-  GraphQLUpload,
-  graphqlUploadExpress,
-} = require('graphql-upload');
 
 const typeDefs = gql`
   scalar Upload
