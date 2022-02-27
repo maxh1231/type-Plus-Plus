@@ -102,12 +102,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
             }
         }
         const userBadges = badgeData.map((badge) => badge.badgeName);
-        const newData = {
-            wpm: wpm,
-            accuracy: accuracy,
-            time: timer,
-            errors: errorCount,
-        };
+        const newData = { wpm: wpm, accuracy: accuracy, time: timer, errors: errorCount };
         // check for badges
         let addedBadge;
         const gameCheck = checkGame(userData.gameCount + 1);
@@ -165,15 +160,13 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
         for (let i = 0; i < inputText.length; i++) {
             if (inputText[i] !== sampleArr[i]) {
                 // add error styling
-                document.getElementById(i).style.backgroundColor =
-                    'rgba(191, 66, 66, 0.2)';
+                document.getElementById(i).style.backgroundColor = 'rgba(191, 66, 66, 0.2)';
                 document.getElementById(i).style.color = 'red';
                 setValidInput(false);
                 tmpErrorCount++;
             } else {
                 // add correct styling
-                document.getElementById(i).style.backgroundColor =
-                    'rgba(63, 191, 66, 0.1)';
+                document.getElementById(i).style.backgroundColor = 'rgba(63, 191, 66, 0.1)';
                 document.getElementById(i).style.color = 'green';
                 setValidInput(true);
             }
@@ -190,28 +183,16 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
     const updateUnderline = () => {
         if (inputText.length > 0) {
             try {
-                document.getElementById(inputText.length).style.textDecoration =
-                    'underline';
-                document.getElementById(
-                    inputText.length
-                ).style.backgroundColor = 'rgba(100, 100, 100, 0.2)';
-                document.getElementById(
-                    inputText.length - 1
-                ).style.textDecoration = 'none';
-                document.getElementById(
-                    inputText.length - 1
-                ).style.backgroundColor = 'none';
-                document.getElementById(
-                    inputText.length + 1
-                ).style.textDecoration = 'none';
-                document.getElementById(
-                    inputText.length + 1
-                ).style.backgroundColor = 'transparent';
+                document.getElementById(inputText.length).style.textDecoration = 'underline';
+                document.getElementById(inputText.length).style.backgroundColor = 'rgba(100, 100, 100, 0.2)';
+                document.getElementById(inputText.length - 1).style.textDecoration = 'none';
+                document.getElementById(inputText.length - 1).style.backgroundColor = 'none';
+                document.getElementById(inputText.length + 1).style.textDecoration = 'none';
+                document.getElementById(inputText.length + 1).style.backgroundColor = 'transparent';
             } catch {}
         } else {
             document.getElementById(0).style.textDecoration = 'underline';
-            document.getElementById(0).style.backgroundColor =
-                'rgba(100, 100, 100, 0.2)';
+            document.getElementById(0).style.backgroundColor = 'rgba(100, 100, 100, 0.2)';
             document.getElementById(1).style.textDecoration = 'none';
             document.getElementById(1).style.backgroundColor = 'transparent';
         }
@@ -297,11 +278,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     rows="4"
                     cols="50"
                     onChange={handleChange}
-                    className={`block border-2 w-full rounded p-2 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 ${
-                        !validInput
-                            ? 'focus-visible:outline-theme-red'
-                            : 'focus-visible:outline-theme-blue'
-                    }`}
+                    className={`block border-2 w-full rounded p-2 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 ${ !validInput ? 'focus-visible:outline-theme-red' : 'focus-visible:outline-theme-blue'}`}
                     value={inputText}
                 ></textarea>
             ) : (
@@ -321,13 +298,7 @@ const Game = ({ sampleArr, unmount, loggedIn }) => {
                     3
                 </p>
             </div>
-            <Modal
-                isOpen={modalIsOpen}
-                onAfterOpen={afterOpenModal}
-                onRequestClose={closeModal}
-                contentLabel="Example Modal"
-                style={customStyles}
-            >
+            <Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} contentLabel="Example Modal" style={customStyles}>
                 {!isCheater ? (
                     <div id="modal-container" className="w-fit flex flex-col">
                         <button

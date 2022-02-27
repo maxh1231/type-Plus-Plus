@@ -7,8 +7,6 @@ import { QUERY_ME } from '../utils/queries';
 import { REMOVE_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import DashboardUserInfo from '../components/DashboardUserInfo';
-// import Achievements from '../components/DashboardAchievements';
-// import Progress from '../components/DashboardProgress'
 import EditModal from '../components/EditModal';
 import Friends from '../components/Friends';
 import RecentBadge from '../components/RecentBadge';
@@ -98,25 +96,9 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
         return (
             <div className="m-auto text center w-fit pt-6">
                 <div className="inline-flex items-center w-fit px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-theme-blue transition ease-in-out duration-150">
-                    <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                    >
-                        <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                        ></circle>
-                        <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
                     Loading...
                 </div>
@@ -128,10 +110,7 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
         return (
             <section className="grow flex justify-center items-center dark:bg-gray-800 text-gray-600 dark:text-gray-300 transition-all">
                 <h4 className="">
-                    <Link
-                        to="/login"
-                        className="hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
-                    >
+                    <Link to="/login" className="hover:text-theme-red dark:hover:text-theme-red transition-all duration-300">
                         Log in
                     </Link>{' '}
                     to see your dashboard!
@@ -200,27 +179,14 @@ const Dashboard = ({ currentPage, setCurrentPage }) => {
             </section>
             {/* Modal */}
             <div>
-                <Modal
-                    isOpen={modalIsOpen}
-                    onAfterOpen={afterOpenModal}
-                    onRequestClose={closeModal}
-                    style={customStyles}
-                    contentLabel="Modal"
-                    toggleDelete={toggleDelete}
-                >
+                <Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Modal" toggleDelete={toggleDelete}>
                     <button
                         onClick={closeModal}
                         className="absolute top-0 left-[13.25rem] text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300 sm:left-[15.5rem]"
                     >
                         <XIcon className="h-6 w-6 m-2" />
                     </button>
-                    <EditModal
-                        data={data}
-                        modalBio={modalBio}
-                        setModalBio={setModalBio}
-                        image={image}
-                        setImage={setImage}
-                    />
+                    <EditModal data={data} modalBio={modalBio} setModalBio={setModalBio} image={image} setImage={setImage} />
                     <button
                         type="button"
                         data-mdb-ripple="true"
