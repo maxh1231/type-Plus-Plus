@@ -1,7 +1,5 @@
 import defaultPhoto from '../../assets/images/no-profile-picture.svg';
-import { useMutation, useQuery } from '@apollo/client';
-import { ADD_FRIEND } from '../../utils/mutations';
-import { QUERY_FRIENDS } from '../../utils/queries';
+import { checkLevel } from '../../utils/helpers';
 import {
     CircularProgressbarWithChildren,
     buildStyles,
@@ -86,39 +84,7 @@ const ProfileUserInfo = ({ data }) => {
         levelProgress = null;
     }
 
-    let levelIcon;
-    switch (userLevel) {
-        case 1:
-            levelIcon = '/assets/level-icons/level-1.png';
-            break;
-        case 2:
-            levelIcon = '/assets/level-icons/level-2.png';
-            break;
-        case 3:
-            levelIcon = '/assets/level-icons/level-3.png';
-            break;
-        case 4:
-            levelIcon = '/assets/level-icons/level-4.png';
-            break;
-        case 5:
-            levelIcon = '/assets/level-icons/level-5.png';
-            break;
-        case 6:
-            levelIcon = '/assets/level-icons/level-6.png';
-            break;
-        case 7:
-            levelIcon = '/assets/level-icons/level-7.png';
-            break;
-        case 8:
-            levelIcon = '/assets/level-icons/level-8.png';
-            break;
-        case 9:
-            levelIcon = '/assets/level-icons/level-9.png';
-            break;
-        case 10:
-            levelIcon = '/assets/level-icons/level-10.png';
-            break;
-    }
+    let levelIcon = checkLevel(userLevel);
 
     return (
         <section className="w-[200px]">

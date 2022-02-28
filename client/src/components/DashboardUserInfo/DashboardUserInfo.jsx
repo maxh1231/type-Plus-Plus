@@ -4,6 +4,7 @@ import {
     CircularProgressbarWithChildren,
     buildStyles,
 } from 'react-circular-progressbar';
+import { checkLevel } from '../../utils/helpers';
 
 const DashboardUserInfo = ({ data, modalBio, image }) => {
     const level2 = 100;
@@ -86,44 +87,7 @@ const DashboardUserInfo = ({ data, modalBio, image }) => {
         levelProgress = null;
     }
 
-    let levelIcon;
-    switch (userLevel) {
-        case 1:
-            levelIcon = '/assets/level-icons/level-1.png';
-            break;
-        case 2:
-            levelIcon = '/assets/level-icons/level-2.png';
-            break;
-        case 3:
-            levelIcon = '/assets/level-icons/level-3.png';
-            break;
-        case 4:
-            levelIcon = '/assets/level-icons/level-4.png';
-            break;
-        case 5:
-            levelIcon = '/assets/level-icons/level-5.png';
-            break;
-        case 6:
-            levelIcon = '/assets/level-icons/level-6.png';
-            break;
-        case 7:
-            levelIcon = '/assets/level-icons/level-7.png';
-            break;
-        case 8:
-            levelIcon = '/assets/level-icons/level-8.png';
-            break;
-        case 9:
-            levelIcon = '/assets/level-icons/level-9.png';
-            break;
-        case 10:
-            levelIcon = '/assets/level-icons/level-10.png';
-            break;
-        default:
-            levelIcon = '/assets/level-icons/level-1.png';
-            break;
-    }
-
-    // refetch();
+    let levelIcon = checkLevel(userLevel);
 
     return (
         <section className="w-[200px]">
