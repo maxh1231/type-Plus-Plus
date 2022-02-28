@@ -4,19 +4,9 @@ import {
     CircularProgressbarWithChildren,
     buildStyles,
 } from 'react-circular-progressbar';
-import { checkLevel } from '../../utils/helpers';
+import { checkLevel, checkLevelBadge } from '../../utils/helpers';
 
 const DashboardUserInfo = ({ data, modalBio, image }) => {
-    const level2 = 100;
-    const level3 = 250;
-    const level4 = 500;
-    const level5 = 800;
-    const level6 = 1200;
-    const level7 = 1650;
-    const level8 = 2100;
-    const level9 = 2700;
-    const level10 = 3200;
-
     let averageWPM;
 
     if (data.meScores.length !== 0) {
@@ -30,8 +20,6 @@ const DashboardUserInfo = ({ data, modalBio, image }) => {
         averageWPM = Math.floor(averageWPM);
     }
 
-    let userLevel = 1;
-    let levelProgress;
     let totalXP = 0;
     if (data) {
         data.meBadges.badges.map((badge) => {
@@ -40,54 +28,9 @@ const DashboardUserInfo = ({ data, modalBio, image }) => {
         });
     }
 
-    if (totalXP < level2) {
-        levelProgress = (totalXP / level2) * 100;
-    } else if (totalXP >= level2 && totalXP < level3) {
-        userLevel = 2;
-        let diff = level3 - level2;
-        let diff2 = totalXP - level2;
-        levelProgress = (diff2 / diff) * 100;
-    } else if (totalXP >= level3 && totalXP < level4) {
-        userLevel = 3;
-        let diff = level4 - level3;
-        let diff2 = totalXP - level3;
-        levelProgress = (diff2 / diff) * 100;
-    } else if (totalXP >= level4 && totalXP < level5) {
-        userLevel = 4;
-        let diff = level5 - level4;
-        let diff2 = totalXP - level4;
-        levelProgress = (diff2 / diff) * 100;
-    } else if (totalXP >= level5 && totalXP < level6) {
-        userLevel = 5;
-        let diff = level6 - level5;
-        let diff2 = totalXP - level5;
-        levelProgress = (diff2 / diff) * 100;
-    } else if (totalXP >= level6 && totalXP < level7) {
-        userLevel = 6;
-        let diff = level7 - level6;
-        let diff2 = totalXP - level6;
-        levelProgress = (diff2 / diff) * 100;
-    } else if (totalXP >= level7 && totalXP < level8) {
-        userLevel = 7;
-        let diff = level8 - level7;
-        let diff2 = totalXP - level7;
-        levelProgress = (diff2 / diff) * 100;
-    } else if (totalXP >= level8 && totalXP < level9) {
-        userLevel = 8;
-        let diff = level9 - level8;
-        let diff2 = totalXP - level8;
-        levelProgress = (diff2 / diff) * 100;
-    } else if (totalXP >= level9 && totalXP < level10) {
-        userLevel = 9;
-        let diff = level10 - level9;
-        let diff2 = totalXP - level9;
-        levelProgress = (diff2 / diff) * 100;
-    } else if (totalXP >= level10) {
-        userLevel = 10;
-        levelProgress = null;
-    }
-
-    let levelIcon = checkLevel(userLevel);
+    let userLevel = checkLevel(totalXP).userLevel
+    let levelProgress = checkLevel(totalXP).levelProgress
+    let levelIcon = checkLevelBadge(userLevel);
 
     return (
         <section className="w-[200px]">
