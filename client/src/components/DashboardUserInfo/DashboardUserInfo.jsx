@@ -5,7 +5,7 @@ import {
     buildStyles,
 } from 'react-circular-progressbar';
 
-const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
+const DashboardUserInfo = ({ data, modalBio, image }) => {
     const level2 = 100;
     const level3 = 250;
     const level4 = 500;
@@ -134,16 +134,8 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
                     trailColor: '#94cbf1',
                 })}
             >
-                <img
-                    className="rounded-full w-[171px] h-[171px] object-cover"
-                    src={image}
-                    alt="User avatar"
-                ></img>
-                <img
-                    className="w-[64px] h-[64px] absolute top-[158px]"
-                    src={levelIcon}
-                    alt="level icon"
-                ></img>
+                <img className="rounded-full w-[171px] h-[171px] object-cover" src={image} alt="User avatar"></img>
+                <img className="w-[64px] h-[64px] absolute top-[158px]" src={levelIcon} alt="level icon"></img>
             </CircularProgressbarWithChildren>
 
             <div className="mt-5">
@@ -155,9 +147,17 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
             </div>
             <div className="mt-2">
                 {data.meScores[0] && (
-                    <p className="text-center mt-2">
-                        Highest WPM: {data.meScores[0].wpm}
-                    </p>
+                    <>
+                        <p className="text-center mt-2">
+                            Highest WPM: {data.meScores[0].wpm}
+                        </p>
+                        <p className="text-center mt-2">
+                            Average WPM: {averageWPM}{' '}
+                        </p>
+                        <p className="text-center mt-2">
+                            Games Played: {data.meScores.length}{' '}
+                        </p>
+                    </>
                 )}
                 {!data.meScores[0] && (
                     <Link to="/">
@@ -165,16 +165,6 @@ const DashboardUserInfo = ({ data, modalBio, image, setImage, refetch }) => {
                             Take a few tests to show your scores!
                         </p>
                     </Link>
-                )}
-                {data.meScores[0] && (
-                    <p className="text-center mt-2">
-                        Average WPM: {averageWPM}{' '}
-                    </p>
-                )}
-                {data.meScores[0] && (
-                    <p className="text-center mt-2">
-                        Games Played: {data.meScores.length}{' '}
-                    </p>
                 )}
             </div>
             <div className="mt-2">

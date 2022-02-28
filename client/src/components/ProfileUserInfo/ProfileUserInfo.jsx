@@ -8,14 +8,14 @@ import {
 } from 'react-circular-progressbar';
 
 const ProfileUserInfo = ({ data }) => {
-    const level2 = 25;
-    const level3 = 50;
-    const level4 = 100;
-    const level5 = 200;
-    const level6 = 400;
-    const level7 = 800;
-    const level8 = 1600;
-    const level9 = 2800;
+    const level2 = 100;
+    const level3 = 250;
+    const level4 = 500;
+    const level5 = 800;
+    const level6 = 1200;
+    const level7 = 1650;
+    const level8 = 2100;
+    const level9 = 2700;
     const level10 = 3200;
 
     let userLevel = 1;
@@ -130,24 +130,12 @@ const ProfileUserInfo = ({ data }) => {
                 })}
             >
                 {data.user.profilePic && (
-                    <img
-                        className="rounded-full w-[171px] h-[171px] object-cover"
-                        src={`../${data.user.profilePic}`}
-                        alt=""
-                    ></img>
+                    <img className="rounded-full w-[171px] h-[171px] object-cover" src={`../${data.user.profilePic}`} alt=""></img>
                 )}
                 {!data.user.profilePic && (
-                    <img
-                        className="rounded-full w-[171px] h-[171px] object-cover"
-                        src={defaultPhoto}
-                        alt=""
-                    ></img>
+                    <img className="rounded-full w-[171px] h-[171px] object-cover" src={defaultPhoto} alt=""></img>
                 )}
-                <img
-                    className="w-[64px] h-[64px] absolute top-[158px]"
-                    src={levelIcon}
-                    alt="level icon"
-                ></img>
+                <img className="w-[64px] h-[64px] absolute top-[158px]" src={levelIcon} alt="level icon"></img>
             </CircularProgressbarWithChildren>
             <div className="mt-5">
                 <h3 className="text-2xl text-center">{data.user.username}</h3>
@@ -157,23 +145,21 @@ const ProfileUserInfo = ({ data }) => {
             </div>
             <div className="mt-2">
                 {data.scoresByUser[0] && (
-                    <p className="text-lg text-center mt-2">
-                        Highest WPM: {data.scoresByUser[0].wpm}
-                    </p>
+                    <>   
+                        <p className="text-lg text-center mt-2">
+                            Highest WPM: {data.scoresByUser[0].wpm}
+                        </p>
+                        <p className="text-lg text-center mt-2">
+                            Average WPM: {averageWPM}{' '}
+                        </p>
+                        <p className="text-lg text-center mt-2">
+                            Games Played: {data.scoresByUser.length}{' '}
+                        </p>
+                    </>
                 )}
                 {!data.scoresByUser[0] && (
                     <p className="text-lg text-center mt-2">
                         This user has not completed any games
-                    </p>
-                )}
-                {data.scoresByUser[0] && (
-                    <p className="text-lg text-center mt-2">
-                        Average WPM: {averageWPM}{' '}
-                    </p>
-                )}
-                {data.scoresByUser[0] && (
-                    <p className="text-lg text-center mt-2">
-                        Games Played: {data.scoresByUser.length}{' '}
                     </p>
                 )}
             </div>

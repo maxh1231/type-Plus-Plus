@@ -1,8 +1,8 @@
 import React from 'react';
-import { useMutation, gql } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { UPLOAD_FILE } from '../../utils/mutations';
 
-const Uploader = ({ image, setImage }) => {
+const Uploader = ({ setImage }) => {
     const [uploadFile] = useMutation(UPLOAD_FILE);
 
     const handleFileChange = async (e) => {
@@ -14,18 +14,10 @@ const Uploader = ({ image, setImage }) => {
 
     return (
         <section className="w-full flex items-center text-center mb-4">
-            <label
-                htmlFor="file-upload"
-                className="w-full text-center mt-3 py-1 rounded text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 focus:outline-none my-1 transition-all duration-300 hover:cursor-pointer"
-            >
+            <label htmlFor="file-upload" className="w-full text-center mt-3 py-1 rounded text-gray-800 hover:text-gray-300 bg-gray-300 hover:bg-gray-600 focus:outline-none my-1 transition-all duration-300 hover:cursor-pointer">
                 Upload New Photo
             </label>
-            <input
-                type="file"
-                id="file-upload"
-                className="hidden"
-                onChange={handleFileChange}
-            ></input>
+            <input type="file" id="file-upload" className="hidden" onChange={handleFileChange}></input>
         </section>
     );
 };
