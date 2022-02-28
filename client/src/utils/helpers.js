@@ -110,3 +110,30 @@ export const checkAge = (val) => {
             return false;
     }
 };
+
+export const checkLevel = (val) => {
+    switch (val) {
+        case 1:
+            return '/assets/level-icons/level-1.png';
+        case 2:
+            return '/assets/level-icons/level-2.png';
+        case 3:
+            return '/assets/level-icons/level-3.png';
+        case 4:
+            return '/assets/level-icons/level-4.png';
+        case 5:
+            return '/assets/level-icons/level-5.png';
+        case 6:
+            return '/assets/level-icons/level-6.png';
+        case 7:
+            return '/assets/level-icons/level-7.png';
+        case 8:
+            return '/assets/level-icons/level-8.png';
+        case 9:
+            return '/assets/level-icons/level-9.png';
+        case 10:
+            return '/assets/level-icons/level-10.png';
+        default: 
+            return null;
+    }
+};
