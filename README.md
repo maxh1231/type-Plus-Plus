@@ -1,4 +1,4 @@
-# [Type++](https://typeplusplus.herokuapp.com/) ![Project License Badge](https://img.shields.io/badge/license-MIT-brightgreen)
+# [Type++](https://typeplusplus.herokuapp.com/) ![Project License Badge](https://img.shields.io/badge/license-MIT-brightgreen) ![Project Version Badge](https://img.shields.io/github/package-json/v/thenlie/type-plus-plus)
 
 Welcome to Type++! Looking to test out your overpriced custom keyboard? Wanna show off how much faster you can type than your buddies? Need to find out your words-per-minute speed for a job application? You’ve come to the right place! Type++ is a full stack MERN application started by four friends in a coding bootcamp.
 
