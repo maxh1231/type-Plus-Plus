@@ -6,6 +6,8 @@ Welcome to Type++! Looking to test out your overpriced custom keyboard? Wanna sh
 
 ## Technology Stack
 
+<div align="center">
+
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -27,6 +29,8 @@ Welcome to Type++! Looking to test out your overpriced custom keyboard? Wanna sh
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 
+</div>
+    
 ### View Type++ on Heroku at [https://typeplusplus.herokuapp.com/](https://typeplusplus.herokuapp.com/)
 
 ---
