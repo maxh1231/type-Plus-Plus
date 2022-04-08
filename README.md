@@ -91,9 +91,10 @@ Feel free to fork the repo and submit pull request for updates.
 
 Find us on GitHub:
 
-<ul>
-    <li><a href="https://github.com/Thenlie">Leithen Crider</a></li>
-    <li><a href="https://github.com/Thorulfr">Ben Holt</a></li>
-    <li><a href="https://github.com/maxh1231">Max Humpherys</a></li>
-    <li><a href="https://github.com/t-norm">Tyler Norman</a></li>
-</ul>
+>[Leithen Crider](https://github.com/Thenlie)
+
+>[Ben Holt](https://github.com/Thorulfr)
+
+>[Max Humpherys](https://github.com/maxh1231)
+
+>[Tyler Norman](https://github.com/t-norm)
