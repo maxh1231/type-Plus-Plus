@@ -1,10 +1,12 @@
-# [Type++](https://typeplusplus.herokuapp.com/) ![Project License Badge](https://img.shields.io/badge/license-MIT-brightgreen)
+# [Type++](https://typeplusplus.herokuapp.com/) ![Project License Badge](https://img.shields.io/badge/license-MIT-brightgreen) ![Project Version Badge](https://img.shields.io/github/package-json/v/thenlie/type-plus-plus)
 
 Welcome to Type++! Looking to test out your overpriced custom keyboard? Wanna show off how much faster you can type than your buddies? Need to find out your words-per-minute speed for a job application? You’ve come to the right place! Type++ is a full stack MERN application started by four friends in a coding bootcamp.
 
 ---
 
 ## Technology Stack
+
+<div align="center">
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -27,6 +29,8 @@ Welcome to Type++! Looking to test out your overpriced custom keyboard? Wanna sh
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 
+</div>
+    
 ### View Type++ on Heroku at [https://typeplusplus.herokuapp.com/](https://typeplusplus.herokuapp.com/)
 
 ---
@@ -87,9 +91,10 @@ Feel free to fork the repo and submit pull request for updates.
 
 Find us on GitHub:
 
-<ul>
-    <li><a href="https://github.com/Thenlie">Leithen Crider</a></li>
-    <li><a href="https://github.com/Thorulfr">Ben Holt</a></li>
-    <li><a href="https://github.com/maxh1231">Max Humpherys</a></li>
-    <li><a href="https://github.com/t-norm">Tyler Norman</a></li>
-</ul>
+>[Leithen Crider](https://github.com/Thenlie)
+
+>[Ben Holt](https://github.com/Thorulfr)
+
+>[Max Humpherys](https://github.com/maxh1231)
+
+>[Tyler Norman](https://github.com/t-norm)

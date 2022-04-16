@@ -37,30 +37,15 @@ const GlobalLeaderBoard = ({ displayCount, runGame, leaderboardPage }) => {
                                 </td>
                                 <td className="text-center p-2" key={uuid()}>
                                     {i + page === 0 && (
-                                        <img
-                                            alt="1st place badge"
-                                            className="inline m1"
-                                            src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto.png"
-                                        />
+                                        <img alt="1st place badge" className="inline m1" src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto.png"/>
                                     )}{' '}
                                     {i + page === 1 && (
-                                        <img
-                                            alt="2nd place badge"
-                                            className="inline m1"
-                                            src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-2.png"
-                                        />
+                                        <img alt="2nd place badge" className="inline m1" src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-2.png"/>
                                     )}{' '}
                                     {i + page === 2 && (
-                                        <img
-                                            alt="3rd place badge"
-                                            className="inline m1"
-                                            src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-13.png"
-                                        />
+                                        <img alt="3rd place badge" className="inline m1" src="https://img.icons8.com/external-yogi-aprelliyanto-flat-yogi-aprelliyanto/28/000000/external-medal-award-yogi-aprelliyanto-flat-yogi-aprelliyanto-13.png"/>
                                     )}
-                                    <Link
-                                        to={`/profile/${score.username}`}
-                                        className="text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300"
-                                    >
+                                    <Link to={`/profile/${score.username}`} className="text-gray-700 dark:text-gray-300 hover:text-theme-red dark:hover:text-theme-red transition-all duration-300">
                                         {score.username}
                                     </Link>
                                 </td>
@@ -68,17 +53,11 @@ const GlobalLeaderBoard = ({ displayCount, runGame, leaderboardPage }) => {
                                     {score.accuracy}%
                                 </td>
                                 {leaderboardPage === true ? (
-                                    <td
-                                        className="text-center p-2 hidden sm:block"
-                                        key={uuid()}
-                                    >
+                                    <td className="text-center p-2 hidden sm:block" key={uuid()}>
                                         {score.date}
                                     </td>
                                 ) : (
-                                    <td
-                                        className="text-center p-2 hidden sm:block xl:hidden 2xl:block"
-                                        key={uuid()}
-                                    >
+                                    <td className="text-center p-2 hidden sm:block xl:hidden 2xl:block" key={uuid()}>
                                         {score.date}
                                     </td>
                                 )}

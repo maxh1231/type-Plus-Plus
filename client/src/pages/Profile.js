@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_FRIENDS } from '../utils/queries';
 import { ADD_BADGE, ADD_FRIEND, REMOVE_FRIEND } from '../utils/mutations';
 import Auth from '../utils/auth';
-
 import ProfileUserInfo from '../components/ProfileUserInfo';
 import { checkFriends } from '../utils/helpers';
 import ProfileChart from '../components/ProfileChart/ProfileChart';
-// import Achievements from '../components/Achievements';
-// import Progress from '../components/Progress'
 
 const Profile = ({ currentPage, setCurrentPage }) => {
     useEffect(() => {
@@ -87,30 +83,21 @@ const Profile = ({ currentPage, setCurrentPage }) => {
     let button;
     if (Auth.loggedIn() && friendStatus) {
         button = (
-            <button
-                id="1"
-                className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
-                onClick={handleRemoveFriend}
-            >
+            <button id="1" className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
+                onClick={handleRemoveFriend}>
                 Remove Friend
             </button>
         );
     } else if (Auth.loggedIn() && !friendStatus) {
         button = (
-            <button
-                id="2"
-                className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
-                onClick={handleAddFriend}
-            >
+            <button id="2" className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
+                onClick={handleAddFriend}>
                 Add Friend
             </button>
         );
     } else {
         button = (
-            <button
-                id="3"
-                className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300"
-            >
+            <button id="3" className="w-full text-center py-3 px-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300">
                 <Link to="/login">Login to Add Friend</Link>
             </button>
         );

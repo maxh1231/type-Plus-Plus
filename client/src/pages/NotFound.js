@@ -13,7 +13,7 @@ const NotFound = () => {
                 </h3>
             </div>
             <div>
-                <button className="w-full text-center py-3 px-7 my-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none my-1 transition-all duration-300">
+                <button className="w-full text-center py-3 px-7 my-4 rounded bg-theme-blue text-gray-100 dark:text-gray-300 hover:bg-blue-600 focus:outline-none transition-all duration-300">
                     <Link to="/">Home</Link>
                 </button>
             </div>

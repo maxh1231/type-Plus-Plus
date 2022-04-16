@@ -1,12 +1,7 @@
 // Imports
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import {
-    ApolloClient,
-    InMemoryCache,
-    ApolloProvider,
-    ApolloLink,
-} from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { createUploadLink } from 'apollo-upload-client';
 
@@ -68,32 +63,12 @@ function App() {
                         <Route exact path="/" element={<Home />} />
                         <Route exact path="/login" element={<Login currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
                         <Route exact path="/signup" element={<Signup currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
-                        <Route
-                            exact
-                            path="/dashboard"
-                            element={<Dashboard currentPage={currentPage} setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            exact
-                            path="/leaderboard"
-                            element={<LeaderBoard currentPage={currentPage} setCurrentPage={setCurrentPage} />}
-                        />
+                        <Route exact path="/dashboard" element={<Dashboard currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
+                        <Route exact path="/leaderboard" element={<LeaderBoard currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
                         <Route exact path="/badges" element={<Badges currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
-                        <Route
-                            exact
-                            path="/profile/:username"
-                            element={<Profile currentPage={currentPage} setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            exact
-                            path="/password-reset"
-                            element={<ForgotPassword currentPage={currentPage} setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            exact
-                            path="/notfound"
-                            element={<NotFound />}
-                        />
+                        <Route exact path="/profile/:username" element={<Profile currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
+                        <Route exact path="/password-reset" element={<ForgotPassword currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
+                        <Route exact path="/notfound" element={<NotFound />} />
                     </Routes>
                     <Footer />
                 </Router>

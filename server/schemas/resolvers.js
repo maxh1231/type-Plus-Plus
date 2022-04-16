@@ -2,10 +2,7 @@ const moment = require('moment')
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Scores, Badge } = require('../models');
 const { signToken } = require('../utils/auth');
-const {
-  GraphQLUpload,
-  graphqlUploadExpress,
-} = require('graphql-upload');
+const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload');
 const path = require('path');
 const fs = require('fs');
 const bcrypt = require('bcrypt');
