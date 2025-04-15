@@ -1,19 +1,17 @@
-# [Type++](https://typeplusplus.herokuapp.com/) ![Project License Badge](https://img.shields.io/badge/license-MIT-brightgreen) ![Project Version Badge](https://img.shields.io/github/package-json/v/thenlie/type-plus-plus)
+# Type++ <img src="https://github.com/user-attachments/assets/3410090b-e242-4132-91c3-46da74c83f15" alt="drawing" width="32"/> ![Project License Badge](https://img.shields.io/badge/license-MIT-brightgreen) ![Project Version Badge](https://img.shields.io/github/package-json/v/thenlie/type-plus-plus)
 
-Welcome to Type++! Looking to test out your overpriced custom keyboard? Wanna show off how much faster you can type than your buddies? Need to find out your words-per-minute speed for a job application? You’ve come to the right place! Type++ is a full stack MERN application started by four friends in a coding bootcamp.
+Type++ is a gamified typing tester that challenges your speed and accuracy with randomly generated paragraphs. Earn badges, unlock achievements, and track your progress with a personalized user dashboard featuring detailed stats, history, and profile information.
 
 ---
+
+## Check out [Type++](https://typeplus.herokuapp.com/)
 
 ## Technology Stack
 
 <div align="center">
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
@@ -24,44 +22,27 @@ Welcome to Type++! Looking to test out your overpriced custom keyboard? Wanna sh
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
-![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
-![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 
 </div>
-    
-### View Type++ on Heroku at [https://typeplusplus.herokuapp.com/](https://typeplusplus.herokuapp.com/)
 
----
+## Usage
 
-## Table of Contents:
+- Install dependencies: `npm i`
+- Run application: `npm run develop`
+- View development environment at [http://localhost:3000](http://localhost:3000)
 
--   [Usage](#usage)
--   [License](#license)
--   [Contributing](#contributing)
--   [Questions](#questions)
+## Contributing
 
-## Screenshots
-
-### Typing Test
-
-![Typing test screenshot](/readme-screenshot-game.png)
-
-### User Dashboard
-
-![User dashboard screenshot](/readme-screenshot-dashboard.png)
-
-## Usage:
-
-Intended to showcase MERN SPA development mastery.
+If you would like to contribute to this project feel free to fork this repo and submit a pull request.
 
 ## License
 <details>
 
 <summary>MIT License</summary>
 
-> Copyright (c) [2022] [Type++]
+> Copyright (c) [2022] [Turtle]
 > 
 > __Permission is hereby granted, free of charge, to any person obtaining a copy__
 > __of this software and associated documentation files (the "Software"), to deal__
@@ -83,18 +64,4 @@ Intended to showcase MERN SPA development mastery.
 
 </details>
 
-## Contributing:
-
-Feel free to fork the repo and submit pull request for updates.
-
-## Questions:
-
-Find us on GitHub:
-
->[Leithen Crider](https://github.com/Thenlie)
-
->[Ben Holt](https://github.com/Thorulfr)
-
->[Max Humpherys](https://github.com/maxh1231)
-
->[Tyler Norman](https://github.com/t-norm)
+---
